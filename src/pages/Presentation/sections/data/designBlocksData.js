@@ -15,6 +15,7 @@ Coded by www.creative-tim.com
 
 const imagesPrefix =
   "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/sections";
+const gamesPrefix = "https://cdnb.artstation.com/p/assets/images/images/058/781/929/large";
 
 export default [
   {
@@ -22,9 +23,9 @@ export default [
     description: "A selection of 45 page sections that fit perfectly in any combination",
     items: [
       {
-        image: `${imagesPrefix}/headers.jpg`,
-        name: "Page Headers",
-        count: 10,
+        image: `${gamesPrefix}/daniel-hong-connect4.jpg`,
+        name: "Games",
+        count: 4,
         route: "/sections/page-sections/page-headers",
       },
       {
