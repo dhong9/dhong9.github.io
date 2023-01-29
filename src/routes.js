@@ -70,6 +70,7 @@ import Typography from "layouts/sections/elements/typography";
 
 // Games
 import Connect4 from "projects/games/connect4";
+import Twenty48 from "projects/games/2048";
 
 const routes = [
   {
@@ -140,6 +141,11 @@ const routes = [
             name: "connect4",
             route: "/sections/games/connect4",
             component: <Connect4 />,
+          },
+          {
+            name: "2048",
+            route: "/sections/games/2048",
+            component: <Twenty48 />,
           },
         ],
       },
