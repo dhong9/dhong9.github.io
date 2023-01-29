@@ -68,6 +68,9 @@ import ProgressBars from "layouts/sections/elements/progress-bars";
 import Toggles from "layouts/sections/elements/toggles";
 import Typography from "layouts/sections/elements/typography";
 
+// Games
+import Connect4 from "projects/games/connect4";
+
 const routes = [
   {
     name: "pages",
@@ -125,6 +128,18 @@ const routes = [
             name: "features",
             route: "/sections/page-sections/features",
             component: <Features />,
+          },
+        ],
+      },
+      {
+        name: "games",
+        description: "See all games",
+        dropdown: true,
+        collapse: [
+          {
+            name: "connect4",
+            route: "/sections/games/connect4",
+            component: <Connect4 />,
           },
         ],
       },
