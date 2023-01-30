@@ -9,8 +9,8 @@ function Connect4() {
   let mouseClicked;
 
   // Game variables
-  const p = 1;
-  const win = 0;
+  let p = 1;
+  let win = 0;
 
   // Constants
   const ROWS = 6;
@@ -22,7 +22,7 @@ function Connect4() {
    * Initializes an empty 2D array of size ROWS x COLS
    * @returns 2D array of zeros
    */
-  const createBoard = () => [...Array(ROWS)].map((_) => Array(COLS).fill(0));
+  const createBoard = () => [...Array(ROWS)].map(() => Array(COLS).fill(0));
 
   /**
    * Copies 2D array by value into another 2D array
@@ -34,9 +34,9 @@ function Connect4() {
     // Array to store copied value in
     const bCopy = [];
 
-    for (let r = 0; r < ROWS; r++) {
+    for (let r = 0; r < ROWS; r += 1) {
       const temp = []; // Current row values
-      for (let c = 0; c < COLS; c++) {
+      for (let c = 0; c < COLS; c += 1) {
         temp.push(board[r][c]);
       }
     }
@@ -51,9 +51,12 @@ function Connect4() {
    * @param {number} row board's row
    * @param {number} col board's column
    * @param {number} piece player number (1 or 2)
+   * @returns Copy of game board with updated coordinate
    */
   const dropPiece = (board, row, col, piece) => {
-    board[row][col] = piece;
+    const bCopy = copyBoard(board);
+    bCopy[row][col] = piece;
+    return bCopy;
   };
 
   /**
@@ -74,7 +77,7 @@ function Connect4() {
     const validLocations = [];
 
     // Check each column
-    for (let c = 0; c < COLS; c++) {
+    for (let c = 0; c < COLS; c += 1) {
       if (isValidLocation(board, c)) {
         validLocations.push(c);
       }
@@ -93,7 +96,7 @@ function Connect4() {
    */
   const getNextOpenRow = (board, col) => {
     // Start from the bottommost row
-    for (let r = ROWS - 1; r >= 0; r--) {
+    for (let r = ROWS - 1; r >= 0; r -= 1) {
       if (!board[r][col]) {
         return r;
       }
@@ -110,25 +113,22 @@ function Connect4() {
    */
   const drawBoard = (p5, board) => {
     p5.noStroke();
-    for (let r = 0; r < ROWS; r++) {
-      for (let c = 0; c < COLS; c++) {
+    for (let r = 0; r < ROWS; r += 1) {
+      for (let c = 0; c < COLS; c += 1) {
         // Draw cell will yellow background
         p5.fill(255, 255, 0);
         p5.rect(c * w, r * w + w, w);
 
         // Color cell based on cell value
         const v = board[r][c];
-        p5.fill(
-          // Player 2 drawn as red token
-          v > 1
-            ? p5.color(255, 0, 0)
-            : // Player 1 drawn as black token
-            v
-            ? 0
-            : // No player drawn to match game background
-              bg
-        );
-        p5.ellipse(c * 2 + w / 2, r * w + w / 2 + w, 0.8 * w);
+        if (v > 1) {
+          p5.fill(255, 0, 0); // Player 2 drawn as red token
+        } else if (v) {
+          p5.fill(0); // Player 1 drawn as black token
+        } else {
+          p5.fill(bg); // No player drawn to match game background
+        }
+        p5.ellipse(c * w + w / 2, r * w + w / 2 + w, 0.8 * w);
       }
     }
   };
@@ -140,11 +140,11 @@ function Connect4() {
    */
   const winningMove = (board) => {
     // Horizontals
-    for (let r = 0; r < ROWS; r++) {
-      for (let c = 0; c < COLS - 3; c++) {
+    for (let r = 0; r < ROWS; r += 1) {
+      for (let c = 0; c < COLS - 3; c += 1) {
         let match = true;
-        for (let i = 0; i < 3; i++) {
-          match = match && board[r][c] && board[r][c + i] === board[r][c - ~i];
+        for (let i = 0; i < 3; i += 1) {
+          match = match && board[r][c] && board[r][c + i] === board[r][c + i + 1];
         }
         if (match) {
           return board[r][c];
@@ -153,11 +153,11 @@ function Connect4() {
     }
 
     // Verticals
-    for (let r = 0; r < ROWS - 3; r++) {
-      for (let c = 0; c < COLS; c++) {
+    for (let r = 0; r < ROWS - 3; r += 1) {
+      for (let c = 0; c < COLS; c += 1) {
         let match = true;
-        for (let i = 0; i < 3; i++) {
-          match = match && board[r][c] && board[r + i][c] === board[r - ~i][c];
+        for (let i = 0; i < 3; i += 1) {
+          match = match && board[r][c] && board[r + i][c] === board[r + i + 1][c];
         }
         if (match) {
           return board[r][c];
@@ -166,24 +166,24 @@ function Connect4() {
     }
 
     // Top-left/Bottom-right diagonal
-    for (let r = 0; r < ROWS - 3; r++) {
-      for (let c = 0; c < COLS - 3; c++) {
+    for (let r = 0; r < ROWS - 3; r += 1) {
+      for (let c = 0; c < COLS - 3; c += 1) {
         let match = true;
-        for (let i = 0; i < 3; i++) {
-          match = match && board[r][c] && board[r + i][c + i] === this.board[r - ~i][c - ~i];
+        for (let i = 0; i < 3; i += 1) {
+          match = match && board[r][c] && board[r + i][c + i] === board[r + i + 1][c + i + 1];
         }
         if (match) {
-          return this.board[r][c];
+          return board[r][c];
         }
       }
     }
 
     // Bottom-left/Top-right diagonal
-    for (let r = 3; r < ROWS; r++) {
-      for (let c = 0; c < COLS - 3; c++) {
+    for (let r = 3; r < ROWS; r += 1) {
+      for (let c = 0; c < COLS - 3; c += 1) {
         let match = true;
-        for (let i = 0; i < 3; i++) {
-          match = match && board[r][c] && board[r - i][c + i] === board[r + ~i][c - ~i];
+        for (let i = 0; i < 3; i += 1) {
+          match = match && board[r][c] && board[r - i][c + i] === board[r - i - 1][c + i + 1];
         }
         if (match) {
           return board[r][c];
@@ -209,18 +209,24 @@ function Connect4() {
    * @param {number} opp number of opponent's piece
    * @returns point value of current scenario within the board
    */
-  const calcWindow = (count, empty, opp) =>
-    count === 4 // Win
-      ? 100
-      : count === 3 && empty === 1 // One move away from winning
-      ? 5
-      : count === 2 && empty === 2 // 2 moves from winning
-      ? 2
-      : opp === 3 && empty === 1 // Opponent is one from winning
-      ? -4
-      : opp === 4
-      ? -100 // Lose
-      : 0;
+  const calcWindow = (count, empty, opp) => {
+    if (count === 4) {
+      return 100; // Win
+    }
+    if (count === 3 && empty === 1) {
+      return 5; // One away from winning
+    }
+    if (count === 2 && empty === 2) {
+      return 2; // 2 moves from winning
+    }
+    if (opp === 3 && empty === 1) {
+      return -4; // Opponent is one from winning
+    }
+    if (opp === 4) {
+      return -100; // Lose
+    }
+    return 0;
+  };
 
   /**
    *
@@ -233,18 +239,18 @@ function Connect4() {
 
     // Center preference
     let centerCount = 0;
-    for (let r = 0; r < ROWS; r++) {
-      centerCount += board[r][COLS >> 1] === pNum;
+    for (let r = 0; r < ROWS; r += 1) {
+      centerCount += board[r][Math.floor(COLS / 2)] === pNum;
     }
     score += centerCount * 3;
 
     // Horizontal
-    for (let r = 0; r < ROWS; r++) {
-      for (let c = 0; c < COLS - 3; c++) {
+    for (let r = 0; r < ROWS; r += 1) {
+      for (let c = 0; c < COLS - 3; c += 1) {
         let count = 0;
         let empty = 0;
         let opp = 0;
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i += 1) {
           count += board[r][c + i] === pNum;
           empty += !board[r][c + i];
           opp += board[r][c + i] === 1;
@@ -255,12 +261,12 @@ function Connect4() {
     }
 
     // Vertical
-    for (let c = 0; c < COLS; c++) {
-      for (let r = 0; r < ROWS - 3; r++) {
+    for (let c = 0; c < COLS; c += 1) {
+      for (let r = 0; r < ROWS - 3; r += 1) {
         let count = 0;
         let empty = 0;
         let opp = 0;
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i += 1) {
           count += board[r + i][c] === pNum;
           empty += !board[r + i][c];
           opp += board[r + i][c] === 1;
@@ -271,12 +277,12 @@ function Connect4() {
     }
 
     // Positive-sloped diagonal
-    for (let r = 0; r < 3; r++) {
-      for (let c = 0; c < 4; c++) {
+    for (let r = 0; r < 3; r += 1) {
+      for (let c = 0; c < 4; c += 1) {
         let count = 0;
         let empty = 0;
         let opp = 0;
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i += 1) {
           count += board[r + i][c + i] === pNum;
           empty += !board[r + i][c + i];
           opp += board[r + i][c + i] === 1;
@@ -287,12 +293,12 @@ function Connect4() {
     }
 
     // Negative-sloped diagonal
-    for (let r = 0; r < 3; r++) {
-      for (let c = 0; c < 4; c++) {
+    for (let r = 0; r < 3; r += 1) {
+      for (let c = 0; c < 4; c += 1) {
         let count = 0;
         let empty = 0;
         let opp = 0;
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i += 1) {
           count += board[r + 3 - i][c + i] === pNum;
           empty += !board[r + 3 - i][c + i];
           opp += board[r + 3 - i][c + i] === 1;
@@ -306,12 +312,12 @@ function Connect4() {
   };
 
   /**
-   *
-   * @param {*} board
-   * @param {*} depth
-   * @param {*} alpha
-   * @param {*} beta
-   * @param {*} maximizingPlayer
+   * Applies minmax algorithm on current board state to calculate next move
+   * @param {number[][]} board current game board
+   * @param {number} depth number of steps to calculate forward
+   * @param {number*} alpha
+   * @param {number} beta
+   * @param {number} maximizingPlayer playing as (1 or 2)
    * @returns
    */
   const minimax = (board, depth = 4, alpha = -1 / 0, beta = 1 / 0, maximizingPlayer = true) => {
@@ -320,42 +326,64 @@ function Connect4() {
     const isTerminalNode = winner || !validLocations.length;
 
     if (depth < 1 || isTerminalNode) {
-      return [
-        -1,
-        isTerminalNode
-          ? winner > 1 // Winnner is computer
-            ? 1 / 0
-            : winner // Winner is player
-            ? -1 / 0
-            : 0 // No winner
-          : scorePosition(board, 2),
-      ];
+      let score;
+      if (isTerminalNode) {
+        if (winner > 1) {
+          score = 1 / 0; // Winner is computer
+        } else if (winner) {
+          score = -1 / 0; // Winner is player
+        } else {
+          score = 0; // No winner
+        }
+      } else {
+        score = scorePosition(board, 2);
+      }
+      return [-1, score];
     }
 
     if (maximizingPlayer) {
       let value = -1 / 0;
-      let column = validLocations[(Math.random() * validLocations.length) | 0];
-      for (let i = 0; i < validLocations.length; i++) {
+      let column = validLocations[Math.floor(Math.random() * validLocations.length)];
+      for (let i = 0; i < validLocations.length; i += 1) {
         const col = validLocations[i];
-        const bCopy = copyBoard(board);
+        let bCopy = copyBoard(board);
         const row = getNextOpenRow(bCopy, col);
-        dropPiece(bCopy, row, col, 2);
+        bCopy = dropPiece(bCopy, row, col, 2);
         const newScore = minimax(bCopy, depth - 1, alpha, beta, false)[1];
         if (newScore > value) {
           value = newScore;
           column = col;
         }
-        alpha = Math.max(alpha, value);
-        if (alpha >= beta) {
+        const a = Math.max(alpha, value);
+        if (a >= beta) {
           break;
         }
       }
       return [column, value];
     }
+
+    let value = 1 / 0;
+    let column = validLocations[Math.floor(Math.random() * validLocations.length)];
+    for (let i = 0; i < validLocations.length; i += 1) {
+      const col = validLocations[i];
+      let bCopy = copyBoard(board);
+      const row = getNextOpenRow(bCopy, col);
+      bCopy = dropPiece(bCopy, row, col, 1);
+      const newScore = minimax(bCopy, depth - 1, alpha, beta, true)[1];
+      if (newScore < value) {
+        value = newScore;
+        column = col;
+      }
+      const b = Math.min(beta, value);
+      if (alpha >= b) {
+        break;
+      }
+    }
+    return [column, value];
   };
 
   // Initialize game board
-  const board = createBoard();
+  let board = createBoard();
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
@@ -363,14 +391,14 @@ function Connect4() {
     p5.createCanvas(500, 500).parent(canvasParentRef);
 
     // Define events
-    const mouseClicked = () => {
-      let col = (p5.mouseX / p5.width * COLS) | 0;
+    mouseClicked = () => {
+      let col = Math.floor((p5.mouseX / p5.width) * COLS);
 
       if (!win && !checkTie(board)) {
         if (isValidLocation(board, col)) {
           // Place token in board
-          var row = getNextOpenRow(board, col);
-          dropPiece(board, row, col, p);
+          const row = getNextOpenRow(board, col);
+          board = dropPiece(board, row, col, p);
 
           // Check for a win
           win = winningMove(board);
@@ -381,9 +409,9 @@ function Connect4() {
 
         // Computer move
         if (p > 1) {
-          col = minimax(board, 4, -1 / 0, 1 / 0, true)[0];
-          var row = getNextOpenRow(board, col);
-          dropPiece(board, row, col, p);
+          [col] = minimax(board, 4, -1 / 0, 1 / 0, true);
+          const row = getNextOpenRow(board, col);
+          board = dropPiece(board, row, col, p);
 
           // Check for a win
           win = winningMove(board);
@@ -402,7 +430,7 @@ function Connect4() {
     p5.background(bg);
 
     // Draw board
-    drawBoard(board);
+    drawBoard(p5, board);
 
     // NOTE: Do not use setState in the draw function or in functions that are executed
     // in the draw function...
