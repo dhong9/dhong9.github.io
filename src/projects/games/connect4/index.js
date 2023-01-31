@@ -5,9 +5,6 @@ function Connect4() {
   let bg;
   let w;
 
-  // Events
-  let mouseClicked;
-
   // Game variables
   let p = 1;
   let win = 0;
@@ -39,6 +36,7 @@ function Connect4() {
       for (let c = 0; c < COLS; c += 1) {
         temp.push(board[r][c]);
       }
+      bCopy.push(temp);
     }
 
     // Output copied board
@@ -390,37 +388,6 @@ function Connect4() {
     // (without that p5 will render the canvas outside of your component)
     p5.createCanvas(500, 500).parent(canvasParentRef);
 
-    // Define events
-    mouseClicked = () => {
-      let col = Math.floor((p5.mouseX / p5.width) * COLS);
-
-      if (!win && !checkTie(board)) {
-        if (isValidLocation(board, col)) {
-          // Place token in board
-          const row = getNextOpenRow(board, col);
-          board = dropPiece(board, row, col, p);
-
-          // Check for a win
-          win = winningMove(board);
-
-          // Change player
-          p = p > 1 ? 1 : 2;
-        }
-
-        // Computer move
-        if (p > 1) {
-          [col] = minimax(board, 4, -1 / 0, 1 / 0, true);
-          const row = getNextOpenRow(board, col);
-          board = dropPiece(board, row, col, p);
-
-          // Check for a win
-          win = winningMove(board);
-
-          p = p > 1 ? 1 : 2;
-        }
-      }
-    };
-
     // Use p5 object to define variables dependent on them
     bg = p5.color(135, 206, 235);
     w = p5.width / 7;
@@ -432,9 +399,50 @@ function Connect4() {
     // Draw board
     drawBoard(p5, board);
 
+    // Draw current player
+    const pCol = Math.floor((p5.mouseX / p5.width) * COLS);
+    p5.noStroke();
+    if (p > 1) {
+      p5.fill(255, 0, 0);
+    } else {
+      p5.fill(0);
+    }
+    p5.ellipse(pCol * w + w / 2, w / 2, 0.8 * w);
+
     // NOTE: Do not use setState in the draw function or in functions that are executed
     // in the draw function...
     // please use normal variables or class properties for these purposes
+  };
+
+  // Define events
+  const mouseClicked = (p5) => {
+    let col = Math.floor((p5.mouseX / p5.width) * COLS);
+
+    if (!win && !checkTie(board)) {
+      if (isValidLocation(board, col)) {
+        // Place token in board
+        const row = getNextOpenRow(board, col);
+        board = dropPiece(board, row, col, p);
+
+        // Check for a win
+        win = winningMove(board);
+
+        // Change player
+        p = p > 1 ? 1 : 2;
+      }
+
+      // Computer move
+      if (p > 1) {
+        [col] = minimax(board, 4, -1 / 0, 1 / 0, true);
+        const row = getNextOpenRow(board, col);
+        board = dropPiece(board, row, col, p);
+
+        // Check for a win
+        win = winningMove(board);
+
+        p = p > 1 ? 1 : 2;
+      }
+    }
   };
 
   return <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />;
