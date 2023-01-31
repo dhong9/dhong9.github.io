@@ -402,11 +402,7 @@ function Connect4() {
     // Draw current player
     const pCol = Math.floor((p5.mouseX / p5.width) * COLS);
     p5.noStroke();
-    if (p > 1) {
-      p5.fill(255, 0, 0);
-    } else {
-      p5.fill(0);
-    }
+    p5.fill(p > 1 ? p5.color(255, 0, 0) : 0);
     p5.ellipse(pCol * w + w / 2, w / 2, 0.8 * w);
 
     // NOTE: Do not use setState in the draw function or in functions that are executed
