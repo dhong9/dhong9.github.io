@@ -84,11 +84,13 @@ function Twenty48() {
   /**
    * Moves tile in board all to one side
    * @param {number[][]} board current game board
-   * @param {string} dir direction to move tiles in (L, U, R, D) 
-   * @returns 
+   * @param {string} dir direction to move tiles in (L, U, R, D)
+   * @returns board with tiles moved
    */
   const makeMove = (board, dir) => {
     let updatedBoard = copyBoard(board);
+
+    // Helper function to move tiles
     const move = (j) => {
       if ("LDRU"[j] === dir) {
         updatedBoard = updatedBoard.map((row) =>
