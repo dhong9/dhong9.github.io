@@ -71,6 +71,7 @@ import Typography from "layouts/sections/elements/typography";
 // Games
 import Connect4 from "projects/games/connect4";
 import Twenty48 from "projects/games/2048";
+import PictureShuffle from "projects/games/pictureShuffle";
 
 const routes = [
   {
@@ -146,6 +147,11 @@ const routes = [
             name: "2048",
             route: "/sections/games/2048",
             component: <Twenty48 />,
+          },
+          {
+            name: "pictureShuffle",
+            route: "/sections/games/pictureShuffle",
+            component: <PictureShuffle />,
           },
         ],
       },
