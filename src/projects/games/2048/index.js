@@ -6,21 +6,39 @@ function Twenty48() {
   let padding;
   let tileWidth;
 
+  /**
+   * Spawns a tile (2 or 4) on a random empty
+   * tile of the board
+   * @param {number[][]} board current game board
+   * @param {boolean} rand flag for randomly using a 2 or a 4
+   * @returns array with coordinate and tile value
+   */
   const spawnTile = (board, rand) => {
+    // Decide what value tile should be
     let n = 2;
     if (rand) {
       n = Math.random() * 100 < 80 ? 2 : 4;
     }
+
+    // Find a random empty cell
     let r;
     let c;
     do {
       r = Math.floor(Math.random() * 4);
       c = Math.floor(Math.random() * 4);
     } while (board[r][c]);
+
+    // Return coordiante and tile value
     return [r, c, n];
   };
 
+  /**
+   * Initializes a game board with 2 randomly
+   * spawned tiles
+   * @returns initial 2048 game board
+   */
   const createBoard = () => {
+    // Initialize 4x4 empty board
     const board = [
       [0, 0, 0, 0],
       [0, 0, 0, 0],
@@ -28,9 +46,11 @@ function Twenty48() {
       [0, 0, 0, 0],
     ];
 
+    // Guarantee one '2' tile
     const [r1, c1, n1] = spawnTile(board, false);
     board[r1][c1] = n1;
 
+    // Other tile can be either '2' or '4'
     const [r2, c2, n2] = spawnTile(board, true);
     board[r2][c2] = n2;
 
@@ -45,6 +65,11 @@ function Twenty48() {
    */
   const copyBoard = (board) => board.map((row) => [...row]);
 
+  /**
+   * Rotates board 90 degrees counter clockwise
+   * @param {number[][]} board current game board
+   * @returns rotated board
+   */
   const rot90 = (board) => {
     const result = [];
     for (let i = 0; i < 4; i += 1) {
@@ -56,6 +81,12 @@ function Twenty48() {
     return result;
   };
 
+  /**
+   * Moves tile in board all to one side
+   * @param {number[][]} board current game board
+   * @param {string} dir direction to move tiles in (L, U, R, D) 
+   * @returns 
+   */
   const makeMove = (board, dir) => {
     let updatedBoard = copyBoard(board);
     const move = (j) => {
@@ -111,6 +142,7 @@ function Twenty48() {
     tileWidth = (p5.width - 5 * padding) / 4;
 
     p5.textAlign(p5.CENTER, p5.CENTER);
+    p5.textStyle(p5.BOLD);
   };
 
   const draw = (p5) => {
