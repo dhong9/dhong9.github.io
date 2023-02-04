@@ -3,6 +3,7 @@ import Tile from "./Tile";
 class Board {
   constructor(p5, bw, n, img) {
     this.n = n;
+    this.bw = bw;
 
     // Temporarily draw image to get pixel data
     p5.image(img, 0, 0, bw, bw);
@@ -14,9 +15,7 @@ class Board {
       for (let c = 0; c < this.n; c += 1) {
         // Using ID n * c + r gives range [0...n], excluding n
         // So add 1 to the IDs
-        temp.push(
-          new Tile(n * r + c + 1, c * w, r * w, w, p5.get(this.x + c * w, this.y + r * w, w, w))
-        );
+        temp.push(new Tile(n * r + c + 1, c * w, r * w, w, p5.get(c * w, r * w, w, w)));
       }
       this.board.push(temp);
     }
@@ -47,7 +46,6 @@ class Board {
       const nRow = r + dRow;
       const nCol = c + dCol;
       if (this.board[nRow]?.[nCol] && !this.board[nRow][nCol].id) {
-        // If the destination tile is empty,
         // then move the tile there
         this.board[r][c].x += dCol * this.board[r][c].w;
         this.board[r][c].y += dRow * this.board[r][c].w;
@@ -57,11 +55,17 @@ class Board {
         this.board[nRow][nCol].y -= dRow * this.board[nRow][nCol].w;
 
         // Swap board positions in the array
-        const temp = this.board[r][c];
-        this.board[r][c] = this.board[nRow][nCol];
-        this.board[nRow][nCol] = temp;
+        [this.board[r][c], this.board[nRow][nCol]] = [this.board[nRow][nCol], this.board[r][c]];
       }
     }
+  }
+
+  mouseClicked(p5) {
+    // Get tile location
+    const r = Math.floor((p5.mouseY / this.bw) * this.n);
+    const c = Math.floor((p5.mouseX / this.bw) * this.n);
+
+    this.moveTile(r, c);
   }
 }
 
