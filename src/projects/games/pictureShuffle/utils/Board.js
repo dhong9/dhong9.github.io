@@ -22,6 +22,8 @@ class Board {
 
     // Bottom left of the board should be empty
     this.board[n - 1][n - 1].id = 0;
+
+    this.shuffle();
   }
 
   draw(p5) {
@@ -29,6 +31,14 @@ class Board {
       for (let c = 0; c < this.n; c += 1) {
         this.board[r][c].draw(p5);
       }
+    }
+  }
+
+  shuffle() {
+    for (let n = 1000; n; n -= 1) {
+      const randX = Math.floor(Math.random() * this.n);
+      const randY = Math.floor(Math.random() * this.n);
+      this.moveTile(randX, randY);
     }
   }
 
