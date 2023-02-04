@@ -15,7 +15,7 @@ Coded by www.creative-tim.com
 
 const imagesPrefix =
   "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/sections";
-const gamesPrefix = "https://cdnb.artstation.com/p/assets/images/images/058";
+const gamesPrefix = "https://cdnb.artstation.com/p/assets/images/images";
 
 export default [
   {
@@ -23,22 +23,22 @@ export default [
     description: "A selection of 45 page sections that fit perfectly in any combination",
     items: [
       {
-        image: `${gamesPrefix}/781/929/large/daniel-hong-connect4.jpg`,
+        image: `${gamesPrefix}/058/781/929/large/daniel-hong-connect4.jpg`,
         name: "Games",
         count: 4,
         route: "/sections/page-sections/page-headers",
       },
       {
-        image: `${gamesPrefix}/802/027/large/daniel-hong-2048.jpg`,
+        image: `${gamesPrefix}/058/802/027/large/daniel-hong-2048.jpg`,
         name: "Features",
         count: 14,
         route: "/sections/page-sections/features",
       },
       {
-        image: `${imagesPrefix}/pricing.jpg`,
+        image: `${gamesPrefix}/059/033/270/large/daniel-hong-pictureshuffle.jpg`,
         name: "Pricing",
         count: 8,
-        pro: true,
+        route: "/sections/page-sections/features",
       },
       {
         image: `${imagesPrefix}/faq.jpg`,

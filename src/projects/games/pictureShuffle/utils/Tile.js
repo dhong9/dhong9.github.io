@@ -1,15 +1,10 @@
 class Tile {
-  constructor(id, x, y, w) {
+  constructor(id, x, y, w, img) {
     this.id = id;
     this.x = x;
     this.y = y;
     this.w = w;
-  }
-
-  draw(p5) {
-    p5.strokeWeight(5);
-    p5.noFill();
-    p5.rect(this.x, this.y, this.w);
+    this.img = img;
   }
 
   isMouseInside(p5) {
