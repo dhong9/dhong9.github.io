@@ -20,7 +20,11 @@ function PictureShuffle() {
 
   const draw = (p5) => {
     p5.background(0);
-    board?.draw(p5);
+    if (board?.solved) {
+      p5.image(img, 0, 0, p5.width, p5.height);
+    } else {
+      board?.draw(p5);
+    }
   };
 
   const mouseClicked = (p5) => {

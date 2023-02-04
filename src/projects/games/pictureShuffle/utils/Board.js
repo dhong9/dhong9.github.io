@@ -4,6 +4,7 @@ class Board {
   constructor(p5, bw, n, img) {
     this.n = n;
     this.bw = bw;
+    this.solved = false;
 
     // Temporarily draw image to get pixel data
     p5.image(img, 0, 0, bw, bw);
@@ -71,11 +72,26 @@ class Board {
   }
 
   mouseClicked(p5) {
-    // Get tile location
-    const r = Math.floor((p5.mouseY / this.bw) * this.n);
-    const c = Math.floor((p5.mouseX / this.bw) * this.n);
+    if (!this.solved) {
+      // Get tile location
+      const r = Math.floor((p5.mouseY / this.bw) * this.n);
+      const c = Math.floor((p5.mouseX / this.bw) * this.n);
 
-    this.moveTile(r, c);
+      this.moveTile(r, c);
+
+      // Check for a win
+      let win = true;
+      for (let i = 0; i < this.n; i += 1) {
+        for (let j = 0; j < this.n; j += 1) {
+          win =
+            win &&
+            (i === this.n - 1 && j === this.n - 1
+              ? !this.board[i][j].id
+              : this.board[i][j].id === this.n * i + j + 1);
+        }
+      }
+      this.solved = win;
+    }
   }
 }
 
