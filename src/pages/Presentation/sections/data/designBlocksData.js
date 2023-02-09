@@ -41,10 +41,10 @@ export default [
         route: "/sections/page-sections/features",
       },
       {
-        image: `${imagesPrefix}/faq.jpg`,
+        image: `${gamesPrefix}/059/228/363/large/daniel-hong-othello.jpg`,
         name: "FAQ",
         count: 1,
-        pro: true,
+        route: "/sections/page-sections/features",
       },
       {
         image: `${imagesPrefix}/blogs.jpg`,

@@ -1,6 +1,16 @@
 import Tile from "./Tile";
 
+/**
+ * Picture shuffle board containing image tiles
+ */
 class Board {
+  /**
+   * Initializes Board object with ID, dimensions, and image
+   * @param {p5Object} p5 p5 object
+   * @param {number} bw board width
+   * @param {number} n rows/columns in a board
+   * @param {p5Image} img puzzle image
+   */
   constructor(p5, bw, n, img) {
     this.n = n;
     this.bw = bw;
