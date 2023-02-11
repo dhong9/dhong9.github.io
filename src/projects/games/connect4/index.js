@@ -465,7 +465,7 @@ function Connect4() {
 
         // Check for a win
         win = winningMove(board);
-        
+
         // Change player
         p = p > 1 ? 1 : 2;
       }
