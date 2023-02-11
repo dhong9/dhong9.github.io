@@ -94,8 +94,8 @@ function Othello() {
     let row = r;
     let col = c;
 
-    if (inBounds(board, row, col) && board[r][c] === opponentPiece) {
-      while (inBounds(board, r + deltaRow, c + deltaCol)) {
+    if (inBounds(board, row, col) && board[row][col] === opponentPiece) {
+      while (inBounds(board, row + deltaRow, col + deltaCol)) {
         row += deltaRow;
         col += deltaCol;
         if (!board[row][col]) {
@@ -302,6 +302,7 @@ function Othello() {
   // Initialize game board
   const board = createBoard();
   let moves = getMoveList(board, curPlayer);
+  console.log(moves);
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
