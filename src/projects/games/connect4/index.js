@@ -1,3 +1,11 @@
+// Sections components
+import BaseLayout from "layouts/sections/components/BaseLayout";
+import View from "layouts/sections/components/View";
+
+// PageHeaders page components code
+import headerOneCode from "layouts/sections/page-sections/page-headers/components/HeaderOne/code";
+
+// p5
 import Sketch from "react-p5";
 
 function Connect4() {
@@ -466,7 +474,19 @@ function Connect4() {
     }
   };
 
-  return <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />;
+  return (
+    <BaseLayout
+      title="Page Headers"
+      breadcrumb={[
+        { label: "Page Sections", route: "/sections/page-sections/page-headers" },
+        { label: "Page Headers" },
+      ]}
+    >
+      <View title="Header 1" code={headerOneCode} height="40rem">
+        <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
+      </View>
+    </BaseLayout>
+  );
 }
 
 export default Connect4;
