@@ -2,8 +2,8 @@
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 
-// PageHeaders page components code
-import headerOneCode from "layouts/sections/page-sections/page-headers/components/HeaderOne/code";
+// Connect 4 code
+import connect4Code from "projects/games/connect4/code";
 
 // p5
 import Sketch from "react-p5";
@@ -115,7 +115,7 @@ function Connect4() {
 
     for (let r = 0; r < ROWS; r += 1) {
       for (let c = 0; c < COLS; c += 1) {
-        // Draw cell will yellow background
+        // Draw cell with yellow background
         p5.fill(255, 255, 0);
         p5.rect(c * w + xOffset, r * w + w + yOffset, w);
 
@@ -315,10 +315,10 @@ function Connect4() {
    * Applies minmax algorithm on current board state to calculate next move
    * @param {number[][]} board current game board
    * @param {number} depth number of steps to calculate forward
-   * @param {number*} alpha
+   * @param {number} alpha
    * @param {number} beta
    * @param {number} maximizingPlayer playing as (1 or 2)
-   * @returns
+   * @returns pair with move and score
    */
   const minimax = (board, depth = 4, alpha = -1 / 0, beta = 1 / 0, maximizingPlayer = true) => {
     const validLocations = getValidLocations(board);
@@ -465,7 +465,8 @@ function Connect4() {
 
         // Check for a win
         win = winningMove(board);
-
+        
+        // Change player
         p = p > 1 ? 1 : 2;
       }
     }
@@ -479,7 +480,7 @@ function Connect4() {
         { label: "Page Headers" },
       ]}
     >
-      <View title="Header 1" code={headerOneCode} height="40rem">
+      <View title="Header 1" code={connect4Code} height="40rem">
         <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
       </View>
     </BaseLayout>
