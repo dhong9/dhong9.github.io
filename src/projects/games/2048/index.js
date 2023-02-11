@@ -1,3 +1,11 @@
+// Sections components
+import BaseLayout from "layouts/sections/components/BaseLayout";
+import View from "layouts/sections/components/View";
+
+// 2048 code
+import twenty48Code from "projects/games/2048/code";
+
+// p5
 import Sketch from "react-p5";
 
 function Twenty48() {
@@ -205,7 +213,19 @@ function Twenty48() {
     }
   };
 
-  return <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />;
+  return (
+    <BaseLayout
+      title="Page Headers"
+      breadcrumb={[
+        { label: "Page Sections", route: "/sections/page-sections/page-headers" },
+        { label: "Page Headers" },
+      ]}
+    >
+      <View title="Header 1" code={twenty48Code} height="40rem">
+        <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />;
+      </View>
+    </BaseLayout>
+  );
 }
 
 export default Twenty48;
