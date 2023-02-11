@@ -72,6 +72,7 @@ import Typography from "layouts/sections/elements/typography";
 import Connect4 from "projects/games/connect4";
 import Twenty48 from "projects/games/2048";
 import PictureShuffle from "projects/games/pictureShuffle";
+import Othello from "projects/games/othello"
 
 const routes = [
   {
@@ -152,6 +153,11 @@ const routes = [
             name: "pictureShuffle",
             route: "/sections/games/pictureShuffle",
             component: <PictureShuffle />,
+          },
+          {
+            name: "othello",
+            route: "/sections/games/othello",
+            component: <Othello />,
           },
         ],
       },
