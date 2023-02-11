@@ -24,9 +24,10 @@ export default [
     items: [
       {
         image: `${gamesPrefix}/058/781/929/large/daniel-hong-connect4.jpg`,
-        name: "Games",
+        name: "Connect 4",
         count: 4,
-        route: "/sections/page-sections/page-headers",
+        route: "/sections/games/connect4",
+        description: "Single-player Connect 4 game with an AI",
       },
       {
         image: `${gamesPrefix}/058/802/027/large/daniel-hong-2048.jpg`,
