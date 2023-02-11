@@ -37,6 +37,14 @@ function Othello() {
   };
 
   /**
+   * Copies 2D array by value into another 2D array
+   * @param {number[][]} board current game board
+   * represented by 2D array of numbers
+   * @returns deep copy of input board
+   */
+  const copyBoard = (board) => board.map((row) => [...row]);
+
+  /**
    * Checks if coordinate is within board boundaries
    * @param {number} r row to check
    * @param {number} c column to check
@@ -55,11 +63,20 @@ function Othello() {
    * @param {number} opponentPiece the piece opposite to what's being played
    */
   const flipPieces = (board, r, c, deltaRow, deltaCol, myPiece, opponentPiece) => {
-    while (inBounds(board, r, c) && board[r][c] === opponentPiece) {
-      board[r][c] = myPiece;
-      r += deltaRow;
-      c += deltaCol;
+    if (inBounds(board, r, c) && board[r][c] === opponentPiece) {
+      const bCopy = copyBoard(board);
+      bCopy[r][c] = myPiece;
+      return flipPieces(
+        bCopy,
+        r + deltaRow,
+        c + deltaCol,
+        deltaRow,
+        deltaCol,
+        myPiece,
+        opponentPiece
+      );
     }
+    return board;
   };
 
   /**
@@ -74,15 +91,18 @@ function Othello() {
    * @returns true if piece can be flipped at coordinate
    */
   const checkFlip = (board, r, c, deltaRow, deltaCol, myPiece, opponentPiece) => {
-    if (inBounds(board, r, c) && board[r][c] === opponentPiece) {
+    let row = r;
+    let col = c;
+
+    if (inBounds(board, row, col) && board[r][c] === opponentPiece) {
       while (inBounds(board, r + deltaRow, c + deltaCol)) {
-        r += deltaRow;
-        c += deltaCol;
-        if (!board[r][c]) {
+        row += deltaRow;
+        col += deltaCol;
+        if (!board[row][col]) {
           // not consecutive
           return false;
         }
-        if (board[r][c] === myPiece) {
+        if (board[row][col] === myPiece) {
           // At least one piece we can flip
           return true;
         }
@@ -128,8 +148,8 @@ function Othello() {
     const moves = [];
 
     // Check each square of the board and if we can move there, remember the coords
-    for (let r = 0; r < N; r++) {
-      for (let c = 0; c < N; c++) {
+    for (let r = 0; r < N; r += 1) {
+      for (let c = 0; c < N; c += 1) {
         if (validMove(board, r, c, piece)) {
           moves.push([r, c]);
         }
@@ -148,7 +168,8 @@ function Othello() {
    */
   const makeMove = (board, r, c, piece) => {
     // Put the piece at x,y
-    board[r][c] = piece;
+    let bCopy = copyBoard(board);
+    bCopy[r][c] = piece;
 
     // Figure out the character of the opponent's piece
     let opponent = 2;
@@ -157,13 +178,16 @@ function Othello() {
     }
 
     // Check all 8 directions
-    for (const [deltaRow, deltaCol] of directions) {
+    for (let i = 0; i < directions.length; i += 1) {
+      const [deltaRow, deltaCol] = directions[i];
       // If pieces can be flipped in that direction,
       // then flip all valid pieces
       if (checkFlip(board, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent)) {
-        flipPieces(board, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent);
+        bCopy = flipPieces(board, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent);
       }
     }
+
+    return bCopy;
   };
 
   /**
@@ -174,8 +198,8 @@ function Othello() {
    */
   const score = (board, piece) => {
     let total = 0;
-    for (let r = 0; r < N; r++) {
-      for (let c = 0; c < N; c++) {
+    for (let r = 0; r < N; r += 1) {
+      for (let c = 0; c < N; c += 1) {
         total += board[r][c] === piece;
       }
     }
@@ -190,14 +214,6 @@ function Othello() {
    */
   const heuristic = (board, whoseTurn) =>
     score(board, whoseTurn) - score(board, whoseTurn === 2 ? 1 : 2);
-
-  /**
-   * Copies 2D array by value into another 2D array
-   * @param {number[][]} board current game board
-   * represented by 2D array of numbers
-   * @returns deep copy of input board
-   */
-  const copyBoard = (board) => board.map((row) => [...row]);
 
   /**
    * Checks if game is over
@@ -230,23 +246,20 @@ function Othello() {
       bestMoveVal = 99999; // for finding min
     }
     // Try out every single move
-    for (const move of moves) {
+    for (let i = 0; i < moves.length; i += 1) {
+      const [moveRow, moveCol] = moves[i];
       // Apply the move to a new board
-      const tempBoard = copyBoard(board);
-      makeMove(tempBoard, move[0], move[1], currentTurn);
+      let tempBoard = copyBoard(board);
+      tempBoard = makeMove(tempBoard, moveRow, moveCol, currentTurn);
       // Recursive call
       const val = minimaxValue(tempBoard, originalTurn, opponent, searchPly + 1);
       // Remember best move
-      if (originalTurn === currentTurn) {
+      if (originalTurn === currentTurn && val > bestMoveVal) {
         // Remember max if it's the originator's turn
-        if (val > bestMoveVal) {
-          bestMoveVal = val;
-        }
-      } else {
+        bestMoveVal = val;
+      } else if (val < bestMoveVal) {
         // Remember min if it's opponent turn
-        if (val < bestMoveVal) {
-          bestMoveVal = val;
-        }
+        bestMoveVal = val;
       }
     }
     return bestMoveVal;
@@ -269,15 +282,17 @@ function Othello() {
     let [bestX, bestY] = moves[0];
 
     // Try out every move
-    for (const move of moves) {
+    for (let i = 0; i < moves.length; i += 1) {
+      const [moveRow, moveCol] = moves[i];
       const tempBoard = copyBoard(board);
-      makeMove(tempBoard, move[0], move[1], whoseTurn);
+      makeMove(tempBoard, moveRow, moveCol, whoseTurn);
       // Recursive call, initial search ply = 1
       const val = minimaxValue(tempBoard, whoseTurn, opponent, 1);
       // Remember best move
       if (val > bestMoveVal) {
         bestMoveVal = val;
-        [bestX, bestY] = move;
+        bestX = moveRow;
+        bestY = moveCol;
       }
     }
 
@@ -296,8 +311,8 @@ function Othello() {
 
   const draw = (p5) => {
     // Draw board
-    for (let r = 0; r < N; r++) {
-      for (let c = 0; c < N; c++) {
+    for (let r = 0; r < N; r += 1) {
+      for (let c = 0; c < N; c += 1) {
         // Board tile
         const w = p5.width / N;
         p5.stroke(0);
@@ -321,11 +336,12 @@ function Othello() {
     p5.noFill();
     p5.strokeWeight(2);
     p5.stroke(160);
-    const tileWidth = width / N;
-    for (const [moveRow, moveCol] of moves) {
+    const tileWidth = p5.width / N;
+    for (let i = 0; i < moves.length; i += 1) {
+      const [moveRow, moveCol] = moves[i];
       p5.ellipse(
-        (moveCol * width) / N + tileWidth / 2,
-        (moveRow * height) / N + tileWidth / 2,
+        (moveCol * p5.width) / N + tileWidth / 2,
+        (moveRow * p5.height) / N + tileWidth / 2,
         0.85 * tileWidth,
         0.85 * tileWidth
       );
@@ -338,8 +354,8 @@ function Othello() {
 
   // Define events
   const mouseClicked = (p5) => {
-    const c = ((p5.mouseX / p5.width) * N) | 0;
-    const r = ((p5.mouseY / p5.width) * N) | 0;
+    const c = Math.floor((p5.mouseX / p5.width) * N);
+    const r = Math.floor((p5.mouseY / p5.width) * N);
     if (validMove(board, r, c, curPlayer)) {
       makeMove(board, r, c, curPlayer);
       if (curPlayer === 1) {
