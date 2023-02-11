@@ -35,21 +35,7 @@ function Connect4() {
    * represented by 2D array of numbers
    * @returns deep copy of input board
    */
-  const copyBoard = (board) => {
-    // Array to store copied value in
-    const bCopy = [];
-
-    for (let r = 0; r < ROWS; r += 1) {
-      const temp = []; // Current row values
-      for (let c = 0; c < COLS; c += 1) {
-        temp.push(board[r][c]);
-      }
-      bCopy.push(temp);
-    }
-
-    // Output copied board
-    return bCopy;
-  };
+  const copyBoard = (board) => board.map((row) => [...row]);
 
   /**
    * Sets board at given coordinate to player number
@@ -118,12 +104,20 @@ function Connect4() {
    * @param {number[][]} board current game board
    */
   const drawBoard = (p5, board) => {
+    const boardWidth = Math.min(p5.width, p5.height);
+    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
+
+    // Board background
     p5.noStroke();
+    p5.fill(bg);
+    p5.rect(xOffset, yOffset, boardWidth);
+
     for (let r = 0; r < ROWS; r += 1) {
       for (let c = 0; c < COLS; c += 1) {
         // Draw cell will yellow background
         p5.fill(255, 255, 0);
-        p5.rect(c * w, r * w + w, w);
+        p5.rect(c * w + xOffset, r * w + w + yOffset, w);
 
         // Color cell based on cell value
         const v = board[r][c];
@@ -134,7 +128,7 @@ function Connect4() {
         } else {
           p5.fill(bg); // No player drawn to match game background
         }
-        p5.ellipse(c * w + w / 2, r * w + w / 2 + w, 0.8 * w);
+        p5.ellipse(c * w + w / 2 + xOffset, r * w + w / 2 + w + yOffset, 0.8 * w);
       }
     }
   };
@@ -394,15 +388,18 @@ function Connect4() {
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
-    p5.createCanvas(500, 500).parent(canvasParentRef);
+
+    // Canvas dimension is based on div's size
+    const connect4 = document.querySelector(".codeOutput");
+    p5.createCanvas(connect4.clientWidth, connect4.clientHeight).parent(canvasParentRef);
 
     // Use p5 object to define variables dependent on them
     bg = p5.color(135, 206, 235);
-    w = p5.width / 7;
+    w = Math.min(p5.width, p5.height) / 7;
   };
 
   const draw = (p5) => {
-    p5.background(bg);
+    p5.background(0);
 
     // Draw board
     drawBoard(p5, board);

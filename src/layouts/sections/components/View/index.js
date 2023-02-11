@@ -111,6 +111,7 @@ function View({ children, code, title, height, ...rest }) {
       <MKBox display={activeTab === 0 ? "block" : "none"}>
         <MKBox width="100%" p={3}>
           <MKBox
+            className="codeOutput"
             bgColor="grey-100"
             width="100%"
             height={height}
