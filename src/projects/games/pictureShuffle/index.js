@@ -2,8 +2,8 @@
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 
-// 2048 code
-import twenty48Code from "projects/games/2048/code";
+// Picture shuffle code
+import pictureShuffleCode from "projects/games/pictureShuffle/code";
 
 // p5
 import Sketch from "react-p5";
@@ -48,7 +48,7 @@ function PictureShuffle() {
         { label: "Page Headers" },
       ]}
     >
-      <View title="Header 1" code={twenty48Code} height="40rem">
+      <View title="Header 1" code={pictureShuffleCode} height="40rem">
         <Sketch setup={setup} draw={draw} preload={preload} mouseClicked={mouseClicked} />
       </View>
     </BaseLayout>
