@@ -20,7 +20,7 @@ const ROWS = 6, COLS = 7;
  * Initializes an empty 2D array of size ROWS x COLS
  * @returns 2D array of zeros
  */
-const createBoard = _ => [...Array(ROWS)].map(_ => Array(COLS),fill(0));
+const createBoard = _ => [...Array(ROWS)].map(_ => Array(COLS).fill(0));
 
 /**
  * Copies 2D array by value into another 2D array

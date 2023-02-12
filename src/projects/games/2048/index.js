@@ -36,7 +36,7 @@ function Twenty48() {
       c = Math.floor(Math.random() * 4);
     } while (board[r][c]);
 
-    // Return coordiante and tile value
+    // Return coordinate and tile value
     return [r, c, n];
   };
 
