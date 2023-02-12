@@ -222,7 +222,7 @@ function Twenty48() {
       ]}
     >
       <View title="Header 1" code={twenty48Code} height="40rem">
-        <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />;
+        <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />
       </View>
     </BaseLayout>
   );

@@ -1,5 +1,14 @@
+// Sections components
+import BaseLayout from "layouts/sections/components/BaseLayout";
+import View from "layouts/sections/components/View";
+
+// 2048 code
+import twenty48Code from "projects/games/2048/code";
+
+// p5
 import Sketch from "react-p5";
 
+// Picture shuffle board utilities
 import meadow from "assets/images/meadow.png";
 import Board from "./utils/Board";
 
@@ -31,7 +40,19 @@ function PictureShuffle() {
     board?.mouseClicked(p5);
   };
 
-  return <Sketch setup={setup} draw={draw} preload={preload} mouseClicked={mouseClicked} />;
+  return (
+    <BaseLayout
+      title="Page Headers"
+      breadcrumb={[
+        { label: "Page Sections", route: "/sections/page-sections/page-headers" },
+        { label: "Page Headers" },
+      ]}
+    >
+      <View title="Header 1" code={twenty48Code} height="40rem">
+        <Sketch setup={setup} draw={draw} preload={preload} mouseClicked={mouseClicked} />
+      </View>
+    </BaseLayout>
+  );
 }
 
 export default PictureShuffle;
