@@ -39,7 +39,7 @@ class Board {
 
   /**
    * Draws all tiles on board
-   * @param {p5Object} p5 object
+   * @param {p5Object} p5 p5 object
    */
   draw(p5) {
     for (let r = 0; r < this.n; r += 1) {
@@ -49,6 +49,10 @@ class Board {
     }
   }
 
+  /**
+   * Make 1000 random clicks on the board to shuffle
+   * tiles around
+   */
   shuffle() {
     for (let n = 1000; n; n -= 1) {
       const randX = Math.floor(Math.random() * this.n);
@@ -57,6 +61,12 @@ class Board {
     }
   }
 
+  /**
+   * Moves a tile to neighboring empty cell
+   * if available
+   * @param {number} r board row
+   * @param {number} c board column
+   */
   moveTile(r, c) {
     // Try to move tile
     const dir = [
@@ -71,6 +81,7 @@ class Board {
       const nRow = r + dRow;
       const nCol = c + dCol;
       if (this.board[nRow]?.[nCol] && !this.board[nRow][nCol].id) {
+        // If the destination tile is empty,
         // then move the tile there
         this.board[r][c].x += dCol * this.board[r][c].w;
         this.board[r][c].y += dRow * this.board[r][c].w;
@@ -85,6 +96,10 @@ class Board {
     }
   }
 
+  /**
+   * Handle mouse clicked event at board level
+   * @param {p5Object} p5 object
+   */
   mouseClicked(p5) {
     if (!this.solved) {
       // Get tile location

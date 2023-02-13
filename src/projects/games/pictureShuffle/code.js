@@ -102,9 +102,71 @@ class Board {
                 tile.draw();
     }
     
+    /**
+     * Make 1000 random clicks on the board to shuffle
+     * tiles around
+     */
     shuffle() {
         for (let n = 1000; n; n--) 
             this.moveTile(Math.random() * this.n | 0, Math.random() * this.n | 0)
-    }`;
+    }
+    
+    /**
+     * Moves a tile to neighboring empty cell
+     * if available
+     * @param {number} r board row
+     * @param {number} c board column
+     */
+    moveTile(r, c) {
+        // Try to move tile
+        const dir = [
+            [-1, 0],
+            [1, 0],
+            [0, -1],
+            [0, 1],
+        ];
+
+        for (const [dRow, dCol] of dir) {
+            const nRow = r + dRow;
+            const nCol = c + dCol;
+
+            if (this.board[nRow]?.[nCol] && !this.board[nRow][nCol].id) {
+                // If the destination tile is empty,
+                // then move the tile there
+                this.board[r][c].x += dCol * this.board[r][c].w;
+                this.board[r][c].y += dRow * this.board[r][c].w;
+        
+                // Move blank tile to old tile's spot
+                this.board[nRow][nCol].x -= dCol * this.board[nRow][nCol].w;
+                this.board[nRow][nCol].y -= dRow * this.board[nRow][nCol].w;
+        
+                // Swap board positions in the array
+                [this.board[r][c], this.board[nRow][nCol]] = [this.board[nRow][nCol], this.board[r][c]];
+            }
+        }
+    }
+
+    /**
+     * Handle mouse clicked event at board level
+     */
+    mouseClicked() {
+        if (!this.solved) {
+            // Get tile location
+            const r = (p5.mouseY / this.bw) * this.n | 0;
+            const c = (p5.mouseX / this.bw) * this.n | 0;
+
+            this.moveTile(r, c);
+
+            // Check for a win
+            let win = true;
+            for (let r = 0; r < this.n; r++) {
+                for (let c = 0; c < this.n; c++) {
+                    win = win && (r === this.n - 1 && c === this.n - 1 ? !this.board[r][c].id : this.board[r][c].id == this.n * r + c + 1);
+                }
+            }
+            this.solved = win;
+        }
+    }
+}`;
 
 export default pictureShuffleCode;
