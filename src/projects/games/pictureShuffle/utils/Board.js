@@ -37,6 +37,10 @@ class Board {
     this.shuffle();
   }
 
+  /**
+   * Draws all tiles on board
+   * @param {p5Object} p5 object
+   */
   draw(p5) {
     for (let r = 0; r < this.n; r += 1) {
       for (let c = 0; c < this.n; c += 1) {
