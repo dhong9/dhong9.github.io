@@ -167,6 +167,31 @@ class Board {
             this.solved = win;
         }
     }
+}
+
+// Drawing variables
+let meadow, board;
+
+function preload() {
+    meadow = loadImage('images/meadow.png');
+}
+
+function setup() {
+    createCanvas(500, 500);
+
+    board = new Board(width, 4, meadow);
+}
+
+function draw() {
+    background(0);
+    if (board.solved)
+        image(img, 0, 0, width, height);
+    else
+        board.draw();
+}
+
+function mouseClicked() {
+    board.mouseClicked();
 }`;
 
 export default pictureShuffleCode;
