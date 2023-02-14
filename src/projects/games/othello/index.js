@@ -1,3 +1,11 @@
+// Sections components
+import BaseLayout from "layouts/sections/components/BaseLayout";
+import View from "layouts/sections/components/View";
+
+// Othello code
+import othelloCode from "projects/games/othello/code";
+
+// p5
 import Sketch from "react-p5";
 
 function Othello() {
@@ -373,7 +381,19 @@ function Othello() {
     }
   };
 
-  return <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />;
+  return (
+    <BaseLayout
+      title="Page Headers"
+      breadcrumb={[
+        { label: "Page Sections", route: "/sections/page-sections/page-headers" },
+        { label: "Page Headers" },
+      ]}
+    >
+      <View title="Header 1" code={othelloCode} height="40rem">
+        <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
+      </View>
+    </BaseLayout>
+  );
 }
 
 export default Othello;
