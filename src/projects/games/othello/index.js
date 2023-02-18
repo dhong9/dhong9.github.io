@@ -125,7 +125,7 @@ function Othello() {
    * @param {number[][]} board current game board
    * @param {number} r row
    * @param {number} c column
-   * @param {piece} piece the piece being played
+   * @param {number} piece the piece being played
    * @returns true if move is valid
    */
   const validMove = (board, r, c, piece) => {
@@ -149,7 +149,7 @@ function Othello() {
   /**
    * Gets list of tiles that can be played
    * @param {number[][]} board current game board
-   * @param {piece} the piece being played
+   * @param {number} the piece being played
    * @returns list of coordinates that can be played
    */
   const getMoveList = (board, piece) => {
@@ -351,7 +351,6 @@ function Othello() {
       p5.ellipse(
         (moveCol * p5.width) / N + tileWidth / 2,
         (moveRow * p5.height) / N + tileWidth / 2,
-        0.85 * tileWidth,
         0.85 * tileWidth
       );
     }
