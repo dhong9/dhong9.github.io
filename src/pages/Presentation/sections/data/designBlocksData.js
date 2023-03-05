@@ -54,10 +54,10 @@ export default [
     description: "30+ components that will help go through the pages",
     items: [
       {
-        image: `${imagesPrefix}/navbars.jpg`,
+        image: `${gamesPrefix}/060/173/162/large/daniel-hong-brainf.jpg`,
         name: "Navbars",
         count: 4,
-        route: "/sections/navigation/navbars",
+        route: "/sections/interpreter/brainf",
       },
       {
         image: `${imagesPrefix}/nav-tabs.jpg`,
