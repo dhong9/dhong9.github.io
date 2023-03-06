@@ -5,6 +5,9 @@ import View from "layouts/sections/components/View";
 // BrainF code
 import brainFCode from "projects/interpreters/brainF/code";
 
+// Generic interpreter
+import Interpreter from "../interpreter";
+
 function BrainF() {
   return (
     <BaseLayout
@@ -15,9 +18,7 @@ function BrainF() {
       ]}
     >
       <View title="Header 1" code={brainFCode} height="40rem">
-        <div>
-          <h1>BrainF</h1>
-        </div>
+        <Interpreter />
       </View>
     </BaseLayout>
   );
