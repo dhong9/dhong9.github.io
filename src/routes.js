@@ -51,9 +51,7 @@ import SignIn from "layouts/pages/authentication/sign-in";
 // Sections
 import PageHeaders from "layouts/sections/page-sections/page-headers";
 import Features from "layouts/sections/page-sections/featuers";
-import Navbars from "layouts/sections/navigation/navbars";
 import NavTabs from "layouts/sections/navigation/nav-tabs";
-import Pagination from "layouts/sections/navigation/pagination";
 import Inputs from "layouts/sections/input-areas/inputs";
 import Forms from "layouts/sections/input-areas/forms";
 import Alerts from "layouts/sections/attention-catchers/alerts";
@@ -73,6 +71,9 @@ import Connect4 from "projects/games/connect4";
 import Twenty48 from "projects/games/2048";
 import PictureShuffle from "projects/games/pictureShuffle";
 import Othello from "projects/games/othello";
+
+// Interpreters
+import BrainF from "projects/interpreters/brainF";
 
 const routes = [
   {
@@ -169,7 +170,7 @@ const routes = [
           {
             name: "brainF",
             route: "/sections/interpreters/brainF",
-            component: <Navbars />,
+            component: <BrainF />,
           },
           {
             name: "whitespace",
