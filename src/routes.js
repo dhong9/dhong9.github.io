@@ -162,24 +162,19 @@ const routes = [
         ],
       },
       {
-        name: "navigation",
-        description: "See all navigations",
+        name: "interpreters",
+        description: "See all interpreters",
         dropdown: true,
         collapse: [
           {
-            name: "navbars",
-            route: "/sections/navigation/navbars",
+            name: "brainF",
+            route: "/sections/interpreters/brainF",
             component: <Navbars />,
           },
           {
-            name: "nav tabs",
-            route: "/sections/navigation/nav-tabs",
+            name: "whitespace",
+            route: "/sections/interpreters/whitespace",
             component: <NavTabs />,
-          },
-          {
-            name: "pagination",
-            route: "/sections/navigation/pagination",
-            component: <Pagination />,
           },
         ],
       },
