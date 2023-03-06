@@ -60,16 +60,10 @@ export default [
         route: "/sections/interpreter/brainf",
       },
       {
-        image: `${imagesPrefix}/nav-tabs.jpg`,
+        image: `${gamesPrefix}/060/207/156/large/daniel-hong-grid.jpg`,
         name: "Nav Tabs",
         count: 2,
         route: "/sections/navigation/nav-tabs",
-      },
-      {
-        image: `${imagesPrefix}/pagination.jpg`,
-        name: "Pagination",
-        count: 3,
-        route: "/sections/navigation/pagination",
       },
     ],
   },
