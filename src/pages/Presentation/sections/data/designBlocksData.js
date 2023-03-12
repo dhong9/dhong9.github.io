@@ -39,7 +39,7 @@ export default [
         image: `${gamesPrefix}/059/033/270/large/daniel-hong-pictureshuffle.jpg`,
         name: "Picture Shuffle",
         count: 8,
-        route: "/sections/games/picture-shuffle",
+        route: "/sections/games/pictureShuffle",
       },
       {
         image: `${gamesPrefix}/059/228/363/large/daniel-hong-othello.jpg`,
@@ -50,20 +50,20 @@ export default [
     ],
   },
   {
-    title: "Navigation",
-    description: "30+ components that will help go through the pages",
+    title: "Interpreters",
+    description: "Interpreters for esoteric programming languages",
     items: [
       {
         image: `${gamesPrefix}/060/173/162/large/daniel-hong-brainf.jpg`,
-        name: "Navbars",
+        name: "BrainF",
         count: 4,
-        route: "/sections/interpreter/brainf",
+        route: "/sections/interpreters/brainf",
       },
       {
         image: `${gamesPrefix}/060/207/156/large/daniel-hong-grid.jpg`,
-        name: "Nav Tabs",
+        name: "Whitespace",
         count: 2,
-        route: "/sections/navigation/nav-tabs",
+        route: "/sections/interpreters/whitespace",
       },
     ],
   },
