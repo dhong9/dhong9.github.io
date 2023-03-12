@@ -5,7 +5,7 @@
   "author": "Creative Tim",
   "license": "See license in https://www.creative-tim.com/license",
   "description": "React version of Material Kit 2 by Creative Tim",
-  "homepage": "https://demos.creative-tim.com/material-kit-react/#/",
+  "homepage": "https://dhong9.github.io",
   "bugs": {
     "url": "https://github.com/creativetimofficial/ct-material-kit-react/issues"
   },
@@ -43,6 +43,8 @@
     "web-vitals": "1.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
@@ -76,6 +78,7 @@
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.24.0",
     "eslint-plugin-react-hooks": "4.2.0",
+    "gh-pages": "^5.0.0",
     "prettier": "2.3.2"
   }
 }
