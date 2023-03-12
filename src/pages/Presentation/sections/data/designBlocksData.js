@@ -19,8 +19,8 @@ const gamesPrefix = "https://cdnb.artstation.com/p/assets/images/images";
 
 export default [
   {
-    title: "Design Blocks",
-    description: "A selection of 45 page sections that fit perfectly in any combination",
+    title: "Games",
+    description: "Games that are coded with the p5.js library",
     items: [
       {
         image: `${gamesPrefix}/058/781/929/large/daniel-hong-connect4.jpg`,
@@ -31,21 +31,21 @@ export default [
       },
       {
         image: `${gamesPrefix}/058/802/027/large/daniel-hong-2048.jpg`,
-        name: "Features",
+        name: "2048",
         count: 14,
-        route: "/sections/page-sections/features",
+        route: "/sections/games/2048",
       },
       {
         image: `${gamesPrefix}/059/033/270/large/daniel-hong-pictureshuffle.jpg`,
-        name: "Pricing",
+        name: "Picture Shuffle",
         count: 8,
-        route: "/sections/page-sections/features",
+        route: "/sections/games/picture-shuffle",
       },
       {
         image: `${gamesPrefix}/059/228/363/large/daniel-hong-othello.jpg`,
-        name: "FAQ",
+        name: "Othello",
         count: 1,
-        route: "/sections/page-sections/features",
+        route: "/sections/games/othello",
       },
     ],
   },
