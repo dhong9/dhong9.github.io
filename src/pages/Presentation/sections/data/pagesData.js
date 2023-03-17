@@ -19,16 +19,16 @@ export default [
   {
     image: `${imagesPrefix}/881/large/daniel-hong-artstation.jpg`,
     name: "ArtStation",
-    route: "/pages/landing-pages/about-us",
+    route: "https://danielhong35.artstation.com/",
   },
   {
     image: `${imagesPrefix}/915/large/daniel-hong-wirestock.jpg`,
     name: "Wirestock",
-    route: "/pages/landing-pages/contact-us",
+    route: "https://wirestock.io/daniel.hong",
   },
   {
     image: `${imagesPrefix}/941/large/daniel-hong-github.jpg`,
     name: "Github",
-    route: "/pages/landing-pages/author",
+    route: "https://github.com/dhong9",
   },
 ];
