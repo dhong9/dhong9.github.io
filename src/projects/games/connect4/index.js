@@ -428,7 +428,11 @@ function Connect4() {
       p5.textAlign(p5.CENTER, p5.CENTER);
       p5.textSize(p5.height / 8);
       p5.fill(0);
-      p5.text(`${win < 2 ? "Black" : "Red"} Wins!`, p5.width / 2 + xOffset, p5.height / 2 + yOffset);
+      p5.text(
+        `${win < 2 ? "Black" : "Red"} Wins!`,
+        p5.width / 2 + xOffset,
+        p5.height / 2 + yOffset
+      );
     } else if (checkTie(board)) {
       p5.noFill();
       p5.fill(255, 255, 255, 100);
@@ -447,7 +451,11 @@ function Connect4() {
 
   // Define events
   const mouseClicked = (p5) => {
-    let col = Math.floor((p5.mouseX / p5.width) * COLS);
+    // Global game variables
+    const boardWidth = Math.min(p5.width, p5.height);
+    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+
+    let col = Math.floor(((p5.mouseX - xOffset) / boardWidth) * COLS);
 
     if (!win && !checkTie(board)) {
       if (isValidLocation(board, col)) {
