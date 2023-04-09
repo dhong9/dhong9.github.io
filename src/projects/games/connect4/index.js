@@ -1,6 +1,7 @@
 // Sections components
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
+import DHComments from "components/DHComments";
 
 // Connect 4 code
 import connect4Code from "projects/games/connect4/code";
@@ -483,6 +484,8 @@ function Connect4() {
       <View title="Header 1" code={connect4Code} height="40rem">
         <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
       </View>
+
+      <DHComments />
     </BaseLayout>
   );
 }
