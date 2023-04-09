@@ -103,12 +103,11 @@ function Connect4() {
    * Draws player tokens on board
    * @param {p5Object} p5 p5.js library
    * @param {number[][]} board current game board
+   * @param {number} boardWidth width of game board
+   * @param {number} xOffset offset to draw the board at in the x direction
+   * @param {number} yOffset offset to draw the board at in the y direction
    */
-  const drawBoard = (p5, board) => {
-    const boardWidth = Math.min(p5.width, p5.height);
-    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
-    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
-
+  const drawBoard = (p5, board, boardWidth, xOffset, yOffset) => {
     // Board background
     p5.noStroke();
     p5.fill(bg);
@@ -400,20 +399,25 @@ function Connect4() {
   };
 
   const draw = (p5) => {
+    // Global game variables
+    const boardWidth = Math.min(p5.width, p5.height);
+    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
+
     p5.background(0);
 
     // Draw board
-    drawBoard(p5, board);
+    drawBoard(p5, board, boardWidth, xOffset, yOffset);
 
     // Draw current player
-    const pCol = Math.floor((p5.mouseX / p5.width) * COLS);
+    const pCol = Math.floor(((p5.mouseX - xOffset) / boardWidth) * COLS);
     p5.noStroke();
     if (p > 1) {
       p5.fill(255, 0, 0);
     } else {
       p5.fill(0);
     }
-    p5.ellipse(pCol * w + w / 2, w / 2, 0.8 * w);
+    p5.ellipse(pCol * w + w / 2 + xOffset, w / 2 + yOffset, 0.8 * w);
 
     // Display the winner, if there is one
     if (win) {
