@@ -423,21 +423,21 @@ function Connect4() {
     if (win) {
       p5.noFill();
       p5.fill(255, 255, 255, 100);
-      p5.rect(0, p5.height / 4, p5.width, p5.height / 2);
+      p5.rect(xOffset, p5.height / 4 + yOffset, p5.width, p5.height / 2);
 
       p5.textAlign(p5.CENTER, p5.CENTER);
       p5.textSize(p5.height / 8);
       p5.fill(0);
-      p5.text(`${win < 2 ? "Black" : "Red"} Wins!`, p5.width / 2, p5.height / 2);
+      p5.text(`${win < 2 ? "Black" : "Red"} Wins!`, p5.width / 2 + xOffset, p5.height / 2 + yOffset);
     } else if (checkTie(board)) {
       p5.noFill();
       p5.fill(255, 255, 255, 100);
-      p5.rect(0, p5.height / 4, p5.width, p5.height / 2);
+      p5.rect(xOffset, p5.height / 4 + yOffset, p5.width, p5.height / 2);
 
       p5.textAlign(p5.CENTER, p5.CENTER);
       p5.textSize(p5.height / 8);
       p5.fill(0);
-      p5.text("Tie!", p5.width / 2, p5.height / 2);
+      p5.text("Tie!", p5.width / 2 + xOffset, p5.height / 2 + yOffset);
     }
 
     // NOTE: Do not use setState in the draw function or in functions that are executed
