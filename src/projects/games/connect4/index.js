@@ -9,7 +9,54 @@ import connect4Code from "projects/games/connect4/code";
 // p5
 import Sketch from "react-p5";
 
+// React
+import React, { useState } from "react";
+
+// UUID4, temporary lib
+import { uuid } from "uuidv4";
+
+const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
+  id: uuid(),
+  commentText: commentValue,
+  childCommments: [],
+  isRootNode,
+  parentNodeId,
+});
+
 function Connect4() {
+  // Comments variables
+  const [comments, setComments] = useState([]);
+  const [rootComment, setRootComment] = useState("");
+  const addComment = (parentId, newCommentText) => {
+    let newComment = null;
+    if (parentId) {
+      newComment = getNewComment(newCommentText, false, parentId);
+      setComments((newComments) => ({
+        ...newComments,
+        [parentId]: {
+          ...newComments[parentId],
+          childCommments: [...comments[parentId].childCommments, newComment.id],
+        },
+      }));
+    } else {
+      newComment = getNewComment(newCommentText, true, null);
+    }
+    setComments((newComments) => ({ ...newComments, [newComment.id]: newComment }));
+  };
+  const commentMapper = (comment) => ({
+    ...comment,
+    childCommments: comment.childCommments
+      .map((id) => comments[id])
+      .map((newComment) => commentMapper(newComment)),
+  });
+  const enhancedComments = Object.values(comments)
+    .filter((comment) => !comment.parentNodeId)
+    .map(commentMapper);
+  const onAdd = () => {
+    addComment(null, rootComment);
+    setRootComment("");
+  };
+
   // Drawing variables
   let bg;
   let w;
@@ -492,7 +539,7 @@ function Connect4() {
         <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
       </View>
 
-      <DHComments />
+      <DHComments key={-1} comment={rootComment} addComment={onAdd} />
     </BaseLayout>
   );
 }
