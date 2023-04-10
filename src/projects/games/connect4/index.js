@@ -24,7 +24,6 @@ const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
 });
 
 function Connect4() {
-  // Comments variables
   const [comments, setComments] = useState([]);
   const [rootComment, setRootComment] = useState("");
   const addComment = (parentId, newCommentText) => {
@@ -35,7 +34,7 @@ function Connect4() {
         ...newComments,
         [parentId]: {
           ...newComments[parentId],
-          childCommments: [...comments[parentId].childCommments, newComment.id],
+          childCommments: [...newComments[parentId].childCommments, newComment.id],
         },
       }));
     } else {
@@ -539,7 +538,31 @@ function Connect4() {
         <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
       </View>
 
-      <DHComments key={-1} comment={rootComment} addComment={onAdd} />
+      <div className="comments-container">
+        <input
+          type="text"
+          value={rootComment}
+          onChange={(e) => setRootComment(e.target.value)}
+          placeholder="add comment"
+          style={{ width: "80%", marginRight: "1rem" }}
+        />{" "}
+        <button onClick={onAdd} type="submit">
+          Add
+        </button>
+      </div>
+      <div
+        style={{
+          border: "1px solid blue",
+          width: "60%",
+          margin: "auto",
+          overflowX: "auto",
+          padding: "2rem",
+        }}
+      >
+        {enhancedComments.map((comment) => (
+          <DHComments key={0} comment={comment} addComment={addComment} />
+        ))}
+      </div>
     </BaseLayout>
   );
 }
