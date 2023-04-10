@@ -4,7 +4,7 @@
 // // Sections components
 // import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
-// import MKInput from "components/MKInput";
+import MKInput from "components/MKInput";
 // import MKTypography from "components/MKTypography";
 
 import { useState } from "react";
@@ -37,20 +37,30 @@ export default function DHComments({ comment, addComment }) {
         <div style={{ textAlign: "left" }}>{commentText}</div>
         &nbsp;
         {childCommments.length > 0 && (
-          <button onClick={() => setShow((prevShow) => !prevShow)} type="submit">
+          <MKButton
+            onClick={() => setShow((prevShow) => !prevShow)}
+            type="submit"
+            variant="gradient"
+            color="info"
+          >
             {show ? "Hide" : "Show"}
-          </button>
+          </MKButton>
         )}
       </div>
       <div>
         <div>
           {showAddComponet ? (
             <>
-              <input
-                type="text"
-                value={childComment}
+              <MKInput
+                variant="standard"
+                label="What can we help you?"
+                placeholder="Add a comment"
+                InputLabelProps={{ shrink: true }}
+                multiline
+                fullWidth
+                rows={6}
                 onChange={(e) => setChildComment(e.target.value)}
-                placeholder="add comment"
+                value={childComment}
               />{" "}
               <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
                 Submit

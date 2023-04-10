@@ -1,6 +1,8 @@
 // Sections components
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
+import MKButton from "components/MKButton";
+import MKInput from "components/MKInput";
 import DHComments from "components/DHComments";
 
 // Connect 4 code
@@ -539,16 +541,20 @@ function Connect4() {
       </View>
 
       <div className="comments-container">
-        <input
-          type="text"
-          value={rootComment}
+        <MKInput
+          variant="standard"
+          label="What can we help you?"
+          placeholder="Add a comment"
+          InputLabelProps={{ shrink: true }}
+          multiline
+          fullWidth
+          rows={6}
           onChange={(e) => setRootComment(e.target.value)}
-          placeholder="add comment"
-          style={{ width: "80%", marginRight: "1rem" }}
+          value={rootComment}
         />{" "}
-        <button onClick={onAdd} type="submit">
+        <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
           Add
-        </button>
+        </MKButton>
       </div>
       <div
         style={{
