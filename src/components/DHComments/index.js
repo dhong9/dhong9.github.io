@@ -3,7 +3,7 @@
 
 // // Sections components
 // import MKBox from "components/MKBox";
-// import MKButton from "components/MKButton";
+import MKButton from "components/MKButton";
 // import MKInput from "components/MKInput";
 // import MKTypography from "components/MKTypography";
 
@@ -52,18 +52,19 @@ export default function DHComments({ comment, addComment }) {
                 onChange={(e) => setChildComment(e.target.value)}
                 placeholder="add comment"
               />{" "}
-              <button type="submit" onClick={onAdd}>
+              <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
                 Submit
-              </button>
+              </MKButton>
             </>
           ) : (
-            <button
+            <MKButton
               type="submit"
-              style={{ cursor: "pointer", fontSize: "0.7rem", color: "blue" }}
+              variant="gradient"
+              color="info"
               onClick={() => setShowAddComponet(true)}
             >
               Add a reply
-            </button>
+            </MKButton>
           )}
         </div>
       </div>
