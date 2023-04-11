@@ -1,6 +1,9 @@
 // Sections components
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
+import MKButton from "components/MKButton";
+import MKInput from "components/MKInput";
+import DHComments from "components/DHComments";
 
 // 2048 code
 import twenty48Code from "projects/games/2048/code";
@@ -8,7 +11,52 @@ import twenty48Code from "projects/games/2048/code";
 // p5
 import Sketch from "react-p5";
 
+import React, { useState } from "react";
+
+// UUID4, temporary lib
+import { uuid } from "uuidv4";
+
+const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
+  id: uuid(),
+  commentText: commentValue,
+  childCommments: [],
+  isRootNode,
+  parentNodeId,
+});
+
 function Twenty48() {
+  const [comments, setComments] = useState([]);
+  const [rootComment, setRootComment] = useState("");
+  const addComment = (parentId, newCommentText) => {
+    let newComment = null;
+    if (parentId) {
+      newComment = getNewComment(newCommentText, false, parentId);
+      setComments((newComments) => ({
+        ...newComments,
+        [parentId]: {
+          ...newComments[parentId],
+          childCommments: [...newComments[parentId].childCommments, newComment.id],
+        },
+      }));
+    } else {
+      newComment = getNewComment(newCommentText, true, null);
+    }
+    setComments((newComments) => ({ ...newComments, [newComment.id]: newComment }));
+  };
+  const commentMapper = (comment) => ({
+    ...comment,
+    childCommments: comment.childCommments
+      .map((id) => comments[id])
+      .map((newComment) => commentMapper(newComment)),
+  });
+  const enhancedComments = Object.values(comments)
+    .filter((comment) => !comment.parentNodeId)
+    .map(commentMapper);
+  const onAdd = () => {
+    addComment(null, rootComment);
+    setRootComment("");
+  };
+
   // Drawing variables
   let tileMap;
   let padding;
@@ -224,6 +272,36 @@ function Twenty48() {
       <View title="Header 1" code={twenty48Code} height="40rem">
         <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />
       </View>
+
+      <div className="comments-container">
+        <MKInput
+          variant="standard"
+          label="What can we help you?"
+          placeholder="Add a comment"
+          InputLabelProps={{ shrink: true }}
+          multiline
+          fullWidth
+          rows={6}
+          onChange={(e) => setRootComment(e.target.value)}
+          value={rootComment}
+        />{" "}
+        <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+          Add
+        </MKButton>
+      </div>
+      <div
+        style={{
+          border: "1px solid blue",
+          width: "60%",
+          margin: "auto",
+          overflowX: "auto",
+          padding: "2rem",
+        }}
+      >
+        {enhancedComments.map((comment) => (
+          <DHComments key={0} comment={comment} addComment={addComment} />
+        ))}
+      </div>
     </BaseLayout>
   );
 }
