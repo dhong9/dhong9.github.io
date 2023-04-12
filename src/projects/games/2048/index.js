@@ -178,7 +178,9 @@ function Twenty48() {
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
-    p5.createCanvas(500, 500).parent(canvasParentRef);
+    // Canvas dimension is based on div's size
+    const twenty48 = document.querySelector(".codeOutput");
+    p5.createCanvas(twenty48.clientWidth, twenty48.clientHeight).parent(canvasParentRef);
 
     // Use p5 object to define variables dependent on them
     tileMap = {
@@ -197,16 +199,24 @@ function Twenty48() {
     };
 
     padding = p5.width / 40;
-    tileWidth = (p5.width - 5 * padding) / 4;
+    tileWidth = (Math.min(p5.width, p5.height) - 5 * padding) / 4;
 
     p5.textAlign(p5.CENTER, p5.CENTER);
     p5.textStyle(p5.BOLD);
   };
 
   const draw = (p5) => {
-    p5.background(188, 173, 160);
+    // Global game variables
+    const boardWidth = Math.min(p5.width, p5.height);
+    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
 
+    p5.background(0);
+
+    // Game background
     p5.noStroke();
+    p5.fill(188, 173, 160);
+    p5.rect(xOffset, yOffset, boardWidth);
 
     for (let r = 0; r < 4; r += 1) {
       for (let c = 0; c < 4; c += 1) {
@@ -218,7 +228,11 @@ function Twenty48() {
         } else {
           p5.fill(0);
         }
-        p5.rect((r + 1) * padding + r * tileWidth, (c + 1) * padding + c * tileWidth, tileWidth);
+        p5.rect(
+          (r + 1) * padding + r * tileWidth + xOffset,
+          (c + 1) * padding + c * tileWidth + yOffset,
+          tileWidth
+        );
 
         // Text on tile
         if (v) {
@@ -226,8 +240,8 @@ function Twenty48() {
           p5.textSize(tileWidth / Math.floor(Math.log10(v) + 2));
           p5.text(
             v,
-            (r + 1) * padding + r * tileWidth + tileWidth / 2,
-            (c + 1) * padding + c * tileWidth + tileWidth / 2
+            (r + 1) * padding + r * tileWidth + tileWidth / 2 + xOffset,
+            (c + 1) * padding + c * tileWidth + tileWidth / 2 + yOffset
           );
         }
       }
