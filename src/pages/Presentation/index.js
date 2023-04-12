@@ -92,7 +92,7 @@ function Presentation() {
               px={{ xs: 6, lg: 12 }}
               mt={1}
             >
-              Engineer by day. Artist by night.
+              Engineering professional. Visual effects hobbyist.
             </MKTypography>
           </Grid>
         </Container>
