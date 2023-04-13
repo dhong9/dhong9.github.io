@@ -362,19 +362,27 @@ function Othello() {
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
-    p5.createCanvas(500, 500).parent(canvasParentRef);
+    const othello = document.querySelector(".codeOutput");
+    p5.createCanvas(othello.clientWidth, othello.clientHeight).parent(canvasParentRef);
   };
 
   const draw = (p5) => {
+    // Global game variables
+    const boardWidth = Math.min(p5.width, p5.height);
+    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
+
+    p5.background(0);
+
     // Draw board
     for (let r = 0; r < N; r += 1) {
       for (let c = 0; c < N; c += 1) {
         // Board tile
-        const w = p5.width / N;
+        const w = boardWidth / N;
         p5.stroke(0);
         p5.strokeWeight(2);
         p5.fill(52, 168, 85);
-        p5.rect(c * w, r * w, w);
+        p5.rect(c * w + xOffset, r * w + yOffset, w);
 
         // Draw player
         const v = board[r][c];
@@ -383,7 +391,7 @@ function Othello() {
           p5.strokeWeight(1);
           p5.fill((v === 2) * 255);
           const tokenWidth = 0.85 * w;
-          p5.ellipse(c * w + w / 2, r * w + w / 2, tokenWidth);
+          p5.ellipse(c * w + w / 2 + xOffset, r * w + w / 2 + yOffset, tokenWidth);
         }
       }
     }
@@ -392,12 +400,12 @@ function Othello() {
     p5.noFill();
     p5.strokeWeight(2);
     p5.stroke(160);
-    const tileWidth = p5.width / N;
+    const tileWidth = boardWidth / N;
     for (let i = 0; i < moves.length; i += 1) {
       const [moveRow, moveCol] = moves[i];
       p5.ellipse(
-        (moveCol * p5.width) / N + tileWidth / 2,
-        (moveRow * p5.height) / N + tileWidth / 2,
+        (moveCol * boardWidth) / N + tileWidth / 2 + xOffset,
+        (moveRow * boardWidth) / N + tileWidth / 2 + yOffset,
         0.85 * tileWidth
       );
     }
@@ -409,8 +417,13 @@ function Othello() {
 
   // Define events
   const mouseClicked = (p5) => {
-    const c = Math.floor((p5.mouseX / p5.width) * N);
-    const r = Math.floor((p5.mouseY / p5.width) * N);
+    // Global game variables
+    const boardWidth = Math.min(p5.width, p5.height);
+    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
+
+    const c = Math.floor(((p5.mouseX - xOffset) / boardWidth) * N);
+    const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
     if (validMove(board, r, c, curPlayer)) {
       makeMove(board, r, c, curPlayer);
       if (curPlayer === 1) {
