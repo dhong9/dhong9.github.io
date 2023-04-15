@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/static/js/main.84c6550a.chunk.js",
-    "main.js.map": "/static/js/main.84c6550a.chunk.js.map",
+    "main.js": "/static/js/main.a74f5a8a.chunk.js",
+    "main.js.map": "/static/js/main.a74f5a8a.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.836d03b7.js",
     "runtime-main.js.map": "/static/js/runtime-main.836d03b7.js.map",
     "static/js/2.eca78071.chunk.js": "/static/js/2.eca78071.chunk.js",
@@ -9,7 +9,6 @@
     "index.html": "/index.html",
     "static/js/2.eca78071.chunk.js.LICENSE.txt": "/static/js/2.eca78071.chunk.js.LICENSE.txt",
     "static/media/Pacific_selfie_bubbles.3e4fb8d2.jpg": "/static/media/Pacific_selfie_bubbles.3e4fb8d2.jpg",
-    "static/media/bg-about-us.cf9a123e.jpg": "/static/media/bg-about-us.cf9a123e.jpg",
     "static/media/bg-coworking.06bccc47.jpeg": "/static/media/bg-coworking.06bccc47.jpeg",
     "static/media/bg-sign-in-basic.f327db1d.jpeg": "/static/media/bg-sign-in-basic.f327db1d.jpeg",
     "static/media/blog-9-4.de736e0b.jpg": "/static/media/blog-9-4.de736e0b.jpg",
@@ -30,6 +29,7 @@
     "static/media/logo-vodafone.64bd2eee.svg": "/static/media/logo-vodafone.64bd2eee.svg",
     "static/media/macbook.e0a8c5d5.png": "/static/media/macbook.e0a8c5d5.png",
     "static/media/meadow.fccf4e00.png": "/static/media/meadow.fccf4e00.png",
+    "static/media/neons.1dfdd2bc.png": "/static/media/neons.1dfdd2bc.png",
     "static/media/rotating-card-bg-back.183088de.jpeg": "/static/media/rotating-card-bg-back.183088de.jpeg",
     "static/media/rotating-card-bg-front.bdcdfadc.jpeg": "/static/media/rotating-card-bg-front.bdcdfadc.jpeg",
     "static/media/team-1.0fd36e0e.jpg": "/static/media/team-1.0fd36e0e.jpg",
@@ -44,6 +44,6 @@
   "entrypoints": [
     "static/js/runtime-main.836d03b7.js",
     "static/js/2.eca78071.chunk.js",
-    "static/js/main.84c6550a.chunk.js"
+    "static/js/main.a74f5a8a.chunk.js"
   ]
 }
