@@ -1,6 +1,9 @@
 // Sections components
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
+import MKButton from "components/MKButton";
+import MKInput from "components/MKInput";
+import DHComments from "components/DHComments";
 
 // Picture shuffle code
 import pictureShuffleCode from "projects/games/pictureShuffle/code";
@@ -8,11 +11,57 @@ import pictureShuffleCode from "projects/games/pictureShuffle/code";
 // p5
 import Sketch from "react-p5";
 
+// React
+import React, { useState } from "react";
+
+// UUID4, temporary lib
+import { uuid } from "uuidv4";
+
 // Picture shuffle board utilities
 import meadow from "assets/images/meadow.png";
 import Board from "./utils/Board";
 
+const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
+  id: uuid(),
+  commentText: commentValue,
+  childCommments: [],
+  isRootNode,
+  parentNodeId,
+});
+
 function PictureShuffle() {
+  const [comments, setComments] = useState([]);
+  const [rootComment, setRootComment] = useState("");
+  const addComment = (parentId, newCommentText) => {
+    let newComment = null;
+    if (parentId) {
+      newComment = getNewComment(newCommentText, false, parentId);
+      setComments((newComments) => ({
+        ...newComments,
+        [parentId]: {
+          ...newComments[parentId],
+          childCommments: [...newComments[parentId].childCommments, newComment.id],
+        },
+      }));
+    } else {
+      newComment = getNewComment(newCommentText, true, null);
+    }
+    setComments((newComments) => ({ ...newComments, [newComment.id]: newComment }));
+  };
+  const commentMapper = (comment) => ({
+    ...comment,
+    childCommments: comment.childCommments
+      .map((id) => comments[id])
+      .map((newComment) => commentMapper(newComment)),
+  });
+  const enhancedComments = Object.values(comments)
+    .filter((comment) => !comment.parentNodeId)
+    .map(commentMapper);
+  const onAdd = () => {
+    addComment(null, rootComment);
+    setRootComment("");
+  };
+
   let board;
   let img;
 
@@ -23,8 +72,14 @@ function PictureShuffle() {
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
-    p5.createCanvas(500, 500).parent(canvasParentRef);
-    board = new Board(p5, p5.width, 4, img);
+    const pictureShuffle = document.querySelector(".codeOutput");
+    p5.createCanvas(pictureShuffle.clientWidth, pictureShuffle.clientHeight).parent(
+      canvasParentRef
+    );
+    const boardWidth = Math.min(p5.width, p5.height);
+    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
+    board = new Board(p5, xOffset, yOffset, boardWidth, 4, img);
   };
 
   const draw = (p5) => {
@@ -51,6 +106,36 @@ function PictureShuffle() {
       <View title="Header 1" code={pictureShuffleCode} height="40rem">
         <Sketch setup={setup} draw={draw} preload={preload} mouseClicked={mouseClicked} />
       </View>
+
+      <div className="comments-container">
+        <MKInput
+          variant="standard"
+          label="What can we help you?"
+          placeholder="Add a comment"
+          InputLabelProps={{ shrink: true }}
+          multiline
+          fullWidth
+          rows={6}
+          onChange={(e) => setRootComment(e.target.value)}
+          value={rootComment}
+        />{" "}
+        <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+          Add
+        </MKButton>
+      </div>
+      <div
+        style={{
+          border: "1px solid blue",
+          width: "60%",
+          margin: "auto",
+          overflowX: "auto",
+          padding: "2rem",
+        }}
+      >
+        {enhancedComments.map((comment) => (
+          <DHComments key={0} comment={comment} addComment={addComment} />
+        ))}
+      </div>
     </BaseLayout>
   );
 }

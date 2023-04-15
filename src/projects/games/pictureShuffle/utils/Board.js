@@ -7,17 +7,21 @@ class Board {
   /**
    * Initializes Board object with ID, dimensions, and image
    * @param {p5Object} p5 p5 object
+   * @param {x} x position
+   * @param {y} y position
    * @param {number} bw board width
    * @param {number} n rows/columns in a board
    * @param {p5Image} img puzzle image
    */
-  constructor(p5, bw, n, img) {
+  constructor(p5, x, y, bw, n, img) {
+    this.x = x;
+    this.y = y;
     this.n = n;
     this.bw = bw;
     this.solved = false;
 
     // Temporarily draw image to get pixel data
-    p5.image(img, 0, 0, bw, bw);
+    p5.image(img, this.x, this.y, bw, bw);
 
     this.board = [];
     const w = bw / n;
@@ -26,7 +30,15 @@ class Board {
       for (let c = 0; c < this.n; c += 1) {
         // Using ID n * c + r gives range [0...n], excluding n
         // So add 1 to the IDs
-        temp.push(new Tile(n * r + c + 1, c * w, r * w, w, p5.get(c * w, r * w, w, w)));
+        temp.push(
+          new Tile(
+            n * r + c + 1,
+            this.x + c * w,
+            this.y + r * w,
+            w,
+            p5.get(this.x + c * w, this.y + r * w, w, w)
+          )
+        );
       }
       this.board.push(temp);
     }
@@ -103,8 +115,8 @@ class Board {
   mouseClicked(p5) {
     if (!this.solved) {
       // Get tile location
-      const r = Math.floor((p5.mouseY / this.bw) * this.n);
-      const c = Math.floor((p5.mouseX / this.bw) * this.n);
+      const r = Math.floor(((p5.mouseY - this.y) / this.bw) * this.n);
+      const c = Math.floor(((p5.mouseX - this.x) / this.bw) * this.n);
 
       this.moveTile(r, c);
 
