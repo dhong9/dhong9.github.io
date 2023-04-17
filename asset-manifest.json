@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.a74f5a8a.chunk.js",
-    "main.js.map": "/static/js/main.a74f5a8a.chunk.js.map",
+    "main.js": "/static/js/main.bbddd566.chunk.js",
+    "main.js.map": "/static/js/main.bbddd566.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.836d03b7.js",
     "runtime-main.js.map": "/static/js/runtime-main.836d03b7.js.map",
-    "static/js/2.eca78071.chunk.js": "/static/js/2.eca78071.chunk.js",
-    "static/js/2.eca78071.chunk.js.map": "/static/js/2.eca78071.chunk.js.map",
+    "static/js/2.59f5563d.chunk.js": "/static/js/2.59f5563d.chunk.js",
+    "static/js/2.59f5563d.chunk.js.map": "/static/js/2.59f5563d.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.eca78071.chunk.js.LICENSE.txt": "/static/js/2.eca78071.chunk.js.LICENSE.txt",
+    "static/js/2.59f5563d.chunk.js.LICENSE.txt": "/static/js/2.59f5563d.chunk.js.LICENSE.txt",
     "static/media/Pacific_selfie_bubbles.3e4fb8d2.jpg": "/static/media/Pacific_selfie_bubbles.3e4fb8d2.jpg",
     "static/media/bg-coworking.06bccc47.jpeg": "/static/media/bg-coworking.06bccc47.jpeg",
     "static/media/bg-sign-in-basic.f327db1d.jpeg": "/static/media/bg-sign-in-basic.f327db1d.jpeg",
@@ -43,7 +43,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.836d03b7.js",
-    "static/js/2.eca78071.chunk.js",
-    "static/js/main.a74f5a8a.chunk.js"
+    "static/js/2.59f5563d.chunk.js",
+    "static/js/main.bbddd566.chunk.js"
   ]
 }
