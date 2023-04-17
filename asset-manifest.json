@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.bbddd566.chunk.js",
-    "main.js.map": "/static/js/main.bbddd566.chunk.js.map",
+    "main.js": "/static/js/main.932b3fe1.chunk.js",
+    "main.js.map": "/static/js/main.932b3fe1.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.836d03b7.js",
     "runtime-main.js.map": "/static/js/runtime-main.836d03b7.js.map",
-    "static/js/2.59f5563d.chunk.js": "/static/js/2.59f5563d.chunk.js",
-    "static/js/2.59f5563d.chunk.js.map": "/static/js/2.59f5563d.chunk.js.map",
+    "static/js/2.b3f52960.chunk.js": "/static/js/2.b3f52960.chunk.js",
+    "static/js/2.b3f52960.chunk.js.map": "/static/js/2.b3f52960.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.59f5563d.chunk.js.LICENSE.txt": "/static/js/2.59f5563d.chunk.js.LICENSE.txt",
+    "static/js/2.b3f52960.chunk.js.LICENSE.txt": "/static/js/2.b3f52960.chunk.js.LICENSE.txt",
     "static/media/Pacific_selfie_bubbles.3e4fb8d2.jpg": "/static/media/Pacific_selfie_bubbles.3e4fb8d2.jpg",
     "static/media/bg-coworking.06bccc47.jpeg": "/static/media/bg-coworking.06bccc47.jpeg",
     "static/media/bg-sign-in-basic.f327db1d.jpeg": "/static/media/bg-sign-in-basic.f327db1d.jpeg",
@@ -18,10 +18,7 @@
     "static/media/illustration-reset.c5f36c0c.jpg": "/static/media/illustration-reset.c5f36c0c.jpg",
     "static/media/ivana-square.f7bc23b2.jpg": "/static/media/ivana-square.f7bc23b2.jpg",
     "static/media/ivana-squares.3c555b85.jpg": "/static/media/ivana-squares.3c555b85.jpg",
-    "static/media/logo-apple.1098fa39.svg": "/static/media/logo-apple.1098fa39.svg",
     "static/media/logo-coinbase.97dccf42.svg": "/static/media/logo-coinbase.97dccf42.svg",
-    "static/media/logo-digitalocean.2a34c59e.svg": "/static/media/logo-digitalocean.2a34c59e.svg",
-    "static/media/logo-facebook.628f2a8a.svg": "/static/media/logo-facebook.628f2a8a.svg",
     "static/media/logo-nasa.b4e79ad9.svg": "/static/media/logo-nasa.b4e79ad9.svg",
     "static/media/logo-netflix.41468e1b.svg": "/static/media/logo-netflix.41468e1b.svg",
     "static/media/logo-pinterest.79835f81.svg": "/static/media/logo-pinterest.79835f81.svg",
@@ -38,12 +35,11 @@
     "static/media/team-4.85c82b6e.jpg": "/static/media/team-4.85c82b6e.jpg",
     "static/media/team-5.d59ab7b9.jpg": "/static/media/team-5.d59ab7b9.jpg",
     "static/media/testimonial-6-2.21f2048f.jpg": "/static/media/testimonial-6-2.21f2048f.jpg",
-    "static/media/testimonial-6-3.d35bef0d.jpg": "/static/media/testimonial-6-3.d35bef0d.jpg",
-    "static/media/waves-white.dcb2ce85.svg": "/static/media/waves-white.dcb2ce85.svg"
+    "static/media/testimonial-6-3.d35bef0d.jpg": "/static/media/testimonial-6-3.d35bef0d.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.836d03b7.js",
-    "static/js/2.59f5563d.chunk.js",
-    "static/js/main.bbddd566.chunk.js"
+    "static/js/2.b3f52960.chunk.js",
+    "static/js/main.932b3fe1.chunk.js"
   ]
 }
