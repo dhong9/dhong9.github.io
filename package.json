@@ -1,11 +1,11 @@
 {
-  "name": "material-kit-2-react",
-  "version": "2.1.0",
+  "name": "daniel-hong-portfolio",
+  "version": "0.0.1",
   "private": true,
-  "author": "Creative Tim",
+  "author": "Daniel Hong",
   "license": "See license in https://www.creative-tim.com/license",
   "description": "React version of Material Kit 2 by Creative Tim",
-  "homepage": "https://dhong9.github.io",
+  "homepage": "https://www.danyo.tech",
   "bugs": {
     "url": "https://github.com/creativetimofficial/ct-material-kit-react/issues"
   },
@@ -76,6 +76,7 @@
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
+    "gh-pages": "^5.0.0",
     "prettier": "2.8.7"
   }
 }
