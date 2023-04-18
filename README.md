@@ -179,7 +179,7 @@ If you have questions or need help integrating the product please [contact us](h
 
 ## Licensing
 
-- Copyright 2021 [Creative Tim](https://www.creative-tim.com?ref=readme-mkr)
+- Copyright 2023 [Creative Tim](https://www.creative-tim.com?ref=readme-mkr)
 - Creative Tim [license](https://www.creative-tim.com/license?ref=readme-mkr)
 
 ## Useful Links
