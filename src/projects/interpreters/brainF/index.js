@@ -13,6 +13,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import MKButton from "components/MKButton";
+import MKBox from "components/MKBox";
 
 import React, { useState } from "react";
 
@@ -44,6 +45,10 @@ function BrainF() {
           Show value
         </MKButton>
       </FormGroup>
+
+      <MKBox borderRadius="lg" shadow="lg" p={2} mt={2} component="div" sx={{ display: "inline" }}>
+        inline
+      </MKBox>
     </BaseLayout>
   );
 }
