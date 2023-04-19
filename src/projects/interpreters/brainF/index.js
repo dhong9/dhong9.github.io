@@ -19,9 +19,14 @@ import React, { useState } from "react";
 
 function BrainF() {
   const [visualize, setVisualize] = useState(false);
+  const [codeOutput, setCodeOutput] = useState("");
 
   const handleChange = (event) => {
     setVisualize(event.target.checked);
+  };
+
+  const showOutput = () => {
+    setCodeOutput("hello, world!");
   };
 
   return (
@@ -41,14 +46,23 @@ function BrainF() {
           control={<Checkbox checked={visualize} onChange={handleChange} />}
           label="Visualize"
         />
-        <MKButton type="submit" variant="gradient" color="info">
+        <MKButton onClick={showOutput} type="submit" variant="gradient" color="info">
           Show value
         </MKButton>
       </FormGroup>
 
-      <MKBox borderRadius="lg" shadow="lg" p={2} mt={2} component="div" sx={{ display: "inline" }}>
-        inline
-      </MKBox>
+      {codeOutput && (
+        <MKBox
+          borderRadius="lg"
+          shadow="lg"
+          p={2}
+          mt={2}
+          component="div"
+          sx={{ display: "inline" }}
+        >
+          {codeOutput}
+        </MKBox>
+      )}
     </BaseLayout>
   );
 }
