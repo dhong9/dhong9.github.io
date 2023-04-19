@@ -8,6 +8,11 @@ import brainFCode from "projects/interpreters/brainF/code";
 // Generic interpreter
 import Interpreter from "../interpreter";
 
+// Form
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+
 function BrainF() {
   return (
     <BaseLayout
@@ -20,6 +25,10 @@ function BrainF() {
       <View title="Header 1" code={brainFCode} height="40rem">
         <Interpreter />
       </View>
+
+      <FormGroup>
+        <FormControlLabel control={<Checkbox />} label="Visualize" />
+      </FormGroup>
     </BaseLayout>
   );
 }
