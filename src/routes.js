@@ -48,9 +48,6 @@ import ContactUs from "layouts/pages/landing-pages/contact-us";
 import Author from "layouts/pages/landing-pages/author";
 import SignIn from "layouts/pages/authentication/sign-in";
 
-// Sections
-import NavTabs from "layouts/sections/navigation/nav-tabs";
-
 // Games
 import Connect4 from "projects/games/connect4";
 import Twenty48 from "projects/games/2048";
@@ -59,6 +56,7 @@ import Othello from "projects/games/othello";
 
 // Interpreters
 import BrainF from "projects/interpreters/brainF";
+import WhiteSpace from "projects/interpreters/whitespace";
 
 const routes = [
   {
@@ -143,7 +141,7 @@ const routes = [
           {
             name: "whitespace",
             route: "/sections/interpreters/whitespace",
-            component: <NavTabs />,
+            component: <WhiteSpace />,
           },
         ],
       },
