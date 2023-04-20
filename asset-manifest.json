@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.0fa6669f.js",
+    "main.js": "/static/js/main.dc56cb4d.js",
     "static/media/neons.png": "/static/media/neons.1dfdd2bc242c4dddab9e.png",
     "static/media/rotating-card-bg-front.jpeg": "/static/media/rotating-card-bg-front.bdcdfadc0dacb9bc5f23.jpeg",
     "static/media/Pacific_selfie_bubbles.jpg": "/static/media/Pacific_selfie_bubbles.3e4fb8d2d813b8a238da.jpg",
@@ -25,9 +25,9 @@
     "static/media/logo-nasa.svg": "/static/media/logo-nasa.b4e79ad93e48f27643c48621609ba18b.svg",
     "static/media/logo-netflix.svg": "/static/media/logo-netflix.41468e1be7ec61f28c77c2d4da86083e.svg",
     "index.html": "/index.html",
-    "main.0fa6669f.js.map": "/static/js/main.0fa6669f.js.map"
+    "main.dc56cb4d.js.map": "/static/js/main.dc56cb4d.js.map"
   },
   "entrypoints": [
-    "static/js/main.0fa6669f.js"
+    "static/js/main.dc56cb4d.js"
   ]
 }
