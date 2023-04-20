@@ -29,6 +29,87 @@ function BrainF() {
     setCodeOutput("hello, world!");
   };
 
+  /**
+   * Processes BrainF code and returns its output
+   * @param {String} src source code
+   * @returns aggregate of all char prints
+   */
+  const brainF = (src) => {
+    let i = 0; // Current cell
+    let res = "";
+    const cells = {};
+
+    // Operator functions
+    const moveRight = (c) => {
+      i++;
+      return c;
+    };
+    const moveLeft = (c) => {
+      i = Math.max(i - 1, 0);
+      return c;
+    };
+    const increment = (c) => {
+      cells[i] = (cells[i] || 0) + 1;
+      return c;
+    };
+    const decrement = (c) => {
+      cells[i] = cells[i] ? cells[i] - 1 : 255;
+      return c;
+    };
+    const print = (c) => {
+      res += String.fromCharCode(cells[i]);
+      return c;
+    };
+    const beginLoop = (c) => {
+      c = cells[i] ? c : [...src].findIndex((v, j) => j > c && v === "]") + 1;
+      return c;
+    };
+    const endLoop = (c) => {
+      if (cells[i]) {
+        let j = 0;
+        for (let k = 0; k < c; k++) {
+          if (src[k] === "[") j = k;
+        }
+        c = j;
+      }
+      return c;
+    };
+
+    // Valid operations
+    const ops = {
+      ">": moveRight,
+      "<": moveLeft,
+      "+": increment,
+      "-": decrement,
+      ".": print,
+      ",": null,
+      "[": beginLoop,
+      "]": endLoop,
+      "!": null,
+    };
+
+    for (let c = 0; c < src.length; c++) {
+      if (src[c] in ops) {
+        c = ops[src[c]](c);
+      }
+    }
+
+    return res;
+  };
+
+  const test = brainF(`>++++++++[<+++++++++>-]<.
+  >++++[<+++++++>-]<+.
+  +++++++..
+  +++.
+  >>++++++[<+++++++>-]<++.
+  ------------.
+  >++++++[<+++++++++>-]<+.
+  <.
+  +++.
+  ------.
+  --------.
+  >>>++++[<++++++++>-]<+.`);
+
   return (
     <BaseLayout
       title="Page Headers"
@@ -60,7 +141,7 @@ function BrainF() {
           component="div"
           sx={{ display: "inline" }}
         >
-          {codeOutput}
+          {test}
         </MKBox>
       )}
     </BaseLayout>
