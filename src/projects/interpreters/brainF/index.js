@@ -20,13 +20,14 @@ import React, { useState } from "react";
 function BrainF() {
   const [visualize, setVisualize] = useState(false);
   const [codeOutput, setCodeOutput] = useState("");
+  const [codeSrc, setCodeSrc] = useState("// some comment");
 
   const handleChange = (event) => {
     setVisualize(event.target.checked);
   };
 
   const showOutput = () => {
-    setCodeOutput("hello, world!");
+    setCodeOutput(brainF(codeSrc));
   };
 
   /**
@@ -97,19 +98,6 @@ function BrainF() {
     return res;
   };
 
-  const test = brainF(`>++++++++[<+++++++++>-]<.
-  >++++[<+++++++>-]<+.
-  +++++++..
-  +++.
-  >>++++++[<+++++++>-]<++.
-  ------------.
-  >++++++[<+++++++++>-]<+.
-  <.
-  +++.
-  ------.
-  --------.
-  >>>++++[<++++++++>-]<+.`);
-
   return (
     <BaseLayout
       title="Page Headers"
@@ -119,7 +107,7 @@ function BrainF() {
       ]}
     >
       <View title="Header 1" code={brainFCode} height="40rem">
-        <Interpreter />
+        <Interpreter codeUpdate={setCodeSrc} />
       </View>
 
       <FormGroup>
@@ -141,7 +129,7 @@ function BrainF() {
           component="div"
           sx={{ display: "inline" }}
         >
-          {test}
+          {codeOutput}
         </MKBox>
       )}
     </BaseLayout>
