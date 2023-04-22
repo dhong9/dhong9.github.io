@@ -13,14 +13,21 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import MKButton from "components/MKButton";
+import MKBox from "components/MKBox";
 
 import React, { useState } from "react";
 
 function WhiteSpace() {
   const [visualize, setVisualize] = useState(false);
+  const [codeOutput, setCodeOutput] = useState("");
+  const [codeSrc, setCodeSrc] = useState("// some comment");
 
   const handleChange = (event) => {
     setVisualize(event.target.checked);
+  };
+
+  const showOutput = () => {
+    setCodeOutput(codeSrc);
   };
 
   return (
@@ -32,7 +39,7 @@ function WhiteSpace() {
       ]}
     >
       <View title="Header 1" code={whitespaceCode} height="40rem">
-        <Interpreter />
+        <Interpreter codeUpdate={setCodeSrc} />
       </View>
 
       <FormGroup>
@@ -40,10 +47,23 @@ function WhiteSpace() {
           control={<Checkbox checked={visualize} onChange={handleChange} />}
           label="Visualize"
         />
-        <MKButton type="submit" variant="gradient" color="info">
+        <MKButton onClick={showOutput} type="submit" variant="gradient" color="info">
           Show value
         </MKButton>
       </FormGroup>
+
+      {codeOutput && (
+        <MKBox
+          borderRadius="lg"
+          shadow="lg"
+          p={2}
+          mt={2}
+          component="div"
+          sx={{ display: "inline" }}
+        >
+          {codeOutput}
+        </MKBox>
+      )}
     </BaseLayout>
   );
 }
