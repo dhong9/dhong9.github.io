@@ -1,17 +1,39 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useRef } from "react";
 
-import Editor from "@monaco-editor/react";
+import MonacoEditor from "react-monaco-editor";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
 function Interpreter({ codeUpdate }) {
-  const editorRef = useRef(null);
-  const [code, setCode] = useState("// some comment");
+  const [code, setCode] = useState("");
+  const monacoRef = useRef(null);
 
-  function handleEditorDidMount(editor) {
-    editorRef.current = editor;
-  }
+  const keywords = ["class", "new", "string", "number", "boolean", "private", "public"];
+
+  const editorWillMount = (monaco) => {
+    monacoRef.current = monaco;
+
+    monaco.languages.register({ id: "whitespace" });
+    monaco.languages.setMonarchTokensProvider("whitespace", {
+      keywords,
+      tokenizer: {
+        root: [
+          [
+            /@?[a-zA-Z][\w$]*/,
+            {
+              cases: {
+                "@keywords": "keyword",
+                "@default": "variable",
+              },
+            },
+          ],
+          [/".*?"/, "string"],
+          [/\/\/.*/, "comment"],
+        ],
+      },
+    });
+  };
 
   const onChange = (value) => {
     setCode(value); // Update internal component
@@ -20,13 +42,12 @@ function Interpreter({ codeUpdate }) {
 
   return (
     <>
-      <Editor
-        height="90vh"
-        defaultLanguage="javascript"
-        defaultValue="// some comment"
+      <MonacoEditor
+        innerRef={monacoRef}
+        language="whitespace"
         value={code}
         onChange={onChange}
-        onMount={handleEditorDidMount}
+        editorWillMount={editorWillMount}
       />
     </>
   );
