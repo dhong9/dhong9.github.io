@@ -5,31 +5,25 @@ import MonacoEditor from "react-monaco-editor";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-function Interpreter({ codeUpdate }) {
+// Language syntax highlighting configuration
+import esoterics from "./esoterics";
+
+function Interpreter({ codeUpdate, language }) {
   const [code, setCode] = useState("");
   const monacoRef = useRef(null);
 
-  const keywords = ["class", "new", "string", "number", "boolean", "private", "public"];
+  const keywords = esoterics[language].keywords;
 
   const editorWillMount = (monaco) => {
     monacoRef.current = monaco;
 
-    monaco.languages.register({ id: "whitespace" });
-    monaco.languages.setMonarchTokensProvider("whitespace", {
+    monaco.languages.register({ id: language });
+    monaco.languages.setMonarchTokensProvider(language, {
       keywords,
       tokenizer: {
         root: [
-          [
-            /@?[a-zA-Z][\w$]*/,
-            {
-              cases: {
-                "@keywords": "keyword",
-                "@default": "variable",
-              },
-            },
-          ],
-          [/".*?"/, "string"],
-          [/\/\/.*/, "comment"],
+          [new RegExp(`[${keywords.join("")}]+`), "keyword"],
+          [/;.*/, "comment"],
         ],
       },
     });
@@ -44,7 +38,7 @@ function Interpreter({ codeUpdate }) {
     <>
       <MonacoEditor
         innerRef={monacoRef}
-        language="whitespace"
+        language={language}
         value={code}
         onChange={onChange}
         editorWillMount={editorWillMount}
@@ -56,10 +50,12 @@ function Interpreter({ codeUpdate }) {
 // Typechecking props of Interpreter component
 Interpreter.propTypes = {
   codeUpdate: PropTypes.func,
+  language: PropTypes.string,
 };
 
 Interpreter.defaultProps = {
   codeUpdate: null,
+  language: "",
 };
 
 export default Interpreter;

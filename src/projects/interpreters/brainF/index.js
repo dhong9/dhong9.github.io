@@ -107,7 +107,7 @@ function BrainF() {
       ]}
     >
       <View title="Header 1" code={brainFCode} height="40rem">
-        <Interpreter codeUpdate={setCodeSrc} />
+        <Interpreter codeUpdate={setCodeSrc} language="brainF" />
       </View>
 
       <FormGroup>

@@ -39,7 +39,7 @@ function WhiteSpace() {
       ]}
     >
       <View title="Header 1" code={whitespaceCode} height="40rem">
-        <Interpreter codeUpdate={setCodeSrc} />
+        <Interpreter codeUpdate={setCodeSrc} language="whitespace" />
       </View>
 
       <FormGroup>
