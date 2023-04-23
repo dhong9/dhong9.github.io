@@ -1,8 +1,9 @@
 const esoterics = {
   // Whitespace programming language
-  whitespace: {
-    keywords: ["S", "T"], // Spaces and tabs
-  },
+  whitespace: ["S", "T"], // Spaces and tabs
+
+  // BrainF
+  brainF: [">", "<", ",", "\\[", "\\]", "\\.", "\\+", "\\-"],
 };
 
 export default esoterics;

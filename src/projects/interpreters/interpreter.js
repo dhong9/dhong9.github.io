@@ -12,7 +12,7 @@ function Interpreter({ codeUpdate, language }) {
   const [code, setCode] = useState("");
   const monacoRef = useRef(null);
 
-  const keywords = esoterics[language].keywords;
+  const keywords = esoterics[language];
 
   const editorWillMount = (monaco) => {
     monacoRef.current = monaco;
