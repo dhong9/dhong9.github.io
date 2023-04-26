@@ -106,7 +106,7 @@ function Connect4() {
    * @param {number} col column to check (0-6)
    * @returns true if column has an empty slot
    */
-  const isValidLocation = (board, col) => !board[0][col];
+  const isValidLocation = (board, col) => col >= 0 && col <= 6 && !board[0][col];
 
   /**
    * Gets all columns that can be played in
@@ -494,36 +494,38 @@ function Connect4() {
 
   // Define events
   const mouseClicked = (p5) => {
-    // Global game variables
-    const boardWidth = Math.min(p5.width, p5.height);
-    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+    if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+      // Global game variables
+      const boardWidth = Math.min(p5.width, p5.height);
+      const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
 
-    let col = Math.floor(((p5.mouseX - xOffset) / boardWidth) * COLS);
+      let col = Math.floor(((p5.mouseX - xOffset) / boardWidth) * COLS);
 
-    if (!win && !checkTie(board)) {
-      if (isValidLocation(board, col)) {
-        // Place token in board
-        const row = getNextOpenRow(board, col);
-        board = dropPiece(board, row, col, p);
+      if (!win && !checkTie(board)) {
+        if (isValidLocation(board, col)) {
+          // Place token in board
+          const row = getNextOpenRow(board, col);
+          board = dropPiece(board, row, col, p);
 
-        // Check for a win
-        win = winningMove(board);
+          // Check for a win
+          win = winningMove(board);
 
-        // Change player
-        p = p > 1 ? 1 : 2;
-      }
+          // Change player
+          p = p > 1 ? 1 : 2;
+        }
 
-      // Computer move
-      if (p > 1) {
-        [col] = minimax(board, 4, -1 / 0, 1 / 0, true);
-        const row = getNextOpenRow(board, col);
-        board = dropPiece(board, row, col, p);
+        // Computer move
+        if (p > 1) {
+          [col] = minimax(board, 4, -1 / 0, 1 / 0, true);
+          const row = getNextOpenRow(board, col);
+          board = dropPiece(board, row, col, p);
 
-        // Check for a win
-        win = winningMove(board);
+          // Check for a win
+          win = winningMove(board);
 
-        // Change player
-        p = p > 1 ? 1 : 2;
+          // Change player
+          p = p > 1 ? 1 : 2;
+        }
       }
     }
   };
