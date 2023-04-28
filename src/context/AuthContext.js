@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   const history = useNavigate();
 
   const loginUser = async (username, password) => {
-    const response = await fetch("http://127.0.0.1:8000/api/token/", {
+    const response = await fetch("http://127.0.0.1:8000/accounts/token/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,14 +37,14 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
-      history.push("/");
+      history("/");
     } else {
       alert("Something went wrong!");
     }
   };
 
   const registerUser = async (username, password, password2) => {
-    const response = await fetch("http://127.0.0.1:8000/api/register/", {
+    const response = await fetch("http://127.0.0.1:8000/accounts/register/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
       }),
     });
     if (response.status === 201) {
-      history.push("/login");
+      history("/login");
     } else {
       alert("Something went wrong!");
     }
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
     setAuthTokens(null);
     setUser(null);
     localStorage.removeItem("authTokens");
-    history.push("/");
+    history("/");
   };
 
   const contextData = {

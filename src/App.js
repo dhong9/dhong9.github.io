@@ -29,6 +29,9 @@ import Presentation from "layouts/pages/presentation";
 // Material Kit 2 React routes
 import routes from "routes";
 
+// Authentication
+import { AuthProvider } from "context/AuthContext";
+
 export default function App() {
   const { pathname } = useLocation();
 
@@ -54,10 +57,12 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Routes>
-        {getRoutes(routes)}
-        <Route index element={<Presentation />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          {getRoutes(routes)}
+          <Route index element={<Presentation />} />
+        </Routes>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
