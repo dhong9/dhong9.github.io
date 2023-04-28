@@ -13,7 +13,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 // react-router-dom components
 import { Link } from "react-router-dom";
@@ -42,10 +42,14 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 // Material Kit 2 React page layout routes
 import routes from "routes";
 
+// Authentication
+import AuthContext from "context/AuthContext";
+
 // Images
 import bgImage from "assets/images/neons.png";
 
 function SignInBasic() {
+  const { loginUser } = useContext(AuthContext);
   const [rememberMe, setRememberMe] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -53,8 +57,7 @@ function SignInBasic() {
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username);
-    console.log(password);
+    username.length && loginUser(username, password);
   };
 
   return (

@@ -86,7 +86,7 @@ export default function DHComments({ comment, addComment }) {
   );
 }
 
-// Typechecking props of the MKAlert
+// Typechecking props of DHComments
 DHComments.propTypes = {
   comment: PropTypes.string,
   addComment: PropTypes.func,
