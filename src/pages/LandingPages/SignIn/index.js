@@ -47,8 +47,15 @@ import bgImage from "assets/images/neons.png";
 
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(username);
+    console.log(password);
+  };
 
   return (
     <>
@@ -120,10 +127,20 @@ function SignInBasic() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
-                    <MKInput type="email" label="Email" fullWidth />
+                    <MKInput
+                      type="text"
+                      label="Username"
+                      onChange={(e) => setUsername(e.target.value)}
+                      fullWidth
+                    />
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" label="Password" fullWidth />
+                    <MKInput
+                      type="password"
+                      label="Password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      fullWidth
+                    />
                   </MKBox>
                   <MKBox display="flex" alignItems="center" ml={-1}>
                     <Switch checked={rememberMe} onChange={handleSetRememberMe} />
@@ -138,7 +155,7 @@ function SignInBasic() {
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" fullWidth>
+                    <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
                       sign in
                     </MKButton>
                   </MKBox>
