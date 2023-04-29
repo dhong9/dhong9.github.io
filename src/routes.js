@@ -42,14 +42,6 @@ import Icon from "@mui/material/Icon";
 // @mui icons
 import GitHubIcon from "@mui/icons-material/GitHub";
 
-// Pages
-import AboutUs from "layouts/pages/landing-pages/about-us";
-import ContactUs from "layouts/pages/landing-pages/contact-us";
-import Author from "layouts/pages/landing-pages/author";
-import SignIn from "layouts/pages/authentication/sign-in";
-import SignUp from "layouts/pages/authentication/sign-up";
-import SignOut from "layouts/pages/authentication/sign-out";
-
 // Games
 import Connect4 from "projects/games/connect4";
 import Twenty48 from "projects/games/2048";
@@ -61,54 +53,6 @@ import BrainF from "projects/interpreters/brainF";
 import WhiteSpace from "projects/interpreters/whitespace";
 
 const routes = [
-  {
-    name: "pages",
-    icon: <Icon>dashboard</Icon>,
-    columns: 1,
-    rowsPerColumn: 2,
-    collapse: [
-      {
-        name: "landing pages",
-        collapse: [
-          {
-            name: "about us",
-            route: "/pages/landing-pages/about-us",
-            component: <AboutUs />,
-          },
-          {
-            name: "contact us",
-            route: "/pages/landing-pages/contact-us",
-            component: <ContactUs />,
-          },
-          {
-            name: "author",
-            route: "/pages/landing-pages/author",
-            component: <Author />,
-          },
-        ],
-      },
-      {
-        name: "account",
-        collapse: [
-          {
-            name: "sign in",
-            route: "/pages/authentication/sign-in",
-            component: <SignIn />,
-          },
-          {
-            name: "sign up",
-            route: "/pages/authentication/sign-up",
-            component: <SignUp />,
-          },
-          {
-            name: "sign out",
-            route: "/pages/authentication/sign-out",
-            component: <SignOut />,
-          },
-        ],
-      },
-    ],
-  },
   {
     name: "sections",
     icon: <Icon>view_day</Icon>,
