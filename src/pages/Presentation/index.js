@@ -39,16 +39,7 @@ import bgImage from "assets/images/Pacific_selfie_bubbles.jpg";
 function Presentation() {
   return (
     <>
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
-          label: "free download",
-          color: "info",
-        }}
-        sticky
-      />
+      <DefaultNavbar routes={routes} sticky />
       <MKBox
         minHeight="75vh"
         width="100%"
