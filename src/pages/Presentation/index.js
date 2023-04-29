@@ -34,6 +34,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import Counters from "pages/Presentation/sections/Counters";
 import DesignBlocks from "pages/Presentation/sections/DesignBlocks";
 import Pages from "pages/Presentation/sections/Pages";
+import ContactUs from "pages/LandingPages/ContactUs";
 
 // Routes
 import routes from "routes";
@@ -132,6 +133,7 @@ function Presentation() {
         <DesignBlocks />
         <Pages />
       </Card>
+      <ContactUs />
     </>
   );
 }
