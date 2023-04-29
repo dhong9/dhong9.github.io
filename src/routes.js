@@ -48,6 +48,7 @@ import ContactUs from "layouts/pages/landing-pages/contact-us";
 import Author from "layouts/pages/landing-pages/author";
 import SignIn from "layouts/pages/authentication/sign-in";
 import SignUp from "layouts/pages/authentication/sign-up";
+import SignOut from "layouts/pages/authentication/sign-out";
 
 // Games
 import Connect4 from "projects/games/connect4";
@@ -98,6 +99,11 @@ const routes = [
             name: "sign up",
             route: "/pages/authentication/sign-up",
             component: <SignUp />,
+          },
+          {
+            name: "sign out",
+            route: "/pages/authentication/sign-out",
+            component: <SignOut />,
           },
         ],
       },
