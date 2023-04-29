@@ -13,6 +13,11 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useContext } from "react";
+
+// @mui material icons
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -36,10 +41,21 @@ import routes from "routes";
 // Images
 import bgImage from "assets/images/Pacific_selfie_bubbles.jpg";
 
+// Authentication
+import AuthContext from "context/AuthContext";
+
 function Presentation() {
+  let { user } = useContext(AuthContext);
+
+  const accountObj = {
+    name: user ? user.username : "Guest",
+    icon: <AccountCircleIcon />,
+    href: "#",
+  };
+
   return (
     <>
-      <DefaultNavbar routes={routes} sticky />
+      <DefaultNavbar routes={[...routes, accountObj]} sticky />
       <MKBox
         minHeight="75vh"
         width="100%"
