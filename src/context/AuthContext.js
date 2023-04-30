@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   const history = useNavigate();
 
   const loginUser = async (username, password) => {
-    const response = await fetch("http://127.0.0.1:8000/accounts/token/", {
+    const response = await fetch("https://dhong9.pythonanywhere.com/accounts/token/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const registerUser = async (username, password, password2) => {
-    const response = await fetch("http://127.0.0.1:8000/accounts/register/", {
+    const response = await fetch("https://dhong9.pythonanywhere.com/accounts/register/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
