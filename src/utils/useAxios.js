@@ -1,18 +1,13 @@
-import axios from "axios";
 import jwt_decode from "jwt-decode";
 import dayjs from "dayjs";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
-
-const baseURL = "https://dhong9.pythonanywhere.com/accounts";
+import { createRequest, postRequest } from "services/baseService";
 
 const useAxios = () => {
   const { authTokens, setUser, setAuthTokens } = useContext(AuthContext);
 
-  const axiosInstance = axios.create({
-    baseURL,
-    headers: { Authorization: `Bearer ${authTokens?.access}` }
-  });
+  const axiosInstance = createRequest("accounts", { Authorization: `Bearer ${authTokens?.access}` });
 
   axiosInstance.interceptors.request.use(async req => {
     const user = jwt_decode(authTokens.access);
@@ -20,7 +15,7 @@ const useAxios = () => {
 
     if (!isExpired) return req;
 
-    const response = await axios.post(`${baseURL}/token/refresh/`, {
+    const response = await postRequest("token/request/", {
       refresh: authTokens.refresh
     });
 
