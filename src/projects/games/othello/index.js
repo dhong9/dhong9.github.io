@@ -119,7 +119,7 @@ function Othello() {
    * @param {number} opponentPiece the piece opposite to what's being played
    */
   const flipPieces = (board, r, c, deltaRow, deltaCol, myPiece, opponentPiece) => {
-    if (inBounds(board, r, c) && board[r][c] === opponentPiece) {
+    if (inBounds(r, c) && board[r][c] === opponentPiece) {
       const bCopy = copyBoard(board);
       bCopy[r][c] = myPiece;
       return flipPieces(
@@ -150,8 +150,8 @@ function Othello() {
     let row = r;
     let col = c;
 
-    if (inBounds(board, row, col) && board[row][col] === opponentPiece) {
-      while (inBounds(board, row + deltaRow, col + deltaCol)) {
+    if (inBounds(row, col) && board[row][col] === opponentPiece) {
+      while (inBounds(row + deltaRow, col + deltaCol)) {
         row += deltaRow;
         col += deltaCol;
         if (!board[row][col]) {
@@ -178,7 +178,7 @@ function Othello() {
    */
   const validMove = (board, r, c, piece) => {
     // Check that the coordinates are empty
-    if (!inBounds(board, r, c) || board[r][c]) {
+    if (!inBounds(r, c) || board[r][c]) {
       return false;
     }
 
