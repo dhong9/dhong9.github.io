@@ -238,8 +238,8 @@ function Othello() {
       const [deltaRow, deltaCol] = directions[i];
       // If pieces can be flipped in that direction,
       // then flip all valid pieces
-      if (checkFlip(board, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent)) {
-        bCopy = flipPieces(board, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent);
+      if (checkFlip(bCopy, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent)) {
+        bCopy = flipPieces(bCopy, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent);
       }
     }
 
@@ -340,8 +340,8 @@ function Othello() {
     // Try out every move
     for (let i = 0; i < moves.length; i += 1) {
       const [moveRow, moveCol] = moves[i];
-      const tempBoard = copyBoard(board);
-      makeMove(tempBoard, moveRow, moveCol, whoseTurn);
+      let tempBoard = copyBoard(board);
+      tempBoard = makeMove(tempBoard, moveRow, moveCol, whoseTurn);
       // Recursive call, initial search ply = 1
       const val = minimaxValue(tempBoard, whoseTurn, opponent, 1);
       // Remember best move
@@ -356,7 +356,7 @@ function Othello() {
   };
 
   // Initialize game board
-  const board = createBoard();
+  let board = createBoard();
   let moves = getMoveList(board, curPlayer);
 
   const setup = (p5, canvasParentRef) => {
@@ -417,26 +417,28 @@ function Othello() {
 
   // Define events
   const mouseClicked = (p5) => {
-    // Global game variables
-    const boardWidth = Math.min(p5.width, p5.height);
-    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
-    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
+    if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+      // Global game variables
+      const boardWidth = Math.min(p5.width, p5.height);
+      const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+      const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
 
-    const c = Math.floor(((p5.mouseX - xOffset) / boardWidth) * N);
-    const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
-    if (validMove(board, r, c, curPlayer)) {
-      makeMove(board, r, c, curPlayer);
-      if (curPlayer === 1) {
-        curPlayer = 2;
-        const computerMove = minimaxDecision(board, curPlayer);
-        if (computerMove[0] !== -1) {
-          makeMove(board, computerMove[0], computerMove[1], curPlayer);
+      const c = Math.floor(((p5.mouseX - xOffset) / boardWidth) * N);
+      const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
+      if (validMove(board, r, c, curPlayer)) {
+        board = makeMove(board, r, c, curPlayer);
+        if (curPlayer === 1) {
+          curPlayer = 2;
+          const computerMove = minimaxDecision(board, curPlayer);
+          if (computerMove[0] !== -1) {
+            board = makeMove(board, computerMove[0], computerMove[1], curPlayer);
+            curPlayer = 1;
+          }
+        } else {
           curPlayer = 1;
         }
-      } else {
-        curPlayer = 1;
+        moves = getMoveList(board, curPlayer);
       }
-      moves = getMoveList(board, curPlayer);
     }
   };
 
