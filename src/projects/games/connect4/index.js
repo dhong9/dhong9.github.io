@@ -58,10 +58,6 @@ function Connect4() {
     setRootComment("");
   };
 
-  // Drawing variables
-  let bg;
-  let w;
-
   // Game variables
   let p = 1;
   let win = 0;
@@ -157,6 +153,8 @@ function Connect4() {
    */
   const drawBoard = (p5, board, boardWidth, xOffset, yOffset) => {
     // Board background
+    const bg = p5.color(135, 206, 235);
+    const w = Math.min(p5.width, p5.height) / 7;
     p5.noStroke();
     p5.fill(bg);
     p5.rect(xOffset, yOffset, boardWidth);
@@ -440,10 +438,6 @@ function Connect4() {
     // Canvas dimension is based on div's size
     const connect4 = document.querySelector(".codeOutput");
     p5.createCanvas(connect4.clientWidth, connect4.clientHeight).parent(canvasParentRef);
-
-    // Use p5 object to define variables dependent on them
-    bg = p5.color(135, 206, 235);
-    w = Math.min(p5.width, p5.height) / 7;
   };
 
   const draw = (p5) => {
@@ -451,6 +445,7 @@ function Connect4() {
     const boardWidth = Math.min(p5.width, p5.height);
     const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
     const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
+    const w = Math.min(p5.width, p5.height) / 7;
 
     p5.background(0);
 
