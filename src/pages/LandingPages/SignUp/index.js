@@ -14,7 +14,7 @@ Coded by www.creative-tim.com
 */
 
 // react-router-dom components
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 // @mui material components
@@ -40,10 +40,14 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 // Material Kit 2 React page layout routes
 import routes from "routes";
 
+// Authentication
+import AuthContext from "context/AuthContext";
+
 // Images
 import bgImage from "assets/images/neons.png";
 
 function SignUpBasic() {
+  const { registerUser } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -51,10 +55,7 @@ function SignUpBasic() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username);
-    console.log(email);
-    console.log(password);
-    console.log(password2);
+    username.length && registerUser(email, username, password, password2);
   };
 
   return (

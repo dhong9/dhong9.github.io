@@ -36,8 +36,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const registerUser = async (username, password, password2) => {
+  const registerUser = async (email, username, password, password2) => {
     const response = await postRequest("/accounts/register/", {
+      email,
       username,
       password,
       password2,
