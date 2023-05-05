@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   const history = useNavigate();
 
   const loginUser = async (username, password) => {
-    const response = await postRequest("accounts/token/", { username, password }).response;
+    const response = await postRequest("accounts/token/", { username, password });
 
     const data = await response.json();
 
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
       username,
       password,
       password2,
-    }).response;
+    });
 
     if (response.status === 201) {
       history("/login");
