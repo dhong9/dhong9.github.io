@@ -57,11 +57,6 @@ function Twenty48() {
     setRootComment("");
   };
 
-  // Drawing variables
-  let tileMap;
-  let padding;
-  let tileWidth;
-
   /**
    * Spawns a tile (2 or 4) on a random empty
    * tile of the board
@@ -181,9 +176,14 @@ function Twenty48() {
     // Canvas dimension is based on div's size
     const twenty48 = document.querySelector(".codeOutput");
     p5.createCanvas(twenty48.clientWidth, twenty48.clientHeight).parent(canvasParentRef);
+  };
 
-    // Use p5 object to define variables dependent on them
-    tileMap = {
+  const draw = (p5) => {
+    // Global game variables
+    const boardWidth = Math.min(p5.width, p5.height);
+    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
+    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
+    const tileMap = {
       0: p5.color(204, 195, 180),
       2: p5.color(238, 228, 218),
       4: p5.color(235, 221, 193),
@@ -197,19 +197,11 @@ function Twenty48() {
       1024: p5.color(238, 199, 68),
       2048: p5.color(234, 194, 52),
     };
-
-    padding = p5.width / 40;
-    tileWidth = (Math.min(p5.width, p5.height) - 5 * padding) / 4;
+    const padding = p5.width / 40;
+    const tileWidth = (Math.min(p5.width, p5.height) - 5 * padding) / 4;
 
     p5.textAlign(p5.CENTER, p5.CENTER);
     p5.textStyle(p5.BOLD);
-  };
-
-  const draw = (p5) => {
-    // Global game variables
-    const boardWidth = Math.min(p5.width, p5.height);
-    const xOffset = p5.width > p5.height ? (p5.width - p5.height) / 2 : 0;
-    const yOffset = p5.height > p5.width ? (p5.height - p5.width) / 2 : 0;
 
     p5.background(0);
 
