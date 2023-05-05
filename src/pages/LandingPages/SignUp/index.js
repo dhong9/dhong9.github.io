@@ -14,6 +14,7 @@ Coded by www.creative-tim.com
 */
 
 // react-router-dom components
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // @mui material components
@@ -43,6 +44,19 @@ import routes from "routes";
 import bgImage from "assets/images/neons.png";
 
 function SignUpBasic() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(username);
+    console.log(email);
+    console.log(password);
+    console.log(password2);
+  };
+
   return (
     <>
       <DefaultNavbar
@@ -113,16 +127,39 @@ function SignUpBasic() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
-                    <MKInput type="email" label="Email" fullWidth />
+                    <MKInput
+                      type="text"
+                      label="Username"
+                      onChange={(e) => setUsername(e.target.value)}
+                      fullWidth
+                    />
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" label="Password" fullWidth />
+                    <MKInput
+                      type="email"
+                      label="Email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      fullWidth
+                    />
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" label="Confirm Password" fullWidth />
+                    <MKInput
+                      type="password"
+                      label="Password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      fullWidth
+                    />
+                  </MKBox>
+                  <MKBox mb={2}>
+                    <MKInput
+                      type="password"
+                      label="Confirm Password"
+                      onChange={(e) => setPassword2(e.target.value)}
+                      fullWidth
+                    />
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" fullWidth>
+                    <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
                       sign up
                     </MKButton>
                   </MKBox>
