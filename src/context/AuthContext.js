@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   const history = useNavigate();
 
   const loginUser = async (username, password) => {
-    const response = await postRequest("accounts/token/", { username, password });
+    const response = await postRequest("accounts/token/", { username, password }).response;
 
     const data = await response.json();
 
@@ -37,17 +37,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const registerUser = async (username, password, password2) => {
-    const response = await fetch("https://dhong9.pythonanywhere.com/accounts/register/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-        password2,
-      }),
-    });
+    const response = await postRequest("/accounts/register/", {
+      username,
+      password,
+      password2,
+    }).response;
+
     if (response.status === 201) {
       history("/login");
     } else {
