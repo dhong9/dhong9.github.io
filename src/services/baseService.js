@@ -14,6 +14,7 @@ export const postRequest = async (endpoint, payload) => {
   try {
     const response = await axios.post(baseURL + endpoint, payload);
     console.log(response);
+    return response;
   } catch (error) {
     console.error(error);
   }

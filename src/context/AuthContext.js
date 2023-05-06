@@ -22,11 +22,12 @@ export const AuthProvider = ({ children }) => {
   const history = useNavigate();
 
   const loginUser = async (username, password) => {
-    const response = await postRequest("accounts/token/", { username, password }).data;
+    const response = await postRequest("accounts/token/", { username, password });
 
     if (response.status === 200) {
+      const data = response.data;
       setAuthTokens(data);
-      setUser(jwt_decode(data.access));
+      setUser(jwt_decode(response.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
       history("/");
     } else {
@@ -40,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       username,
       password,
       password2,
-    }).data;
+    });
 
     if (response.status === 201) {
       history("/login");
