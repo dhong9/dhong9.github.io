@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
     });
 
     if (response.status === 201) {
-      history("/login");
+      history("/pages/authentication/sign-in");
     } else {
       alert("Something went wrong!");
     }
