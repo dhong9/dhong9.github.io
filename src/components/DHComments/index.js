@@ -28,7 +28,7 @@ export default function DHComments({ comment, addComment, pageName }) {
       name: "santaClaus",
       email: "danielhong24@yahoo.com",
       body: childComment,
-    });
+    }).then(console.log);
 
     // addComment(id, childComment);
     // setChildComment("");
