@@ -563,7 +563,7 @@ function Connect4() {
         }}
       >
         {enhancedComments.map((comment) => (
-          <DHComments key={0} comment={comment} addComment={addComment} />
+          <DHComments key={0} comment={comment} addComment={addComment} pageName="connect4" />
         ))}
       </div>
     </BaseLayout>

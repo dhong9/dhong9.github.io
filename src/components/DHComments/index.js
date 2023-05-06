@@ -12,14 +12,24 @@ import { useState } from "react";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
+import { postRequest } from "services/baseService";
+
 // https://dev.to/vigneshiyergithub/building-a-nested-comment-example-like-reddit-1o92
 
-export default function DHComments({ comment, addComment }) {
+export default function DHComments({ comment, addComment, pageName }) {
   const { commentText, childCommments, id } = comment;
   const [childComment, setChildComment] = useState("");
   const [show, setShow] = useState(true);
   const [showAddComponet, setShowAddComponet] = useState(false);
-  const onAdd = () => {
+  const onAdd = (e) => {
+    e.preventDefault();
+    postRequest("comments", {
+      pageName,
+      name: "santaClaus",
+      email: "danielhong24@yahoo.com",
+      body: commentText,
+    });
+
     addComment(id, childComment);
     setChildComment("");
     setShowAddComponet(false);
@@ -53,7 +63,6 @@ export default function DHComments({ comment, addComment }) {
             <>
               <MKInput
                 variant="standard"
-                label="What can we help you?"
                 placeholder="Add a comment"
                 InputLabelProps={{ shrink: true }}
                 multiline
@@ -90,9 +99,11 @@ export default function DHComments({ comment, addComment }) {
 DHComments.propTypes = {
   comment: PropTypes.string,
   addComment: PropTypes.func,
+  pageName: PropTypes.string,
 };
 
 DHComments.defaultProps = {
   comment: "",
   addComment: null,
+  pageName: "",
 };
