@@ -21,14 +21,18 @@ export default function DHComments({ comment, addComment, pageName }) {
   const [childComment, setChildComment] = useState("");
   const [show, setShow] = useState(true);
   const [showAddComponet, setShowAddComponet] = useState(false);
-  const onAdd = (e) => {
+  const onAdd = async (e) => {
     e.preventDefault();
-    postRequest("comments", {
+    const response = postRequest("comments", {
       pageName,
       name: "santaClaus",
       email: "danielhong24@yahoo.com",
       body: childComment,
-    }).then(console.log);
+    });
+
+    if (response.status === 200) {
+      console.log("success");
+    }
 
     // addComment(id, childComment);
     // setChildComment("");
