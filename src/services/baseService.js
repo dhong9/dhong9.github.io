@@ -10,9 +10,12 @@ export const createRequest = (endpoint, payload) =>
     headers: payload,
   });
 
-export const postRequest = (endpoint, payload, success, error) => {
-  axios
-    .post(baseURL + endpoint, payload)
-    .then(success)
-    .error(error);
+export const postRequest = async (endpoint, payload) => {
+  try {
+    const response = await axios.post(baseURL + endpoint, payload);
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
 };

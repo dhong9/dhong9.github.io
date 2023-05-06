@@ -17,27 +17,22 @@ import { postRequest } from "services/baseService";
 // https://dev.to/vigneshiyergithub/building-a-nested-comment-example-like-reddit-1o92
 
 export default function DHComments({ comment, addComment, pageName }) {
-  const { commentText, childCommments } = comment;
+  const { commentText, childCommments, id } = comment;
   const [childComment, setChildComment] = useState("");
   const [show, setShow] = useState(true);
   const [showAddComponet, setShowAddComponet] = useState(false);
   const onAdd = (e) => {
     e.preventDefault();
-    postRequest(
-      "comments",
-      {
-        pageName,
-        name: "santaClaus",
-        email: "danielhong24@yahoo.com",
-        body: childComment,
-      },
-      console.log,
-      console.error
-    );
+    postRequest("comments", {
+      pageName,
+      name: "santaClaus",
+      email: "danielhong24@yahoo.com",
+      body: childComment,
+    });
 
-    // addComment(id, childComment);
-    // setChildComment("");
-    // setShowAddComponet(false);
+    addComment(id, childComment);
+    setChildComment("");
+    setShowAddComponet(false);
   };
 
   return (
