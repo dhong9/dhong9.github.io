@@ -30,6 +30,7 @@ function BrainF() {
   const [visualize, setVisualize] = useState(false);
   const [codeOutput, setCodeOutput] = useState("");
   const [codeSrc, setCodeSrc] = useState("// some comment");
+  const [cells, setCells] = useState({});
 
   const handleChange = (event) => {
     setVisualize(event.target.checked);
@@ -39,8 +40,6 @@ function BrainF() {
     setCodeOutput(brainF(codeSrc));
   };
 
-  const cells = {};
-
   /**
    * Processes BrainF code and returns its output
    * @param {String} src source code
@@ -48,9 +47,7 @@ function BrainF() {
    */
   const brainF = (src) => {
     // Clear all cells
-    for (const cell in cells) {
-      delete cells[cell];
-    }
+    setCells({});
 
     let i = 0; // Current cell
     let res = "";
@@ -110,6 +107,8 @@ function BrainF() {
       }
     }
 
+    setCells(cells);
+
     return res;
   };
 
@@ -125,19 +124,21 @@ function BrainF() {
         {visualize && (
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
+              <TableHead sx={{ display: "table-header-group" }}>
                 <TableRow>
                   <TableCell>Cell Number</TableCell>
-                  <TableCell align="right">Value</TableCell>
+                  <TableCell align="left">Value</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow>
-                  <TableCell component="th" scope="row">
-                    0
-                  </TableCell>
-                  <TableCell align="right">72</TableCell>
-                </TableRow>
+                {Object.keys(cells).map((v) => (
+                  <TableRow key={v} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                    <TableCell component="th" scope="row">
+                      {v}
+                    </TableCell>
+                    <TableCell align="left">{cells[v]}</TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>
