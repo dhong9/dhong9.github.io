@@ -116,24 +116,26 @@ function BrainF() {
       ]}
     >
       <View title="Header 1" code={brainFCode} height="40rem">
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Cell Number</TableCell>
-                <TableCell align="right">Value</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell component="th" scope="row">
-                  0
-                </TableCell>
-                <TableCell align="right">72</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+        {visualize && (
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Cell Number</TableCell>
+                  <TableCell align="right">Value</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell component="th" scope="row">
+                    0
+                  </TableCell>
+                  <TableCell align="right">72</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
         <Interpreter codeUpdate={setCodeSrc} language="brainF" />
       </View>
 
