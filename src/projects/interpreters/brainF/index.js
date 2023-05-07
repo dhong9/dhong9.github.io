@@ -39,15 +39,21 @@ function BrainF() {
     setCodeOutput(brainF(codeSrc));
   };
 
+  const cells = {};
+
   /**
    * Processes BrainF code and returns its output
    * @param {String} src source code
    * @returns aggregate of all char prints
    */
   const brainF = (src) => {
+    // Clear all cells
+    for (const cell in cells) {
+      delete cells[cell];
+    }
+
     let i = 0; // Current cell
     let res = "";
-    const cells = {};
 
     // Operator functions
     const moveRight = (c) => {
