@@ -27,6 +27,9 @@ import MKTypography from "components/MKTypography";
 // Image
 import bgImage from "assets/images/illustrations/illustration-reset.jpg";
 
+// Service
+import { addContact } from "services/emailService";
+
 function ContactUs() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,7 +39,7 @@ function ContactUs() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    console.log({
+    addContact({
       fullName,
       email,
       subject,
