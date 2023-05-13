@@ -69,6 +69,7 @@ function Presentation() {
       setContactMessage(contactResponse.message);
     } else {
       setContactSeverity("success");
+      setContactMessage("Message successfully sent!");
     }
     setSnackbarOpen(true);
   };
