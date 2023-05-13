@@ -13,6 +13,8 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useState } from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -26,6 +28,22 @@ import MKTypography from "components/MKTypography";
 import bgImage from "assets/images/illustrations/illustration-reset.jpg";
 
 function ContactUs() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [query, setQuery] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    console.log({
+      fullName,
+      email,
+      subject,
+      query,
+    });
+  };
+
   return (
     <>
       <Grid container spacing={3} alignItems="center">
@@ -85,6 +103,7 @@ function ContactUs() {
                     <MKInput
                       variant="standard"
                       label="Full Name"
+                      onChange={(e) => setFullName(e.target.value)}
                       InputLabelProps={{ shrink: true }}
                       fullWidth
                     />
@@ -94,6 +113,16 @@ function ContactUs() {
                       type="email"
                       variant="standard"
                       label="Email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      InputLabelProps={{ shrink: true }}
+                      fullWidth
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <MKInput
+                      variant="standard"
+                      label="Subject"
+                      onChange={(e) => setSubject(e.target.value)}
                       InputLabelProps={{ shrink: true }}
                       fullWidth
                     />
@@ -103,6 +132,7 @@ function ContactUs() {
                       variant="standard"
                       label="What can we help you?"
                       placeholder="Describe your problem in at least 250 characters"
+                      onChange={(e) => setQuery(e.target.value)}
                       InputLabelProps={{ shrink: true }}
                       multiline
                       fullWidth
@@ -111,7 +141,7 @@ function ContactUs() {
                   </Grid>
                 </Grid>
                 <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
-                  <MKButton type="submit" variant="gradient" color="info">
+                  <MKButton type="submit" variant="gradient" color="info" onClick={sendEmail}>
                     Send Message
                   </MKButton>
                 </Grid>
