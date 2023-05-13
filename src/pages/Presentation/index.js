@@ -54,6 +54,8 @@ import AuthContext from "context/AuthContext";
 function Presentation() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [contactResponse, setContactResponse] = useState(null);
+  const [contactSeverity, setContactSeverity] = useState("info");
+  const [contactMessage, setContactMessage] = useState("");
 
   const handleSnackbarClose = (event, reason) => {
     if (reason !== "clickaway") {
@@ -62,8 +64,13 @@ function Presentation() {
   };
 
   const handleContactResponse = () => {
+    if (contactResponse.name === "AxiosError") {
+      setContactSeverity("error");
+      setContactMessage(contactResponse.message);
+    } else {
+      setContactSeverity("success");
+    }
     setSnackbarOpen(true);
-    console.log(contactResponse);
   };
 
   let { user } = useContext(AuthContext);
@@ -100,8 +107,8 @@ function Presentation() {
       <DHSnackbar
         open={snackbarOpen}
         onClose={handleSnackbarClose}
-        severity="success"
-        message="Snackbar has opened!"
+        severity={contactSeverity}
+        message={contactMessage}
       />
       <MKBox
         minHeight="75vh"
