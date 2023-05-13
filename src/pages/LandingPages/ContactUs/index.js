@@ -39,12 +39,21 @@ function ContactUs() {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // Send email
     addContact({
       fullName,
       email,
       subject,
       query,
     });
+
+    // Display snackbar based on response status
+
+    // Clear email fields
+    setFullName("");
+    setEmail("");
+    setSubject("");
+    setQuery("");
   };
 
   return (
