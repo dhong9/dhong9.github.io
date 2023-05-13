@@ -13,7 +13,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 // @mui material icons
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -29,6 +29,9 @@ import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
 
 // Presentation page sections
 import Counters from "pages/Presentation/sections/Counters";
@@ -49,6 +52,18 @@ import SignOut from "layouts/pages/authentication/sign-out";
 import AuthContext from "context/AuthContext";
 
 function Presentation() {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
+  };
+
+  const handleContactResponse = () => {
+    setSnackbarOpen(true);
+  };
+
   let { user } = useContext(AuthContext);
 
   const signedOutOptions = [
@@ -80,6 +95,12 @@ function Presentation() {
   return (
     <>
       <DefaultNavbar routes={[...routes, accountObj]} sticky />
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity="success"
+        message="Snackbar has opened!"
+      />
       <MKBox
         minHeight="75vh"
         width="100%"
@@ -133,7 +154,7 @@ function Presentation() {
         <DesignBlocks />
         <Pages />
       </Card>
-      <ContactUs />
+      <ContactUs handleContactResponse={handleContactResponse} />
     </>
   );
 }

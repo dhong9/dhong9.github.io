@@ -30,7 +30,10 @@ import bgImage from "assets/images/illustrations/illustration-reset.jpg";
 // Service
 import { addContact } from "services/emailService";
 
-function ContactUs() {
+// prop-types is a library for typechecking of props
+import PropTypes from "prop-types";
+
+function ContactUs({ handleContactResponse }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -47,7 +50,7 @@ function ContactUs() {
       query,
     });
 
-    // Display snackbar based on response status
+    handleContactResponse();
 
     // Clear email fields
     setFullName("");
@@ -167,3 +170,12 @@ function ContactUs() {
 }
 
 export default ContactUs;
+
+// Typechecking props of DHSnackbar
+ContactUs.propTypes = {
+  handleContactResponse: PropTypes.func,
+};
+
+ContactUs.defaultProps = {
+  handleContactResponse: null,
+};
