@@ -17,5 +17,6 @@ export const postRequest = async (endpoint, payload) => {
     return response;
   } catch (error) {
     console.error(error);
+    return error;
   }
 };
