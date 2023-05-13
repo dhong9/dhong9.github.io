@@ -53,6 +53,7 @@ import AuthContext from "context/AuthContext";
 
 function Presentation() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [contactResponse, setContactResponse] = useState(null);
 
   const handleSnackbarClose = (event, reason) => {
     if (reason !== "clickaway") {
@@ -62,6 +63,7 @@ function Presentation() {
 
   const handleContactResponse = () => {
     setSnackbarOpen(true);
+    console.log(contactResponse);
   };
 
   let { user } = useContext(AuthContext);
@@ -154,7 +156,10 @@ function Presentation() {
         <DesignBlocks />
         <Pages />
       </Card>
-      <ContactUs handleContactResponse={handleContactResponse} />
+      <ContactUs
+        handleContactResponse={handleContactResponse}
+        setContactResponse={setContactResponse}
+      />
     </>
   );
 }
