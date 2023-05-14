@@ -10,6 +10,9 @@ export const createRequest = (endpoint, payload) =>
     headers: payload,
   });
 
+export const getRequest = (endpoint, success, error) =>
+  axios.get(endpoint).then(success).error(error);
+
 export const postRequest = async (endpoint, payload) => {
   try {
     const response = await axios.post(baseURL + endpoint, payload);

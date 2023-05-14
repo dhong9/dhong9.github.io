@@ -7,12 +7,13 @@ import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 // import MKTypography from "components/MKTypography";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
 import { postRequest } from "services/baseService";
+import { getComments } from "services/commentsService";
 
 // https://dev.to/vigneshiyergithub/building-a-nested-comment-example-like-reddit-1o92
 
@@ -21,6 +22,13 @@ export default function DHComments({ comment, addComment, pageName }) {
   const [childComment, setChildComment] = useState("");
   const [show, setShow] = useState(true);
   const [showAddComponet, setShowAddComponet] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    getComments(setComments);
+    console.log("Comments: ", comments);
+  }, []);
+
   const onAdd = (e) => {
     e.preventDefault();
     postRequest("comments", {
@@ -87,10 +95,6 @@ export default function DHComments({ comment, addComment, pageName }) {
           )}
         </div>
       </div>
-      {show &&
-        childCommments.map((childCommentEl) => (
-          <DHComments key={0} comment={childCommentEl} addComment={addComment} />
-        ))}
     </div>
   );
 }
