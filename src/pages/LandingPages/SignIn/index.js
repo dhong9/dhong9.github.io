@@ -39,6 +39,9 @@ import MKButton from "components/MKButton";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
 
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
+
 // Material Kit 2 React page layout routes
 import routes from "routes";
 
@@ -53,11 +56,30 @@ function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [loginSeverity, setLoginSeverity] = useState("info");
+  const [loginMessage, setLoginMessage] = useState("");
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    username.length && loginUser(username, password);
+    if (username) {
+      const loginResponse = await loginUser(username, password);
+      if (loginResponse.name === "AxiosError") {
+        setLoginSeverity("error");
+        setLoginMessage(loginResponse.message);
+      } else {
+        setLoginSeverity("success");
+        setLoginMessage("Successfully logged in!");
+      }
+      setSnackbarOpen(true);
+    }
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
   };
 
   return (
@@ -72,6 +94,12 @@ function SignInBasic() {
         }}
         transparent
         light
+      />
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity={loginSeverity}
+        message={loginMessage}
       />
       <MKBox
         position="absolute"

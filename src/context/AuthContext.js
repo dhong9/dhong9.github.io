@@ -30,9 +30,9 @@ export const AuthProvider = ({ children }) => {
       setUser(jwt_decode(response.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
       history("/");
-    } else {
-      alert("Something went wrong!");
     }
+
+    return response;
   };
 
   const registerUser = async (email, username, password, password2) => {
