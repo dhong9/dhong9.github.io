@@ -27,7 +27,7 @@ export default function DHComments({ comment, addComment, pageName }) {
   useEffect(() => {
     getComments(setComments);
     console.log("Comments: ", comments);
-  }, []);
+  }, [comments]);
 
   const onAdd = (e) => {
     e.preventDefault();
