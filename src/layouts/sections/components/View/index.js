@@ -23,7 +23,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 // react-syntax-highlighter components
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { prism } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
