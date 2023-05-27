@@ -14,15 +14,12 @@ import Sketch from "react-p5";
 // React
 import React, { useState } from "react";
 
-// UUID4, temporary lib
-import { uuid } from "uuidv4";
-
 // Picture shuffle board utilities
 import meadow from "assets/images/meadow.png";
 import Board from "./utils/Board";
 
 const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
-  id: uuid(),
+  id: 0,
   commentText: commentValue,
   childCommments: [],
   isRootNode,
