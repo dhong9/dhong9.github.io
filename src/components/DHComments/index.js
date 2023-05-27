@@ -1,3 +1,5 @@
+import React from "react";
+
 // // @mui material components
 // import Grid from "@mui/material/Grid";
 
@@ -54,7 +56,7 @@ export default function DHComments({ comment, addComment, pageName }) {
       >
         <div style={{ textAlign: "left" }}>{commentText}</div>
         &nbsp;
-        {childCommments.length > 0 && (
+        {childCommments && childCommments.length > 0 && (
           <MKButton
             onClick={() => setShow((prevShow) => !prevShow)}
             type="submit"
