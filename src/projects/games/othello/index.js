@@ -14,7 +14,7 @@ import Sketch from "react-p5";
 import React, { useState } from "react";
 
 const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
-  id: uuid(),
+  id: 0,
   commentText: commentValue,
   childCommments: [],
   isRootNode,

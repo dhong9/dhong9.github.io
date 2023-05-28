@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<div
+  className="Comment"
+>
+  <div
+    style={
+      {
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <div
+      style={
+        {
+          "textAlign": "left",
+        }
+      }
+    />
+     
+  </div>
+  <div>
+    <div>
+      <button>
+        Mock Button
+      </button>
+    </div>
+  </div>
+</div>
+`;
