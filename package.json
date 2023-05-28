@@ -48,7 +48,7 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "jest -u",
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
     "prettify": "prettier --write ."
