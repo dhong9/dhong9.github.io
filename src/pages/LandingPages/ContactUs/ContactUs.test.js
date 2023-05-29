@@ -1,6 +1,5 @@
 import renderer from "react-test-renderer";
 import ContactUs from "pages/LandingPages/ContactUs";
-import { addContact } from "services/emailService";
 
 // Mocks
 jest.mock("components/MKBox", () => {
