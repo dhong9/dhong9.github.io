@@ -1,5 +1,6 @@
 import renderer from "react-test-renderer";
 import ContactUs from "pages/LandingPages/ContactUs";
+import { addContact } from "services/emailService";
 
 // Mocks
 jest.mock("components/MKBox", () => {
@@ -14,4 +15,9 @@ it("renders", () => {
     const component = renderer.create(<ContactUs />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+});
+
+it ("sends email", () => {
+    const component = renderer.create(<ContactUs />);
+    component.root.findByType("button").props.onClick();
 });
