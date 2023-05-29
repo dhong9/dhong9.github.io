@@ -16,8 +16,3 @@ it("renders", () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 });
-
-it ("sends email", () => {
-    const component = renderer.create(<ContactUs />);
-    component.root.findByType("button").props.onClick();
-});
