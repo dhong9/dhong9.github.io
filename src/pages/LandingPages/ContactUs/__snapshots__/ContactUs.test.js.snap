@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders 1`] = `
+exports[`ContactUs renders 1`] = `
 <div
   className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 css-18ksmt-MuiGrid-root"
 >
