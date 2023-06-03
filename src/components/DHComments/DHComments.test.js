@@ -1,3 +1,4 @@
+import React from "react";
 import renderer from "react-test-renderer";
 import DHComments from "components/DHComments";
 
@@ -10,8 +11,23 @@ jest.mock("components/MKButton", () => {
     };
 });
 
-it("renders", () => {
-    const component = renderer.create(<DHComments />);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-});
+describe("DHComments", () => {
+    let useEffect;
+
+    const mockUseEffect = () => {
+        useEffect.mockImplementationOnce(f => f());
+    };
+
+    beforeEach(() => {
+        useEffect = jest.spyOn(React, "useEffect");
+        mockUseEffect();
+    });
+
+    it("renders", () => {
+        const component = renderer.create(<DHComments />);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+
+})
