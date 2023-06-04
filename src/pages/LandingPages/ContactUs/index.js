@@ -39,7 +39,7 @@ function ContactUs({ handleContactResponse }) {
   const [subject, setSubject] = useState("");
   const [query, setQuery] = useState("");
 
-  const sendEmail = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
 
     // Send email
