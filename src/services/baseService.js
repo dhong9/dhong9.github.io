@@ -20,4 +20,4 @@ export const postRequest = (endpoint, payload, success, error) =>
   axios
     .post(baseURL + endpoint, payload)
     .then(success)
-    .error(error);
+    .catch(error);
