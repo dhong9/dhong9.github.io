@@ -5,9 +5,14 @@ export const getContacts = (success) => {
 };
 
 export const addContact = async (full_name, email, subject, query_txt, success) =>
-  postRequest("contacts", {
-    full_name,
-    email,
-    subject,
-    query_txt,
-  }, success, console.error);
+  postRequest(
+    "contacts",
+    {
+      full_name,
+      email,
+      subject,
+      query_txt,
+    },
+    success,
+    console.error
+  );
