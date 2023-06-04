@@ -43,13 +43,15 @@ function ContactUs({ handleContactResponse }) {
     e.preventDefault();
 
     // Send email
-    addContact(fullName, email, subject, query, handleContactResponse);
+    addContact(fullName, email, subject, query, (response) => {
+      handleContactResponse(response);
 
-    // Clear email fields
-    setFullName("");
-    setEmail("");
-    setSubject("");
-    setQuery("");
+      // Clear email fields
+      setFullName("");
+      setEmail("");
+      setSubject("");
+      setQuery("");
+    });
   };
 
   return (
