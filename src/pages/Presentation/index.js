@@ -63,7 +63,6 @@ function Presentation() {
   };
 
   const handleContactResponse = (contactResponse) => {
-    console.log(contactResponse);
     if (contactResponse.name === "AxiosError") {
       setContactSeverity("error");
       setContactMessage(contactResponse.message);
