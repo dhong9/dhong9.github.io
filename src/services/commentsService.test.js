@@ -28,5 +28,5 @@ describe("CommentsService", () => {
 
         // Verify that getRequest was called correctly
         expect(getRequest).toHaveBeenCalledWith('comments', success, console.error);
-    })
+    });
 });
