@@ -1,14 +1,14 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { getRequest } from "services/baseService";
-import { getComments } from "services/commentsService";
+import { getContacts } from "services/emailService";
 
 const mock = new MockAdapter(axios);
 
-const commmentData = {
-    comments: [
-        {id: 1, text: "Comment 1"},
-        {id: 2, text: "Comment 2"}
+const contactsData = {
+    contacts: [
+        {id: 1, full_name: "Johnny Appleseed"},
+        {id: 2, full_name: "Water Melon"}
     ]
 };
 
@@ -16,17 +16,17 @@ jest.mock("services/baseService", () => ({
     getRequest: jest.fn()
 }));
 
-mock.onGet("/comments").reply(200, commmentData);
+mock.onGet("/contacts").reply(200, contactsData);
 
-describe("CommentsService", () => {
-    it("gets comments", () => {
+describe("EmailService", () => {
+    it("gets contacts", () => {
         // Create success and error spy functions
         const success = jest.fn();
 
         // Get comments
-        getComments(success);
+        getContacts(success);
 
         // Verify that getRequest was called correctly
-        expect(getRequest).toHaveBeenCalledWith('comments', success, console.error);
+        expect(getRequest).toHaveBeenCalledWith('contacts', success, console.error);
     })
 });
