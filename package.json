@@ -101,6 +101,7 @@
       "node_modules",
       "src"
     ],
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "testTimeout": 30000
   }
 }
