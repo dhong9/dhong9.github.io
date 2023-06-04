@@ -16,7 +16,7 @@ jest.mock("services/baseService", () => ({
 }));
 
 describe("BaseService", () => {
-    it("gets users", (done) => {
+    it("gets users", () => {
         // Create success and error spy functions
         const success = jest.fn();
         const error = jest.fn();
@@ -26,10 +26,9 @@ describe("BaseService", () => {
 
         // Verify that getRequest was called correctly
         expect(getRequest).toHaveBeenCalledWith('users', success, error);
-        done();
     });
 
-    it("posts a user", (done) => {
+    it("posts a user", () => {
         // Create success and error spy functions
         const success = jest.fn();
         const error = jest.fn();
@@ -43,10 +42,9 @@ describe("BaseService", () => {
 
         // Verify that getRequest was called correctly
         expect(postRequest).toHaveBeenCalledWith('users', user, success, error);
-        done();
     });
 
-    it("creates a user", (done) => {
+    it("creates a user", () => {
         // Create success and error spy functions
         const success = jest.fn();
         const error = jest.fn();
@@ -60,6 +58,5 @@ describe("BaseService", () => {
 
         // Verify that getRequest was called correctly
         expect(createRequest).toHaveBeenCalledWith('users', user, success, error);
-        done();
     });
 });
