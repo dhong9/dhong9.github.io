@@ -4,11 +4,14 @@ import axios from "axios";
 const baseURL = "https://dhong9.pythonanywhere.com/";
 
 // Generic HTTP requests
-export const createRequest = (endpoint, payload) =>
-  axios.create({
-    baseURL: baseURL + endpoint,
-    headers: payload,
-  });
+export const createRequest = (endpoint, payload, success, error) =>
+  axios
+    .create({
+      baseURL: baseURL + endpoint,
+      headers: payload,
+    })
+    .then(success)
+    .error(error);
 
 export const getRequest = (endpoint, success, error) =>
   axios.get(endpoint).then(success).error(error);
