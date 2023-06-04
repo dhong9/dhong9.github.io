@@ -33,7 +33,7 @@ import { addContact } from "services/emailService";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-function ContactUs({ handleContactResponse, setContactResponse }) {
+function ContactUs({ handleContactResponse }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -43,15 +43,7 @@ function ContactUs({ handleContactResponse, setContactResponse }) {
     e.preventDefault();
 
     // Send email
-    const response = await addContact({
-      fullName,
-      email,
-      subject,
-      query,
-    });
-
-    setContactResponse(response);
-    handleContactResponse();
+    addContact(fullName, email, subject, query, handleContactResponse);
 
     // Clear email fields
     setFullName("");
@@ -175,10 +167,8 @@ export default ContactUs;
 // Typechecking props of DHSnackbar
 ContactUs.propTypes = {
   handleContactResponse: PropTypes.func,
-  setContactResponse: PropTypes.func,
 };
 
 ContactUs.defaultProps = {
   handleContactResponse: null,
-  setContactResponse: null,
 };

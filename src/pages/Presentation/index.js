@@ -53,7 +53,6 @@ import AuthContext from "context/AuthContext";
 
 function Presentation() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [contactResponse, setContactResponse] = useState(null);
   const [contactSeverity, setContactSeverity] = useState("info");
   const [contactMessage, setContactMessage] = useState("");
 
@@ -63,7 +62,7 @@ function Presentation() {
     }
   };
 
-  const handleContactResponse = () => {
+  const handleContactResponse = (contactResponse) => {
     if (contactResponse.name === "AxiosError") {
       setContactSeverity("error");
       setContactMessage(contactResponse.message);
@@ -164,10 +163,7 @@ function Presentation() {
         <DesignBlocks />
         <Pages />
       </Card>
-      <ContactUs
-        handleContactResponse={handleContactResponse}
-        setContactResponse={setContactResponse}
-      />
+      <ContactUs handleContactResponse={handleContactResponse} />
     </>
   );
 }

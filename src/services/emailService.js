@@ -4,7 +4,7 @@ export const getContacts = (success) => {
   getRequest("contacts", success, console.error);
 };
 
-export const addContact = async (full_name, email, subject, query_txt, success) =>
+export const addContact = (full_name, email, subject, query_txt, success) =>
   postRequest(
     "contacts",
     {
