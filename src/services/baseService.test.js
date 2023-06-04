@@ -21,10 +21,26 @@ describe("BaseService", () => {
         const success = jest.fn();
         const error = jest.fn();
 
-        // Get comments
+        // Get users
         getRequest("users", success, error);
 
         // Verify that getRequest was called correctly
         expect(getRequest).toHaveBeenCalledWith('users', success, error);
+    });
+
+    it("creates a user", () => {
+        // Create success and error spy functions
+        const success = jest.fn();
+        const error = jest.fn();
+
+        // Create user
+        const user = {
+            id: 2,
+            name: "Jane Doe"
+        };
+        postRequest("users", user, success, error);
+
+        // Verify that getRequest was called correctly
+        expect(postRequest).toHaveBeenCalledWith('users', user, success, error);
     });
 });
