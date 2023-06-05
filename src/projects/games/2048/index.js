@@ -266,13 +266,10 @@ function Twenty48() {
 
   return (
     <BaseLayout
-      title="Page Headers"
-      breadcrumb={[
-        { label: "Page Sections", route: "/sections/page-sections/page-headers" },
-        { label: "Page Headers" },
-      ]}
+      title="Games"
+      breadcrumb={[{ label: "Games", route: "/sections/games/2048" }, { label: "2048" }]}
     >
-      <View title="Header 1" code={twenty48Code} height="40rem">
+      <View title="2048" code={twenty48Code} height="40rem">
         <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />
       </View>
 
