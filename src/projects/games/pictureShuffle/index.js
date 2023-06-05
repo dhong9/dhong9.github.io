@@ -94,13 +94,13 @@ function PictureShuffle() {
 
   return (
     <BaseLayout
-      title="Page Headers"
+      title="Games"
       breadcrumb={[
-        { label: "Page Sections", route: "/sections/page-sections/page-headers" },
-        { label: "Page Headers" },
+        { label: "Games", route: "/sections/games/pictureShuffle" },
+        { label: "Picture Shuffle" },
       ]}
     >
-      <View title="Header 1" code={pictureShuffleCode} height="40rem">
+      <View title="Picture Shuffle" code={pictureShuffleCode} height="40rem">
         <Sketch setup={setup} draw={draw} preload={preload} mouseClicked={mouseClicked} />
       </View>
 
