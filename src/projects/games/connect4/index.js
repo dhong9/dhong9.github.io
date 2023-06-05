@@ -524,13 +524,10 @@ function Connect4() {
 
   return (
     <BaseLayout
-      title="Page Headers"
-      breadcrumb={[
-        { label: "Page Sections", route: "/sections/page-sections/page-headers" },
-        { label: "Page Headers" },
-      ]}
+      title="Games"
+      breadcrumb={[{ label: "Games", route: "/sections/games/connect4" }, { label: "Connect 4" }]}
     >
-      <View title="Header 1" code={connect4Code} height="40rem">
+      <View title="Connect 4" code={connect4Code} height="40rem">
         <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
       </View>
 
