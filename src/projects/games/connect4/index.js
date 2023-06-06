@@ -44,15 +44,6 @@ function Connect4() {
     }
     setComments((newComments) => ({ ...newComments, [newComment.id]: newComment }));
   };
-  const commentMapper = (comment) => ({
-    ...comment,
-    childCommments: comment.childCommments
-      .map((id) => comments[id])
-      .map((newComment) => commentMapper(newComment)),
-  });
-  const enhancedComments = Object.values(comments)
-    .filter((comment) => !comment.parentNodeId)
-    .map(commentMapper);
   const onAdd = () => {
     addComment(null, rootComment);
     setRootComment("");
@@ -565,8 +556,13 @@ function Connect4() {
           padding: "2rem",
         }}
       >
-        {enhancedComments.map((comment) => (
-          <DHComments key={0} comment={comment} addComment={addComment} pageName="connect4" />
+        {comments.map((comment) => (
+          <DHComments
+            key={comment.id}
+            comment={comment.body}
+            addComment={addComment}
+            pageName="connect4"
+          />
         ))}
       </div>
     </BaseLayout>
