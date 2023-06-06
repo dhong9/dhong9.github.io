@@ -59,7 +59,9 @@ function Connect4() {
   };
 
   useEffect(() => {
-    getComments(console.log);
+    getComments((response) =>
+      setComments(response.data.results.filter((comment) => comment.pageName === "connect4"))
+    );
   }, []);
 
   // Game variables
