@@ -12,7 +12,10 @@ import connect4Code from "projects/games/connect4/code";
 import Sketch from "react-p5";
 
 // React
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+// Service
+import { getComments } from "services/commentsService";
 
 const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
   id: 0,
@@ -54,6 +57,10 @@ function Connect4() {
     addComment(null, rootComment);
     setRootComment("");
   };
+
+  useEffect(() => {
+    getComments(console.log);
+  }, []);
 
   // Game variables
   let p = 1;
