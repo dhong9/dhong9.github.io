@@ -14,7 +14,10 @@ export const createRequest = (endpoint, payload, success, error) =>
     .error(error);
 
 export const getRequest = (endpoint, success, error) =>
-  axios.get(endpoint).then(success).catch(error);
+  axios
+    .get(baseURL + endpoint)
+    .then(success)
+    .catch(error);
 
 export const postRequest = (endpoint, payload, success, error) =>
   axios
