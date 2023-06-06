@@ -51,7 +51,7 @@ function Connect4() {
 
   useEffect(() => {
     getComments((response) => setComments(response.data.results));
-  }, []);
+  }, [comments]);
 
   // Game variables
   let p = 1;
