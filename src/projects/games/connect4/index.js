@@ -50,9 +50,7 @@ function Connect4() {
   };
 
   useEffect(() => {
-    getComments((response) =>
-      setComments(response.data.results.filter((comment) => comment.pageName === "connect4"))
-    );
+    getComments((response) => setComments(response.data.results));
   }, []);
 
   // Game variables
