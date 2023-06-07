@@ -50,7 +50,10 @@ function Connect4() {
   };
 
   useEffect(() => {
-    getComments((response) => setComments(response.data.results));
+    getComments((response) => {
+      console.log(response);
+      setComments(response.data.results);
+    });
   }, []);
 
   // Game variables
