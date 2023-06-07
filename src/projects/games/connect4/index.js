@@ -50,9 +50,9 @@ function Connect4() {
   };
 
   useEffect(() => {
-    getComments((response) => {
-      console.log(response);
-      setComments(response.data.results);
+    getComments(({ data }) => {
+      console.log(data);
+      setComments(data.results);
     });
   }, []);
 
