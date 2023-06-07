@@ -556,14 +556,7 @@ function Connect4() {
           padding: "2rem",
         }}
       >
-        {comments.map((comment) => (
-          <DHComments
-            key={comment.id}
-            comment={comment.body}
-            addComment={addComment}
-            pageName="connect4"
-          />
-        ))}
+        {comments.length && <DHComments comments={comments} pageName="connect4" />}
       </div>
     </BaseLayout>
   );
