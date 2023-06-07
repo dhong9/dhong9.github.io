@@ -1,103 +1,28 @@
 import React from "react";
 
 // // @mui material components
-// import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 
 // // Sections components
 // import MKBox from "components/MKBox";
-import MKButton from "components/MKButton";
-import MKInput from "components/MKInput";
-// import MKTypography from "components/MKTypography";
-
-import { useState, useEffect } from "react";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-import { postRequest } from "services/baseService";
-import { getComments } from "services/commentsService";
-
 // https://dev.to/vigneshiyergithub/building-a-nested-comment-example-like-reddit-1o92
 
-export default function DHComments({ comment, addComment, pageName }) {
-  const { commentText, childCommments, id } = comment;
-  const [childComment, setChildComment] = useState("");
-  const [show, setShow] = useState(true);
-  const [showAddComponet, setShowAddComponet] = useState(false);
-  const [comments, setComments] = useState([]);
-
-  useEffect(() => {
-    getComments(setComments);
-    console.log("Comments: ", comments);
-  }, []);
-
-  const onAdd = (e) => {
-    e.preventDefault();
-    postRequest("comments", {
-      pageName,
-      name: "santaClaus",
-      email: "danielhong24@yahoo.com",
-      body: childComment,
-    });
-
-    addComment(id, childComment);
-    setChildComment("");
-    setShowAddComponet(false);
-  };
-
+export default function DHComments({ comment }) {
   return (
-    <div className="Comment">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <div style={{ textAlign: "left" }}>{commentText}</div>
-        &nbsp;
-        {childCommments && childCommments.length > 0 && (
-          <MKButton
-            onClick={() => setShow((prevShow) => !prevShow)}
-            type="submit"
-            variant="gradient"
-            color="info"
-          >
-            {show ? "Hide" : "Show"}
-          </MKButton>
-        )}
-      </div>
-      <div>
-        <div>
-          {showAddComponet ? (
-            <>
-              <MKInput
-                variant="standard"
-                placeholder="Add a comment"
-                InputLabelProps={{ shrink: true }}
-                multiline
-                fullWidth
-                rows={6}
-                onChange={(e) => setChildComment(e.target.value)}
-                value={childComment}
-              />{" "}
-              <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
-                Submit
-              </MKButton>
-            </>
-          ) : (
-            <MKButton
-              type="submit"
-              variant="gradient"
-              color="info"
-              onClick={() => setShowAddComponet(true)}
-            >
-              Add a reply
-            </MKButton>
-          )}
-        </div>
-      </div>
-    </div>
+    <Paper style={{ padding: "40px 20px" }}>
+      <Grid container wrap="nowrap" spacing={2}>
+        <Grid justifyContent="left" item xs zeroMinWidth>
+          <h4 style={{ margin: 0, textAlign: "left" }}>Michel Michel</h4>
+          <p style={{ textAlign: "left" }}>{comment}</p>
+          <p style={{ textAlign: "left", color: "gray" }}>posted 1 minute ago</p>
+        </Grid>
+      </Grid>
+    </Paper>
   );
 }
 

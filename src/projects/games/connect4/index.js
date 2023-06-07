@@ -51,7 +51,6 @@ function Connect4() {
 
   useEffect(() => {
     getComments(({ data: { results } }) => {
-      console.log(results);
       setComments(results);
     });
   }, []);
