@@ -532,9 +532,10 @@ function Connect4() {
       </View>
 
       <div className="comments-container">
+        {comments.length && <DHComments comments={comments} pageName="connect4" />}
         <MKInput
           variant="standard"
-          label="What can we help you?"
+          label="What do you think?"
           placeholder="Add a comment"
           InputLabelProps={{ shrink: true }}
           multiline
@@ -546,17 +547,6 @@ function Connect4() {
         <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
           Add
         </MKButton>
-      </div>
-      <div
-        style={{
-          border: "1px solid blue",
-          width: "60%",
-          margin: "auto",
-          overflowX: "auto",
-          padding: "2rem",
-        }}
-      >
-        {comments.length && <DHComments comments={comments} pageName="connect4" />}
       </div>
     </BaseLayout>
   );
