@@ -4,9 +4,6 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 
-// // Sections components
-// import MKBox from "components/MKBox";
-
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
