@@ -532,7 +532,7 @@ function Connect4() {
       </View>
 
       <div className="comments-container">
-        {comments.length && <DHComments comments={comments} pageName="connect4" />}
+        {comments.length ? <DHComments comments={comments} pageName="connect4" /> : <div></div>}
         <MKInput
           variant="standard"
           label="What do you think?"
