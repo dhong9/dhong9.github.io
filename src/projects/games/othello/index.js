@@ -11,7 +11,10 @@ import othelloCode from "projects/games/othello/code";
 // p5
 import Sketch from "react-p5";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+// Service
+import { getComments } from "services/commentsService";
 
 const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
   id: 0,
@@ -40,19 +43,16 @@ function Othello() {
     }
     setComments((newComments) => ({ ...newComments, [newComment.id]: newComment }));
   };
-  const commentMapper = (comment) => ({
-    ...comment,
-    childCommments: comment.childCommments
-      .map((id) => comments[id])
-      .map((newComment) => commentMapper(newComment)),
-  });
-  const enhancedComments = Object.values(comments)
-    .filter((comment) => !comment.parentNodeId)
-    .map(commentMapper);
   const onAdd = () => {
     addComment(null, rootComment);
     setRootComment("");
   };
+
+  useEffect(() => {
+    getComments(({ data: { results } }) => {
+      setComments(results);
+    });
+  }, []);
 
   // Game variables
   let curPlayer = 1;
@@ -449,6 +449,7 @@ function Othello() {
       </View>
 
       <div className="comments-container">
+        {comments.length ? <DHComments comments={comments} pageName="2048" /> : <div></div>}
         <MKInput
           variant="standard"
           label="What can we help you?"
@@ -463,19 +464,6 @@ function Othello() {
         <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
           Add
         </MKButton>
-      </div>
-      <div
-        style={{
-          border: "1px solid blue",
-          width: "60%",
-          margin: "auto",
-          overflowX: "auto",
-          padding: "2rem",
-        }}
-      >
-        {enhancedComments.map((comment) => (
-          <DHComments key={0} comment={comment} addComment={addComment} />
-        ))}
       </div>
     </BaseLayout>
   );
