@@ -21,8 +21,16 @@ function Connect4() {
   const [comments, setComments] = useState([]);
   const [rootComment, setRootComment] = useState("");
   const onAdd = () => {
-    addComment(console.log, "connect4", "Player One", "player1@sky.net", rootComment);
-    setRootComment("");
+    addComment(
+      (response) => {
+        console.log(response);
+        setRootComment("");
+      },
+      "connect4",
+      "Player One",
+      "player1@sky.net",
+      rootComment
+    );
   };
 
   useEffect(() => {
