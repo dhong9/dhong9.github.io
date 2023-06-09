@@ -15,37 +15,13 @@ import Sketch from "react-p5";
 import React, { useEffect, useState } from "react";
 
 // Service
-import { getComments } from "services/commentsService";
-
-const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
-  id: 0,
-  commentText: commentValue,
-  childCommments: [],
-  isRootNode,
-  parentNodeId,
-});
+import { getComments, addComment } from "services/commentsService";
 
 function Connect4() {
   const [comments, setComments] = useState([]);
   const [rootComment, setRootComment] = useState("");
-  const addComment = (parentId, newCommentText) => {
-    let newComment = null;
-    if (parentId) {
-      newComment = getNewComment(newCommentText, false, parentId);
-      setComments((newComments) => ({
-        ...newComments,
-        [parentId]: {
-          ...newComments[parentId],
-          childCommments: [...newComments[parentId].childCommments, newComment.id],
-        },
-      }));
-    } else {
-      newComment = getNewComment(newCommentText, true, null);
-    }
-    setComments((newComments) => ({ ...newComments, [newComment.id]: newComment }));
-  };
   const onAdd = () => {
-    addComment(null, rootComment);
+    addComment(console.log, "connect4", "Player One", "player1@sky.net", rootComment);
     setRootComment("");
   };
 
