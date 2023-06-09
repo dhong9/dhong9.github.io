@@ -11,7 +11,7 @@ export const createRequest = (endpoint, payload, success, error) =>
       headers: payload,
     })
     .then(success)
-    .error(error);
+    .catch(error);
 
 export const getRequest = (endpoint, success, error) =>
   axios

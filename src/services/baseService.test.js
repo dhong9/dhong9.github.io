@@ -13,6 +13,7 @@ describe("BaseService", () => {
     beforeEach(() => {
         axios.get.mockResolvedValue(data);
         axios.post.mockResolvedValue({data: [{name: 'Bob'}]});
+        axios.create.mockResolvedValue({data: [{name: 'Bob'}]});
     });
     
     it("gets users", () => {
@@ -36,19 +37,19 @@ describe("BaseService", () => {
         expect(axios.post).toHaveBeenCalledWith(baseURL + "users", user, { maxRedirects: 0 });
     });
 
-    // it("creates a user", () => {
-    //     // Create success and error spy functions
-    //     const success = jest.fn();
-    //     const error = jest.fn();
+    it("creates a user", () => {
+        // Post user
+        const user = {
+            id: 2,
+            name: "Jane Doe"
+        };
+        const payload = {
+            baseURL: baseURL + "users",
+            headers: user,
+        }
+        createRequest("users", user, success, error);
 
-    //     // Post user
-    //     const user = {
-    //         id: 2,
-    //         name: "Jane Doe"
-    //     };
-    //     createRequest("users", user, success, error);
-
-    //     // Verify that getRequest was called correctly
-    //     expect(createRequest).toHaveBeenCalledWith('users', user, success, error);
-    // });
+        // Verify that getRequest was called correctly
+        expect(axios.create).toHaveBeenCalledWith(payload);
+    });
 });
