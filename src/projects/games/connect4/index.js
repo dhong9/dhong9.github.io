@@ -24,7 +24,6 @@ function Connect4() {
     addComment(
       (response) => {
         console.log(response);
-        setRootComment("");
       },
       "connect4",
       "Player One",
