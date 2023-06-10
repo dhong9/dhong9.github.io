@@ -1,5 +1,7 @@
 # [Daniel Hong Portfolio](http://demos.creative-tim.com/material-kit-react/#/?ref=readme-mkr) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/danielhong35/)
 
+![Continuous Integration](https://github.com/dhong9/dhong9.github.io/actions/workflows/CI.yml/badge.svg) ![Continuous Deployment](https://github.com/dhong9/dhong9.github.io/actions/workflows/CD.yml/badge.svg)
+
 ![Image](https://s3.amazonaws.com/creativetim_bucket/products/83/original/material-kit-2-react.jpg)
 
 Material Kit 2 React is our newest free MUI Design System based on React. Its amazing design is inspired by Material Design and contains all the components you need for your development. If you’re a developer looking to create good-looking websites, rich with features, and highly customisable, here is your match.
