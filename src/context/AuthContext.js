@@ -21,18 +21,21 @@ export const AuthProvider = ({ children }) => {
 
   const history = useNavigate();
 
-  const loginUser = async (username, password) => {
-    const response = await postRequest("accounts/token/", { username, password });
-
-    if (response.status === 200) {
-      const data = response.data;
-      setAuthTokens(data);
-      setUser(jwt_decode(response.access));
-      localStorage.setItem("authTokens", JSON.stringify(data));
-      history("/");
-    }
-
-    return response;
+  const loginUser = (username, password) => {
+    postRequest(
+      "accounts/token",
+      { username, password },
+      (response) => {
+        if (response.status === 200) {
+          const data = response.data;
+          setAuthTokens(data);
+          setUser(jwt_decode(response.access));
+          localStorage.setItem("authTokens", JSON.stringify(data));
+          history("/");
+        }
+      },
+      console.error
+    );
   };
 
   const registerUser = async (email, username, password, password2) => {
