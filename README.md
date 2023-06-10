@@ -24,7 +24,7 @@ View example pages here. (https://demos.creative-tim.com/material-kit-react/#/pa
 
 **HELPFUL LINKS**
 
-- View [Github Repository](https://github.com/creativetimofficial/material-kit-react)
+- View [Github Repository](https://github.com/dhong9/dhong9.github.io)
 - Check [FAQ Page](https://www.creative-tim.com/faq)
 
 #### Special thanks
