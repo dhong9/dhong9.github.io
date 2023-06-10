@@ -32,6 +32,11 @@ jobs:
       run: npm install
 
     - name: Deploy
-      run: npm run deploy
+      run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        npm run deploy
       env:
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
         deployment_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
