@@ -21,15 +21,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    
-    - run: npm ci
     
     - name: Install dependencies
       run: npm install
@@ -38,16 +35,16 @@ jobs:
       run: npm test -- --coverage
     
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v1
     
     - name: Build
-      run: npm run build --if-present
+      run: npm run build
     
     - name: Deploy
       run: |
         git config --global user.name $user_name
         git config --global user.email $user_email
-        git remote add origin https://${github_token}@github.com/${repository}
+        git remote set-url origin https://${github_token}@github.com/${repository}
         npm run deploy
       env:
         user_name: 'github-actions[bot]'
