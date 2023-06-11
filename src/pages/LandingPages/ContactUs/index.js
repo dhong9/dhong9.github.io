@@ -43,18 +43,34 @@ function ContactUs({ handleContactResponse }) {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    setFormErrors([]);
+    const errors = [];
+    if (!fullName.trim()) {
+      errors.push("Your name is required.");
+    }
+    if (!email.trim()) {
+      errors.push("Your email is required.");
+    }
+    if (!subject.trim()) {
+      errors.push("Subject is required");
+    }
+    if (!query.trim()) {
+      errors.push("Query is required.");
+    }
 
-    // Send email
-    addContact(fullName, email, subject, query, (response) => {
-      handleContactResponse(response);
+    setFormErrors(errors);
 
-      // Clear email fields
-      setFullName("");
-      setEmail("");
-      setSubject("");
-      setQuery("");
-    });
+    if (!formErrors[0]) {
+      // Send email
+      addContact(fullName, email, subject, query, (response) => {
+        handleContactResponse(response);
+
+        // Clear email fields
+        setFullName("");
+        setEmail("");
+        setSubject("");
+        setQuery("");
+      });
+    }
   };
 
   return (
