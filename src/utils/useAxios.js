@@ -7,7 +7,7 @@ import { createRequest, postRequest } from "services/baseService";
 const useAxios = () => {
   const { authTokens, setUser, setAuthTokens } = useContext(AuthContext);
 
-  const axiosInstance = createRequest("accounts", { Authorization: `Bearer ${authTokens?.access}` });
+  const axiosInstance = createRequest("accounts", { Authorization: `Bearer ${JSON.parse(authTokens?.access)}` });
 
   axiosInstance.interceptors.request.use(async req => {
     const user = jwt_decode(authTokens.access);
@@ -24,7 +24,7 @@ const useAxios = () => {
     setAuthTokens(response.data);
     setUser(jwt_decode(response.data.access));
 
-    req.headers.Authorization = `Bearer ${response.data.access}`;
+    req.headers.Authorization = `Bearer ${JSON.parse(response.data.access)}`;
     return req;
   });
 
