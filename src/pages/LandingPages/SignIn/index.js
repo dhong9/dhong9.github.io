@@ -84,13 +84,14 @@ function SignInBasic() {
         () => {
           setLoginSeverity("success");
           setLoginMessage("Successfully logged in!");
+          setSnackbarOpen(true);
         },
         (loginResponse) => {
           setLoginSeverity("error");
           setLoginMessage(loginResponse.message);
+          setSnackbarOpen(true);
         }
       );
-      setSnackbarOpen(true);
     }
   };
 
