@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
   const history = useNavigate();
 
-  const loginUser = (username, password) => {
+  const loginUser = (username, password, success, error) => {
     postRequest(
       "accounts/token/",
       { username, password },
@@ -32,9 +32,13 @@ export const AuthProvider = ({ children }) => {
           setUser(jwt_decode(response.access));
           localStorage.setItem("authTokens", JSON.stringify(data));
           history("/");
+          success();
         }
       },
-      console.error
+      (err) => {
+        console.error(err);
+        error(err);
+      }
     );
   };
 

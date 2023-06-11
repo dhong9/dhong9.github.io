@@ -78,14 +78,18 @@ function SignInBasic() {
     // If form input requirements are met,
     // sign the user in
     if (!formErrors[0]) {
-      const loginResponse = await loginUser(username, password);
-      if (loginResponse.name === "AxiosError") {
-        setLoginSeverity("error");
-        setLoginMessage(loginResponse.message);
-      } else {
-        setLoginSeverity("success");
-        setLoginMessage("Successfully logged in!");
-      }
+      loginUser(
+        username,
+        password,
+        () => {
+          setLoginSeverity("success");
+          setLoginMessage("Successfully logged in!");
+        },
+        (loginResponse) => {
+          setLoginSeverity("error");
+          setLoginMessage(loginResponse.message);
+        }
+      );
       setSnackbarOpen(true);
     }
   };
