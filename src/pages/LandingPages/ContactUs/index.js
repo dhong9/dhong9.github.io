@@ -38,9 +38,12 @@ function ContactUs({ handleContactResponse }) {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [query, setQuery] = useState("");
+  const [formErrors, setFormErrors] = useState([]);
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    setFormErrors([]);
 
     // Send email
     addContact(fullName, email, subject, query, (response) => {
@@ -150,6 +153,18 @@ function ContactUs({ handleContactResponse }) {
                     />
                   </Grid>
                 </Grid>
+                {/* Display any errors */}
+                {formErrors[0] ? (
+                  <Grid item xs={12}>
+                    <ul>
+                      {formErrors.map((error, i) => (
+                        <li key={i}>{error}</li>
+                      ))}
+                    </ul>
+                  </Grid>
+                ) : (
+                  <div></div>
+                )}
                 <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
                   <MKButton type="submit" variant="gradient" color="info" onClick={sendEmail}>
                     Send Message
