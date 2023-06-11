@@ -38,19 +38,20 @@ export const AuthProvider = ({ children }) => {
     );
   };
 
-  const registerUser = async (email, username, password, password2) => {
-    const response = await postRequest("accounts/register/", {
-      email,
-      username,
-      password,
-      password2,
-    });
-
-    if (response.status === 201) {
-      history("/pages/authentication/sign-in");
-    } else {
-      alert("Something went wrong!");
-    }
+  const registerUser = (email, username, password, password2) => {
+    postRequest(
+      "accounts/register/",
+      {
+        email,
+        username,
+        password,
+        password2,
+      },
+      () => {
+        history("/pages/authentication/sign-in");
+      },
+      console.error
+    );
   };
 
   const logoutUser = () => {
