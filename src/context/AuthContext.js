@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = (username, password) => {
     postRequest(
-      "accounts/token",
+      "accounts/token/",
       { username, password },
       (response) => {
         if (response.status === 200) {
