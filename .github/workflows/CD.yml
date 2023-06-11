@@ -35,8 +35,12 @@ jobs:
       run: |
         git config --global user.name $user_name
         git config --global user.email $user_email
+
+        # Retrieve the latest commit message and assign it to a variable
+        commit_message=$(git log -1 --pretty=%B)
+
         git remote set-url origin https://${github_token}@github.com/${repository}
-        npm run deploy -- -m ${{ github.event.commits[0].message }}
+        npm run deploy -- -m "$commit_message"
       env:
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
