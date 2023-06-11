@@ -199,6 +199,18 @@ function SignInBasic() {
                       &nbsp;&nbsp;Remember me
                     </MKTypography>
                   </MKBox>
+                  {/* Show any form errors */}
+                  {formErrors[0] ? (
+                    <MKBox display="flex" alignItems="center" ml={-1}>
+                      <ul style={{ color: "red", fontSize: "10pt" }}>
+                        {formErrors.map((error, i) => (
+                          <li key={i}>{error}</li>
+                        ))}
+                      </ul>
+                    </MKBox>
+                  ) : (
+                    <div></div>
+                  )}
                   <MKBox mt={4} mb={1}>
                     <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
                       sign in
