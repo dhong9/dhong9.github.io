@@ -59,11 +59,25 @@ function SignInBasic() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [loginSeverity, setLoginSeverity] = useState("info");
   const [loginMessage, setLoginMessage] = useState("");
+  const [formErrors, setFormErrors] = useState([]);
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (username) {
+
+    // Check form data
+    const errors = [];
+    if (!username.trim()) {
+      errors.push("Username is required.");
+    }
+    if (!password.trim()) {
+      errors.push("Password is required.");
+    }
+    setFormErrors(errors);
+
+    // If form input requirements are met,
+    // sign the user in
+    if (!formErrors[0]) {
       const loginResponse = await loginUser(username, password);
       if (loginResponse.name === "AxiosError") {
         setLoginSeverity("error");
