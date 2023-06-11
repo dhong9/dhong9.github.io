@@ -172,7 +172,7 @@ function ContactUs({ handleContactResponse }) {
                 {/* Display any errors */}
                 {formErrors[0] ? (
                   <Grid item xs={12}>
-                    <ul>
+                    <ul style={{ color: "red", fontSize: "10pt" }}>
                       {formErrors.map((error, i) => (
                         <li key={i}>{error}</li>
                       ))}
