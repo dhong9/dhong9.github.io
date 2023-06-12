@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
       { username, password },
       (response) => {
         if (response.status === 200) {
+          // data has access and refresh tokens
           const data = response.data;
           setAuthTokens(data);
           setUser(jwt_decode(data.access));
