@@ -10,6 +10,7 @@ const AuthContext = createContext();
 
 export default AuthContext;
 
+// https://github.com/seankwarren/Django-React-jwt-authentication/blob/main/frontend/src/context/AuthContext.js
 export const AuthProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null
@@ -74,6 +75,32 @@ export const AuthProvider = ({ children }) => {
     registerUser,
     loginUser,
     logoutUser,
+  };
+
+  const updateToken = () => {
+    postRequest(
+      "token/refresh/",
+      {
+        refresh: authTokens.refresh || "",
+      },
+      (response) => {
+        if (response.status === 200) {
+          // data has access and refresh tokens
+          const data = response.data;
+          setAuthTokens(data);
+          setUser(jwt_decode(data.access));
+          localStorage.setItem("authTokens", JSON.stringify(data));
+          history("/");
+        } else {
+          logoutUser();
+        }
+
+        if (loading) {
+          setLoading(false);
+        }
+      },
+      console.error
+    );
   };
 
   useEffect(() => {
