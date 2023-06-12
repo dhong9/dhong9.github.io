@@ -104,15 +104,20 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (authTokens) {
-      setUser(jwt_decode(authTokens.access));
+    if (loading) {
+      updateToken();
     }
-    setLoading(false);
+
+    const REFRESH_INTERVAL = 1000 * 60 * 4; // 4 minutes
+    const interval = setInterval(() => {
+      if (authTokens) {
+        updateToken();
+      }
+    }, REFRESH_INTERVAL);
+    return () => clearInterval(interval);
   }, [authTokens, loading]);
 
-  return (
-    <AuthContext.Provider value={contextData}>{loading ? null : children}</AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>;
 };
 
 // Typechecking props of DHComments
