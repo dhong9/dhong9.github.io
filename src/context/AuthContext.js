@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import jwtDecode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { postRequest } from "services/baseService";
 
@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null
   );
   const [user, setUser] = useState(() =>
-    localStorage.getItem("authTokens") ? jwtDecode(localStorage.getItem("authTokens")) : null
+    localStorage.getItem("authTokens") ? jwt_decode(localStorage.getItem("authTokens")) : null
   );
   const [loading, setLoading] = useState(true);
 
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
           const data = response.data;
           console.log(data);
           setAuthTokens(data);
-          setUser(jwtDecode(response.access));
+          setUser(jwt_decode(response.access));
           localStorage.setItem("authTokens", JSON.stringify(data));
           history("/");
           success();
