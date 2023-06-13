@@ -32,8 +32,20 @@ jest.mock("@mui/material/Fade", () => {
 });
 
 describe("MKAlert", () => {
-    it("renders", () => {
+    it("renders 'mount' status", () => {
         const component = renderer.create(<MKAlert />);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    it("renders 'fadeOut' status", () => {
+        const component = renderer.create(<MKAlert mount="fadeOut" />);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    it("renders default status", () => {
+        const component = renderer.create(<MKAlert mount="default" />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

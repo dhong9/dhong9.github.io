@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MKAlert renders 1`] = `
+exports[`MKAlert renders 'fadeOut' status 1`] = `
+<div>
+  Fade
+</div>
+`;
+
+exports[`MKAlert renders 'mount' status 1`] = `
+<div>
+  Fade
+</div>
+`;
+
+exports[`MKAlert renders default status 1`] = `
 <div>
   Fade
 </div>
