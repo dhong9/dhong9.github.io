@@ -61,9 +61,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
+    localStorage.removeItem("authTokens");
     setAuthTokens(null);
     setUser(null);
-    localStorage.removeItem("authTokens");
     history("/");
   };
 
