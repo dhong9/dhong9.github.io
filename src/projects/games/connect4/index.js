@@ -1,6 +1,7 @@
 // Sections components
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
+import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import DHComments from "components/DHComments";
@@ -12,10 +13,13 @@ import connect4Code from "projects/games/connect4/code";
 import Sketch from "react-p5";
 
 // React
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // Service
 import { getComments, addComment } from "services/commentsService";
+
+// Authentication
+import AuthContext from "context/AuthContext";
 
 function Connect4() {
   const [comments, setComments] = useState([]);
@@ -37,6 +41,8 @@ function Connect4() {
       setComments(results);
     });
   }, []);
+
+  let { user } = useContext(AuthContext);
 
   // Game variables
   let p = 1;
@@ -527,9 +533,15 @@ function Connect4() {
           onChange={(e) => setRootComment(e.target.value)}
           value={rootComment}
         />{" "}
-        <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
-          Add
-        </MKButton>
+        {user ? (
+          <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+            Add
+          </MKButton>
+        ) : (
+          <MKBox>
+            <i>You must be logged into comment</i>
+          </MKBox>
+        )}
       </div>
     </BaseLayout>
   );

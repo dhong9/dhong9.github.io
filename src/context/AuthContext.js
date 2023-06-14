@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateToken = () => {
     postRequest(
-      "token/refresh/",
+      "accounts/token/refresh/",
       {
         refresh: authTokens.refresh || "",
       },
