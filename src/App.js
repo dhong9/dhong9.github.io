@@ -33,6 +33,7 @@ import routes from "routes";
 import { AuthProvider } from "context/AuthContext";
 import SignInPage from "layouts/pages/authentication/sign-in";
 import SignUpPage from "layouts/pages/authentication/sign-up";
+import SignOutPage from "layouts/pages/authentication/sign-out";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -65,6 +66,7 @@ export default function App() {
           <Route index element={<Presentation />} />
           <Route path="/pages/authentication/sign-in" element={<SignInPage />} />
           <Route path="/pages/authentication/sign-up" element={<SignUpPage />} />
+          <Route path="/pages/authentication/sign-out" element={<SignOutPage />} />
         </Routes>
       </AuthProvider>
     </ThemeProvider>
