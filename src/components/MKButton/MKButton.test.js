@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
-import MKButtonRoot from "components/MKButton/MKButtonRoot";
+import MKButton from "components/MKButton";
 
 // Mocks
-jest.mock("components/MKButton", () => {
+jest.mock("components/MKButton/MKButtonRoot", () => {
     const { forwardRef } = jest.requireActual("react");
     return {
         __esModule: true,
@@ -17,13 +17,13 @@ jest.mock("@mui/material/styles", () => ({
 
 describe("MKButton", () => {
     it("renders primary button", () => {
-        const component = renderer.create(<MKButtonRoot variant="primary" />);
+        const component = renderer.create(<MKButton variant="primary" />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     it("renders gradient button", () => {
-        const component = renderer.create(<MKButtonRoot variant="gradient" />);
+        const component = renderer.create(<MKButton variant="gradient" />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

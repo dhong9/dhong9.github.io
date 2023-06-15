@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
     postRequest(
       "accounts/token/refresh/",
       {
-        refresh: authTokens.refresh || "",
+        refresh: authTokens ? authTokens.refresh : "",
       },
       (response) => {
         if (response.status === 200) {

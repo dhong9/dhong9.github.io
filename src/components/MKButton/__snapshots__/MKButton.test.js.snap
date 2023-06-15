@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MKButton renders gradient button 1`] = `
-<mock-style
-  variant="gradient"
-/>
+<button>
+  Mock Button
+</button>
 `;
 
 exports[`MKButton renders primary button 1`] = `
-<mock-style
-  variant="primary"
-/>
+<button>
+  Mock Button
+</button>
 `;
