@@ -10,7 +10,6 @@ const AuthContext = createContext();
 
 export default AuthContext;
 
-// https://github.com/seankwarren/Django-React-jwt-authentication/blob/main/frontend/src/context/AuthContext.js
 export const AuthProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null
@@ -44,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     );
   };
 
-  const registerUser = (email, username, password, password2) => {
+  const registerUser = (email, username, password, password2, success, error) => {
     postRequest(
       "accounts/register/",
       {
@@ -55,8 +54,12 @@ export const AuthProvider = ({ children }) => {
       },
       () => {
         history("/pages/authentication/sign-in");
+        success();
       },
-      console.error
+      (err) => {
+        console.error(err);
+        error(err);
+      }
     );
   };
 

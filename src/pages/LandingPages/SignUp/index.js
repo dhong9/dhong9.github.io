@@ -37,6 +37,9 @@ import MKButton from "components/MKButton";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
 
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
+
 // Material Kit 2 React page layout routes
 import routes from "routes";
 
@@ -52,10 +55,53 @@ function SignUpBasic() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [signupSeverity, setSignupSeverity] = useState("info");
+  const [signupMessage, setSignupMessage] = useState("");
+  const [formErrors, setFormErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    username.length && registerUser(email, username, password, password2);
+
+    // Check form data
+    const errors = [];
+    if (!username.trim()) {
+      errors.push("Username is required.");
+    }
+    if (!password.trim()) {
+      errors.push("Password is required.");
+    }
+    if (!password2.trim()) {
+      errors.push("Password confirmation is required.");
+    }
+    setFormErrors(errors);
+
+    // If form input requirements are met,
+    // sign the user up
+    if (!formErrors[0]) {
+      registerUser(
+        email,
+        username,
+        password,
+        password2,
+        () => {
+          setSignupSeverity("success");
+          setSignupMessage("Successfully logged in!");
+          setSnackbarOpen(true);
+        },
+        (signupResponse) => {
+          setSignupSeverity("error");
+          setSignupMessage(signupResponse.message);
+          setSnackbarOpen(true);
+        }
+      );
+    }
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
   };
 
   return (
@@ -70,6 +116,12 @@ function SignUpBasic() {
         }}
         transparent
         light
+      />
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity={signupSeverity}
+        message={signupMessage}
       />
       <MKBox
         position="absolute"
