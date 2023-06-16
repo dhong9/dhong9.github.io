@@ -16,14 +16,14 @@ jest.mock("@mui/material/styles", () => ({
   }));
 
 describe("MKButton", () => {
-    it("renders primary button", () => {
-        const component = renderer.create(<MKButton variant="primary" />);
+    it("renders contained button", () => {
+        const component = renderer.create(<MKButton variant="contained">Contained</MKButton>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     it("renders gradient button", () => {
-        const component = renderer.create(<MKButton variant="gradient" />);
+        const component = renderer.create(<MKButton variant="gradient">Gradient</MKButton>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

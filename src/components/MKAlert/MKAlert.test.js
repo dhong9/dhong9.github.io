@@ -33,13 +33,13 @@ jest.mock("@mui/material/Fade", () => {
 
 describe("MKAlert", () => {
     it("renders", () => {
-        const component = renderer.create(<MKAlert />);
+        const component = renderer.create(<MKAlert>Hello!</MKAlert>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     it("renders dismissible", () => {
-        const component = renderer.create(<MKAlert dismissible={true} />);
+        const component = renderer.create(<MKAlert dismissible={true}>Dismissible</MKAlert>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

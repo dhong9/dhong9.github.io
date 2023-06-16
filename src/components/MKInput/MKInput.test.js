@@ -1,12 +1,12 @@
 import renderer from "react-test-renderer";
-import MKInputRoot from "components/MKInput/MKInputRoot";
+import MKInput from "components/MKInput";
 
 // Mocks
-jest.mock("components/MKInput", () => {
+jest.mock("components/MKInput/MKInputRoot", () => {
     const { forwardRef } = jest.requireActual("react");
     return {
         __esModule: true,
-        default: forwardRef(() => <input>Mock Button</input>)
+        default: forwardRef(() => <input>Mock Input</input>)
     };
 });
 
@@ -16,7 +16,7 @@ jest.mock("@mui/material/styles", () => ({
   }));
 
 it("renders", () => {
-    const component = renderer.create(<MKInputRoot />);
+    const component = renderer.create(<MKInput />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 });

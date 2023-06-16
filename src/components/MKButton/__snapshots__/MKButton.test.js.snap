@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MKButton renders gradient button 1`] = `
+exports[`MKButton renders contained button 1`] = `
 <button>
   Mock Button
 </button>
 `;
 
-exports[`MKButton renders primary button 1`] = `
+exports[`MKButton renders gradient button 1`] = `
 <button>
   Mock Button
 </button>

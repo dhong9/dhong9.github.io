@@ -17,7 +17,7 @@ jest.mock("@mui/material/styles", () => ({
 
 describe("MKTypography", () => {
     it("renders", () => {
-        const component = renderer.create(<MKTypography />);
+        const component = renderer.create(<MKTypography>Typing</MKTypography>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
