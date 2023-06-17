@@ -38,7 +38,7 @@ function Connect4() {
         }
       },
       "connect4",
-      user.uername,
+      user.username,
       user.email,
       rootComment
     );
