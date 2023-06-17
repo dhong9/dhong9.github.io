@@ -22,7 +22,7 @@ describe("BaseService", () => {
         getRequest("users", success, error);
 
         // Verify that getRequest was called correctly
-        expect(axios.get).toHaveBeenCalledWith(baseURL + "users");
+        expect(axios.get).toHaveBeenCalledWith(baseURL + "users", { maxRedirects: 0 });
     });
 
     it("posts a user", () => {
