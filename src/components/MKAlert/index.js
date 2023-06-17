@@ -63,8 +63,6 @@ function MKAlert({ color, dismissible, children, ...rest }) {
       alertTemplate();
       break;
   }
-
-  return null;
 }
 
 // Setting default values for the props of MKAlert
