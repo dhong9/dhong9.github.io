@@ -26,8 +26,13 @@ function Connect4() {
   const [rootComment, setRootComment] = useState("");
   const onAdd = () => {
     addComment(
-      (response) => {
-        console.log(response);
+      ({ status }) => {
+        if (status === 201) {
+          // Successfully added comment
+          getComments(({ data: { results } }) => {
+            setComments(results);
+          });
+        }
       },
       "connect4",
       "Player One",
@@ -40,7 +45,7 @@ function Connect4() {
     getComments(({ data: { results } }) => {
       setComments(results);
     });
-  }, []);
+  }, [comments]);
 
   let { user } = useContext(AuthContext);
 
