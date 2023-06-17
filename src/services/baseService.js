@@ -15,7 +15,9 @@ export const createRequest = (endpoint, payload, success, error) =>
 
 export const getRequest = (endpoint, success, error) =>
   axios
-    .get(baseURL + endpoint)
+    .get(baseURL + endpoint, {
+      maxRedirects: 0,
+    })
     .then(success)
     .catch(error);
 
