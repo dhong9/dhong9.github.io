@@ -24,6 +24,9 @@ import AuthContext from "context/AuthContext";
 function Connect4() {
   const [comments, setComments] = useState([]);
   const [rootComment, setRootComment] = useState("");
+
+  let { user } = useContext(AuthContext);
+
   const onAdd = () => {
     addComment(
       ({ status }) => {
@@ -35,7 +38,7 @@ function Connect4() {
         }
       },
       "connect4",
-      "Player One",
+      user.uername,
       "player1@sky.net",
       rootComment
     );
@@ -46,8 +49,6 @@ function Connect4() {
       setComments(results);
     });
   }, [comments]);
-
-  let { user } = useContext(AuthContext);
 
   // Game variables
   let p = 1;
