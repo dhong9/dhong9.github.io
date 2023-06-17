@@ -39,7 +39,7 @@ function Connect4() {
       },
       "connect4",
       user.uername,
-      "player1@sky.net",
+      user.email,
       rootComment
     );
   };
