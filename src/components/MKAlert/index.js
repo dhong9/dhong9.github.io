@@ -53,15 +53,14 @@ function MKAlert({ color, dismissible, children, ...rest }) {
     </Fade>
   );
 
-  switch (true) {
-    case alertStatus === "mount":
+  switch (alertStatus) {
+    case "mount":
       return alertTemplate();
-    case alertStatus === "fadeOut":
+    case "fadeOut":
       setTimeout(() => setAlertStatus("unmount"), 400);
       return alertTemplate(false);
     default:
-      alertTemplate();
-      break;
+      return alertTemplate();
   }
 }
 
