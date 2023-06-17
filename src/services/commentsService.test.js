@@ -1,22 +1,9 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import React from "react"
 import { getRequest, postRequest } from "services/baseService";
 import { getComments, addComment } from "services/commentsService";
 
 const mock = new MockAdapter(axios);
-
-let realUseContext;
-let useContextMock;
-// Setup mock
-beforeEach(() => {
-    realUseContext = React.useContext;
-    useContextMock = React.useContext = jest.fn();
-});
-// Cleanup mock
-afterEach(() => {
-    React.useContext = realUseContext;
-});
 
 const commentData = {
     comments: [
@@ -50,7 +37,7 @@ describe("CommentsService", () => {
         const success = jest.fn();
 
         // Add comment
-        addComment(success, {access: "magic"}, "pageName", "name", "email", "body");
+        addComment(success, "pageName", "name", "email", "body");
 
         // Verify that postRequest was called correctly
         const commentPost = {
@@ -61,6 +48,6 @@ describe("CommentsService", () => {
             active: true,
             parent: null
         };
-        expect(postRequest).toHaveBeenCalledWith('comments', commentPost, success, console.error, {Authorization: `Bearer magic`});
+        expect(postRequest).toHaveBeenCalledWith('comments', commentPost, success, console.error);
     })
 });
