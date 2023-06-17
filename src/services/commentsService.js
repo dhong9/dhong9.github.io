@@ -17,6 +17,6 @@ export const addComment = (success, authTokens, pageName, name, email, body) => 
     },
     success,
     console.error,
-    { Authorization: `Bearer ${JSON.parse(authTokens?.access)}` }
+    { Authorization: `Bearer ${authTokens?.access}` }
   );
 };

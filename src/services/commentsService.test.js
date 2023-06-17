@@ -50,7 +50,7 @@ describe("CommentsService", () => {
         const success = jest.fn();
 
         // Add comment
-        addComment(success, {access: "{}"}, "pageName", "name", "email", "body");
+        addComment(success, {access: "magic"}, "pageName", "name", "email", "body");
 
         // Verify that postRequest was called correctly
         const commentPost = {
@@ -61,6 +61,6 @@ describe("CommentsService", () => {
             active: true,
             parent: null
         };
-        expect(postRequest).toHaveBeenCalledWith('comments', commentPost, success, console.error, {Authorization: `Bearer ${{}}`});
+        expect(postRequest).toHaveBeenCalledWith('comments', commentPost, success, console.error, {Authorization: `Bearer magic`});
     })
 });
