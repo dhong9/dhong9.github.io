@@ -48,7 +48,7 @@ function Connect4() {
     getComments(({ data: { results } }) => {
       setComments(results);
     });
-  }, [comments]);
+  }, []);
 
   // Game variables
   let p = 1;
