@@ -12,41 +12,35 @@ import twenty48Code from "projects/games/2048/code";
 import Sketch from "react-p5";
 
 // React
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // Service
-import { getComments } from "services/commentsService";
+import { getComments, addComment } from "services/commentsService";
 
-const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
-  id: 0,
-  commentText: commentValue,
-  childCommments: [],
-  isRootNode,
-  parentNodeId,
-});
+// Authentication
+import AuthContext from "context/AuthContext";
 
 function Twenty48() {
   const [comments, setComments] = useState([]);
   const [rootComment, setRootComment] = useState("");
-  const addComment = (parentId, newCommentText) => {
-    let newComment = null;
-    if (parentId) {
-      newComment = getNewComment(newCommentText, false, parentId);
-      setComments((newComments) => ({
-        ...newComments,
-        [parentId]: {
-          ...newComments[parentId],
-          childCommments: [...newComments[parentId].childCommments, newComment.id],
-        },
-      }));
-    } else {
-      newComment = getNewComment(newCommentText, true, null);
-    }
-    setComments((newComments) => ({ ...newComments, [newComment.id]: newComment }));
-  };
+
+  let { user } = useContext(AuthContext);
+
   const onAdd = () => {
-    addComment(null, rootComment);
-    setRootComment("");
+    addComment(
+      ({ status }) => {
+        if (status === 201) {
+          // Successfully added comment
+          getComments(({ data: { results } }) => {
+            setComments(results);
+          });
+        }
+      },
+      "2048",
+      user.username,
+      user.email,
+      rootComment
+    );
   };
 
   useEffect(() => {
