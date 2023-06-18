@@ -28,7 +28,9 @@ describe('MKButtonRoot', () => {
                 borderRadius: 10
             },
             boxShadows: {
-                colored: {"#FF00FF": "#FF00FF"}
+                colored: {
+                    "#FF00FF": "#FF00FF"
+                }
             },
             functions: { pxToRem, linearGradient, boxShadow, rgba }
         });
