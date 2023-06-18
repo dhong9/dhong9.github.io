@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MKAlertRoot renders 1`] = `
+<div
+  className="MuiBox-root css-opofj1"
+  onClick={[MockFunction]}
+>
+  Hello!
+</div>
+`;
