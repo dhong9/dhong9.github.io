@@ -44,7 +44,6 @@ import AuthContext from "context/AuthContext";
 import routes from "routes";
 
 function BaseLayout({ breadcrumb, title, children }) {
-
   let { user } = useContext(AuthContext);
 
   const signedOutOptions = [
@@ -76,11 +75,7 @@ function BaseLayout({ breadcrumb, title, children }) {
   return (
     <MKBox display="flex" flexDirection="column" bgColor="white" minHeight="100vh">
       <MKBox bgColor="white" shadow="sm" py={0.25}>
-        <DefaultNavbar
-          routes={[...routes, accountObj]}
-          transparent
-          relative
-        />
+        <DefaultNavbar routes={[...routes, accountObj]} transparent relative />
       </MKBox>
       <Container sx={{ mt: 6 }}>
         <Grid container item xs={12} flexDirection="column" justifyContent="center" mx="auto">
