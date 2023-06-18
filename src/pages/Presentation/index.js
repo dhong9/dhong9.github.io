@@ -29,6 +29,7 @@ import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+import CenteredFooter from "examples/Footers/CenteredFooter";
 
 // DH React components
 import DHSnackbar from "components/DHSnackbar";
@@ -164,6 +165,9 @@ function Presentation() {
         <Pages />
       </Card>
       <ContactUs handleContactResponse={handleContactResponse} />
+      <MKBox mt="auto">
+        <CenteredFooter />
+      </MKBox>
     </>
   );
 }
