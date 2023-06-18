@@ -32,7 +32,7 @@ function Twenty48() {
         if (status === 201) {
           // Successfully added comment
           getComments(({ data: { results } }) => {
-            setComments(results);
+            setComments(results.filter(({ pageName }) => pageName === "2048"));
           });
         }
       },
@@ -45,7 +45,7 @@ function Twenty48() {
 
   useEffect(() => {
     getComments(({ data: { results } }) => {
-      setComments(results);
+      setComments(results.filter(({ pageName }) => pageName === "2048"));
     });
   }, []);
 
