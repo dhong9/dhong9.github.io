@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MKAlertCloseIcon renders 1`] = `
+<span
+  className="css-16evjft"
+  onClick={[MockFunction]}
+>
+  Hello!
+</span>
+`;
