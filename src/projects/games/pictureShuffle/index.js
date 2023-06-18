@@ -12,45 +12,39 @@ import pictureShuffleCode from "projects/games/pictureShuffle/code";
 import Sketch from "react-p5";
 
 // React
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // Service
-import { getComments } from "services/commentsService";
+import { getComments, addComment } from "services/commentsService";
+
+// Authentication
+import AuthContext from "context/AuthContext";
 
 // Picture shuffle board utilities
 import meadow from "assets/images/meadow.png";
 import Board from "./utils/Board";
 
-const getNewComment = (commentValue, isRootNode = false, parentNodeId) => ({
-  id: 0,
-  commentText: commentValue,
-  childCommments: [],
-  isRootNode,
-  parentNodeId,
-});
-
 function PictureShuffle() {
   const [comments, setComments] = useState([]);
   const [rootComment, setRootComment] = useState("");
-  const addComment = (parentId, newCommentText) => {
-    let newComment = null;
-    if (parentId) {
-      newComment = getNewComment(newCommentText, false, parentId);
-      setComments((newComments) => ({
-        ...newComments,
-        [parentId]: {
-          ...newComments[parentId],
-          childCommments: [...newComments[parentId].childCommments, newComment.id],
-        },
-      }));
-    } else {
-      newComment = getNewComment(newCommentText, true, null);
-    }
-    setComments((newComments) => ({ ...newComments, [newComment.id]: newComment }));
-  };
+
+  let { user } = useContext(AuthContext);
+
   const onAdd = () => {
-    addComment(null, rootComment);
-    setRootComment("");
+    addComment(
+      ({ status }) => {
+        if (status === 201) {
+          // Successfully added comment
+          getComments(({ data: { results } }) => {
+            setComments(results.filter(({ pageName }) => pageName === "pictureShuffle"));
+          });
+        }
+      },
+      "pictureShuffle",
+      user.username,
+      user.email,
+      rootComment
+    );
   };
 
   useEffect(() => {
