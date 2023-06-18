@@ -49,7 +49,7 @@ function PictureShuffle() {
 
   useEffect(() => {
     getComments(({ data: { results } }) => {
-      setComments(results);
+      setComments(results.filter(({ pageName }) => pageName === "pictureShuffle"));
     });
   }, []);
 
