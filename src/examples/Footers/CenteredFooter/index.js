@@ -130,7 +130,7 @@ CenteredFooter.defaultProps = {
       icon: <PinterestIcon fontSize="small" />,
       link: "https://ro.pinterest.com/thecreativetim/",
     },
-    { icon: <GitHubIcon fontSize="small" />, link: "https://github.com/creativetimofficial" },
+    { icon: <GitHubIcon fontSize="small" />, link: "https://github.com/dhong9" },
   ],
   light: false,
 };
