@@ -33,7 +33,7 @@ function Connect4() {
         if (status === 201) {
           // Successfully added comment
           getComments(({ data: { results } }) => {
-            setComments(results);
+            setComments(results.filter(({ pageName }) => pageName === "connect4"));
           });
         }
       },
@@ -46,7 +46,7 @@ function Connect4() {
 
   useEffect(() => {
     getComments(({ data: { results } }) => {
-      setComments(results);
+      setComments(results.filter(({ pageName }) => pageName === "connect4"));
     });
   }, []);
 
