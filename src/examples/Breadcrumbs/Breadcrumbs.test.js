@@ -27,7 +27,7 @@ jest.mock("@mui/material/Breadcrumbs", () => {
 describe("BaseLayout", () => {
     it("renders", () => {
         const component = renderer.create(
-            <Breadcrumbs routes={[]}>
+            <Breadcrumbs routes={[{ label: "Bread", route: "/crumbs" }]}>
                 Test Breadcrumbs
             </Breadcrumbs>
         );
