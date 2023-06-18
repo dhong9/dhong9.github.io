@@ -24,7 +24,7 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 
 // @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
@@ -117,7 +117,7 @@ CenteredFooter.defaultProps = {
     { href: "https://www.creative-tim.com/license", name: "License" },
   ],
   socials: [
-    { icon: <FacebookIcon fontSize="small" />, link: "https://www.facebook.com/CreativeTim/" },
+    { icon: <LinkedIn fontSize="small" />, link: "https://www.linkedin.com/in/danielhong35/" },
     {
       icon: <TwitterIcon fontSize="small" />,
       link: "https://twitter.com/creativetim",
