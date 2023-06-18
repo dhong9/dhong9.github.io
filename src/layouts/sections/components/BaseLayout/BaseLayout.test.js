@@ -52,7 +52,7 @@ jest.mock("context/AuthContext", () => {
 });
 
 describe("BaseLayout", () => {
-    it("BaseLayout", () => {
+    it("renders", () => {
         useContextMock.mockReturnValue("Test Value");
         const component = renderer.create(
             <BaseLayout

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BaseLayout renders 1`] = `
+exports[`View renders 1`] = `
 <div>
   Mock Box
 </div>
