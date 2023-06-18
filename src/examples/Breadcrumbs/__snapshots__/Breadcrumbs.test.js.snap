@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BaseLayout renders 1`] = `
+exports[`BaseLayout renders with route 1`] = `
+<div>
+  Mock Box
+</div>
+`;
+
+exports[`BaseLayout renders without route 1`] = `
 <div>
   Mock Box
 </div>

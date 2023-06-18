@@ -24,10 +24,20 @@ jest.mock("@mui/material/Breadcrumbs", () => {
     };
 });
 
-describe("BaseLayout", () => {
-    it("renders", () => {
+describe("Breadcrumbs", () => {
+    it("renders with route", () => {
         const component = renderer.create(
             <Breadcrumbs routes={[{ label: "Bread", route: "/crumbs" }]}>
+                Test Breadcrumbs
+            </Breadcrumbs>
+        );
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    it("renders without route", () => {
+        const component = renderer.create(
+            <Breadcrumbs routes={[{ label: "Regular" }]}>
                 Test Breadcrumbs
             </Breadcrumbs>
         );
