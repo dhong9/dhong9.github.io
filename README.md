@@ -27,18 +27,13 @@ View example pages here. (https://demos.creative-tim.com/material-kit-react/#/pa
 - View [Github Repository](https://github.com/dhong9/dhong9.github.io)
 - Check [Portfolio Website](https://www.danyo.tech)
 
-#### Special thanks
+#### Resources
 
-During the development of this dashboard, we have used many existing resources from awesome developers. We want to thank them for providing their tools open source:
+This website was built with the following resources:
 
-- [MUI](https://mui.com/) - The React UI library for faster and easier web development.
-- [React Flatpickr](https://github.com/haoxins/react-flatpickr) - Useful library used to select date.
-- [React Copy to Clipboard](https://github.com/nkbt/react-copy-to-clipboard) - Useful library used for copying data to the clipboard.
-- [React Countup](https://github.com/glennreyes/react-countup) - A lightweight React component that can be used to quickly create animations that display numerical data in a more interesting way.
-- [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) - Syntax highlighting component for react with prismjs or highlightjs ast using inline styles.
-- [ChromaJS](https://gka.github.io/chroma.js/) - A small-ish zero-dependency JavaScript library for all kinds of color conversions and color scales.
-
-Let us know your thoughts below. And good luck with development!
+- [Material Kit React](https://www.creative-tim.com/product/material-kit-react?ref=mkr-readme) - Library of MUI React elements by Creative Tim
+- [Jest](https://jestjs.io/docs/tutorial-react) - Tests React applications/components
+- [Codecov](https://about.codecov.io/) - Measures unit test coverage
 
 ## Table of Contents
 
