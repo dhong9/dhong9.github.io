@@ -25,9 +25,7 @@ import Stack from "@mui/material/Stack";
 
 // @mui icons
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 // Material Kit 2 React components
@@ -119,16 +117,8 @@ CenteredFooter.defaultProps = {
   socials: [
     { icon: <LinkedInIcon fontSize="small" />, link: "https://www.linkedin.com/in/danielhong35/" },
     {
-      icon: <TwitterIcon fontSize="small" />,
-      link: "https://twitter.com/creativetim",
-    },
-    {
-      icon: <InstagramIcon fontSize="small" />,
-      link: "https://www.instagram.com/creativetimofficial/",
-    },
-    {
-      icon: <PinterestIcon fontSize="small" />,
-      link: "https://ro.pinterest.com/thecreativetim/",
+      icon: <YouTubeIcon fontSize="small" />,
+      link: "https://www.youtube.com/danielhong35",
     },
     { icon: <GitHubIcon fontSize="small" />, link: "https://github.com/dhong9" },
   ],
