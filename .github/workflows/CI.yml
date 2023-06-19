@@ -1,5 +1,8 @@
 name: Continuous Integration (CI)
 
+env:
+  CODECOV_TOKEN: '${{ secrets.CODECOV_TOKEN }}'
+
 on:
   push:
     branches: [ "main" ]
