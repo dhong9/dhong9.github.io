@@ -4,28 +4,19 @@
 
 ![Image](https://s3.amazonaws.com/creativetim_bucket/products/83/original/material-kit-2-react.jpg)
 
-Material Kit 2 React is our newest free MUI Design System based on React. Its amazing design is inspired by Material Design and contains all the components you need for your development. If you’re a developer looking to create good-looking websites, rich with features, and highly customisable, here is your match.
+Hello and welcome to my portfolio website, where you will find my coding and art projects! This website is a fork of Creative Tim's [Material Kit](https://www.creative-tim.com/product/material-kit-react?ref=mkr-readme), which is based on React. You can visit me at https://www.danyo.tech.
 
-_Fully Coded Elements_
-Material Kit 2 React is built with over 40 frontend individual elements, like buttons, inputs, navbars, alerts or cards, giving you the freedom of choosing and combining. All components can take variations in color, which you can easily modify using MUI styled() API and sx prop. You will save a lot of time going from prototyping to full-functional code because all elements are implemented.
+_Automated Build and Deployment_
+All components are automatically tested with [Github's pipeline](https://github.com/dhong9/dhong9.github.io/actions). Code coverage results are posted to [CodeCov](https://app.codecov.io/gh/dhong9/dhong9.github.io). Successfully built pushes are deployed via [Github pages](https://pages.github.com/).
 
-This free MUI & React template is coming with pre-built design blocks, so the development process is seamless,
-switching from our pages to the real website is very easy to be done.
-View all components here. (https://www.creative-tim.com/learning-lab/react/alerts/material-kit/)
-
-_Documentation built by Developers_
-Each element is well presented in very complex documentation.
-You can read more about the documentation here (https://www.creative-tim.com/learning-lab/react/overview/material-kit/).
-
-_Example Pages_
-If you want to get inspiration or just show something directly to your clients, you can jump-start your development with our pre-built example pages. You will be able to quickly set up the basic structure for your web project.
-
-View example pages here. (https://demos.creative-tim.com/material-kit-react/#/pages/landing-pages/about-us)
+_Interactive Coding Projects_
+Coding projects are demonstrated right on the browser so that there is no need to download and build the projects. Games are made with [p5.js](https://p5js.org/), and interpreters are made with [Monaco Editor](https://www.npmjs.com/package/@monaco-editor/react).
 
 **HELPFUL LINKS**
 
 - View [Github Repository](https://github.com/dhong9/dhong9.github.io)
 - Check [Portfolio Website](https://www.danyo.tech)
+- See [Code Coverage](https://app.codecov.io/gh/dhong9/dhong9.github.io)
 
 #### Resources
 
