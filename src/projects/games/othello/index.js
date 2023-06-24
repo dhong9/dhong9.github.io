@@ -11,7 +11,7 @@ import othelloCode from "projects/games/othello/code";
 // p5
 import Sketch from "react-p5";
 
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // Service
 import { getComments, addComment } from "services/commentsService";
