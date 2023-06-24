@@ -2,6 +2,6 @@
 
 exports[`2048 renders 1`] = `
 <div>
-  Mock Box
+  Mock Layout
 </div>
 `;

@@ -2,6 +2,6 @@
 
 exports[`Connect4 renders 1`] = `
 <div>
-  Mock Box
+  Mock Layout
 </div>
 `;

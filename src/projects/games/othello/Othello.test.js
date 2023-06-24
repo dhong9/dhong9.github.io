@@ -20,7 +20,7 @@ jest.mock("components/MKButton", () => {
     const { forwardRef } = jest.requireActual("react");
     return {
         __esModule: true,
-        default: forwardRef(() => <button>Mock Box</button>)
+        default: forwardRef(() => <button>Mock Button</button>)
     };
 });
 jest.mock("components/MKBox", () => {
@@ -28,6 +28,20 @@ jest.mock("components/MKBox", () => {
     return {
         __esModule: true,
         default: forwardRef(() => <div>Mock Box</div>)
+    };
+});
+jest.mock("layouts/sections/components/BaseLayout", () => {
+    const { forwardRef } = jest.requireActual("react");
+    return {
+        __esModule: true,
+        default: forwardRef(() => <div>Mock Layout</div>)
+    };
+});
+jest.mock("layouts/sections/components/View", () => {
+    const { forwardRef } = jest.requireActual("react");
+    return {
+        __esModule: true,
+        default: forwardRef(() => <div>Mock View</div>)
     };
 });
 jest.mock("react-monaco-editor", () => {

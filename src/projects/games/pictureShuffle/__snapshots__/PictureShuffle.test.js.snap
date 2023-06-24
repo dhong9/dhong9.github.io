@@ -2,6 +2,6 @@
 
 exports[`PictureShuffle renders 1`] = `
 <div>
-  Mock Box
+  Mock Layout
 </div>
 `;
