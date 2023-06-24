@@ -74,8 +74,14 @@ jest.mock("components/MKButton", () => {
 });
 
 describe("DefaultNavbar", () => {
-    it("renders", () => {
-        const component = renderer.create(<DefaultNavbar routes={[]} />);
+    it("renders with route", () => {
+        const component = renderer.create(<DefaultNavbar routes={[{ label: "Navbar", route: "/default" }]} />);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    it("renders without route", () => {
+        const component = renderer.create(<DefaultNavbar routes={[{ label: "Regular" }]} />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

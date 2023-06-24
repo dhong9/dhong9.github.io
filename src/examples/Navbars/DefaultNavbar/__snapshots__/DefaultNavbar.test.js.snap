@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DefaultNavbar renders 1`] = `
+exports[`DefaultNavbar renders with route 1`] = `
+<div>
+  MUI Container
+</div>
+`;
+
+exports[`DefaultNavbar renders without route 1`] = `
 <div>
   MUI Container
 </div>
