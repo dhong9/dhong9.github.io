@@ -12,7 +12,7 @@ import twenty48Code from "projects/games/2048/code";
 import Sketch from "react-p5";
 
 // React
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // Service
 import { getComments, addComment } from "services/commentsService";
