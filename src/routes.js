@@ -40,6 +40,7 @@ Coded by www.creative-tim.com
 import Icon from "@mui/material/Icon";
 
 // @mui icons
+import DonutSmallIcon from "@mui/icons-material/DonutSmall";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 // Games
@@ -51,8 +52,15 @@ import Othello from "projects/games/othello";
 // Interpreters
 import BrainF from "projects/interpreters/brainF";
 import WhiteSpace from "projects/interpreters/whitespace";
+import DoughnutRiderPage from "layouts/pages/doughnut-rider";
 
 const routes = [
+  {
+    name: "doughnut rider",
+    route: "/doughnutRider",
+    icon: <DonutSmallIcon />,
+    component: <DoughnutRiderPage />,
+  },
   {
     name: "sections",
     icon: <Icon>view_day</Icon>,
