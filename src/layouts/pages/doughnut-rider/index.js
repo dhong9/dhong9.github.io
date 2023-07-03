@@ -1,7 +1,9 @@
+import FeaturedPost from "components/FeaturedPost";
+
 export default function DoughnutRiderPage() {
     return (
         <div>
-            <h1>Doughnut Rider</h1>
+            <FeaturedPost />
         </div>
     );
 }
