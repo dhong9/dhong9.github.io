@@ -12,38 +12,17 @@ exports[`DHComments renders 1`] = `
   <div
     className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-wrap-xs-nowrap css-1cfjp91-MuiGrid-root"
   >
+    <p>
+      Mock Typography
+    </p>
     <div
       className="MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiGrid-grid-xs-true css-114cq88-MuiGrid-root"
     >
-      <h4
-        style={
-          {
-            "margin": 0,
-            "textAlign": "left",
-          }
-        }
-      >
-        John Adams
-      </h4>
-      <p
-        style={
-          {
-            "textAlign": "left",
-          }
-        }
-      >
-        Play connect 4 with me
+      <p>
+        Mock Typography
       </p>
-      <p
-        style={
-          {
-            "color": "gray",
-            "textAlign": "left",
-          }
-        }
-      >
-        created 
-        2023-05-26T17:42:43.263337Z
+      <p>
+        Mock Typography
       </p>
     </div>
   </div>

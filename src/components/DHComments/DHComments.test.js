@@ -10,6 +10,13 @@ jest.mock("components/MKButton", () => {
         default: forwardRef(() => <button>Mock Button</button>)
     };
 });
+jest.mock("components/MKTypography", () => {
+    const { forwardRef } = jest.requireActual("react");
+    return {
+        __esModule: true,
+        default: forwardRef(() => <p>Mock Typography</p>)
+    };
+});
 
 describe("DHComments", () => {
     let useEffect;
