@@ -20,7 +20,7 @@ export default function DHComments({ comments }) {
           </MKTypography>
           <Grid justifyContent="left" item xs zeroMinWidth>
             <MKTypography variant="subtitle1" color="text.secondary">
-              MKTypography {create}
+              created {new Date(create).toLocaleString()}
             </MKTypography>
             <MKTypography variant="subtitle1" paragraph>
               {body}
