@@ -15,27 +15,25 @@ export default function DHComments({ comments }) {
   return (
     <Paper style={{ padding: "40px 20px" }}>
       {comments.map(({ id, body, name, create }) => (
-        <Grid key={id} container wrap="nowrap" spacing={2}>
-          <Grid item xs={12} md={6}>
-            <CardActionArea component="a" href="#">
-              <Card sx={{ display: "flex" }}>
-                <CardContent sx={{ flex: 1 }}>
-                  <Typography component="h2" variant="h5">
-                    {name}
-                  </Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
-                    {new Date(create).toLocaleString()}
-                  </Typography>
-                  <Typography variant="subtitle1" paragraph>
-                    {body}
-                  </Typography>
-                  <Typography variant="subtitle1" color="primary">
-                    Reply...
-                  </Typography>
-                </CardContent>
-              </Card>
-            </CardActionArea>
-          </Grid>
+        <Grid key={id} item xs={12} md={6}>
+          <CardActionArea component="a" href="#">
+            <Card sx={{ display: "flex" }}>
+              <CardContent sx={{ flex: 1 }}>
+                <Typography component="h2" variant="h5">
+                  {name}
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                  {new Date(create).toLocaleString()}
+                </Typography>
+                <Typography variant="subtitle1" paragraph>
+                  {body}
+                </Typography>
+                <Typography variant="subtitle1" color="primary">
+                  Reply...
+                </Typography>
+              </CardContent>
+            </Card>
+          </CardActionArea>
         </Grid>
       ))}
     </Paper>
