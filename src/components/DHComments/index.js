@@ -15,7 +15,7 @@ export default function DHComments({ comments }) {
   return (
     <Paper style={{ padding: "40px 20px" }}>
       {comments.map(({ id, body, name, create }) => (
-        <Grid key={id} item xs={12}>
+        <Grid key={id} item xs={12} md={6}>
           <CardActionArea component="a" href="#">
             <Card sx={{ display: "flex" }}>
               <CardContent sx={{ flex: 1 }}>
