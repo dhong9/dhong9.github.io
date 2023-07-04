@@ -1,5 +1,8 @@
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ForumHeader from "components/ForumHeader";
 import FeaturedPost from "components/FeaturedPost";
+
+const theme = createTheme();
 
 export default function DoughnutRiderPage() {
   const sections = [{ title: "Sports" }, { title: "Politics" }];
@@ -14,9 +17,9 @@ export default function DoughnutRiderPage() {
   };
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <ForumHeader title="Forums Page" sections={sections} />
       <FeaturedPost post={post} />
-    </div>
+    </ThemeProvider>
   );
 }
