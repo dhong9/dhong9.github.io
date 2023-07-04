@@ -41,7 +41,7 @@ export default function FeaturedPost(props) {
   );
 }
 
-// Typechecking props of DHSnackbar
+// Typechecking props of FeaturedPost
 FeaturedPost.propTypes = {
   post: PropTypes.shape({
     date: PropTypes.string,
