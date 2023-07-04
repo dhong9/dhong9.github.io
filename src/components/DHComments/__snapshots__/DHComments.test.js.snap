@@ -12,18 +12,58 @@ exports[`DHComments renders 1`] = `
   <div
     className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-wrap-xs-nowrap css-1cfjp91-MuiGrid-root"
   >
-    <p>
-      Mock Typography
-    </p>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-zeroMinWidth MuiGrid-grid-xs-true css-114cq88-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1fyyp8j-MuiGrid-root"
     >
-      <p>
-        Mock Typography
-      </p>
-      <p>
-        Mock Typography
-      </p>
+      <a
+        className="MuiButtonBase-root MuiCardActionArea-root css-1oitmrd-MuiButtonBase-root-MuiCardActionArea-root"
+        href="#"
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+      >
+        <div
+          className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1oqv2c0-MuiPaper-root-MuiCard-root"
+        >
+          <div
+            className="MuiCardContent-root css-97bign-MuiCardContent-root"
+          >
+            <h2
+              className="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+            >
+              John Adams
+            </h2>
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle1 css-ecpxie-MuiTypography-root"
+            >
+              5/26/2023, 10:42:43 AM
+            </h6>
+            <p
+              className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-paragraph css-11j0rze-MuiTypography-root"
+            >
+              Play connect 4 with me
+            </p>
+            <h6
+              className="MuiTypography-root MuiTypography-subtitle1 css-x4wfr5-MuiTypography-root"
+            >
+              Reply...
+            </h6>
+          </div>
+        </div>
+        <span
+          className="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
+        />
+      </a>
     </div>
   </div>
 </div>
