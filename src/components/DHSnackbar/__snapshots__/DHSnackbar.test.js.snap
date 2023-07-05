@@ -3,5 +3,8 @@
 exports[`DHSnackbar renders 1`] = `
 <div>
   Mock Snackbar
+  <div>
+    Mock Alert
+  </div>
 </div>
 `;
