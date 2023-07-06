@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultNavbarDropdown renders with route 1`] = `
+<div>
+  Mock Box
+</div>
+`;
+
+exports[`DefaultNavbarDropdown renders without route 1`] = `
+<div>
+  Mock Box
+</div>
+`;
