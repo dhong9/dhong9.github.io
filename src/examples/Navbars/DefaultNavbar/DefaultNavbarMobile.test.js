@@ -3,6 +3,7 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 
 // Icons
 import GitHubIcon from "@mui/icons-material/GitHub";
+import DonutSmallIcon from "@mui/icons-material/DonutSmall";
 
 // Mocks
 jest.mock("@mui/material/Container", () => {
@@ -87,7 +88,21 @@ describe("DefaultNavbarMobile", () => {
   it("renders with route", () => {
     const component = renderer.create(
       <DefaultNavbarMobile
-        routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon />, name: "Github" }]}
+        routes={[
+          {
+            label: "Navbar",
+            route: "/default",
+            icon: <GitHubIcon />,
+            name: "Github",
+          },
+          {
+            label: "Doughnut",
+            route: "/rider",
+            icon: <DonutSmallIcon />,
+            name: "doughnut",
+            collapse: [{ name: "boston" }],
+          },
+        ]}
         open={true}
       />
     );
@@ -98,7 +113,16 @@ describe("DefaultNavbarMobile", () => {
   it("renders without route", () => {
     const component = renderer.create(
       <DefaultNavbarMobile
-        routes={[{ label: "Regular", icon: <GitHubIcon />, name: "Github" }]}
+        routes={[
+          { label: "Regular", icon: <GitHubIcon />, name: "Github" },
+          {
+            label: "Doughnut",
+            route: "/rider",
+            icon: <DonutSmallIcon />,
+            name: "doughnut",
+            collapse: [{ name: "boston" }],
+          },
+        ]}
         open={true}
       />
     );

@@ -29,6 +29,18 @@ exports[`DefaultNavbarMobile renders with route 1`] = `
             Mock Typography
           </div>
         </div>
+        <div>
+          Mock MKBox
+          <div>
+            Mock Typography
+          </div>
+          <div>
+            Mock Typography
+          </div>
+          <div>
+            Mock Typography
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -52,6 +64,18 @@ exports[`DefaultNavbarMobile renders without route 1`] = `
     >
       <div>
         Mock MKBox
+        <div>
+          Mock MKBox
+          <div>
+            Mock Typography
+          </div>
+          <div>
+            Mock Typography
+          </div>
+          <div>
+            Mock Typography
+          </div>
+        </div>
         <div>
           Mock MKBox
           <div>
