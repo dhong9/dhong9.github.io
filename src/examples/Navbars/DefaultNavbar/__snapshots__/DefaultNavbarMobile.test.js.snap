@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultNavbarMobile renders with route 1`] = `null`;
+
+exports[`DefaultNavbarMobile renders without route 1`] = `null`;
