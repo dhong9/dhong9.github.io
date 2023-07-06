@@ -1,6 +1,9 @@
 import renderer from "react-test-renderer";
 import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMobile";
 
+// Icons
+import GitHubIcon from "@mui/icons-material/GitHub";
+
 // Mocks
 jest.mock("@mui/material/Container", () => {
   const { forwardRef } = jest.requireActual("react");
@@ -83,14 +86,18 @@ jest.mock("components/MKButton", () => {
 describe("DefaultNavbarMobile", () => {
   it("renders with route", () => {
     const component = renderer.create(
-      <DefaultNavbarMobile routes={[{ label: "Navbar", route: "/default" }]} />
+      <DefaultNavbarMobile
+        routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon /> }]}
+      />
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("renders without route", () => {
-    const component = renderer.create(<DefaultNavbarMobile routes={[{ label: "Regular" }]} />);
+    const component = renderer.create(
+      <DefaultNavbarMobile routes={[{ label: "Regular", icon: <GitHubIcon /> }]} />
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

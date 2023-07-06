@@ -1,6 +1,9 @@
 import renderer from "react-test-renderer";
 import DefaultNavbarDropdown from "examples/Navbars/DefaultNavbar/DefaultNavbarDropdown";
 
+// Icons
+import GitHubIcon from "@mui/icons-material/GitHub";
+
 // Mocks
 jest.mock("@mui/material/Container", () => {
   const { forwardRef } = jest.requireActual("react");
@@ -76,7 +79,7 @@ jest.mock("components/MKButton", () => {
 describe("DefaultNavbarDropdown", () => {
   it("renders with route", () => {
     const component = renderer.create(
-      <DefaultNavbarDropdown routes={[{ label: "Navbar", route: "/default" }]}>
+      <DefaultNavbarDropdown routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon/> }]}>
         <div>I have routes</div>
       </DefaultNavbarDropdown>
     );
@@ -86,7 +89,7 @@ describe("DefaultNavbarDropdown", () => {
 
   it("renders without route", () => {
     const component = renderer.create(
-      <DefaultNavbarDropdown routes={[{ label: "Regular" }]}>
+      <DefaultNavbarDropdown routes={[{ label: "Regular", icon: <GitHubIcon/> }]}>
         <div>I have no routes</div>
       </DefaultNavbarDropdown>
     );
