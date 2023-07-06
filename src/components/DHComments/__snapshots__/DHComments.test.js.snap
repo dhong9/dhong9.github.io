@@ -48,7 +48,9 @@ exports[`DHComments renders 1`] = `
           <p
             className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-paragraph css-11j0rze-MuiTypography-root"
           >
-            Play connect 4 with me
+            <p>
+              Play connect 4 with me
+            </p>
           </p>
           <h6
             className="MuiTypography-root MuiTypography-subtitle1 css-x4wfr5-MuiTypography-root"
