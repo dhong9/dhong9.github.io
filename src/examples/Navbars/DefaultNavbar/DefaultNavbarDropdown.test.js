@@ -79,7 +79,9 @@ jest.mock("components/MKButton", () => {
 describe("DefaultNavbarDropdown", () => {
   it("renders with route", () => {
     const component = renderer.create(
-      <DefaultNavbarDropdown routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon/> }]}>
+      <DefaultNavbarDropdown
+        routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon />, name: "Github" }]}
+      >
         <div>I have routes</div>
       </DefaultNavbarDropdown>
     );
@@ -89,7 +91,7 @@ describe("DefaultNavbarDropdown", () => {
 
   it("renders without route", () => {
     const component = renderer.create(
-      <DefaultNavbarDropdown routes={[{ label: "Regular", icon: <GitHubIcon/> }]}>
+      <DefaultNavbarDropdown routes={[{ label: "Regular", icon: <GitHubIcon />, name: "Github" }]}>
         <div>I have no routes</div>
       </DefaultNavbarDropdown>
     );

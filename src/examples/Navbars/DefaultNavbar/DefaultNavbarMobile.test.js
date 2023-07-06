@@ -87,7 +87,8 @@ describe("DefaultNavbarMobile", () => {
   it("renders with route", () => {
     const component = renderer.create(
       <DefaultNavbarMobile
-        routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon /> }]}
+        routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon />, name: "Github" }]}
+        open={true}
       />
     );
     let tree = component.toJSON();
@@ -96,7 +97,10 @@ describe("DefaultNavbarMobile", () => {
 
   it("renders without route", () => {
     const component = renderer.create(
-      <DefaultNavbarMobile routes={[{ label: "Regular", icon: <GitHubIcon /> }]} />
+      <DefaultNavbarMobile
+        routes={[{ label: "Regular", icon: <GitHubIcon />, name: "Github" }]}
+        open={true}
+      />
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();

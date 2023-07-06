@@ -1,5 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DefaultNavbarMobile renders with route 1`] = `null`;
+exports[`DefaultNavbarMobile renders with route 1`] = `
+<div
+  className="MuiCollapse-root MuiCollapse-vertical MuiCollapse-entered css-pwcg7p-MuiCollapse-root"
+  style={
+    {
+      "minHeight": "0px",
+    }
+  }
+>
+  <div
+    className="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+  >
+    <div
+      className="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+    >
+      <div>
+        Mock MKBox
+        <div>
+          Mock MKBox
+          <div>
+            Mock Typography
+          </div>
+          <div>
+            Mock Typography
+          </div>
+          <div>
+            Mock Typography
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
 
-exports[`DefaultNavbarMobile renders without route 1`] = `null`;
+exports[`DefaultNavbarMobile renders without route 1`] = `
+<div
+  className="MuiCollapse-root MuiCollapse-vertical MuiCollapse-entered css-pwcg7p-MuiCollapse-root"
+  style={
+    {
+      "minHeight": "0px",
+    }
+  }
+>
+  <div
+    className="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+  >
+    <div
+      className="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+    >
+      <div>
+        Mock MKBox
+        <div>
+          Mock MKBox
+          <div>
+            Mock Typography
+          </div>
+          <div>
+            Mock Typography
+          </div>
+          <div>
+            Mock Typography
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
