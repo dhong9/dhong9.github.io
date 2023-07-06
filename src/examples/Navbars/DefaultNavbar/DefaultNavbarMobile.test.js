@@ -100,7 +100,7 @@ describe("DefaultNavbarMobile", () => {
             route: "/rider",
             icon: <DonutSmallIcon />,
             name: "doughnut",
-            collapse: [{ name: "boston" }],
+            collapse: [{ name: "boston" }, { name: "brooklyn", collapse: [{ name: "new york" }] }],
           },
         ]}
         open={true}
@@ -120,7 +120,7 @@ describe("DefaultNavbarMobile", () => {
             route: "/rider",
             icon: <DonutSmallIcon />,
             name: "doughnut",
-            collapse: [{ name: "boston" }],
+            collapse: [{ name: "boston" }, { name: "brooklyn", collapse: [{ name: "new york" }] }],
           },
         ]}
         open={true}
