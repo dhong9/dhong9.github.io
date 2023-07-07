@@ -4,7 +4,7 @@ export const getComments = (success) => {
   getRequest("comments", success, console.error);
 };
 
-export const addComment = (success, pageName, name, email, body) => {
+export const addComment = (success, pageName, name, email, body, isPlainText) => {
   postRequest(
     "comments",
     {
@@ -12,6 +12,7 @@ export const addComment = (success, pageName, name, email, body) => {
       name,
       email,
       body,
+      isPlainText,
       active: true,
       parent: null,
     },

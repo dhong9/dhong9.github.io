@@ -5,6 +5,11 @@ import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import DHComments from "components/DHComments";
 
+// Form
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+
 // 2048 code
 import twenty48Code from "projects/games/2048/code";
 
@@ -23,8 +28,13 @@ import AuthContext from "context/AuthContext";
 function Twenty48() {
   const [comments, setComments] = useState([]);
   const [rootComment, setRootComment] = useState("");
+  const [isPlainText, setIsPlainText] = useState(false);
 
   let { user } = useContext(AuthContext);
+
+  const handleChange = (event) => {
+    setIsPlainText(event.target.checked);
+  };
 
   const onAdd = () => {
     addComment(
@@ -39,7 +49,8 @@ function Twenty48() {
       "2048",
       user.username,
       user.email,
-      rootComment
+      rootComment,
+      isPlainText
     );
   };
 
@@ -281,9 +292,15 @@ function Twenty48() {
           onChange={(e) => setRootComment(e.target.value)}
           value={rootComment}
         />{" "}
-        <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
-          Add
-        </MKButton>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={isPlainText} onChange={handleChange} />}
+            label="Visualize"
+          />
+          <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+            Add
+          </MKButton>
+        </FormGroup>
       </div>
     </BaseLayout>
   );

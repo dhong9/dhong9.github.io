@@ -6,6 +6,11 @@ import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import DHComments from "components/DHComments";
 
+// Form
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+
 // Connect 4 code
 import connect4Code from "projects/games/connect4/code";
 
@@ -24,8 +29,13 @@ import AuthContext from "context/AuthContext";
 function Connect4() {
   const [comments, setComments] = useState([]);
   const [rootComment, setRootComment] = useState("");
+  const [isPlainText, setIsPlainText] = useState(false);
 
   let { user } = useContext(AuthContext);
+
+  const handleChange = (event) => {
+    setIsPlainText(event.target.checked);
+  };
 
   const onAdd = () => {
     addComment(
@@ -40,7 +50,8 @@ function Connect4() {
       "connect4",
       user.username,
       user.email,
-      rootComment
+      rootComment,
+      isPlainText
     );
   };
 
@@ -540,9 +551,15 @@ function Connect4() {
           value={rootComment}
         />{" "}
         {user ? (
-          <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
-            Add
-          </MKButton>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={isPlainText} onChange={handleChange} />}
+              label="Visualize"
+            />
+            <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+              Add
+            </MKButton>
+          </FormGroup>
         ) : (
           <MKBox>
             <i>You must be logged into comment</i>
