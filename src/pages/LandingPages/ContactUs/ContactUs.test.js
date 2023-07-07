@@ -1,15 +1,22 @@
+// Unit test libraries
 import renderer from "react-test-renderer";
 import { render, fireEvent } from "@testing-library/react";
-import ContactUs from "pages/LandingPages/ContactUs";
+
+// MUI components
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+// Functions
 import linearGradient from "assets/theme/functions/linearGradient";
 import pxToRem from "assets/theme/functions/pxToRem";
+
+// Component to test
+import ContactUs from "pages/LandingPages/ContactUs";
 
 jest.mock("@mui/base/TextareaAutosize", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <div>MUI TextareaAutosize</div>),
+    default: forwardRef(() => <textarea />),
   };
 });
 
@@ -108,11 +115,17 @@ describe("ContactUs", () => {
       </ThemeProvider>
     );
     const fullNameInput = getByLabelText("Full Name");
+    const emailInput = getByLabelText("Email");
+    const subjectInput = getByLabelText("Subject");
 
     // Simulate the onChange event
     fireEvent.change(fullNameInput, { target: { value: "Johnny Appleseed" } });
+    fireEvent.change(emailInput, { target: { value: "johnny_boy@aol.com" } });
+    fireEvent.change(subjectInput, { target: { value: "Unit Test is Healthy" } });
 
     // Assert that the state or props have been updated accordingly
     expect(fullNameInput.value).toEqual("Johnny Appleseed");
+    expect(emailInput.value).toEqual("johnny_boy@aol.com");
+    expect(subjectInput.value).toEqual("Unit Test is Healthy");
   });
 });
