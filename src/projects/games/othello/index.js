@@ -5,6 +5,11 @@ import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import DHComments from "components/DHComments";
 
+// Form
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+
 // Othello code
 import othelloCode from "projects/games/othello/code";
 
@@ -22,8 +27,13 @@ import AuthContext from "context/AuthContext";
 function Othello() {
   const [comments, setComments] = useState([]);
   const [rootComment, setRootComment] = useState("");
+  const [isPlainText, setIsPlainText] = useState(false);
 
   let { user } = useContext(AuthContext);
+
+  const handleChange = (event) => {
+    setIsPlainText(event.target.checked);
+  };
 
   const onAdd = () => {
     addComment(
@@ -455,9 +465,15 @@ function Othello() {
           onChange={(e) => setRootComment(e.target.value)}
           value={rootComment}
         />{" "}
-        <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
-          Add
-        </MKButton>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={isPlainText} onChange={handleChange} />}
+            label="Visualize"
+          />
+          <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+            Add
+          </MKButton>
+        </FormGroup>
       </div>
     </BaseLayout>
   );
