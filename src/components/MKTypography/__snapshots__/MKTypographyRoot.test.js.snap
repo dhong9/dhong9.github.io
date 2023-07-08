@@ -2,7 +2,7 @@
 
 exports[`MKTypographyRoot renders 1`] = `
 <p
-  className="MuiTypography-root MuiTypography-body1 css-1uff2g0-MuiTypography-root"
+  className="MuiTypography-root MuiTypography-body1 css-4qj1a3-MuiTypography-root"
 >
   Test Typography
 </p>

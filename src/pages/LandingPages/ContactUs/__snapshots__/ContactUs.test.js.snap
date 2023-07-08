@@ -5,51 +5,51 @@ exports[`ContactUs renders 1`] = `
   className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 css-18ksmt-MuiGrid-root"
 >
   <div
-    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-6 css-f0xsrb-MuiGrid-root"
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-6 css-1442ydi-MuiGrid-root"
   >
     <div
-      className="MuiBox-root css-1oynbgs"
+      className="MuiBox-root css-oqhpx7"
     />
   </div>
   <div
-    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-7 MuiGrid-grid-lg-6 MuiGrid-grid-xl-4 css-143u1ea-MuiGrid-root"
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-10 MuiGrid-grid-md-7 MuiGrid-grid-lg-6 MuiGrid-grid-xl-4 css-1yvwk9y-MuiGrid-root"
   >
     <div
-      className="MuiBox-root css-q0znrf"
+      className="MuiBox-root css-11gjnon"
     >
       <div
-        className="MuiBox-root css-7zy1dc"
+        className="MuiBox-root css-kan64s"
       >
         <h3
-          className="MuiTypography-root MuiTypography-h3 css-7zptnx-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-h3 css-u0vnxq-MuiTypography-root"
         >
           Contact us
         </h3>
       </div>
       <div
-        className="MuiBox-root css-virxz"
+        className="MuiBox-root css-hwgoop"
       >
         <p
-          className="MuiTypography-root MuiTypography-body2 css-yxe1n1-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body2 css-16pa0vv-MuiTypography-root"
         >
           For further questions, including inquiries, please email danielhong35@gmail.com or contact using this contact form.
         </p>
         <form
           autoComplete="off"
-          className="MuiBox-root css-xshps2"
+          className="MuiBox-root css-1q4obf"
           method="post"
         >
           <div
             className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 css-zow5z4-MuiGrid-root"
           >
             <div
-              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1fyyp8j-MuiGrid-root"
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-4jxqa8-MuiGrid-root"
             >
               <div
-                className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-zuj754-MuiFormControl-root-MuiTextField-root"
+                className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
               >
                 <label
-                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-1c2i806-MuiFormLabel-root-MuiInputLabel-root"
+                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-osp2g4-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink={true}
                   htmlFor=":r0:"
                   id=":r0:-label"
@@ -57,13 +57,13 @@ exports[`ContactUs renders 1`] = `
                   Full Name
                 </label>
                 <div
-                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-l4u8b9-MuiInputBase-root-MuiInput-root"
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-11newoz-MuiInputBase-root-MuiInput-root"
                   onClick={[Function]}
                 >
                   <input
                     aria-invalid={false}
                     autoFocus={false}
-                    className="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+                    className="MuiInputBase-input MuiInput-input css-15e8ec1-MuiInputBase-input-MuiInput-input"
                     disabled={false}
                     id=":r0:"
                     onAnimationStart={[Function]}
@@ -77,13 +77,13 @@ exports[`ContactUs renders 1`] = `
               </div>
             </div>
             <div
-              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1fyyp8j-MuiGrid-root"
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-4jxqa8-MuiGrid-root"
             >
               <div
-                className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-zuj754-MuiFormControl-root-MuiTextField-root"
+                className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
               >
                 <label
-                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-1c2i806-MuiFormLabel-root-MuiInputLabel-root"
+                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-osp2g4-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink={true}
                   htmlFor=":r1:"
                   id=":r1:-label"
@@ -91,13 +91,13 @@ exports[`ContactUs renders 1`] = `
                   Email
                 </label>
                 <div
-                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-l4u8b9-MuiInputBase-root-MuiInput-root"
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-11newoz-MuiInputBase-root-MuiInput-root"
                   onClick={[Function]}
                 >
                   <input
                     aria-invalid={false}
                     autoFocus={false}
-                    className="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+                    className="MuiInputBase-input MuiInput-input css-15e8ec1-MuiInputBase-input-MuiInput-input"
                     disabled={false}
                     id=":r1:"
                     onAnimationStart={[Function]}
@@ -111,13 +111,13 @@ exports[`ContactUs renders 1`] = `
               </div>
             </div>
             <div
-              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-5y6y53-MuiGrid-root"
             >
               <div
-                className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-zuj754-MuiFormControl-root-MuiTextField-root"
+                className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
               >
                 <label
-                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-1c2i806-MuiFormLabel-root-MuiInputLabel-root"
+                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-osp2g4-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink={true}
                   htmlFor=":r2:"
                   id=":r2:-label"
@@ -125,13 +125,13 @@ exports[`ContactUs renders 1`] = `
                   Subject
                 </label>
                 <div
-                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-l4u8b9-MuiInputBase-root-MuiInput-root"
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-11newoz-MuiInputBase-root-MuiInput-root"
                   onClick={[Function]}
                 >
                   <input
                     aria-invalid={false}
                     autoFocus={false}
-                    className="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+                    className="MuiInputBase-input MuiInput-input css-15e8ec1-MuiInputBase-input-MuiInput-input"
                     disabled={false}
                     id=":r2:"
                     onAnimationStart={[Function]}
@@ -145,13 +145,13 @@ exports[`ContactUs renders 1`] = `
               </div>
             </div>
             <div
-              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-5y6y53-MuiGrid-root"
             >
               <div
-                className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-zuj754-MuiFormControl-root-MuiTextField-root"
+                className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
               >
                 <label
-                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-1c2i806-MuiFormLabel-root-MuiInputLabel-root"
+                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-osp2g4-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink={true}
                   htmlFor=":r3:"
                   id=":r3:-label"
@@ -159,7 +159,7 @@ exports[`ContactUs renders 1`] = `
                   What can we help you?
                 </label>
                 <div
-                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-1rcvvn7-MuiInputBase-root-MuiInput-root"
+                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-inw9yj-MuiInputBase-root-MuiInput-root"
                   onClick={[Function]}
                 >
                   <textarea />
@@ -169,10 +169,10 @@ exports[`ContactUs renders 1`] = `
           </div>
           <div />
           <div
-            className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-12 css-17zgoza-MuiGrid-root"
+            className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-12 css-1pzb5ph-MuiGrid-root"
           >
             <button
-              className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1je2mit-MuiButtonBase-root-MuiButton-root"
+              className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1jnei4i-MuiButtonBase-root-MuiButton-root"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}

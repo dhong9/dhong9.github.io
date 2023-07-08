@@ -2,7 +2,7 @@
 
 exports[`MKAlertCloseIcon renders 1`] = `
 <span
-  className="css-xq4jsk"
+  className="css-mqrg1u"
   onClick={[MockFunction]}
 >
   Hello!
