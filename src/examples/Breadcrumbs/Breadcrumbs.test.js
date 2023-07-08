@@ -1,12 +1,14 @@
-// Import the necessary dependencies and methods for testing
+// React testing libraries
 import renderer from "react-test-renderer";
-import Breadcrumbs from "examples/Breadcrumbs";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
-// Mock the necessary dependencies if required
+// Component to test
+import Breadcrumbs from "examples/Breadcrumbs";
+
+// Mocks
 jest.mock("react-router-dom", () => ({
   Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
 }));
