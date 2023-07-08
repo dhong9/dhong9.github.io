@@ -60,4 +60,21 @@ describe("MKButtonRoot", () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  it("simulates hover over the default button", () => {
+    const ownerState = {
+      color: "default",
+    };
+
+    const { container, getByText } = render(
+        <ThemeProvider theme={theme}>
+            <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>Hello!</MKButtonRoot>
+        </ThemeProvider>
+    );
+
+    const button = getByText("Hello!");
+    fireEvent.mouseEnter(button); // Simulate mouse hover over the button
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
