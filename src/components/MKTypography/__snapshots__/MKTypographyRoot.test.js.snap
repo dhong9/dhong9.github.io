@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MKTypographyRoot renders 1`] = `
+exports[`MKTypographyRoot renders with info color 1`] = `
+<p
+  className="MuiTypography-root MuiTypography-body1 css-2juyx9-MuiTypography-root"
+>
+  Test Typography
+</p>
+`;
+
+exports[`MKTypographyRoot renders with text color 1`] = `
 <p
   className="MuiTypography-root MuiTypography-body1 css-4qj1a3-MuiTypography-root"
 >
