@@ -10,9 +10,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
 describe("MKButtonRoot", () => {
-  it("renders", () => {
+  it("renders default contained button", () => {
     const ownerState = {
-      color: "#FF00FF",
+      color: "default",
+      variant: "contained"
     };
 
     const component = renderer.create(
