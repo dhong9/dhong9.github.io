@@ -1,87 +1,29 @@
+// React testing libraries
 import renderer from "react-test-renderer";
+
+// Material Kit 2 React themes
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
+
+// Component to test
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 
 // Icons
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 // Mocks
-jest.mock("@mui/material/Container", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Container</div>),
-  };
-});
-jest.mock("@mui/material/Icon", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Icon</div>),
-  };
-});
-jest.mock("@mui/material/Popper", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Popper</div>),
-  };
-});
-jest.mock("@mui/material/Grow", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Grow</div>),
-  };
-});
-jest.mock("@mui/material/Grid", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Grid</div>),
-  };
-});
-jest.mock("@mui/material/Divider", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Divider</div>),
-  };
-});
-jest.mock("@mui/material/Link", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Link</div>),
-  };
-});
-jest.mock("components/MKBox", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Box</div>),
-  };
-});
-jest.mock("components/MKTypography", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Typography</div>),
-  };
-});
-jest.mock("components/MKButton", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <button>Mock Button</button>),
-  };
-});
+jest.mock("react-router-dom", () => ({
+  Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+}));
 
 describe("DefaultNavbar", () => {
   it("renders with route", () => {
     const component = renderer.create(
-      <DefaultNavbar
-        routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon />, name: "Github" }]}
-      />
+      <ThemeProvider theme={theme}>
+        <DefaultNavbar
+          routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon />, name: "Github" }]}
+        />
+      </ThemeProvider>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -89,7 +31,9 @@ describe("DefaultNavbar", () => {
 
   it("renders without route", () => {
     const component = renderer.create(
-      <DefaultNavbar routes={[{ label: "Regular", icon: <GitHubIcon />, name: "Github" }]} />
+      <ThemeProvider theme={theme}>
+        <DefaultNavbar routes={[{ label: "Regular", icon: <GitHubIcon />, name: "Github" }]} />
+      </ThemeProvider>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
