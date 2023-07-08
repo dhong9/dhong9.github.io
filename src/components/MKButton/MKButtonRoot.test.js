@@ -84,6 +84,24 @@ describe("MKButtonRoot", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it("renders dummy outlined button", () => {
+    const ownerState = {
+      color: "dummy",
+      variant: "outlined",
+    };
+
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>
+          Hello!
+        </MKButtonRoot>
+      </ThemeProvider>
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it("renders primary gradient button", () => {
     const ownerState = {
       color: "primary",
