@@ -24,6 +24,33 @@ exports[`MKButtonRoot renders default contained button 1`] = `
 </button>
 `;
 
+exports[`MKButtonRoot renders primary contained button 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1iuic3y-MuiButtonBase-root-MuiButton-root"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[MockFunction]}
+  onContextMenu={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  Hello!
+  <span
+    className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
+</button>
+`;
+
 exports[`MKButtonRoot renders primary gradient button 1`] = `
 <button
   className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v4sv52-MuiButtonBase-root-MuiButton-root"
@@ -45,6 +72,9 @@ exports[`MKButtonRoot renders primary gradient button 1`] = `
   type="button"
 >
   Hello!
+  <span
+    className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
 </button>
 `;
 
@@ -69,9 +99,6 @@ exports[`MKButtonRoot renders white outlined button 1`] = `
   type="button"
 >
   Hello!
-  <span
-    className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
 </button>
 `;
 
