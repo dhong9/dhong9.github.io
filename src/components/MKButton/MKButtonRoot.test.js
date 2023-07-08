@@ -174,4 +174,23 @@ describe("MKButtonRoot", () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it("renders white text button", () => {
+    const ownerState = {
+      color: "white",
+      variant: "text",
+    };
+
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>
+          Hello!
+        </MKButtonRoot>
+      </ThemeProvider>
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  
 });
