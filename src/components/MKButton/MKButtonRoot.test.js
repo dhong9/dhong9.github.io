@@ -138,4 +138,22 @@ describe("MKButtonRoot", () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it("renders light gradient button", () => {
+    const ownerState = {
+      color: "light",
+      variant: "gradient",
+    };
+
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>
+          Hello!
+        </MKButtonRoot>
+      </ThemeProvider>
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
