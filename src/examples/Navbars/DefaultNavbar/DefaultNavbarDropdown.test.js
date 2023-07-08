@@ -3,6 +3,7 @@ import DefaultNavbarDropdown from "examples/Navbars/DefaultNavbar/DefaultNavbarD
 
 // Icons
 import GitHubIcon from "@mui/icons-material/GitHub";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 // Mocks
 jest.mock("@mui/material/Container", () => {
@@ -81,6 +82,9 @@ describe("DefaultNavbarDropdown", () => {
     const component = renderer.create(
       <DefaultNavbarDropdown
         routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon />, name: "Github" }]}
+        collapse={false}
+        icon={<FacebookIcon />}
+        name="Routed Navbar"
       >
         <div>I have routes</div>
       </DefaultNavbarDropdown>
@@ -91,7 +95,12 @@ describe("DefaultNavbarDropdown", () => {
 
   it("renders without route", () => {
     const component = renderer.create(
-      <DefaultNavbarDropdown routes={[{ label: "Regular", icon: <GitHubIcon />, name: "Github" }]}>
+      <DefaultNavbarDropdown
+        routes={[{ label: "Regular", icon: <GitHubIcon />, name: "Github" }]}
+        collapse={false}
+        icon={<FacebookIcon />}
+        name="Not Routed Navbar"
+      >
         <div>I have no routes</div>
       </DefaultNavbarDropdown>
     );

@@ -1,47 +1,31 @@
+// Import the necessary dependencies and methods for testing
 import renderer from "react-test-renderer";
 import Breadcrumbs from "examples/Breadcrumbs";
 
-// Mocks
-jest.mock("components/MKBox", () => {
-    const { forwardRef } = jest.requireActual("react");
-    return {
-        __esModule: true,
-        default: forwardRef(() => <div>Mock Box</div>)
-    };
-});
-jest.mock("components/MKTypography", () => {
-    const { forwardRef } = jest.requireActual("react");
-    return {
-        __esModule: true,
-        default: forwardRef(() => <p>Mock Typography</p>)
-    };
-});
-jest.mock("@mui/material/Breadcrumbs", () => {
-    const { forwardRef } = jest.requireActual("react");
-    return {
-        __esModule: true,
-        default: forwardRef(() => <div>MUI Breadcrumbs</div>)
-    };
-});
+// Material Kit 2 React themes
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
 
+// Mock the necessary dependencies if required
+jest.mock("react-router-dom", () => ({
+  Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+}));
+
+// Write test cases
 describe("Breadcrumbs", () => {
-    it("renders with route", () => {
-        const component = renderer.create(
-            <Breadcrumbs routes={[{ label: "Bread", route: "/crumbs" }]}>
-                Test Breadcrumbs
-            </Breadcrumbs>
-        );
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+  it("renders breadcrumbs with route", () => {
+    const routes = [
+      { label: "Home", route: "/", name: "Breadcrumbs", collapse: [{ name: "toast" }] },
+      { label: "Products", route: "/products", name: "Stuffs", collapse: [{ name: "things" }] },
+      { label: "Shoes", route: "/products/shoes", name: "Zapatos", collapse: [{ name: "toes" }] },
+    ];
 
-    it("renders without route", () => {
-        const component = renderer.create(
-            <Breadcrumbs routes={[{ label: "Regular" }]}>
-                Test Breadcrumbs
-            </Breadcrumbs>
-        );
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <Breadcrumbs routes={routes} />
+      </ThemeProvider>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
