@@ -46,6 +46,24 @@ describe("MKButtonRoot", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it("renders white contained button", () => {
+    const ownerState = {
+      color: "white",
+      variant: "contained",
+    };
+
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>
+          Hello!
+        </MKButtonRoot>
+      </ThemeProvider>
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it("renders white outlined button", () => {
     const ownerState = {
       color: "white",
