@@ -13,7 +13,7 @@ describe("MKButtonRoot", () => {
   it("renders default contained button", () => {
     const ownerState = {
       color: "default",
-      variant: "contained"
+      variant: "contained",
     };
 
     const component = renderer.create(
@@ -28,9 +28,10 @@ describe("MKButtonRoot", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("renders with white color", () => {
+  it("renders white outlined button", () => {
     const ownerState = {
       color: "white",
+      variant: "outlined",
     };
 
     const component = renderer.create(
@@ -51,9 +52,11 @@ describe("MKButtonRoot", () => {
     };
 
     const { container, getByText } = render(
-        <ThemeProvider theme={theme}>
-            <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>Hello!</MKButtonRoot>
-        </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>
+          Hello!
+        </MKButtonRoot>
+      </ThemeProvider>
     );
 
     const button = getByText("Hello!");
@@ -68,9 +71,11 @@ describe("MKButtonRoot", () => {
     };
 
     const { container, getByText } = render(
-        <ThemeProvider theme={theme}>
-            <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>Hello!</MKButtonRoot>
-        </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>
+          Hello!
+        </MKButtonRoot>
+      </ThemeProvider>
     );
 
     const button = getByText("Hello!");
