@@ -27,12 +27,33 @@ describe("MKTypographyRoot", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("renders with info color", () => {
+  it("renders with info gradient color", () => {
     const component = renderer.create(
       <ThemeProvider theme={theme}>
         <MKTypographyRoot
           ownerState={{
             color: "info",
+            textTransform: "capitalize",
+            verticalAlign: "middle",
+            fontWeight: "bold",
+            opacity: 1,
+            textGradient: true,
+          }}
+        >
+          Test Typography
+        </MKTypographyRoot>
+      </ThemeProvider>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("renders with white gradient color", () => {
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <MKTypographyRoot
+          ownerState={{
+            color: "white",
             textTransform: "capitalize",
             verticalAlign: "middle",
             fontWeight: "bold",
