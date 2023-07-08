@@ -126,6 +126,30 @@ exports[`MKButtonRoot renders white contained button 1`] = `
 </button>
 `;
 
+exports[`MKButtonRoot renders white gradient button 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1cb70xj-MuiButtonBase-root-MuiButton-root"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[MockFunction]}
+  onContextMenu={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  Hello!
+</button>
+`;
+
 exports[`MKButtonRoot renders white outlined button 1`] = `
 <button
   className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-e0mvl3-MuiButtonBase-root-MuiButton-root"
@@ -149,32 +173,6 @@ exports[`MKButtonRoot renders white outlined button 1`] = `
   Hello!
   <span
     className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
-</button>
-`;
-
-exports[`MKButtonRoot simulates hover over the button 1`] = `
-<button
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-e3far6-MuiButtonBase-root-MuiButton-root"
-  tabindex="0"
-  type="button"
->
-  Hello!
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
-</button>
-`;
-
-exports[`MKButtonRoot simulates hover over the default button 1`] = `
-<button
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-e3far6-MuiButtonBase-root-MuiButton-root"
-  tabindex="0"
-  type="button"
->
-  Hello!
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
   />
 </button>
 `;

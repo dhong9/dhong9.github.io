@@ -1,6 +1,5 @@
 // React testing libraries
 import renderer from "react-test-renderer";
-import { render, fireEvent } from "@testing-library/react";
 
 // Component to test
 import MKButtonRoot from "components/MKButton/MKButtonRoot";
@@ -122,12 +121,13 @@ describe("MKButtonRoot", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("simulates hover over the button", () => {
+  it("renders white gradient button", () => {
     const ownerState = {
-      color: "#FF00FF",
+      color: "white",
+      variant: "gradient",
     };
 
-    const { container, getByText } = render(
+    const component = renderer.create(
       <ThemeProvider theme={theme}>
         <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>
           Hello!
@@ -135,28 +135,7 @@ describe("MKButtonRoot", () => {
       </ThemeProvider>
     );
 
-    const button = getByText("Hello!");
-    fireEvent.mouseEnter(button); // Simulate mouse hover over the button
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it("simulates hover over the default button", () => {
-    const ownerState = {
-      color: "default",
-    };
-
-    const { container, getByText } = render(
-      <ThemeProvider theme={theme}>
-        <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>
-          Hello!
-        </MKButtonRoot>
-      </ThemeProvider>
-    );
-
-    const button = getByText("Hello!");
-    fireEvent.mouseEnter(button); // Simulate mouse hover over the button
-
-    expect(container.firstChild).toMatchSnapshot();
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
