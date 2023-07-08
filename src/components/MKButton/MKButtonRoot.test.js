@@ -27,6 +27,23 @@ describe("MKButtonRoot", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it("renders with white color", () => {
+    const ownerState = {
+      color: "white",
+    };
+
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <MKButtonRoot onClick={jest.fn()} ownerState={ownerState}>
+          Hello!
+        </MKButtonRoot>
+      </ThemeProvider>
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it("simulates hover over the button", () => {
     const ownerState = {
       color: "#FF00FF",
