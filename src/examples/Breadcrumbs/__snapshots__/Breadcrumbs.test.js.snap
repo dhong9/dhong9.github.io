@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Breadcrumbs renders breadcrumbs with route 1`] = `
+exports[`Breadcrumbs renders 1`] = `
 <div
   className="MuiBox-root css-uqbram"
 >
@@ -43,11 +43,11 @@ exports[`Breadcrumbs renders breadcrumbs with route 1`] = `
       <li
         className="MuiBreadcrumbs-li"
       >
-        <a
-          href="/products/shoes"
+        <span
+          className="MuiTypography-root MuiTypography-button css-t3za5n-MuiTypography-root"
         >
           Shoes
-        </a>
+        </span>
       </li>
     </ol>
   </nav>

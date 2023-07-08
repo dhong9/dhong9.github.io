@@ -13,11 +13,11 @@ jest.mock("react-router-dom", () => ({
 
 // Write test cases
 describe("Breadcrumbs", () => {
-  it("renders breadcrumbs with route", () => {
+  it("renders", () => {
     const routes = [
       { label: "Home", route: "/", name: "Breadcrumbs", collapse: [{ name: "toast" }] },
       { label: "Products", route: "/products", name: "Stuffs", collapse: [{ name: "things" }] },
-      { label: "Shoes", route: "/products/shoes", name: "Zapatos", collapse: [{ name: "toes" }] },
+      { label: "Shoes", name: "Zapatos", collapse: false },
     ];
 
     const component = renderer.create(
