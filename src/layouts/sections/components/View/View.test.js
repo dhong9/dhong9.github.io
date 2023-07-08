@@ -1,26 +1,23 @@
+// React testing libraries
 import renderer from "react-test-renderer";
+
+// Material Kit 2 React themes
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
+
+// Component to test
 import View from "layouts/sections/components/View";
 
-// Define Mocks
-jest.mock("components/MKBox", () => {
-    const { forwardRef } = jest.requireActual("react");
-    return {
-        __esModule: true,
-        default: forwardRef(() => <div>Mock Box</div>)
-    };
-});
-jest.mock("components/MKTypography", () => {
-    const { forwardRef } = jest.requireActual("react");
-    return {
-        __esModule: true,
-        default: forwardRef(() => <p>Mock Typography</p>)
-    };
-});
-
 describe("View", () => {
-    it("renders", () => {
-        const component = renderer.create(<View title="Test View" code="" height="100%" >Test View</View>);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+  it("renders", () => {
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <View title="Test View" code="" height="100%">
+          Test View
+        </View>
+      </ThemeProvider>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

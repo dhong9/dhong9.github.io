@@ -1,7 +1,213 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`View renders 1`] = `
-<div>
-  Mock Box
+<div
+  className="MuiBox-root css-vob0au"
+>
+  <div
+    className="MuiBox-root css-1ap3ae"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-vp8jaz-MuiGrid-root"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-3 css-r0bjlp-MuiGrid-root"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 css-1a94sxp-MuiTypography-root"
+        >
+          Test View
+        </p>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-3 css-r0bjlp-MuiGrid-root"
+      >
+        <header
+          className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorTransparent MuiAppBar-positionStatic css-1e6nf2m-MuiPaper-root-MuiAppBar-root"
+        >
+          <div
+            className="MuiTabs-root css-1pvfc2b-MuiTabs-root"
+          >
+            <div
+              className="MuiTabs-scroller MuiTabs-fixed css-wkx3zm-MuiTabs-scroller"
+              onScroll={[Function]}
+              style={
+                {
+                  "marginBottom": -0,
+                  "overflow": "hidden",
+                }
+              }
+            >
+              <div
+                aria-orientation={null}
+                className="MuiTabs-flexContainer css-1t4ppgo-MuiTabs-flexContainer"
+                onKeyDown={[Function]}
+                role="tablist"
+              >
+                <button
+                  aria-selected={true}
+                  className="MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary Mui-selected css-9pocng-MuiButtonBase-root-MuiTab-root"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onContextMenu={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  role="tab"
+                  tabIndex={0}
+                  type="button"
+                >
+                  <i
+                    className="MuiTab-iconWrapper fas fa-desktop MuiBox-root css-wd1p3c"
+                  />
+                  Preview
+                  <span
+                    className="MuiTabs-indicator css-1fc41k2-MuiTabs-indicator"
+                    style={{}}
+                  />
+                </button>
+                <button
+                  aria-selected={false}
+                  className="MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary css-9pocng-MuiButtonBase-root-MuiTab-root"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onContextMenu={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  role="tab"
+                  tabIndex={-1}
+                  type="button"
+                >
+                  <i
+                    className="MuiTab-iconWrapper fas fa-code MuiBox-root css-wd1p3c"
+                  />
+                  Code
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root css-1vpcqx6"
+  >
+    <div
+      className="MuiBox-root css-s8bev1"
+    >
+      <div
+        className="codeOutput MuiBox-root css-v4o8in"
+      >
+        Test View
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root css-1p5qt4w"
+  >
+    <div
+      className="MuiBox-root css-1s5ngcv"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall css-y09wwj-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <div
+          className="fas fa-copy MuiBox-root css-78d043"
+        />
+         Copy
+      </button>
+      <pre
+        style={
+          {
+            "MozHyphens": "none",
+            "MozTabSize": "4",
+            "OTabSize": "4",
+            "WebkitHyphens": "none",
+            "background": "#f5f2f0",
+            "backgroundColor": "#f8f9fa",
+            "color": "black",
+            "fontFamily": "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
+            "fontSize": "1rem",
+            "height": "100%",
+            "hyphens": "none",
+            "lineHeight": "1.5",
+            "margin": 0,
+            "maxHeight": "40rem",
+            "msHyphens": "none",
+            "overflow": "auto",
+            "overflowY": "scroll",
+            "padding": "1rem 1rem 1rem 0.25rem",
+            "tabSize": "4",
+            "textAlign": "left",
+            "textShadow": "0 1px white",
+            "whiteSpace": "pre",
+            "wordBreak": "normal",
+            "wordSpacing": "normal",
+            "wordWrap": "normal",
+          }
+        }
+      >
+        <code
+          className="language-jsx"
+          style={
+            {
+              "MozHyphens": "none",
+              "MozTabSize": "4",
+              "OTabSize": "4",
+              "WebkitHyphens": "none",
+              "background": "none",
+              "color": "black",
+              "fontFamily": "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
+              "fontSize": "1em",
+              "hyphens": "none",
+              "lineHeight": "1.5",
+              "msHyphens": "none",
+              "tabSize": "4",
+              "textAlign": "left",
+              "textShadow": "0 1px white",
+              "whiteSpace": "pre",
+              "wordBreak": "normal",
+              "wordSpacing": "normal",
+              "wordWrap": "normal",
+            }
+          }
+        />
+      </pre>
+    </div>
+  </div>
 </div>
 `;
