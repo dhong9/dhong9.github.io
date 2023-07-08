@@ -32,6 +32,8 @@ describe("MKButtonRoot", () => {
     const ownerState = {
       color: "white",
       variant: "outlined",
+      iconOnly: true,
+      size: "small",
     };
 
     const component = renderer.create(
@@ -50,6 +52,8 @@ describe("MKButtonRoot", () => {
     const ownerState = {
       color: "primary",
       variant: "gradient",
+      iconOnly: true,
+      size: "large",
     };
 
     const component = renderer.create(
