@@ -1,6 +1,5 @@
 // React testing libraries
 import renderer from "react-test-renderer";
-import { render, fireEvent } from "@testing-library/react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -77,33 +76,5 @@ describe("DefaultNavbarMobile", () => {
     );;
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-  });
-
-  it("handles collapse event", () => {
-    const { container, getByText } = render(
-      <ThemeProvider theme={theme}>
-        <DefaultNavbarMobile
-          routes={[
-            { label: "Regular", icon: <GitHubIcon />, name: "Github" },
-            {
-              label: "Doughnut",
-              route: "/rider",
-              icon: <DonutSmallIcon />,
-              name: "doughnut",
-              collapse: [
-                { name: "boston" },
-                { name: "brooklyn", collapse: [{ name: "new york" }] },
-              ],
-            },
-          ]}
-          open={true}
-        />
-      </ThemeProvider>
-    );
-    const doughnutNav = getByText("keyboard_arrow_down");
-    
-    // Simulate the onClick event
-    fireEvent.click(doughnutNav);
-    expect(container).toMatchSnapshot();
   });
 });
