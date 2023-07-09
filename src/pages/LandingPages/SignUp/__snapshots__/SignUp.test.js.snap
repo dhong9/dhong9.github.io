@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUp renders 1`] = `
+[
+  <div>
+    Mock Navbar
+  </div>,
+  <div>
+    Mock Snackbar
+  </div>,
+  <div>
+    Mock Box
+  </div>,
+  <div>
+    Mock Box
+  </div>,
+  <div>
+    Mock Box
+  </div>,
+]
+`;
