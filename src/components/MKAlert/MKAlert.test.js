@@ -11,18 +11,18 @@ import MKAlert from "components/MKAlert";
 
 // Mocks
 jest.mock("@mui/material/Fade", () => {
-    const { forwardRef } = jest.requireActual("react");
-    const Fade = forwardRef((props, ref) => (
-      <div ref={ref}>
-        Mock Fade
-        {props.children}
-      </div>
-    ));
-    return {
-      __esModule: true,
-      default: Fade,
-    };
-  });
+  const { forwardRef } = jest.requireActual("react");
+  const Fade = forwardRef((props, ref) => (
+    <div ref={ref}>
+      Mock Fade
+      {props.children}
+    </div>
+  ));
+  return {
+    __esModule: true,
+    default: Fade,
+  };
+});
 
 describe("MKAlert", () => {
   it("renders", () => {
