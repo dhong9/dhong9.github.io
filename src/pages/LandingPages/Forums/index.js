@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 // @mui material icons
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -19,8 +19,18 @@ import SignUp from "layouts/pages/authentication/sign-up";
 import SignOut from "layouts/pages/authentication/sign-out";
 import AuthContext from "context/AuthContext";
 
+// Categories service
+import { getCategories } from "services/categoriesService";
+
 function Forums() {
   let { user } = useContext(AuthContext);
+
+  //const [categories, setCategories] = useState([]);
+
+  // Get categories on page load
+  useEffect(() => {
+    getCategories(console.log);
+  }, []);
 
   const signedOutOptions = [
     {
