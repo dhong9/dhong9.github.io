@@ -23,6 +23,8 @@ describe("View", () => {
   });
 
   it("sets success", () => {
+    const jsdomPrompt = window.prompt;
+    window.prompt = () => {};
     const { container, getByText } = render(
       <ThemeProvider theme={theme}>
         <View title="Test View" code="" height="100%">
@@ -33,5 +35,6 @@ describe("View", () => {
     const copyButton = getByText("Copy");
     fireEvent.click(copyButton);
     expect(container).toMatchSnapshot();
+    window.prompt = jsdomPrompt;
   });
 });
