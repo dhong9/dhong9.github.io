@@ -47,7 +47,7 @@ import routes from "routes";
 import AuthContext from "context/AuthContext";
 
 // Images
-import bgImage from "assets/images/neons.png";
+import bgImage from "assets/images/neons_large.png";
 
 function SignUpBasic() {
   const { registerUser } = useContext(AuthContext);

@@ -49,7 +49,7 @@ import routes from "routes";
 import AuthContext from "context/AuthContext";
 
 // Images
-import bgImage from "assets/images/neons.png";
+import bgImage from "assets/images/neons_medium.png";
 
 function SignInBasic() {
   const { loginUser } = useContext(AuthContext);

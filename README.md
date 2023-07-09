@@ -1,8 +1,8 @@
 # [Daniel Hong Portfolio](https://www.danyo.tech) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/danielhong35/)
 
 ![Continuous Integration](https://github.com/dhong9/dhong9.github.io/actions/workflows/CI.yml/badge.svg) ![Continuous Deployment](https://github.com/dhong9/dhong9.github.io/actions/workflows/CD.yml/badge.svg)
-
-![Image](https://s3.amazonaws.com/creativetim_bucket/products/83/original/material-kit-2-react.jpg)
+``
+![Image](src/assets/images/neons_small.png)
 
 Hello and welcome to my portfolio website, where you will find my coding and art projects! This website is a fork of Creative Tim's [Material Kit](https://www.creative-tim.com/product/material-kit-react?ref=mkr-readme), which is based on React. You can visit me at https://www.danyo.tech.
 
