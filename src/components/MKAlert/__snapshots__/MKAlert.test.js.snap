@@ -1,13 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MKAlert renders 1`] = `
+exports[`MKAlert can be dismissed 1`] = `
 <div>
-  Fade
+  <div>
+    Mock Fade
+    <div
+      class="MuiBox-root css-obqacg"
+    >
+      <div
+        class="MuiBox-root css-1ucrj65"
+      >
+        Dismissible
+      </div>
+      <span
+        class="css-mqrg1u"
+      >
+        ×
+      </span>
+    </div>
+  </div>
 </div>
 `;
 
-exports[`MKAlert renders dismissible 1`] = `
+exports[`MKAlert renders 1`] = `
 <div>
-  Fade
+  Mock Fade
+  <div
+    className="MuiBox-root css-obqacg"
+  >
+    <div
+      className="MuiBox-root css-1ucrj65"
+    >
+      Hello!
+    </div>
+  </div>
 </div>
 `;
