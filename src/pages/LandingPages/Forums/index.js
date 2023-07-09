@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // @mui material icons
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -19,17 +19,22 @@ import SignUp from "layouts/pages/authentication/sign-up";
 import SignOut from "layouts/pages/authentication/sign-out";
 import AuthContext from "context/AuthContext";
 
+// Forum components
+import ForumHeader from "components/ForumHeader";
+
 // Categories service
 import { getCategories } from "services/categoriesService";
 
 function Forums() {
   let { user } = useContext(AuthContext);
 
-  //const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   // Get categories on page load
   useEffect(() => {
-    getCategories(console.log);
+    getCategories(({ data: { results } }) => {
+      setCategories(results);
+    });
   }, []);
 
   const signedOutOptions = [
@@ -60,6 +65,7 @@ function Forums() {
   return (
     <>
       <DefaultNavbar routes={[...routes, accountObj]} sticky />
+      <ForumHeader categories={categories} />
       <MKBox mt="auto">
         <CenteredFooter />
       </MKBox>

@@ -8,7 +8,7 @@ import Link from "@mui/material/Link";
 import PropTypes from "prop-types";
 
 export default function ForumHeader(props) {
-  const { sections } = props;
+  const { categories } = props;
 
   return (
     <Toolbar
@@ -16,16 +16,9 @@ export default function ForumHeader(props) {
       variant="dense"
       sx={{ justifyContent: "space-between", overflowX: "auto" }}
     >
-      {sections.map((section) => (
-        <Link
-          color="inherit"
-          noWrap
-          key={section.title}
-          variant="body2"
-          href={section.url}
-          sx={{ p: 1, flexShrink: 0 }}
-        >
-          {section.title}
+      {categories.map(({ id, name }) => (
+        <Link color="inherit" noWrap key={id} variant="body2" href="/" sx={{ p: 1, flexShrink: 0 }}>
+          {name}
         </Link>
       ))}
     </Toolbar>
@@ -34,14 +27,16 @@ export default function ForumHeader(props) {
 
 // Typechecking props of ForumHeader
 ForumHeader.propTypes = {
-  sections: PropTypes.arrayOf(
+  categories: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string,
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
     })
   ),
 };
 
 ForumHeader.defaultProps = {
-  sections: [],
+  categories: [],
   title: "",
 };
