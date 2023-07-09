@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForumHeader renders 1`] = `
+<nav
+  className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-14105se-MuiToolbar-root"
+>
+  <a
+    className="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap MuiLink-root MuiLink-underlineAlways css-1a72jx6-MuiTypography-root-MuiLink-root"
+    href="/"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    Computers
+  </a>
+  <a
+    className="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap MuiLink-root MuiLink-underlineAlways css-1a72jx6-MuiTypography-root-MuiLink-root"
+    href="/"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    Wildlife
+  </a>
+</nav>
+`;
