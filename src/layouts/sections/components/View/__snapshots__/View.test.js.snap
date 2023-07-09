@@ -211,3 +211,146 @@ exports[`View renders 1`] = `
   </div>
 </div>
 `;
+
+exports[`View sets success 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-vob0au"
+  >
+    <div
+      class="MuiBox-root css-1ap3ae"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-vp8jaz-MuiGrid-root"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-3 css-r0bjlp-MuiGrid-root"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-1a94sxp-MuiTypography-root"
+          >
+            Test View
+          </p>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-3 css-r0bjlp-MuiGrid-root"
+        >
+          <header
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorTransparent MuiAppBar-positionStatic css-1e6nf2m-MuiPaper-root-MuiAppBar-root"
+          >
+            <div
+              class="MuiTabs-root css-1pvfc2b-MuiTabs-root"
+            >
+              <div
+                class="MuiTabs-scroller MuiTabs-fixed css-wkx3zm-MuiTabs-scroller"
+                style="overflow: hidden; margin-bottom: 0px;"
+              >
+                <div
+                  class="MuiTabs-flexContainer css-1t4ppgo-MuiTabs-flexContainer"
+                  role="tablist"
+                >
+                  <button
+                    aria-selected="true"
+                    class="MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary Mui-selected css-9pocng-MuiButtonBase-root-MuiTab-root"
+                    role="tab"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <i
+                      class="MuiTab-iconWrapper fas fa-desktop MuiBox-root css-wd1p3c"
+                    />
+                    Preview
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                  <button
+                    aria-selected="false"
+                    class="MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary css-9pocng-MuiButtonBase-root-MuiTab-root"
+                    role="tab"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <i
+                      class="MuiTab-iconWrapper fas fa-code MuiBox-root css-wd1p3c"
+                    />
+                    Code
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+                <span
+                  class="MuiTabs-indicator css-1fc41k2-MuiTabs-indicator"
+                  style="left: 0px; width: 0px;"
+                />
+              </div>
+            </div>
+          </header>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1vpcqx6"
+    >
+      <div
+        class="MuiBox-root css-s8bev1"
+      >
+        <div
+          class="codeOutput MuiBox-root css-v4o8in"
+        >
+          Test View
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1p5qt4w"
+    >
+      <div
+        class="MuiBox-root css-1s5ngcv"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall css-y09wwj-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <div
+            class="fas fa-copy MuiBox-root css-78d043"
+          />
+           Copy
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <div
+          class="MuiBox-root css-nhn9z9"
+          style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+        >
+          <div
+            class="MuiBox-root css-1c1ud85"
+            style="opacity: 1; webkit-transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+          >
+            <div
+              class="MuiBox-root css-1ucrj65"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-90z1rl-MuiTypography-root"
+              >
+                Code successfully copied!
+              </p>
+            </div>
+          </div>
+        </div>
+        <pre
+          style="color: black; background: rgb(245, 242, 240); text-shadow: 0 1px white; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 1rem; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1rem 1rem 1rem 0.25rem; margin: 0px; overflow: auto; height: 100%; max-height: 40rem; background-color: rgb(248, 249, 250); overflow-y: scroll;"
+        >
+          <code
+            class="language-jsx"
+            style="color: black; background: none; text-shadow: 0 1px white; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"
+          />
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+`;
