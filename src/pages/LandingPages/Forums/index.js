@@ -64,7 +64,7 @@ function Forums() {
 
   return (
     <>
-      <DefaultNavbar routes={[...routes, accountObj]} sticky />
+      <DefaultNavbar routes={[...routes, accountObj]} />
       <ForumHeader categories={categories} />
       <MKBox mt="auto">
         <CenteredFooter />
