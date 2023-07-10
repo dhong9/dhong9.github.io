@@ -4,17 +4,21 @@ import { useEffect, useState } from "react";
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import ForumHeader from "components/ForumHeader";
 
-// Categories service
+// Services
 import { getCategories } from "services/categoriesService";
+import { getPosts } from "services/postsService";
 
 function Forums() {
   const [categories, setCategories] = useState([]);
 
-  // Get categories on page load
   useEffect(() => {
+    // Get categories
     getCategories(({ data: { results } }) => {
       setCategories(results);
     });
+
+    // Get posts
+    getPosts(console.log);
   }, []);
 
   return (

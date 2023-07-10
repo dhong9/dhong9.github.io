@@ -41,7 +41,7 @@ describe("PostsService", () => {
 
     // Verify that postRequest was called correctly
     const forumPost = {
-        postName: "postName",
+      postName: "postName",
       category: "Tornadoes",
       name: "name",
       email: "email",
