@@ -1,7 +1,7 @@
 import { getRequest, postRequest } from "services/baseService";
 
 export const getCategories = (success) => {
-  getRequest("categories", success, console.error);
+  getRequest("categories/", success, console.error);
 };
 
 export const addCategory = (success, name, description) => {

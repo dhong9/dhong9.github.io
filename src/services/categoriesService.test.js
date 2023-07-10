@@ -17,7 +17,7 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
-mock.onGet("/categories").reply(200, categoryData);
+mock.onGet("/categories/").reply(200, categoryData);
 mock.onPost("/categories").reply(200, categoryData);
 
 describe("CategoriesService", () => {
@@ -29,7 +29,7 @@ describe("CategoriesService", () => {
     getCategories(success);
 
     // Verify that getRequest was called correctly
-    expect(getRequest).toHaveBeenCalledWith("categories", success, console.error);
+    expect(getRequest).toHaveBeenCalledWith("categories/", success, console.error);
   });
 
   it("posts a category", () => {
