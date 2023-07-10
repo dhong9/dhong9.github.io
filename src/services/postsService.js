@@ -4,7 +4,17 @@ export const getPosts = (success) => {
   getRequest("posts", success, console.error);
 };
 
-export const addPost = (success, postName, category, name, email, body, isPlainText, mainFeatured, featured) => {
+export const addPost = (
+  success,
+  postName,
+  category,
+  name,
+  email,
+  body,
+  isPlainText,
+  mainFeatured,
+  featured
+) => {
   postRequest(
     "posts",
     {
