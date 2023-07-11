@@ -17,13 +17,13 @@ export default function FeaturedPost(props) {
         <Card sx={{ display: "flex" }}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5">
-              {post.title}
+              {post.postName}
             </Typography>
             <Typography variant="subtitle1" color="text.secondary">
               {post.date}
             </Typography>
             <Typography variant="subtitle1" paragraph>
-              {post.description}
+              {post.body}
             </Typography>
             <Typography variant="subtitle1" color="primary">
               Continue reading...
@@ -33,7 +33,7 @@ export default function FeaturedPost(props) {
             component="img"
             sx={{ width: 160, display: { xs: "none", sm: "block" } }}
             image={post.image}
-            alt={post.imageLabel}
+            alt={post.imageText}
           />
         </Card>
       </CardActionArea>
@@ -45,13 +45,13 @@ export default function FeaturedPost(props) {
 FeaturedPost.propTypes = {
   post: PropTypes.shape({
     date: PropTypes.string,
-    description: PropTypes.string,
+    body: PropTypes.string,
     image: PropTypes.string,
-    imageLabel: PropTypes.string,
-    title: PropTypes.string,
+    imageText: PropTypes.string,
+    postName: PropTypes.string,
   }),
 };
 
 FeaturedPost.defaultProps = {
-  post: { date: "", description: "", image: "", imageLabel: "", title: "" },
+  post: { date: "", body: "", image: "", imageText: "", postName: "" },
 };

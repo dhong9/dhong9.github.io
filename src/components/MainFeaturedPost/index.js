@@ -51,7 +51,7 @@ export default function MainFeaturedPost(props) {
               {post.body}
             </Typography>
             <Link variant="subtitle1" href="#">
-              {post.linkText}
+              Continue reading...
             </Link>
           </Box>
         </Grid>

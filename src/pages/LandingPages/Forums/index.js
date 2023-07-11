@@ -3,15 +3,17 @@ import { useEffect, useState } from "react";
 // Sections components
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import ForumHeader from "components/ForumHeader";
+import MainFeaturedPost from "components/MainFeaturedPost";
+import FeaturedPost from "components/FeaturedPost";
 
 // Services
 import { getCategories } from "services/categoriesService";
 import { getPosts } from "services/postsService";
-import MainFeaturedPost from "components/MainFeaturedPost";
 
 function Forums() {
   const [categories, setCategories] = useState([]);
   const [mainFeaturedPosts, setMainFeaturedPosts] = useState([]);
+  const [featuredPosts, setFeaturedPosts] = useState([]);
 
   useEffect(() => {
     // Get categories
@@ -22,20 +24,24 @@ function Forums() {
     // Get posts
     getPosts(({ data: { results } }) => {
       const mainFeaturedList = [];
-      for (const { postName, body, mainFeatured } of results) {
+      const featuredList = [];
+      for (const { postName, body, mainFeatured, featured } of results) {
+        // Common featured post data structure
+        const post = {
+          postName,
+          body,
+          image: "https://source.unsplash.com/random",
+          imageText: "main image description",
+        };
         // A post cannot be both main featured and just featured
         if (mainFeatured) {
-          const post = {
-            postName,
-            body,
-            image: "https://source.unsplash.com/random",
-            imageText: "main image description",
-            linkText: "Continue reading...",
-          };
           mainFeaturedList.push(post);
+        } else if (featured) {
+          featuredList.push(post);
         }
       }
       setMainFeaturedPosts(mainFeaturedList);
+      setFeaturedPosts(featuredList);
     });
   }, []);
 
@@ -47,6 +53,9 @@ function Forums() {
       <ForumHeader categories={categories} />
       {mainFeaturedPosts.map((mainFeaturedPost) => (
         <MainFeaturedPost key={mainFeaturedPost.id} post={mainFeaturedPost} />
+      ))}
+      {featuredPosts.map((mainFeaturedPost) => (
+        <FeaturedPost key={mainFeaturedPost.id} post={mainFeaturedPost} />
       ))}
     </BaseLayout>
   );
