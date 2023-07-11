@@ -45,10 +45,10 @@ export default function MainFeaturedPost(props) {
             }}
           >
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-              {post.title}
+              {post.postName}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
+              {post.body}
             </Typography>
             <Link variant="subtitle1" href="#">
               {post.linkText}
@@ -63,14 +63,14 @@ export default function MainFeaturedPost(props) {
 // Typechecking props of MainFeaturedPost
 MainFeaturedPost.propTypes = {
   post: PropTypes.shape({
-    description: PropTypes.string,
+    postName: PropTypes.string,
+    body: PropTypes.string,
     image: PropTypes.string,
     imageText: PropTypes.string,
     linkText: PropTypes.string,
-    title: PropTypes.string,
   }),
 };
 
 MainFeaturedPost.defaultProps = {
-  post: { description: "", image: "", imageText: "", linkText: "", title: "" },
+  post: { postName: "", body: "", image: "", imageText: "", linkText: "" },
 };
