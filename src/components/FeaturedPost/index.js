@@ -53,5 +53,11 @@ FeaturedPost.propTypes = {
 };
 
 FeaturedPost.defaultProps = {
-  post: { date: "", body: "", image: "", imageText: "", postName: "" },
+  post: {
+    date: "",
+    body: "",
+    image: "https://source.unsplash.com/random",
+    imageText: "main image description",
+    postName: "",
+  },
 };

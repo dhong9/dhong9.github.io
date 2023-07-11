@@ -29,9 +29,7 @@ function Forums() {
         // Common featured post data structure
         const post = {
           postName,
-          body,
-          image: "https://source.unsplash.com/random",
-          imageText: "main image description",
+          body
         };
         // A post cannot be both main featured and just featured
         if (mainFeatured) {

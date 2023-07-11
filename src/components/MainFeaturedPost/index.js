@@ -72,5 +72,11 @@ MainFeaturedPost.propTypes = {
 };
 
 MainFeaturedPost.defaultProps = {
-  post: { postName: "", body: "", image: "", imageText: "", linkText: "" },
+  post: {
+    postName: "",
+    body: "",
+    image: "https://source.unsplash.com/random",
+    imageText: "main image description",
+    linkText: "",
+  },
 };
