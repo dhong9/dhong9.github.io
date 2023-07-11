@@ -29,7 +29,7 @@ function Forums() {
         // Common featured post data structure
         const post = {
           postName,
-          body
+          body,
         };
         // A post cannot be both main featured and just featured
         if (mainFeatured) {
