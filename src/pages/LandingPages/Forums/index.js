@@ -35,7 +35,6 @@ function Forums() {
           mainFeaturedList.push(post);
         }
       }
-      setCategories(results);
       setMainFeaturedPosts(mainFeaturedList);
     });
   }, []);
