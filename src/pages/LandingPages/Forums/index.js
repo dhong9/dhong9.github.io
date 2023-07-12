@@ -62,6 +62,7 @@ function Forums() {
           key={id}
           title={postName}
           description={body}
+          image="https://source.unsplash.com/random"
           action={{ type: "internal", route: "/", label: "Read more..." }}
         />
       ))}
