@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 // Sections components
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import ForumHeader from "components/ForumHeader";
-import MainFeaturedPost from "components/MainFeaturedPost";
 import FeaturedPost from "components/FeaturedPost";
 import MainForumPosts from "components/MainForumPosts";
+
+import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 
 // Services
 import { getCategories } from "services/categoriesService";
@@ -56,8 +57,13 @@ function Forums() {
       breadcrumb={[{ label: "Doughnut Rider", route: "/doughnutRider" }]}
     >
       <ForumHeader categories={categories} />
-      {mainFeaturedPosts.map((mainFeaturedPost) => (
-        <MainFeaturedPost key={mainFeaturedPost.id} post={mainFeaturedPost} />
+      {mainFeaturedPosts.map(({ id, postName, body }) => (
+        <BackgroundBlogCard
+          key={id}
+          title={postName}
+          description={body}
+          action={{ type: "internal", route: "/", label: "Read more..." }}
+        />
       ))}
       {featuredPosts.map((mainFeaturedPost) => (
         <FeaturedPost key={mainFeaturedPost.id} post={mainFeaturedPost} />
