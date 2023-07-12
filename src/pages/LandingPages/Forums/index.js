@@ -5,6 +5,7 @@ import BaseLayout from "layouts/sections/components/BaseLayout";
 import ForumHeader from "components/ForumHeader";
 import MainFeaturedPost from "components/MainFeaturedPost";
 import FeaturedPost from "components/FeaturedPost";
+import MainForumPosts from "components/MainForumPosts";
 
 // Services
 import { getCategories } from "services/categoriesService";
@@ -14,6 +15,7 @@ function Forums() {
   const [categories, setCategories] = useState([]);
   const [mainFeaturedPosts, setMainFeaturedPosts] = useState([]);
   const [featuredPosts, setFeaturedPosts] = useState([]);
+  const [mainPosts, setMainPosts] = useState([]);
 
   useEffect(() => {
     // Get categories
@@ -25,9 +27,11 @@ function Forums() {
     getPosts(({ data: { results } }) => {
       const mainFeaturedList = [];
       const featuredList = [];
-      for (const { postName, body, mainFeatured, featured } of results) {
+      const mainPostList = [];
+      for (const { id, postName, body, mainFeatured, featured } of results) {
         // Common featured post data structure
         const post = {
+          id,
           postName,
           body,
         };
@@ -36,10 +40,13 @@ function Forums() {
           mainFeaturedList.push(post);
         } else if (featured) {
           featuredList.push(post);
+        } else {
+          mainPostList.push(post);
         }
       }
       setMainFeaturedPosts(mainFeaturedList);
       setFeaturedPosts(featuredList);
+      setMainPosts(mainPostList);
     });
   }, []);
 
@@ -55,6 +62,7 @@ function Forums() {
       {featuredPosts.map((mainFeaturedPost) => (
         <FeaturedPost key={mainFeaturedPost.id} post={mainFeaturedPost} />
       ))}
+      <MainForumPosts posts={mainPosts} title="From the firehose" />
     </BaseLayout>
   );
 }
