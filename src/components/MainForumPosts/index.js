@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import MKBox from "components/MKBox";
 
-import ReactMarkdown from "react-markdown";
+import DHMarkdown from "components/DHMarkdown";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -33,9 +33,9 @@ export default function MainForumPosts(props) {
             {body}
           </MKBox>
         ) : (
-          <ReactMarkdown className="markdown" key={id}>
+          <DHMarkdown className="markdown" key={id}>
             {body}
-          </ReactMarkdown>
+          </DHMarkdown>
         )
       )}
     </Grid>

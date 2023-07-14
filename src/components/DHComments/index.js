@@ -11,7 +11,7 @@ import CardContent from "@mui/material/CardContent";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-import ReactMarkdown from "react-markdown";
+import DHMarkdown from "components/DHMarkdown";
 
 export default function DHComments({ comments }) {
   return (
@@ -28,7 +28,7 @@ export default function DHComments({ comments }) {
                   {new Date(create).toLocaleString()}
                 </Typography>
                 <Typography variant="subtitle1" paragraph>
-                  {isPlainText ? body : <ReactMarkdown>{body}</ReactMarkdown>}
+                  {isPlainText ? body : <DHMarkdown>{body}</DHMarkdown>}
                 </Typography>
                 <Typography variant="subtitle1" color="primary">
                   Reply...
