@@ -6,7 +6,12 @@ import DHMarkdown from "components/DHMarkdown";
 
 describe("DHMarkdown", () => {
   it("renders", () => {
-    const component = renderer.create(<DHMarkdown># Hello *world*!</DHMarkdown>);
+    const component = renderer.create(<DHMarkdown>
+      # Hello *world*!
+      ## First programming sample
+      ### Using main
+      #### Arguments
+    </DHMarkdown>);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

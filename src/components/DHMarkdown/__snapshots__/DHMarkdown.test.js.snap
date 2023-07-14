@@ -6,6 +6,6 @@ exports[`DHMarkdown renders 1`] = `
   <em>
     world
   </em>
-  !
+  ! ## First programming sample ### Using main #### Arguments
 </h1>
 `;
