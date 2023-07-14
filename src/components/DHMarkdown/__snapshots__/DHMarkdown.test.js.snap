@@ -1,11 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DHMarkdown renders 1`] = `
+exports[`DHMarkdown renders a component 1`] = `
+<p>
+  <a
+    href="https://example.com"
+  >
+    Hello world
+  </a>
+</p>
+`;
+
+exports[`DHMarkdown renders h1 component 1`] = `
 <h1>
-  Hello 
-  <em>
-    world
-  </em>
-  ! ## First programming sample ### Using main #### Arguments
+  Hello world!
 </h1>
+`;
+
+exports[`DHMarkdown renders h2 component 1`] = `
+<h2>
+  Hello world!
+</h2>
+`;
+
+exports[`DHMarkdown renders h3 component 1`] = `
+<h3>
+  Hello world!
+</h3>
+`;
+
+exports[`DHMarkdown renders h4 component 1`] = `
+<h4>
+  Hello world!
+</h4>
+`;
+
+exports[`DHMarkdown renders p component 1`] = `
+<p>
+  Hello world!
+</p>
 `;
