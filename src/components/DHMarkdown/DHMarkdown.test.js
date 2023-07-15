@@ -1,6 +1,10 @@
 // React testing libraries
 import renderer from "react-test-renderer";
 
+// @mui material components
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
+
 // Mock the MKTypography component
 import MKTypography from "components/MKTypography";
 jest.mock("components/MKTypography", () => {
@@ -99,7 +103,17 @@ describe("DHMarkdown", () => {
   });
 
   it("renders a component", () => {
-    const component = renderer.create(<DHMarkdown>[Hello world](https://example.com)</DHMarkdown>);
+    const component = renderer.create(<DHMarkdown>[Link](https://example.com)</DHMarkdown>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("renders li component", () => {
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <DHMarkdown>- Item 1 - Item 2</DHMarkdown>
+      </ThemeProvider>
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

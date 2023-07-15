@@ -10,9 +10,9 @@ exports[`DHMarkdown renders a component 1`] = `
             {
               "position": {
                 "end": {
-                  "column": 13,
+                  "column": 6,
                   "line": 1,
-                  "offset": 12,
+                  "offset": 5,
                 },
                 "start": {
                   "column": 2,
@@ -21,14 +21,14 @@ exports[`DHMarkdown renders a component 1`] = `
                 },
               },
               "type": "text",
-              "value": "Hello world",
+              "value": "Link",
             },
           ],
           "position": {
             "end": {
-              "column": 35,
+              "column": 28,
               "line": 1,
-              "offset": 34,
+              "offset": 27,
             },
             "start": {
               "column": 1,
@@ -45,9 +45,9 @@ exports[`DHMarkdown renders a component 1`] = `
       ],
       "position": {
         "end": {
-          "column": 35,
+          "column": 28,
           "line": 1,
-          "offset": 34,
+          "offset": 27,
         },
         "start": {
           "column": 1,
@@ -71,9 +71,9 @@ exports[`DHMarkdown renders a component 1`] = `
           {
             "position": {
               "end": {
-                "column": 13,
+                "column": 6,
                 "line": 1,
-                "offset": 12,
+                "offset": 5,
               },
               "start": {
                 "column": 2,
@@ -82,14 +82,14 @@ exports[`DHMarkdown renders a component 1`] = `
               },
             },
             "type": "text",
-            "value": "Hello world",
+            "value": "Link",
           },
         ],
         "position": {
           "end": {
-            "column": 35,
+            "column": 28,
             "line": 1,
-            "offset": 34,
+            "offset": 27,
           },
           "start": {
             "column": 1,
@@ -107,7 +107,7 @@ exports[`DHMarkdown renders a component 1`] = `
     onBlur={[Function]}
     onFocus={[Function]}
   >
-    Hello world
+    Link
   </a>
 </div>
 `;
@@ -301,6 +301,60 @@ exports[`DHMarkdown renders h4 component 1`] = `
 >
   Hello world!
 </div>
+`;
+
+exports[`DHMarkdown renders li component 1`] = `
+<ul>
+  
+
+  <li
+    checked={null}
+    className="MuiBox-root css-1ue9tht"
+    index={0}
+    node={
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 18,
+                "line": 1,
+                "offset": 17,
+              },
+              "start": {
+                "column": 3,
+                "line": 1,
+                "offset": 2,
+              },
+            },
+            "type": "text",
+            "value": "Item 1 - Item 2",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 18,
+            "line": 1,
+            "offset": 17,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "properties": {},
+        "tagName": "li",
+        "type": "element",
+      }
+    }
+    ordered={false}
+  >
+    Item 1 - Item 2
+  </li>
+  
+
+</ul>
 `;
 
 exports[`DHMarkdown renders p component 1`] = `
