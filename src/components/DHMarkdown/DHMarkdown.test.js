@@ -57,18 +57,45 @@ describe("DHMarkdown", () => {
     const component = renderer.create(<DHMarkdown>### Hello world!</DHMarkdown>);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    expect(MKTypography).toHaveBeenCalledWith(
+      expect.objectContaining({
+        gutterBottom: true,
+        variant: "subtitle1",
+        children: ["Hello world!"],
+      }),
+      {}
+    );
   });
 
   it("renders h4 component", () => {
     const component = renderer.create(<DHMarkdown>#### Hello world!</DHMarkdown>);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    expect(MKTypography).toHaveBeenCalledWith(
+      expect.objectContaining({
+        gutterBottom: true,
+        variant: "caption",
+        paragraph: true,
+        children: ["Hello world!"],
+      }),
+      {}
+    );
   });
 
   it("renders p component", () => {
     const component = renderer.create(<DHMarkdown>Hello world!</DHMarkdown>);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    expect(MKTypography).toHaveBeenCalledWith(
+      expect.objectContaining({
+        paragraph: true,
+        children: ["Hello world!"],
+      }),
+      {}
+    );
   });
 
   it("renders a component", () => {
