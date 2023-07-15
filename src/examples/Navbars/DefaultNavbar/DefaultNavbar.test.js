@@ -77,7 +77,7 @@ describe("DefaultNavbar", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("expands", () => {
+  it("expands with columns", () => {
     const { container, getByText } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbar
@@ -98,6 +98,31 @@ describe("DefaultNavbar", () => {
     );
 
     const doughnutIcon = getByText("traveling");
+    fireEvent.mouseEnter(doughnutIcon);
+    expect(container).toMatchSnapshot();
+  });
+
+  it("expands without columns", () => {
+    const { container, getByText } = render(
+      <ThemeProvider theme={theme}>
+        <DefaultNavbar
+          routes={[
+            {
+              label: "Flight",
+              icon: <DonutSmallIcon />,
+              name: "flight",
+              collapse: [
+                { name: "chicago" },
+                { name: "san francisco", collapse: [{ name: "california" }] },
+              ],
+              columns: 2,
+            },
+          ]}
+        />
+      </ThemeProvider>
+    );
+
+    const doughnutIcon = getByText("flight");
     fireEvent.mouseEnter(doughnutIcon);
     expect(container).toMatchSnapshot();
   });
