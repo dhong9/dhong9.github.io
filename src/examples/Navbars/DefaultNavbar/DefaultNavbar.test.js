@@ -84,7 +84,6 @@ describe("DefaultNavbar", () => {
           routes={[
             {
               label: "Traveling",
-              route: "/velocity",
               icon: <DonutSmallIcon />,
               name: "traveling",
               collapse: [
@@ -99,7 +98,7 @@ describe("DefaultNavbar", () => {
     );
 
     const doughnutIcon = getByText("traveling");
-    fireEvent.click(doughnutIcon);
+    fireEvent.mouseEnter(doughnutIcon);
     expect(container).toMatchSnapshot();
   });
 });

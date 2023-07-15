@@ -23,8 +23,8 @@ exports[`DefaultNavbar expands 1`] = `
         <div
           class="MuiBox-root css-k0f0w7"
         >
-          <a
-            href="/velocity"
+          <div
+            class="MuiBox-root css-111f5ru"
           >
             <p
               class="MuiTypography-root MuiTypography-body2 css-incl6n-MuiTypography-root"
@@ -56,7 +56,7 @@ exports[`DefaultNavbar expands 1`] = `
                 keyboard_arrow_down
               </span>
             </p>
-          </a>
+          </div>
         </div>
         <div
           class="MuiBox-root css-13l63k6"
