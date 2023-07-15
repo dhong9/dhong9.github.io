@@ -1,41 +1,349 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DHMarkdown renders a component 1`] = `
-<p>
+<div
+  node={
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "position": {
+                "end": {
+                  "column": 13,
+                  "line": 1,
+                  "offset": 12,
+                },
+                "start": {
+                  "column": 2,
+                  "line": 1,
+                  "offset": 1,
+                },
+              },
+              "type": "text",
+              "value": "Hello world",
+            },
+          ],
+          "position": {
+            "end": {
+              "column": 35,
+              "line": 1,
+              "offset": 34,
+            },
+            "start": {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+          },
+          "properties": {
+            "href": "https://example.com",
+          },
+          "tagName": "a",
+          "type": "element",
+        },
+      ],
+      "position": {
+        "end": {
+          "column": 35,
+          "line": 1,
+          "offset": 34,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "properties": {},
+      "tagName": "p",
+      "type": "element",
+    }
+  }
+  paragraph={true}
+>
   <a
+    className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1bhi0za-MuiTypography-root-MuiLink-root"
     href="https://example.com"
+    node={
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 13,
+                "line": 1,
+                "offset": 12,
+              },
+              "start": {
+                "column": 2,
+                "line": 1,
+                "offset": 1,
+              },
+            },
+            "type": "text",
+            "value": "Hello world",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 35,
+            "line": 1,
+            "offset": 34,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "properties": {
+          "href": "https://example.com",
+        },
+        "tagName": "a",
+        "type": "element",
+      }
+    }
+    onBlur={[Function]}
+    onFocus={[Function]}
   >
     Hello world
   </a>
-</p>
+</div>
 `;
 
 exports[`DHMarkdown renders h1 component 1`] = `
-<h1>
+<div
+  component="h1"
+  gutterBottom={true}
+  level={1}
+  node={
+    {
+      "children": [
+        {
+          "position": {
+            "end": {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "start": {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+          },
+          "type": "text",
+          "value": "Hello world!",
+        },
+      ],
+      "position": {
+        "end": {
+          "column": 15,
+          "line": 1,
+          "offset": 14,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "properties": {},
+      "tagName": "h1",
+      "type": "element",
+    }
+  }
+  variant="h4"
+>
   Hello world!
-</h1>
+</div>
 `;
 
 exports[`DHMarkdown renders h2 component 1`] = `
-<h2>
+<div
+  component="h2"
+  gutterBottom={true}
+  level={2}
+  node={
+    {
+      "children": [
+        {
+          "position": {
+            "end": {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "start": {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+          },
+          "type": "text",
+          "value": "Hello world!",
+        },
+      ],
+      "position": {
+        "end": {
+          "column": 16,
+          "line": 1,
+          "offset": 15,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "properties": {},
+      "tagName": "h2",
+      "type": "element",
+    }
+  }
+  variant="h6"
+>
   Hello world!
-</h2>
+</div>
 `;
 
 exports[`DHMarkdown renders h3 component 1`] = `
-<h3>
+<div
+  gutterBottom={true}
+  level={3}
+  node={
+    {
+      "children": [
+        {
+          "position": {
+            "end": {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "start": {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+          },
+          "type": "text",
+          "value": "Hello world!",
+        },
+      ],
+      "position": {
+        "end": {
+          "column": 17,
+          "line": 1,
+          "offset": 16,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "properties": {},
+      "tagName": "h3",
+      "type": "element",
+    }
+  }
+  variant="subtitle1"
+>
   Hello world!
-</h3>
+</div>
 `;
 
 exports[`DHMarkdown renders h4 component 1`] = `
-<h4>
+<div
+  gutterBottom={true}
+  level={4}
+  node={
+    {
+      "children": [
+        {
+          "position": {
+            "end": {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "start": {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+          },
+          "type": "text",
+          "value": "Hello world!",
+        },
+      ],
+      "position": {
+        "end": {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "properties": {},
+      "tagName": "h4",
+      "type": "element",
+    }
+  }
+  paragraph={true}
+  variant="caption"
+>
   Hello world!
-</h4>
+</div>
 `;
 
 exports[`DHMarkdown renders p component 1`] = `
-<p>
+<div
+  node={
+    {
+      "children": [
+        {
+          "position": {
+            "end": {
+              "column": 13,
+              "line": 1,
+              "offset": 12,
+            },
+            "start": {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+          },
+          "type": "text",
+          "value": "Hello world!",
+        },
+      ],
+      "position": {
+        "end": {
+          "column": 13,
+          "line": 1,
+          "offset": 12,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "properties": {},
+      "tagName": "p",
+      "type": "element",
+    }
+  }
+  paragraph={true}
+>
   Hello world!
-</p>
+</div>
 `;
