@@ -1,5 +1,6 @@
 // React testing libraries
 import renderer from "react-test-renderer";
+import { render, fireEvent } from "@testing-library/react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -68,6 +69,19 @@ describe("DefaultNavbar", () => {
                 { name: "brooklyn", collapse: [{ name: "new york" }] },
               ],
             },
+          ]}
+        />
+      </ThemeProvider>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("expands", () => {
+    const { container, getByText } = render(
+      <ThemeProvider theme={theme}>
+        <DefaultNavbar
+          routes={[
             {
               label: "Traveling",
               route: "/velocity",
@@ -83,7 +97,9 @@ describe("DefaultNavbar", () => {
         />
       </ThemeProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    const doughnutIcon = getByText("traveling");
+    fireEvent.click(doughnutIcon);
+    expect(container).toMatchSnapshot();
   });
 });
