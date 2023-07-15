@@ -68,6 +68,17 @@ describe("DefaultNavbar", () => {
                 { name: "brooklyn", collapse: [{ name: "new york" }] },
               ],
             },
+            {
+              label: "Traveling",
+              route: "/velocity",
+              icon: <DonutSmallIcon />,
+              name: "traveling",
+              collapse: [
+                { name: "chicago" },
+                { name: "san francisco", collapse: [{ name: "california" }] },
+              ],
+              columns: 2,
+            },
           ]}
         />
       </ThemeProvider>
