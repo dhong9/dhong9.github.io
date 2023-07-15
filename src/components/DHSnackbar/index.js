@@ -22,7 +22,7 @@ export default function DHSnackbar({ onClose, open, severity, message }) {
       autoHideDuration={6000}
       onClose={onClose}
     >
-      <Alert onClose={message} severity={severity} sx={{ width: "100%" }}>
+      <Alert onClose={onClose} severity={severity} sx={{ width: "100%" }}>
         {message}
       </Alert>
     </Snackbar>
