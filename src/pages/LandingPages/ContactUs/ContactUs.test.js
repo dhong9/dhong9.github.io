@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import { render, fireEvent } from "@testing-library/react";
 
 // Material Kit 2 React themes
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
 // Component to test
@@ -29,12 +29,14 @@ describe("ContactUs", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("should handle input change", () => {
+  it("handles input change", () => {
     const { getByLabelText } = render(
       <ThemeProvider theme={theme}>
         <ContactUs />
       </ThemeProvider>
     );
+
+    // Get form elements
     const fullNameInput = getByLabelText("Full Name");
     const emailInput = getByLabelText("Email");
     const subjectInput = getByLabelText("Subject");
@@ -48,5 +50,20 @@ describe("ContactUs", () => {
     expect(fullNameInput.value).toEqual("Johnny Appleseed");
     expect(emailInput.value).toEqual("johnny_boy@aol.com");
     expect(subjectInput.value).toEqual("Unit Test is Healthy");
+  });
+
+  it("handles form errors", () => {
+    const { container, getByText } = render(
+      <ThemeProvider theme={theme}>
+        <ContactUs />
+      </ThemeProvider>
+    );
+
+    // Get form elements
+    const submitButton = getByText("Send Message");
+
+    // Submit form without any input
+    fireEvent.click(submitButton);
+    expect(container).toMatchSnapshot();
   });
 });
