@@ -1,13 +1,20 @@
 // React testing libraries
-import renderer from "react-test-renderer";
+import { render } from "@testing-library/react";
 
 // Component to test
 import DHSnackbar from "components/DHSnackbar";
 
 describe("DHSnackbar", () => {
   it("renders", () => {
-    const component = renderer.create(<DHSnackbar />);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(
+      <DHSnackbar
+        open={true}
+        onClose={jest.fn()}
+        severity="success"
+        message="Snackbar message"
+      />
+    );
+
+    expect(container).toMatchSnapshot();
   });
 });
