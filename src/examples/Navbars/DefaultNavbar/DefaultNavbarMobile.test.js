@@ -28,15 +28,21 @@ describe("DefaultNavbarMobile", () => {
               route: "/default",
               icon: <GitHubIcon />,
               name: "Github",
+              description: "All things version control",
             },
             {
               label: "Doughnut",
               route: "/rider",
               icon: <DonutSmallIcon />,
               name: "doughnut",
+              description: "Deep fry me",
               collapse: [
-                { name: "boston" },
-                { name: "brooklyn", collapse: [{ name: "new york" }] },
+                { name: "boston", description: "It's in Mass." },
+                {
+                  name: "brooklyn",
+                  description: "It's in NY",
+                  collapse: [{ name: "new york", description: "It's in NY" }],
+                },
               ],
             },
           ]}
@@ -58,22 +64,28 @@ describe("DefaultNavbarMobile", () => {
               route: "/default",
               icon: <GitHubIcon />,
               name: "Github",
+              description: "All things version control",
             },
             {
               label: "Doughnut",
               route: "/rider",
               icon: <DonutSmallIcon />,
               name: "doughnut",
+              description: "Eat me",
               collapse: [
-                { name: "boston" },
-                { name: "brooklyn", collapse: [{ name: "new york" }] },
+                { name: "boston", description: "Home to the Red Sox" },
+                {
+                  name: "brooklyn",
+                  description: "Near the Hudson",
+                  collapse: [{ name: "new york", description: "Has a picturesque skyline" }],
+                },
               ],
             },
           ]}
           open={true}
         />
       </ThemeProvider>
-    );;
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
