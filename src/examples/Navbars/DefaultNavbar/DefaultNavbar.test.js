@@ -100,6 +100,9 @@ describe("DefaultNavbar", () => {
     const doughnutIcon = getByText("traveling");
     fireEvent.mouseEnter(doughnutIcon);
     expect(container).toMatchSnapshot();
+
+    fireEvent.mouseLeave(doughnutIcon);
+    expect(container).toMatchSnapshot();
   });
 
   it("expands without columns", () => {
@@ -123,6 +126,9 @@ describe("DefaultNavbar", () => {
 
     const doughnutIcon = getByText("flight");
     fireEvent.mouseEnter(doughnutIcon);
+    expect(container).toMatchSnapshot();
+
+    fireEvent.mouseLeave(doughnutIcon);
     expect(container).toMatchSnapshot();
   });
 });
