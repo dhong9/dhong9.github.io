@@ -10,6 +10,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 
 // Icons
 import GitHubIcon from "@mui/icons-material/GitHub";
+import DonutSmallIcon from "@mui/icons-material/DonutSmall";
 
 // Mocks
 jest.mock("react-router-dom", () => ({
@@ -21,7 +22,24 @@ describe("DefaultNavbar", () => {
     const component = renderer.create(
       <ThemeProvider theme={theme}>
         <DefaultNavbar
-          routes={[{ label: "Navbar", route: "/default", icon: <GitHubIcon />, name: "Github" }]}
+          routes={[
+            {
+              label: "Navbar",
+              route: "/default",
+              icon: <GitHubIcon />,
+              name: "Github",
+            },
+            {
+              label: "Doughnut",
+              route: "/rider",
+              icon: <DonutSmallIcon />,
+              name: "doughnut",
+              collapse: [
+                { name: "boston" },
+                { name: "brooklyn", collapse: [{ name: "new york" }] },
+              ],
+            },
+          ]}
         />
       </ThemeProvider>
     );
@@ -32,7 +50,26 @@ describe("DefaultNavbar", () => {
   it("renders without route", () => {
     const component = renderer.create(
       <ThemeProvider theme={theme}>
-        <DefaultNavbar routes={[{ label: "Regular", icon: <GitHubIcon />, name: "Github" }]} />
+        <DefaultNavbar
+          routes={[
+            {
+              label: "Navbar",
+              route: "/default",
+              icon: <GitHubIcon />,
+              name: "Github",
+            },
+            {
+              label: "Doughnut",
+              route: "/rider",
+              icon: <DonutSmallIcon />,
+              name: "doughnut",
+              collapse: [
+                { name: "boston" },
+                { name: "brooklyn", collapse: [{ name: "new york" }] },
+              ],
+            },
+          ]}
+        />
       </ThemeProvider>
     );
     let tree = component.toJSON();
