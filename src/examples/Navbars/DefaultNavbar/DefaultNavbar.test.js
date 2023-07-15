@@ -115,7 +115,6 @@ describe("DefaultNavbar", () => {
                 { name: "chicago" },
                 { name: "san francisco", collapse: [{ name: "california" }] },
               ],
-              columns: 2,
             },
           ]}
         />
