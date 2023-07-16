@@ -35,6 +35,9 @@ import SignInPage from "layouts/pages/authentication/sign-in";
 import SignUpPage from "layouts/pages/authentication/sign-up";
 import SignOutPage from "layouts/pages/authentication/sign-out";
 
+// Forums
+import ForumsPost from "pages/LandingPages/ForumsPost";
+
 export default function App() {
   const { pathname } = useLocation();
 
@@ -67,6 +70,7 @@ export default function App() {
           <Route path="/pages/authentication/sign-in" element={<SignInPage />} />
           <Route path="/pages/authentication/sign-up" element={<SignUpPage />} />
           <Route path="/pages/authentication/sign-out" element={<SignOutPage />} />
+          <Route path="/doughnutRider/:id" element={<ForumsPost />} />
         </Routes>
       </AuthProvider>
     </ThemeProvider>
