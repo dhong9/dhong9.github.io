@@ -12,6 +12,7 @@ export default function ForumsPost() {
   // Get post By id
   useEffect(
     getPostById(id, ({ data }) => {
+      console.log(data);
       setPost(data);
     }),
     []
