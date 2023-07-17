@@ -4,6 +4,10 @@ export const getPosts = (success) => {
   getRequest("posts", success, console.error);
 };
 
+export const getPostById = (id, success) => {
+  getRequest("posts/" + id, success, console.error);
+};
+
 export const addPost = (
   success,
   postName,

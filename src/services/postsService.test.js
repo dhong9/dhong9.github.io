@@ -1,7 +1,7 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { getRequest, postRequest } from "services/baseService";
-import { getPosts, addPost } from "services/postsService";
+import { getPosts, getPostById, addPost } from "services/postsService";
 
 const mock = new MockAdapter(axios);
 
@@ -12,12 +12,15 @@ const postData = {
   ],
 };
 
+const post1 = { text: "Post 1" };
+
 jest.mock("services/baseService", () => ({
   getRequest: jest.fn(),
   postRequest: jest.fn(),
 }));
 
 mock.onGet("/posts").reply(200, postData);
+mock.onGet("/posts/1").reply(200, post1);
 mock.onPost("/posts").reply(200, postData);
 
 describe("PostsService", () => {
@@ -30,6 +33,17 @@ describe("PostsService", () => {
 
     // Verify that getRequest was called correctly
     expect(getRequest).toHaveBeenCalledWith("posts", success, console.error);
+  });
+
+  it("gets post ID 1", () => {
+    // Create success and error spy functions
+    const success = jest.fn();
+
+    // Get comments
+    getPostById(1, success);
+
+    // Verify that getRequest was called correctly
+    expect(getRequest).toHaveBeenCalledWith("posts/1", success, console.error);
   });
 
   it("posts a post", () => {
