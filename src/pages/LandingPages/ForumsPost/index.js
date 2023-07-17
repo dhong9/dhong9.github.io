@@ -20,10 +20,6 @@ export default function ForumsPost() {
 
   return post ? (
     <div>
-      <h1>{post.postName}</h1>
-      <h2>
-        {post.name} {post.create}
-      </h2>
       <p>{post.body}</p>
     </div>
   ) : (
