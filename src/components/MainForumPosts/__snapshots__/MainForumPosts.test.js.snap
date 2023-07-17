@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainForumPosts renders 1`] = `
+<div
+  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8 css-sjz3wq-MuiGrid-root"
+>
+  <h6
+    className="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom css-18k87ye-MuiTypography-root"
+  >
+    Test Post
+  </h6>
+  <hr
+    className="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+  />
+</div>
+`;
