@@ -17,7 +17,7 @@ export default function ForumsPost() {
     []
   );
 
-  return (
+  return post ? (
     <div>
       <h1>{post.postName}</h1>
       <h2>
@@ -25,5 +25,7 @@ export default function ForumsPost() {
       </h2>
       <p>{post.body}</p>
     </div>
+  ) : (
+    <div>Loading...</div>
   );
 }
