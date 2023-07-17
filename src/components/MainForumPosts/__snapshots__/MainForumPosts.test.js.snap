@@ -5,12 +5,156 @@ exports[`MainForumPosts renders 1`] = `
   className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8 css-sjz3wq-MuiGrid-root"
 >
   <h6
-    className="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom css-18k87ye-MuiTypography-root"
+    className="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom css-1yn0waj-MuiTypography-root"
   >
     Test Post
   </h6>
   <hr
-    className="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+    className="MuiDivider-root MuiDivider-fullWidth css-183jbkj-MuiDivider-root"
   />
+  <div
+    className="markdown"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-1b7o8t1-MuiTypography-root"
+      node={
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "position": {
+                    "end": {
+                      "column": 5,
+                      "line": 1,
+                      "offset": 4,
+                    },
+                    "start": {
+                      "column": 3,
+                      "line": 1,
+                      "offset": 2,
+                    },
+                  },
+                  "type": "text",
+                  "value": "Hi",
+                },
+              ],
+              "position": {
+                "end": {
+                  "column": 7,
+                  "line": 1,
+                  "offset": 6,
+                },
+                "start": {
+                  "column": 1,
+                  "line": 1,
+                  "offset": 0,
+                },
+              },
+              "properties": {},
+              "tagName": "strong",
+              "type": "element",
+            },
+            {
+              "position": {
+                "end": {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+                "start": {
+                  "column": 7,
+                  "line": 1,
+                  "offset": 6,
+                },
+              },
+              "type": "text",
+              "value": " ",
+            },
+            {
+              "children": [
+                {
+                  "position": {
+                    "end": {
+                      "column": 14,
+                      "line": 1,
+                      "offset": 13,
+                    },
+                    "start": {
+                      "column": 9,
+                      "line": 1,
+                      "offset": 8,
+                    },
+                  },
+                  "type": "text",
+                  "value": "there",
+                },
+              ],
+              "position": {
+                "end": {
+                  "column": 15,
+                  "line": 1,
+                  "offset": 14,
+                },
+                "start": {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+              },
+              "properties": {},
+              "tagName": "em",
+              "type": "element",
+            },
+            {
+              "position": {
+                "end": {
+                  "column": 16,
+                  "line": 1,
+                  "offset": 15,
+                },
+                "start": {
+                  "column": 15,
+                  "line": 1,
+                  "offset": 14,
+                },
+              },
+              "type": "text",
+              "value": "!",
+            },
+          ],
+          "position": {
+            "end": {
+              "column": 16,
+              "line": 1,
+              "offset": 15,
+            },
+            "start": {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+          },
+          "properties": {},
+          "tagName": "p",
+          "type": "element",
+        }
+      }
+    >
+      <strong>
+        Hi
+      </strong>
+       
+      <em>
+        there
+      </em>
+      !
+    </p>
+  </div>
+  <div
+    className="MuiBox-root css-hwgoop"
+  >
+    Hello again!
+  </div>
 </div>
 `;
