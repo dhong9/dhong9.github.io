@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 // Sections components
-import FeaturedPost from "components/FeaturedPost";
 import BaseLayout from "layouts/sections/components/BaseLayout";
 
 // Services
@@ -16,8 +15,8 @@ export default function ForumsPost() {
   // Get post By id
   useEffect(
     getPostById(id, ({ data }) => {
-      console.log(data);
       setPost(data);
+      console.log(post);
     }),
     []
   );
@@ -26,14 +25,6 @@ export default function ForumsPost() {
     <BaseLayout
       title="Doughnut Rider"
       breadcrumb={[{ label: "Doughnut Rider", route: "/doughnutRider" }]}
-    >
-      {post ? (
-        <>
-          <FeaturedPost post={post} />
-        </>
-      ) : (
-        <div>Loading...</div>
-      )}
-    </BaseLayout>
+    ></BaseLayout>
   );
 }
