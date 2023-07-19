@@ -29,13 +29,17 @@ exports[`FeaturedPost renders 1`] = `
       >
         <h2
           className="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
-        />
+        >
+          Bicycles
+        </h2>
         <h6
           className="MuiTypography-root MuiTypography-subtitle1 css-ecpxie-MuiTypography-root"
         />
         <p
           className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-paragraph css-11j0rze-MuiTypography-root"
-        />
+        >
+          It's healthy to bike to work everyday.
+        </p>
         <h6
           className="MuiTypography-root MuiTypography-subtitle1 css-x4wfr5-MuiTypography-root"
         >
@@ -43,9 +47,7 @@ exports[`FeaturedPost renders 1`] = `
         </h6>
       </div>
       <img
-        alt="main image description"
         className="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-fnq5ct-MuiCardMedia-root"
-        src="https://source.unsplash.com/random"
       />
     </div>
     <span

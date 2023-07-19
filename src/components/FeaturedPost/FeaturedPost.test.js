@@ -6,11 +6,11 @@ import FeaturedPost from "components/FeaturedPost";
 
 describe("FeaturedPost", () => {
   it("renders", () => {
-    const posts = [{
+    const post = {
         postName: "Bicycles",
         body: "It's healthy to bike to work everyday."
-    }];
-    const component = renderer.create(<FeaturedPost posts={posts} />);
+    };
+    const component = renderer.create(<FeaturedPost post={post} />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
