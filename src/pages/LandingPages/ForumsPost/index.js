@@ -14,12 +14,11 @@ export default function ForumsPost() {
   const [post, setPost] = useState({});
 
   // Get post By id
-  useEffect(
+  useEffect(() => {
     getPostById(id, ({ data }) => {
       setPost(data);
-    }),
-    []
-  );
+    });
+  }, []);
 
   return (
     <BaseLayout
