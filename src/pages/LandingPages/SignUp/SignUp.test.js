@@ -44,14 +44,6 @@ jest.mock("react-monaco-editor", () => {
     };
 });
 
-jest.mock("context/AuthContext", () => {
-    const { createContext } = jest.requireActual('react'); 
-    return {
-        __esModule: true,
-        default: createContext()
-    }
-});
-
 describe("SignUp", () => {
     it("renders", () => {
         useContextMock.mockReturnValue("Test Value");
