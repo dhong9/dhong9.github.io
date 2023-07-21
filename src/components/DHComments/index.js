@@ -7,6 +7,10 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
+// Sections components
+import MKButton from "components/MKButton";
+import MKInput from "components/MKInput";
+
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
@@ -14,14 +18,14 @@ import DHMarkdown from "components/DHMarkdown";
 
 export default function DHComments({ comments }) {
   const [showReplyBox, setShowReplyBox] = useState(false);
-  const [comment, setRootComment] = useState("");
+  const [rootComment, setRootComment] = useState("");
 
   const handleReply = () => {
     setShowReplyBox(true);
   };
 
   const onAdd = () => {
-    console.log(comment);
+    console.log(rootComment);
   };
 
   return (
