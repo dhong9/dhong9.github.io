@@ -1,6 +1,9 @@
-import renderer from "react-test-renderer";
-import Twenty48 from "projects/games/2048";
+// React testing libraries
 import React from "react";
+import renderer from "react-test-renderer";
+
+// Component to test
+import Twenty48 from "projects/games/2048";
 
 let realUseContext;
 let useContextMock;

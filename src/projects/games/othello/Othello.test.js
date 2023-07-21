@@ -1,6 +1,9 @@
-import renderer from "react-test-renderer";
-import Othello from "projects/games/othello";
+// React testing libraries
 import React from "react";
+import renderer from "react-test-renderer";
+
+// Component to test
+import Othello from "projects/games/othello";
 
 let realUseContext;
 let useContextMock;

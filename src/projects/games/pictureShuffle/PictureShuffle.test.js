@@ -1,6 +1,9 @@
-import renderer from "react-test-renderer";
-import PictureShuffle from "projects/games/pictureShuffle";
+// React testing libraries
 import React from "react";
+import renderer from "react-test-renderer";
+
+// Component to test
+import PictureShuffle from "projects/games/pictureShuffle";
 
 let realUseContext;
 let useContextMock;
