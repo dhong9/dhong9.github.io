@@ -1,6 +1,9 @@
-import renderer from "react-test-renderer";
-import Connect4 from "projects/games/connect4";
+// React testing libraries
 import React from "react";
+import renderer from "react-test-renderer";
+
+// Component to test
+import Connect4 from "projects/games/connect4";
 
 let realUseContext;
 let useContextMock;
