@@ -280,7 +280,11 @@ function Twenty48() {
       </View>
 
       <div className="comments-container">
-        {comments.length ? <DHComments comments={comments} pageName="2048" /> : <div></div>}
+        {comments.length ? (
+          <DHComments comments={comments} pageName="2048" user={user} />
+        ) : (
+          <div></div>
+        )}
         <MKInput
           variant="standard"
           label="What can we help you?"

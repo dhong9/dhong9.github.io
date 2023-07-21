@@ -10,13 +10,15 @@ import CardContent from "@mui/material/CardContent";
 // Sections components
 import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
+import DHMarkdown from "components/DHMarkdown";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-import DHMarkdown from "components/DHMarkdown";
+// Service
+import { addComment } from "services/commentsService";
 
-export default function DHComments({ comments }) {
+export default function DHComments({ comments, pageName, user }) {
   const [showReplyBox, setShowReplyBox] = useState(false);
   const [rootComment, setRootComment] = useState("");
 
@@ -26,6 +28,7 @@ export default function DHComments({ comments }) {
 
   const onAdd = () => {
     console.log(rootComment);
+    addComment(console.log, user.username, pageName, user.email, rootComment, true);
   };
 
   return (
@@ -77,10 +80,12 @@ DHComments.propTypes = {
   comments: PropTypes.arrayOf(PropTypes.object),
   addComment: PropTypes.func,
   pageName: PropTypes.string,
+  user: PropTypes.object,
 };
 
 DHComments.defaultProps = {
   comments: null,
   addComment: null,
   pageName: "",
+  user: null,
 };
