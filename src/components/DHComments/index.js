@@ -34,7 +34,7 @@ export default function DHComments({ comments }) {
               <Typography variant="subtitle1" paragraph>
                 {isPlainText ? body : <DHMarkdown>{body}</DHMarkdown>}
               </Typography>
-              <Typography variant="a" color="primary" onClick={handleReply}>
+              <Typography variant="a" href="#" color="primary" onClick={handleReply}>
                 Reply...
               </Typography>
               {showReplyBox && <div>Add your reply here</div>}
