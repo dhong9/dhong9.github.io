@@ -27,7 +27,6 @@ export default function DHComments({ comments, pageName, user }) {
   };
 
   const onAdd = () => {
-    console.log(rootComment);
     addComment(console.log, pageName, user.username, user.email, rootComment, true);
   };
 
