@@ -2,10 +2,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-// Material Kit 2 React themes
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "assets/theme";
-
 // Component to test
 import SignUp from "pages/LandingPages/SignUp";
 
@@ -22,6 +18,27 @@ afterEach(() => {
 });
 
 // Define Mocks
+jest.mock("examples/Navbars/DefaultNavbar", () => {
+  const { forwardRef } = jest.requireActual("react");
+  return {
+    __esModule: true,
+    default: forwardRef(() => <div>Mock Navbar</div>),
+  };
+});
+jest.mock("components/DHSnackbar", () => {
+  const { forwardRef } = jest.requireActual("react");
+  return {
+    __esModule: true,
+    default: forwardRef(() => <div>Mock Snackbar</div>),
+  };
+});
+jest.mock("components/MKBox", () => {
+  const { forwardRef } = jest.requireActual("react");
+  return {
+    __esModule: true,
+    default: forwardRef(() => <div>Mock Box</div>),
+  };
+});
 jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -34,9 +51,7 @@ describe("SignUp", () => {
   it("renders", () => {
     useContextMock.mockReturnValue("Test Value");
     const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <SignUp />
-      </ThemeProvider>
+      <SignUp />
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
