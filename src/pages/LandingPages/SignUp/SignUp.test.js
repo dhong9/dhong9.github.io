@@ -25,13 +25,6 @@ jest.mock("examples/Navbars/DefaultNavbar", () => {
     default: forwardRef(() => <div>Mock Navbar</div>),
   };
 });
-jest.mock("components/DHSnackbar", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Snackbar</div>),
-  };
-});
 jest.mock("components/MKBox", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
