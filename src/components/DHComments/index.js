@@ -14,9 +14,14 @@ import DHMarkdown from "components/DHMarkdown";
 
 export default function DHComments({ comments }) {
   const [showReplyBox, setShowReplyBox] = useState(false);
+  const [comment, setRootComment] = useState("");
 
   const handleReply = () => {
     setShowReplyBox(true);
+  };
+
+  const onAdd = () => {
+    console.log(comment);
   };
 
   return (
@@ -37,7 +42,24 @@ export default function DHComments({ comments }) {
               <Typography variant="a" href="#" color="primary" onClick={handleReply}>
                 Reply...
               </Typography>
-              {showReplyBox && <div>Add your reply here</div>}
+              {showReplyBox && (
+                <>
+                  <MKInput
+                    variant="standard"
+                    label="What do you think?"
+                    placeholder="Add a comment"
+                    InputLabelProps={{ shrink: true }}
+                    multiline
+                    fullWidth
+                    rows={6}
+                    onChange={(e) => setRootComment(e.target.value)}
+                    value={rootComment}
+                  />{" "}
+                  <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+                    Add
+                  </MKButton>
+                </>
+              )}
             </CardContent>
           </Card>
         </Grid>

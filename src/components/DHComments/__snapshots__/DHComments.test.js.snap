@@ -37,6 +37,7 @@ exports[`DHComments renders 1`] = `
         </p>
         <span
           className="MuiTypography-root MuiTypography-a css-1kbbegv-MuiTypography-root"
+          href="#"
           onClick={[Function]}
         >
           Reply...
