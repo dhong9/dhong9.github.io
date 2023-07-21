@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // @mui material components
 import Paper from "@mui/material/Paper";
@@ -13,8 +13,10 @@ import PropTypes from "prop-types";
 import DHMarkdown from "components/DHMarkdown";
 
 export default function DHComments({ comments }) {
-  const handleReply = (e) => {
-    console.log(e.target.value);
+  const [showReplyBox, setShowReplyBox] = useState(false);
+
+  const handleReply = () => {
+    setShowReplyBox(true);
   };
 
   return (
@@ -35,6 +37,7 @@ export default function DHComments({ comments }) {
               <Typography variant="a" color="primary" onClick={handleReply}>
                 Reply...
               </Typography>
+              {showReplyBox && <div>Add your reply here</div>}
             </CardContent>
           </Card>
         </Grid>
