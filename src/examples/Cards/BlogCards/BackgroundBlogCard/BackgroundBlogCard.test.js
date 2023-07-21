@@ -14,7 +14,7 @@ let useContextMock;
 // Setup mock
 beforeEach(() => {
     realUseContext = React.useContext;
-    useContextMock = React.useContext = jest.fn();
+    useContextMock = jest.fn(() => "Test Value");
 });
 // Cleanup mock
 afterEach(() => {
@@ -22,17 +22,12 @@ afterEach(() => {
 });
 
 // Mocks
-jest.mock("@mui/material/Card", () => {
-    const { forwardRef } = jest.requireActual("react");
-    return {
-        __esModule: true,
-        default: forwardRef(() => <div>MUI Card</div>)
-    };
-});
+jest.mock("react-router-dom", () => ({
+  Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+}));
 
 describe("BackgroundBlogCard", () => {
   it("renders", () => {
-    useContextMock.mockReturnValue("Test Value");
     const component = renderer.create(
       <ThemeProvider theme={theme}>
         <BackgroundBlogCard
