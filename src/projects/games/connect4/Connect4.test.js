@@ -51,13 +51,6 @@ jest.mock("react-monaco-editor", () => {
         default: forwardRef(() => <div>Mock Editor</div>)
     };
 });
-jest.mock("context/AuthContext", () => {
-    const { createContext } = jest.requireActual('react'); 
-    return {
-        __esModule: true,
-        default: createContext()
-    }
-});
 
 describe("Connect4", () => {
     it("renders", () => {
