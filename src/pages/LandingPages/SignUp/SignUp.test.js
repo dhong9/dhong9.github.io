@@ -43,9 +43,7 @@ jest.mock("react-monaco-editor", () => {
 describe("SignUp", () => {
   it("renders", () => {
     useContextMock.mockReturnValue("Test Value");
-    const component = renderer.create(
-      <SignUp />
-    );
+    const component = renderer.create(<SignUp />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
