@@ -19,7 +19,11 @@ export default function DHEditor() {
 
   // Styling controls
   const _onBoldClick = () => {
-    setEditorState(() => RichUtils.toggleInlineStyle(editorState, "BOLD"));
+    const newState = RichUtils.toggleInlineStyle(editorState, "BOLD");
+
+    if (newState) {
+      setEditorState(() => newState);
+    }
   };
 
   return (
