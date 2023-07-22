@@ -32,6 +32,12 @@ jest.mock("components/MKBox", () => {
         default: forwardRef(() => <div>Mock Box</div>)
     };
 });
+jest.mock('draft-convert', () => {
+  return {
+    convertFromHTML: jest.fn(),
+    convertToRaw: jest.fn(),
+  };
+});
 
 describe("Forums", () => {
   it("renders", () => {

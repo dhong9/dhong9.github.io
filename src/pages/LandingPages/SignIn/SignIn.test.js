@@ -46,6 +46,12 @@ jest.mock("react-monaco-editor", () => {
     default: forwardRef(() => <div>Mock Editor</div>),
   };
 });
+jest.mock('draft-convert', () => {
+  return {
+    convertFromHTML: jest.fn(),
+    convertToRaw: jest.fn(),
+  };
+});
 
 describe("SignIn", () => {
   it("renders", () => {
