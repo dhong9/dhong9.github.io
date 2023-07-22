@@ -19,6 +19,7 @@ export default function DHEditor() {
   // Styling controls
   const handleInlineStyle = (e, style) => {
     e.preventDefault();
+    console.log("Setting style to ", style);
     setEditorState(RichUtils.toggleInlineStyle(editorState, style));
   };
 
