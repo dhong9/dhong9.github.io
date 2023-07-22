@@ -30,8 +30,9 @@ import AuthContext from "context/AuthContext";
 
 function Twenty48() {
   const [comments, setComments] = useState([]);
-  const [rootComment, setRootComment] = useState(EditorState.createEmpty());
+  const [rootComment] = useState("");
   const [isPlainText, setIsPlainText] = useState(false);
+  const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 
   let { user } = useContext(AuthContext);
 
@@ -40,7 +41,7 @@ function Twenty48() {
   };
 
   const onAdd = () => {
-    console.log(rootComment);
+    console.log(editorState);
     addComment(
       ({ status }) => {
         if (status === 201) {
@@ -289,7 +290,7 @@ function Twenty48() {
         ) : (
           <div></div>
         )}
-        <Editor editorState={rootComment} onChange={(e) => setRootComment(e.target.value)} />
+        <Editor editorState={editorState} onChange={setEditorState} />
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={isPlainText} onChange={handleChange} />}
