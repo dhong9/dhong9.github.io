@@ -25,10 +25,10 @@ export default function DHEditor() {
   return (
     <>
       <div>
-        <button onClick={(e) => handleInlineStyle(e, "BOLD")}>Bold</button>
-        <button onClick={(e) => handleInlineStyle(e, "ITALIC")}>Italic</button>
-        <button onClick={(e) => handleInlineStyle(e, "UNDERLINE")}>Underline</button>
-        <button onClick={(e) => handleInlineStyle(e, "CODE")}>Code</button>
+        <button onMouseDown={(e) => handleInlineStyle(e, "BOLD")}>Bold</button>
+        <button onMouseDown={(e) => handleInlineStyle(e, "ITALIC")}>Italic</button>
+        <button onMouseDown={(e) => handleInlineStyle(e, "UNDERLINE")}>Underline</button>
+        <button onMouseDown={(e) => handleInlineStyle(e, "CODE")}>Code</button>
       </div>
       <Editor
         editorState={editorState}
