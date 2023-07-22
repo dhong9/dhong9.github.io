@@ -2,7 +2,6 @@
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 import MKButton from "components/MKButton";
-import MKInput from "components/MKInput";
 import DHComments from "components/DHComments";
 
 // Form
@@ -16,6 +15,10 @@ import twenty48Code from "projects/games/2048/code";
 // p5
 import Sketch from "react-p5";
 
+// Rich text editor
+import { Editor, EditorState } from "draft-js";
+import "draft-js/dist/Draft.css";
+
 // React
 import { useContext, useEffect, useState } from "react";
 
@@ -27,7 +30,7 @@ import AuthContext from "context/AuthContext";
 
 function Twenty48() {
   const [comments, setComments] = useState([]);
-  const [rootComment, setRootComment] = useState("");
+  const [rootComment, setRootComment] = useState(EditorState.createEmpty());
   const [isPlainText, setIsPlainText] = useState(false);
 
   let { user } = useContext(AuthContext);
@@ -37,6 +40,7 @@ function Twenty48() {
   };
 
   const onAdd = () => {
+    console.log(rootComment);
     addComment(
       ({ status }) => {
         if (status === 201) {
@@ -285,17 +289,7 @@ function Twenty48() {
         ) : (
           <div></div>
         )}
-        <MKInput
-          variant="standard"
-          label="What can we help you?"
-          placeholder="Add a comment"
-          InputLabelProps={{ shrink: true }}
-          multiline
-          fullWidth
-          rows={6}
-          onChange={(e) => setRootComment(e.target.value)}
-          value={rootComment}
-        />{" "}
+        <Editor editorState={rootComment} onChange={(e) => setRootComment(e.target.value)} />
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={isPlainText} onChange={handleChange} />}
