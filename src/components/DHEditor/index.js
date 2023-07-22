@@ -12,7 +12,7 @@ export default function DHEditor() {
     const newState = RichUtils.handleKeyCommand(editorState, command);
 
     if (newState) {
-      this.onChange(newState);
+      setEditorState(() => newState);
     }
   };
 
