@@ -8,6 +8,7 @@ import "draft-js/dist/Draft.css";
 export default function DHEditor() {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 
+  // Handle common key command (i.e. copy/paste)
   const handleKeyCommand = (command, editorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
 
@@ -16,11 +17,19 @@ export default function DHEditor() {
     }
   };
 
+  // Styling controls
+  const _onBoldClick = () => {
+    setEditorState(() => RichUtils.toggleInlineStyle(editorState, "BOLD"));
+  };
+
   return (
-    <Editor
-      editorState={editorState}
-      onChange={setEditorState}
-      handleKeyCommand={handleKeyCommand}
-    />
+    <>
+      <button onClick={_onBoldClick}>Bold</button>
+      <Editor
+        editorState={editorState}
+        onChange={setEditorState}
+        handleKeyCommand={handleKeyCommand}
+      />
+    </>
   );
 }
