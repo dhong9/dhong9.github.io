@@ -3,6 +3,7 @@ import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 import MKButton from "components/MKButton";
 import DHComments from "components/DHComments";
+import DHEditor from "components/DHEditor";
 
 // Form
 import FormGroup from "@mui/material/FormGroup";
@@ -14,10 +15,6 @@ import twenty48Code from "projects/games/2048/code";
 
 // p5
 import Sketch from "react-p5";
-
-// Rich text editor
-import { Editor, EditorState, RichUtils } from "draft-js";
-import "draft-js/dist/Draft.css";
 
 // React
 import { useContext, useEffect, useState } from "react";
@@ -32,7 +29,6 @@ function Twenty48() {
   const [comments, setComments] = useState([]);
   const [rootComment] = useState("");
   const [isPlainText, setIsPlainText] = useState(false);
-  const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 
   let { user } = useContext(AuthContext);
 
@@ -40,16 +36,7 @@ function Twenty48() {
     setIsPlainText(event.target.checked);
   };
 
-  const handleKeyCommand = (command, editorState) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-
-    if (newState) {
-      setEditorState(() => newState);
-    }
-  };
-
   const onAdd = () => {
-    console.log(editorState);
     addComment(
       ({ status }) => {
         if (status === 201) {
@@ -298,11 +285,7 @@ function Twenty48() {
         ) : (
           <div></div>
         )}
-        <Editor
-          editorState={editorState}
-          onChange={setEditorState}
-          handleKeyCommand={handleKeyCommand}
-        />
+        <DHEditor />
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={isPlainText} onChange={handleChange} />}
