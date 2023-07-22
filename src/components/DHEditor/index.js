@@ -17,17 +17,18 @@ export default function DHEditor() {
   });
 
   // Styling controls
-  const handleInlineStyle = (style) => {
+  const handleInlineStyle = (e, style) => {
+    e.preventDefault();
     setEditorState(RichUtils.toggleInlineStyle(editorState, style));
   };
 
   return (
     <>
       <div>
-        <button onClick={() => handleInlineStyle("BOLD")}>Bold</button>
-        <button onClick={() => handleInlineStyle("ITALIC")}>Italic</button>
-        <button onClick={() => handleInlineStyle("UNDERLINE")}>Underline</button>
-        <button onClick={() => handleInlineStyle("CODE")}>Code</button>
+        <button onClick={(e) => handleInlineStyle(e, "BOLD")}>Bold</button>
+        <button onClick={(e) => handleInlineStyle(e, "ITALIC")}>Italic</button>
+        <button onClick={(e) => handleInlineStyle(e, "UNDERLINE")}>Underline</button>
+        <button onClick={(e) => handleInlineStyle(e, "CODE")}>Code</button>
       </div>
       <Editor
         editorState={editorState}
