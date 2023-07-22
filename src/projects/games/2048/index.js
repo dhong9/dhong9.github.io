@@ -16,7 +16,7 @@ import twenty48Code from "projects/games/2048/code";
 import Sketch from "react-p5";
 
 // Rich text editor
-import { Editor, EditorState } from "draft-js";
+import { Editor, EditorState, RichUtils } from "draft-js";
 import "draft-js/dist/Draft.css";
 
 // React
@@ -38,6 +38,14 @@ function Twenty48() {
 
   const handleChange = (event) => {
     setIsPlainText(event.target.checked);
+  };
+
+  const handleKeyCommand = (command, editorState) => {
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+
+    if (newState) {
+      setEditorState(() => newState);
+    }
   };
 
   const onAdd = () => {
@@ -290,7 +298,11 @@ function Twenty48() {
         ) : (
           <div></div>
         )}
-        <Editor editorState={editorState} onChange={setEditorState} />
+        <Editor
+          editorState={editorState}
+          onChange={setEditorState}
+          handleKeyCommand={handleKeyCommand}
+        />
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={isPlainText} onChange={handleChange} />}
