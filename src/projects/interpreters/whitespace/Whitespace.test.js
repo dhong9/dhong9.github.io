@@ -3,7 +3,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 
 // Component to test
-import BrainF from "projects/interpreters/brainF";
+import Whitespace from "projects/interpreters/whitespace";
 
 let realUseContext;
 let useContextMock;
@@ -60,10 +60,10 @@ jest.mock("draft-convert", () => {
   };
 });
 
-describe("BrainF", () => {
+describe("Whitespace", () => {
   it("renders", () => {
     useContextMock.mockReturnValue("Test Value");
-    const component = renderer.create(<BrainF />);
+    const component = renderer.create(<Whitespace />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
