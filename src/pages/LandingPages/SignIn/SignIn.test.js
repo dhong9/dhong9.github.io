@@ -2,6 +2,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
+// @mui material components
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
+
 // Component to test
 import SignIn from "pages/LandingPages/SignIn";
 
@@ -46,7 +50,7 @@ jest.mock("react-monaco-editor", () => {
     default: forwardRef(() => <div>Mock Editor</div>),
   };
 });
-jest.mock('draft-convert', () => {
+jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
     convertToRaw: jest.fn(),
@@ -56,7 +60,11 @@ jest.mock('draft-convert', () => {
 describe("SignIn", () => {
   it("renders", () => {
     useContextMock.mockReturnValue("Test Value");
-    const component = renderer.create(<SignIn />);
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <SignIn />
+      </ThemeProvider>
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
