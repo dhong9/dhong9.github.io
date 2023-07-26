@@ -6,9 +6,6 @@ exports[`SignIn renders 1`] = `
     Mock Navbar
   </div>,
   <div>
-    Mock Snackbar
-  </div>,
-  <div>
     Mock Box
   </div>,
   <div>
