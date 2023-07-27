@@ -131,4 +131,36 @@ describe("DefaultNavbar", () => {
     fireEvent.mouseLeave(doughnutIcon);
     expect(container).toMatchSnapshot();
   });
+
+  it("should resize", () => {
+    window.innerWidth = 500;
+    fireEvent(window, new Event("resize"));
+
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <DefaultNavbar
+          routes={[
+            {
+              label: "Navbar",
+              route: "/default",
+              icon: <GitHubIcon />,
+              name: "Github",
+            },
+            {
+              label: "Doughnut",
+              route: "/rider",
+              icon: <DonutSmallIcon />,
+              name: "doughnut",
+              collapse: [
+                { name: "boston" },
+                { name: "brooklyn", collapse: [{ name: "new york" }] },
+              ],
+            },
+          ]}
+        />
+      </ThemeProvider>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
