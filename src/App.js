@@ -70,7 +70,7 @@ export default function App() {
           <Route path="/pages/authentication/sign-in" element={<SignInPage />} />
           <Route path="/pages/authentication/sign-up" element={<SignUpPage />} />
           <Route path="/pages/authentication/sign-out" element={<SignOutPage />} />
-          <Route path="/doughnutRider/:id" element={<ForumsPost />} />
+          <Route path="/doughnutRider/posts/:id" element={<ForumsPost />} />
         </Routes>
       </AuthProvider>
     </ThemeProvider>
