@@ -17,7 +17,14 @@ export default function ForumHeader(props) {
       sx={{ justifyContent: "space-between", overflowX: "auto" }}
     >
       {categories.map(({ id, name }) => (
-        <Link color="inherit" noWrap key={id} variant="body2" href="/" sx={{ p: 1, flexShrink: 0 }}>
+        <Link
+          color="inherit"
+          noWrap
+          key={id}
+          variant="body2"
+          href={"/doughnutRider/categories/" + id}
+          sx={{ p: 1, flexShrink: 0 }}
+        >
           {name}
         </Link>
       ))}

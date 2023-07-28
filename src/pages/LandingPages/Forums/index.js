@@ -63,7 +63,7 @@ function Forums() {
           title={postName}
           description={body}
           image="https://source.unsplash.com/random"
-          action={{ type: "internal", route: "/doughnutRider/" + id, label: "Read more..." }}
+          action={{ type: "internal", route: "/doughnutRider/posts/" + id, label: "Read more..." }}
         />
       ))}
       {featuredPosts.map((mainFeaturedPost) => (
