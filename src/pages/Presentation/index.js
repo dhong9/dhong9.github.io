@@ -84,7 +84,20 @@ function Presentation() {
         }
       }
 
-      console.log(projectMap);
+      const projects = [];
+
+      // Build project URL map from project map
+      for (const name in projectMap) {
+        const projectObj = {
+          name,
+          description: `See all ${name.toLowerCase()}`,
+          dropdown: true,
+          collapse: projectMap[name],
+        };
+        projects.push(projectObj);
+      }
+
+      console.log(projects);
     });
   }, []);
 
