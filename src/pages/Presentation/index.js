@@ -13,7 +13,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // @mui material icons
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -52,10 +52,17 @@ import SignUp from "layouts/pages/authentication/sign-up";
 import SignOut from "layouts/pages/authentication/sign-out";
 import AuthContext from "context/AuthContext";
 
+// Services
+import { getProjects } from "services/projectsService";
+
 function Presentation() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [contactSeverity, setContactSeverity] = useState("info");
   const [contactMessage, setContactMessage] = useState("");
+
+  useEffect(() => {
+    getProjects(console.log);
+  }, []);
 
   const handleSnackbarClose = (event, reason) => {
     if (reason !== "clickaway") {
