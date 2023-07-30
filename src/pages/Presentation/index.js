@@ -61,7 +61,29 @@ function Presentation() {
   const [contactMessage, setContactMessage] = useState("");
 
   useEffect(() => {
-    getProjects(console.log);
+    getProjects(({ data: { results } }) => {
+      const projectMap = {};
+
+      // Map each project category to ID and name
+      for (const { id, name, category } of results) {
+        const projectObj = {
+          name,
+          route: `/sections/${category}/${id}`,
+          comoonent: name.replace(/ /g, ""),
+        };
+
+        // If category is in the project map,
+        // add data to the existing mapping
+        if (category in projectMap) {
+          projectMap[category].push(projectObj);
+        }
+        // If it's a new project category,
+        // create a new mapping
+        else {
+          projectMap[category] = [projectObj];
+        }
+      }
+    });
   }, []);
 
   const handleSnackbarClose = (event, reason) => {
