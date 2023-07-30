@@ -69,7 +69,7 @@ function Presentation() {
         const projectObj = {
           name,
           route: `/sections/${category}/${id}`,
-          comoonent: name.replace(/ /g, ""),
+          component: name.replace(/ /g, ""),
         };
 
         // If category is in the project map,
@@ -83,6 +83,8 @@ function Presentation() {
           projectMap[category] = [projectObj];
         }
       }
+
+      console.log(projectMap);
     });
   }, []);
 
