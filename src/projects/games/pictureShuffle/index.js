@@ -128,7 +128,7 @@ function PictureShuffle() {
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={isPlainText} onChange={handleChange} />}
-            label="Visualize"
+            label="Plain Text"
           />
           <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
             Add
