@@ -22,6 +22,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+import Icon from "@mui/material/Icon";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -59,6 +60,7 @@ function Presentation() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [contactSeverity, setContactSeverity] = useState("info");
   const [contactMessage, setContactMessage] = useState("");
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     getProjects(({ data: { results } }) => {
@@ -97,7 +99,7 @@ function Presentation() {
         projects.push(projectObj);
       }
 
-      console.log(projects);
+      setProjects(projects);
     });
   }, []);
 
@@ -148,7 +150,14 @@ function Presentation() {
 
   return (
     <>
-      <DefaultNavbar routes={[...routes, accountObj]} sticky />
+      <DefaultNavbar
+        routes={[
+          ...routes,
+          { name: "sections", icon: <Icon>view_day</Icon>, collapse: projects },
+          accountObj,
+        ]}
+        sticky
+      />
       <DHSnackbar
         open={snackbarOpen}
         onClose={handleSnackbarClose}
