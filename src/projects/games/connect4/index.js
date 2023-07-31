@@ -3,8 +3,8 @@ import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
-import MKInput from "components/MKInput";
 import DHComments from "components/DHComments";
+import DHEditor from "components/DHEditor";
 
 // Form
 import FormGroup from "@mui/material/FormGroup";
@@ -28,7 +28,7 @@ import AuthContext from "context/AuthContext";
 
 function Connect4() {
   const [comments, setComments] = useState([]);
-  const [rootComment, setRootComment] = useState("");
+  const [rootComment] = useState("");
   const [isPlainText, setIsPlainText] = useState(false);
 
   let { user } = useContext(AuthContext);
@@ -543,17 +543,7 @@ function Connect4() {
         ) : (
           <div></div>
         )}
-        <MKInput
-          variant="standard"
-          label="What do you think?"
-          placeholder="Add a comment"
-          InputLabelProps={{ shrink: true }}
-          multiline
-          fullWidth
-          rows={6}
-          onChange={(e) => setRootComment(e.target.value)}
-          value={rootComment}
-        />{" "}
+        <DHEditor isPlainText={isPlainText} />{" "}
         {user ? (
           <FormGroup>
             <FormControlLabel

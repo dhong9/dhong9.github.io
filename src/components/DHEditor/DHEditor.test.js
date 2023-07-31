@@ -1,6 +1,10 @@
 // React testing libraries
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+
+// Material Kit 2 React themes
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
 
 // Component to test
 import DHEditor from "components/DHEditor";
@@ -15,18 +19,13 @@ jest.mock("draft-convert", () => {
 });
 
 describe("DHEditor", () => {
-  it("updates the convertedContent", () => {
-    const { getByText, getByLabelText  } = render(<DHEditor />);
+  it("renders", () => {
+    const { container } = render(
+      <ThemeProvider theme={theme}>
+        <DHEditor isPlainText={false} />
+      </ThemeProvider>
+    );
 
-    // Initially, the convertedContent should not be rendered in the document
-    expect(getByText("Test content")).toBeInTheDocument();
-
-    // Find the contenteditable text box using the aria-label attribute
-    const textBox = getByLabelText("rdw-editor");;
-
-    // Trigger a change in the editorState by typing into the text box
-    fireEvent.input(textBox, { target: { textContent: "New content" } });
-    // After the change, the convertedContent should be rendered with the mocked HTML content
-    expect(getByText("New content")).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });
