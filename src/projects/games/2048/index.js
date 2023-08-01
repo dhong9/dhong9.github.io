@@ -37,7 +37,7 @@ function Twenty48() {
   const handleChange = (event) => {
     const checked = event.target.checked;
     setIsPlainText(checked);
-    editorRef.handleSetPlainText(checked);
+    editorRef.current.handleSetPlainText(checked);
   };
 
   const onAdd = () => {
