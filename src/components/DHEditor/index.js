@@ -24,6 +24,7 @@ const DHEditor = forwardRef((_, ref) => {
   useImperativeHandle(ref, () => ({
     handleSetPlainText(plainTextState) {
       setIsPlainText(plainTextState);
+      console.log("DHEditor isPlainText: ", plainTextState);
     },
   }));
 
