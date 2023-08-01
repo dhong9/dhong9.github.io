@@ -17,7 +17,7 @@ import twenty48Code from "projects/games/2048/code";
 import Sketch from "react-p5";
 
 // React
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 
 // Service
 import { getComments, addComment } from "services/commentsService";
@@ -26,6 +26,8 @@ import { getComments, addComment } from "services/commentsService";
 import AuthContext from "context/AuthContext";
 
 function Twenty48() {
+  const editorRef = useRef();
+
   const [comments, setComments] = useState([]);
   const [rootComment] = useState("");
   const [isPlainText, setIsPlainText] = useState(false);
@@ -33,7 +35,9 @@ function Twenty48() {
   let { user } = useContext(AuthContext);
 
   const handleChange = (event) => {
-    setIsPlainText(event.target.checked);
+    const checked = event.target.checked;
+    setIsPlainText(checked);
+    editorRef.handleSetPlainText(checked);
   };
 
   const onAdd = () => {
@@ -285,7 +289,7 @@ function Twenty48() {
         ) : (
           <div></div>
         )}
-        <DHEditor />
+        <DHEditor ref={editorRef} />
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={isPlainText} onChange={handleChange} />}

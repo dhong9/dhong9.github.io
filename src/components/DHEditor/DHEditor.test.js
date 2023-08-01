@@ -22,7 +22,7 @@ describe("DHEditor", () => {
   it("renders", () => {
     const { container } = render(
       <ThemeProvider theme={theme}>
-        <DHEditor isPlainText={false} />
+        <DHEditor />
       </ThemeProvider>
     );
 

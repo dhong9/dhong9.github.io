@@ -1,5 +1,5 @@
 // React
-import { useState, useEffect } from "react";
+import { forwardRef, useState, useEffect, useImperativeHandle } from "react";
 
 // Sections components
 import MKInput from "components/MKInput";
@@ -14,16 +14,18 @@ import DOMPurify from "dompurify";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "components/DHEditor/DHEditor.css";
 
-// prop-types is a library for typechecking of props
-import PropTypes from "prop-types";
-
 // https://blog.logrocket.com/build-rich-text-editors-react-draft-js-react-draft-wysiwyg/
-export default function DHEditor(props) {
-  const { isPlainText } = props;
-
+const DHEditor = forwardRef((_, ref) => {
+  const [isPlainText, setIsPlainText] = useState(false);
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
   const [convertedContent, setConvertedContent] = useState(null);
   const [rootComment, setRootComment] = useState("");
+
+  useImperativeHandle(ref, () => ({
+    handleSetPlainText(plainTextState) {
+      setIsPlainText(plainTextState);
+    },
+  }));
 
   useEffect(() => {
     const html = convertToHTML(editorState.getCurrentContent());
@@ -57,13 +59,6 @@ export default function DHEditor(props) {
       value={rootComment}
     />
   );
-}
+});
 
-// Typechecking props of FeaturedPost
-DHEditor.propTypes = {
-  isPlainText: PropTypes.bool,
-};
-
-DHEditor.defaultProps = {
-  isPlainText: false,
-};
+export default DHEditor;
