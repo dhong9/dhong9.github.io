@@ -7,7 +7,7 @@ import MKInput from "components/MKInput";
 // Editor
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
-import { convertToHTML } from "draft-convert";
+import { convertToHTML, convertFromHTML } from "draft-convert";
 import DOMPurify from "dompurify";
 
 // CSS
@@ -24,7 +24,20 @@ const DHEditor = forwardRef((_, ref) => {
   useImperativeHandle(ref, () => ({
     handleSetPlainText(plainTextState) {
       setIsPlainText(plainTextState);
-      console.log("DHEditor isPlainText: ", plainTextState);
+
+      // If we are switching to plain text,
+      // convert editor data to raw HTML
+      if (plainTextState) {
+        const html = convertToHTML(editorState.getCurrentContent());
+        setRootComment(html);
+      }
+
+      // If we are going to fancy,
+      // convert editor to WYSIWYG
+      else {
+        const editorState = EditorState.createWithContent(convertFromHTML(rootComment));
+        setEditorState(editorState);
+      }
     },
   }));
 
@@ -39,6 +52,16 @@ const DHEditor = forwardRef((_, ref) => {
   });
 
   return isPlainText ? (
+    <MKInput
+      variant="standard"
+      InputLabelProps={{ shrink: true }}
+      multiline
+      fullWidth
+      rows={6}
+      onChange={(e) => setRootComment(e.target.value)}
+      value={rootComment}
+    />
+  ) : (
     <>
       <Editor
         editorState={editorState}
@@ -49,16 +72,6 @@ const DHEditor = forwardRef((_, ref) => {
       />
       <div className="preview" dangerouslySetInnerHTML={createMarkup(convertedContent)}></div>
     </>
-  ) : (
-    <MKInput
-      variant="standard"
-      InputLabelProps={{ shrink: true }}
-      multiline
-      fullWidth
-      rows={6}
-      onChange={(e) => setRootComment(e.target.value)}
-      value={rootComment}
-    />
   );
 });
 
