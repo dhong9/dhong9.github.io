@@ -18,7 +18,7 @@ import connect4Code from "projects/games/connect4/code";
 import Sketch from "react-p5";
 
 // React
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 
 // Service
 import { getComments, addComment } from "services/commentsService";
@@ -27,6 +27,8 @@ import { getComments, addComment } from "services/commentsService";
 import AuthContext from "context/AuthContext";
 
 function Connect4() {
+  const editorRef = useRef();
+
   const [comments, setComments] = useState([]);
   const [rootComment] = useState("");
   const [isPlainText, setIsPlainText] = useState(false);
@@ -34,7 +36,9 @@ function Connect4() {
   let { user } = useContext(AuthContext);
 
   const handleChange = (event) => {
-    setIsPlainText(event.target.checked);
+    const checked = event.target.checked;
+    setIsPlainText(checked);
+    editorRef.current.handleSetPlainText(checked);
   };
 
   const onAdd = () => {
@@ -543,7 +547,7 @@ function Connect4() {
         ) : (
           <div></div>
         )}
-        <DHEditor isPlainText={isPlainText} />{" "}
+        <DHEditor ref={editorRef} />{" "}
         {user ? (
           <FormGroup>
             <FormControlLabel
