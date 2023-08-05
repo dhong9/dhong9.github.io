@@ -36,7 +36,7 @@ describe("DHComments", () => {
       },
     ];
 
-    const { container, getByText } = render(
+    const { container, getByText, getByPlaceholderText } = render(
       <ThemeProvider theme={theme}>
         <DHComments comments={comments} />
       </ThemeProvider>
@@ -45,6 +45,10 @@ describe("DHComments", () => {
     // Click on the reply button
     const replyButton = getByText("Reply...");
     fireEvent.click(replyButton)
+
+    // Write something in the reply box
+    const commentBox = getByPlaceholderText("Add a comment");
+    fireEvent.change(commentBox, { target: { value: "Connect 4 is fun!" } });
 
     expect(container).toMatchSnapshot()
   });
