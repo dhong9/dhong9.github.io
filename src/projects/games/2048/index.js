@@ -50,7 +50,7 @@ function Twenty48() {
           });
         }
       },
-      "2048",
+      2,
       user.username,
       user.email,
       editorRef.current.getRootComment(),
