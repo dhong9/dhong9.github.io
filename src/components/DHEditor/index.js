@@ -40,7 +40,7 @@ const DHEditor = forwardRef((_, ref) => {
       }
     },
     getRootComment() {
-      return rootComment;
+      return isPlainText ? rootComment : convertToHTML(editorState.getCurrentContent());
     },
   }));
 
