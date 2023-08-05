@@ -46,7 +46,6 @@ function Twenty48() {
         if (status === 201) {
           // Successfully added comment
           getComments(({ data: { results } }) => {
-            console.log(results);
             setComments(results.filter(({ project }) => project === id));
           });
         }
@@ -61,7 +60,7 @@ function Twenty48() {
 
   useEffect(() => {
     getComments(({ data: { results } }) => {
-      setComments(results.filter(({ pageName }) => pageName === "2048"));
+      setComments(results.filter(({ project }) => project === id));
     });
   }, []);
 
