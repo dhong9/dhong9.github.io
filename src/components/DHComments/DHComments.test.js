@@ -1,6 +1,6 @@
 // React testing libraries
 import React from "react";
-import renderer from "react-test-renderer";
+import { render, fireEvent } from "@testing-library/react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -8,8 +8,6 @@ import theme from "assets/theme";
 
 // Component to test
 import DHComments from "components/DHComments";
-
-// Mocks
 
 describe("DHComments", () => {
   let useEffect;
@@ -38,12 +36,16 @@ describe("DHComments", () => {
       },
     ];
 
-    const component = renderer.create(
+    const { container, getByText } = render(
       <ThemeProvider theme={theme}>
         <DHComments comments={comments} />
       </ThemeProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    // Click on the reply button
+    const replyButton = getByText("Reply...");
+    fireEvent.click(replyButton)
+
+    expect(container).toMatchSnapshot()
   });
 });
