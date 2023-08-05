@@ -21,25 +21,30 @@ const DHEditor = forwardRef((_, ref) => {
   const [convertedContent, setConvertedContent] = useState(null);
   const [rootComment, setRootComment] = useState("");
 
-  useImperativeHandle(ref, () => ({
-    handleSetPlainText(plainTextState) {
-      setIsPlainText(plainTextState);
+  useImperativeHandle(
+    ref,
+    () => ({
+      handleSetPlainText(plainTextState) {
+        setIsPlainText(plainTextState);
 
-      // If we are switching to plain text,
-      // convert editor data to raw HTML
-      if (plainTextState) {
-        const html = convertToHTML(editorState.getCurrentContent());
-        setRootComment(html);
-      }
+        // If we are switching to plain text,
+        // convert editor data to raw HTML
+        if (plainTextState) {
+          const html = convertToHTML(editorState.getCurrentContent());
+          setRootComment(html);
+        }
 
-      // If we are going to fancy,
-      // convert editor to WYSIWYG
-      else {
-        const editorState = EditorState.createWithContent(convertFromHTML(rootComment));
-        setEditorState(editorState);
-      }
-    },
-  }));
+        // If we are going to fancy,
+        // convert editor to WYSIWYG
+        else {
+          const editorState = EditorState.createWithContent(convertFromHTML(rootComment));
+          setEditorState(editorState);
+        }
+      },
+      rootComment,
+    }),
+    [rootComment]
+  );
 
   useEffect(() => {
     const html = convertToHTML(editorState.getCurrentContent());

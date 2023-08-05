@@ -29,7 +29,6 @@ function Twenty48() {
   const editorRef = useRef();
 
   const [comments, setComments] = useState([]);
-  const [rootComment] = useState("");
   const [isPlainText, setIsPlainText] = useState(false);
 
   let { user } = useContext(AuthContext);
@@ -53,7 +52,7 @@ function Twenty48() {
       "2048",
       user.username,
       user.email,
-      rootComment,
+      editorRef.current.rootComment,
       isPlainText
     );
   };
