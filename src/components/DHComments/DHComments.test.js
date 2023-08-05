@@ -21,7 +21,7 @@ describe("DHComments", () => {
     mockUseEffect();
   });
 
-  it("renders", () => {
+  it("Adds a comment", () => {
     const comments = [
       {
         id: 1,
@@ -36,20 +36,31 @@ describe("DHComments", () => {
       },
     ];
 
+    const user = {
+      username: "tester",
+      email: "tester@ctc.org",
+    };
+
+    const pageName = "Principles";
+
     const { container, getByText, getByPlaceholderText } = render(
       <ThemeProvider theme={theme}>
-        <DHComments comments={comments} />
+        <DHComments comments={comments} pageName={pageName} user={user} />
       </ThemeProvider>
     );
 
     // Click on the reply button
     const replyButton = getByText("Reply...");
-    fireEvent.click(replyButton)
+    fireEvent.click(replyButton);
 
     // Write something in the reply box
     const commentBox = getByPlaceholderText("Add a comment");
     fireEvent.change(commentBox, { target: { value: "Connect 4 is fun!" } });
 
-    expect(container).toMatchSnapshot()
+    // Submit the comment
+    const addButton = getByText("Add");
+    fireEvent.click(addButton);
+
+    expect(container).toMatchSnapshot();
   });
 });
