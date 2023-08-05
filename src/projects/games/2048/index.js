@@ -27,6 +27,7 @@ import AuthContext from "context/AuthContext";
 
 function Twenty48() {
   const editorRef = useRef();
+  const id = 2;
 
   const [comments, setComments] = useState([]);
   const [isPlainText, setIsPlainText] = useState(false);
@@ -40,17 +41,16 @@ function Twenty48() {
   };
 
   const onAdd = () => {
-    console.log(editorRef.current.getRootComment());
     addComment(
       ({ status }) => {
         if (status === 201) {
           // Successfully added comment
           getComments(({ data: { results } }) => {
-            setComments(results.filter(({ pageName }) => pageName === "2048"));
+            setComments(results.filter(({ project }) => project === id));
           });
         }
       },
-      2,
+      id,
       user.username,
       user.email,
       editorRef.current.getRootComment(),
