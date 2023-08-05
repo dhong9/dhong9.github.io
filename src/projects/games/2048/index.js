@@ -40,7 +40,7 @@ function Twenty48() {
   };
 
   const onAdd = () => {
-    console.log(editorRef.current.rootComment);
+    console.log(editorRef.current.getRootComment());
     addComment(
       ({ status }) => {
         if (status === 201) {
@@ -53,7 +53,7 @@ function Twenty48() {
       "2048",
       user.username,
       user.email,
-      editorRef.current.rootComment,
+      editorRef.current.getRootComment(),
       isPlainText
     );
   };
