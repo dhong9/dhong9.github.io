@@ -46,6 +46,7 @@ function Twenty48() {
         if (status === 201) {
           // Successfully added comment
           getComments(({ data: { results } }) => {
+            console.log(results);
             setComments(results.filter(({ project }) => project === id));
           });
         }
