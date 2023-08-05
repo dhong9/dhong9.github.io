@@ -40,6 +40,7 @@ function Twenty48() {
   };
 
   const onAdd = () => {
+    console.log(editorRef.current.rootComment);
     addComment(
       ({ status }) => {
         if (status === 201) {
