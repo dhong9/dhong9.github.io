@@ -41,7 +41,7 @@ describe("CommentsService", () => {
 
     // Verify that postRequest was called correctly
     const commentPost = {
-      pageName: "pageName",
+      project: "pageName",
       name: "name",
       email: "email",
       body: "body",

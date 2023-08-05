@@ -4,11 +4,11 @@ export const getComments = (success) => {
   getRequest("comments", success, console.error);
 };
 
-export const addComment = (success, pageName, name, email, body, isPlainText) => {
+export const addComment = (success, project, name, email, body, isPlainText) => {
   postRequest(
     "comments",
     {
-      pageName,
+      project,
       name,
       email,
       body,
