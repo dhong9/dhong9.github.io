@@ -31,7 +31,6 @@ function Connect4() {
   const id = 1;
 
   const [comments, setComments] = useState([]);
-  const [rootComment] = useState("");
   const [isPlainText, setIsPlainText] = useState(false);
 
   let { user } = useContext(AuthContext);
@@ -55,7 +54,7 @@ function Connect4() {
       id,
       user.username,
       user.email,
-      rootComment,
+      editorRef.current.getRootComment(),
       isPlainText
     );
   };
