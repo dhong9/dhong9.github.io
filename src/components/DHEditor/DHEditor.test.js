@@ -37,6 +37,11 @@ describe("DHEditor", () => {
     // Set isPlainText to true
     ref.current.handleSetPlainText(true);
 
+    // Get current text
+    val = ref.current.getRootComment();
+    ref.current.getRootComment();
+    expect(val).toEqual("<p>Test content</p>");
+
     expect(container).toMatchSnapshot();
   });
 });
