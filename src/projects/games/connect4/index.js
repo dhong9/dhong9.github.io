@@ -52,7 +52,7 @@ function Connect4() {
           });
         }
       },
-      "connect4",
+      id,
       user.username,
       user.email,
       rootComment,
