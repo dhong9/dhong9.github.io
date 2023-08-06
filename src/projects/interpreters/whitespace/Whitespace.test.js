@@ -57,6 +57,7 @@ jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
     convertToRaw: jest.fn(),
+    convertToHTML: jest.fn().mockReturnValue("<p>Test content</p>"), // Mock the return value of convertToHTML
   };
 });
 
