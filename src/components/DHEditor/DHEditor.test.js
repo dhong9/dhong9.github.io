@@ -1,4 +1,5 @@
 // React testing libraries
+import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
@@ -20,9 +21,10 @@ jest.mock("draft-convert", () => {
 
 describe("DHEditor", () => {
   it("renders", () => {
+    const ref = React.createRef();
     const { container } = render(
       <ThemeProvider theme={theme}>
-        <DHEditor />
+        <DHEditor ref={ref} />
       </ThemeProvider>
     );
 
