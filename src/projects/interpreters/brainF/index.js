@@ -116,11 +116,11 @@ function BrainF() {
     <BaseLayout
       title="Interpreters"
       breadcrumb={[
-        { label: "BrainF", route: "/sections/interpreters/brainF" },
-        { label: "Interpreters" },
+        { label: "Interpreters", route: "/sections/interpreters/brainF" },
+        { label: "BrainF" },
       ]}
     >
-      <View title="Header 1" code={brainFCode} height="40rem">
+      <View title="BrainF" code={brainFCode} height="40rem">
         {visualize && (
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
