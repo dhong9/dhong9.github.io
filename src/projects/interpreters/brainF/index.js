@@ -114,10 +114,10 @@ function BrainF() {
 
   return (
     <BaseLayout
-      title="Page Headers"
+      title="Interpreters"
       breadcrumb={[
-        { label: "Page Sections", route: "/sections/page-sections/page-headers" },
-        { label: "Page Headers" },
+        { label: "BrainF", route: "/sections/interpreters/brainF" },
+        { label: "Interpreters" },
       ]}
     >
       <View title="Header 1" code={brainFCode} height="40rem">
