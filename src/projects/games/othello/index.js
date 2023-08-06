@@ -3,6 +3,7 @@ import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 import MKButton from "components/MKButton";
 import DHComments from "components/DHComments";
+import DHEditor from "components/DHEditor";
 
 // Form
 import FormGroup from "@mui/material/FormGroup";
@@ -15,7 +16,7 @@ import othelloCode from "projects/games/othello/code";
 // p5
 import Sketch from "react-p5";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 
 // Service
 import { getComments, addComment } from "services/commentsService";
