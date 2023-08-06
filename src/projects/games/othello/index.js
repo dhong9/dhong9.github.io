@@ -2,7 +2,6 @@
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 import MKButton from "components/MKButton";
-import MKInput from "components/MKInput";
 import DHComments from "components/DHComments";
 
 // Form
@@ -25,14 +24,18 @@ import { getComments, addComment } from "services/commentsService";
 import AuthContext from "context/AuthContext";
 
 function Othello() {
+  const editorRef = useRef();
+  const id = 4;
+
   const [comments, setComments] = useState([]);
-  const [rootComment, setRootComment] = useState("");
   const [isPlainText, setIsPlainText] = useState(false);
 
   let { user } = useContext(AuthContext);
 
   const handleChange = (event) => {
-    setIsPlainText(event.target.checked);
+    const checked = event.target.checked;
+    setIsPlainText(checked);
+    editorRef.current.handleSetPlainText(checked);
   };
 
   const onAdd = () => {
@@ -41,20 +44,21 @@ function Othello() {
         if (status === 201) {
           // Successfully added comment
           getComments(({ data: { results } }) => {
-            setComments(results.filter(({ pageName }) => pageName === "othello"));
+            setComments(results.filter(({ project }) => project === id));
           });
         }
       },
-      "othello",
+      id,
       user.username,
       user.email,
-      rootComment
+      editorRef.current.getRootComment(),
+      isPlainText
     );
   };
 
   useEffect(() => {
     getComments(({ data: { results } }) => {
-      setComments(results.filter(({ pageName }) => pageName === "othello"));
+      setComments(results.filter(({ project }) => project === id));
     });
   }, []);
 
@@ -458,17 +462,7 @@ function Othello() {
         ) : (
           <div></div>
         )}
-        <MKInput
-          variant="standard"
-          label="What can we help you?"
-          placeholder="Add a comment"
-          InputLabelProps={{ shrink: true }}
-          multiline
-          fullWidth
-          rows={6}
-          onChange={(e) => setRootComment(e.target.value)}
-          value={rootComment}
-        />{" "}
+        <DHEditor ref={editorRef} />
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={isPlainText} onChange={handleChange} />}
