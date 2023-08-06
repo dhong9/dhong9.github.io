@@ -123,7 +123,7 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>;
 };
 
-// Typechecking props of DHComments
+// Typechecking props of AuthContext
 AuthProvider.propTypes = {
   children: PropTypes.elementType,
 };

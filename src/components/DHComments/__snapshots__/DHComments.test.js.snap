@@ -28,12 +28,7 @@ exports[`DHComments Adds a comment 1`] = `
           <p
             class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-paragraph css-1mo0zj2-MuiTypography-root"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-1b7o8t1-MuiTypography-root"
-              node="[object Object]"
-            >
-              Play connect 4 with me
-            </p>
+            Play connect 4 with me
           </p>
           <span
             class="MuiTypography-root MuiTypography-a css-6tgqq3-MuiTypography-root"

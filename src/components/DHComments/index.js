@@ -10,7 +10,9 @@ import CardContent from "@mui/material/CardContent";
 // Sections components
 import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
-import DHMarkdown from "components/DHMarkdown";
+
+// HTML parser
+import ReactHtmlParser from "react-html-parser";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -43,7 +45,7 @@ export default function DHComments({ comments, pageName, user }) {
                 {new Date(create).toLocaleString()}
               </Typography>
               <Typography variant="subtitle1" paragraph>
-                {isPlainText ? body : <DHMarkdown>{body}</DHMarkdown>}
+                {isPlainText ? body : ReactHtmlParser(body)}
               </Typography>
               <Typography variant="a" href="#" color="primary" onClick={handleReply}>
                 Reply...
