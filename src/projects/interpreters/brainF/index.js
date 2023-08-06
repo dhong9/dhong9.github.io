@@ -14,6 +14,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import MKButton from "components/MKButton";
 import MKBox from "components/MKBox";
+import DHComments from "components/DHComments";
+import DHEditor from "components/DHEditor";
 
 // Table
 import Table from "@mui/material/Table";
@@ -24,21 +26,76 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import React, { useState } from "react";
+// React
+import { useContext, useEffect, useState, useRef } from "react";
+
+// Service
+import { getComments, addComment } from "services/commentsService";
+
+// Authentication
+import AuthContext from "context/AuthContext";
 
 function BrainF() {
+  const editorRef = useRef();
+  const id = 5;
+
+  // Interpreter states
   const [visualize, setVisualize] = useState(false);
   const [codeOutput, setCodeOutput] = useState("");
   const [codeSrc, setCodeSrc] = useState("// some comment");
   const [cells, setCells] = useState({});
 
-  const handleChange = (event) => {
+  // Comments states
+  const [comments, setComments] = useState([]);
+  const [isPlainText, setIsPlainText] = useState(false);
+
+  let { user } = useContext(AuthContext);
+
+  /**
+   * Event handler when visualize option is toggled
+   * @param {Event} event
+   */
+  const handleVisualizeChange = (event) => {
     setVisualize(event.target.checked);
+  };
+
+  /**
+   * Event handler when plain text option is toggled
+   * @param {Event} event
+   */
+  const handlePlainTextChange = (event) => {
+    const checked = event.target.checked;
+    setIsPlainText(checked);
+    editorRef.current.handleSetPlainText(checked);
   };
 
   const showOutput = () => {
     setCodeOutput(brainF(codeSrc));
   };
+
+  const onAdd = () => {
+    addComment(
+      ({ status }) => {
+        if (status === 201) {
+          // Successfully added comment
+          getComments(({ data: { results } }) => {
+            setComments(results.filter(({ project }) => project === id));
+          });
+        }
+      },
+      id,
+      user.username,
+      user.email,
+      editorRef.current.getRootComment(),
+      isPlainText
+    );
+  };
+
+  useEffect(() => {
+    getComments(({ data: { results } }) => {
+      setComments(results.filter(({ project }) => project === id));
+    });
+  }, []);
 
   /**
    * Processes BrainF code and returns its output
@@ -148,7 +205,7 @@ function BrainF() {
 
       <FormGroup>
         <FormControlLabel
-          control={<Checkbox checked={visualize} onChange={handleChange} />}
+          control={<Checkbox checked={visualize} onChange={handleVisualizeChange} />}
           label="Visualize"
         />
         <MKButton onClick={showOutput} type="submit" variant="gradient" color="info">
@@ -168,6 +225,24 @@ function BrainF() {
           {codeOutput}
         </MKBox>
       )}
+
+      <div className="comments-container">
+        {comments.length ? (
+          <DHComments comments={comments} pageName="BrainF" user={user} />
+        ) : (
+          <div></div>
+        )}
+        <DHEditor ref={editorRef} />
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={isPlainText} onChange={handlePlainTextChange} />}
+            label="Plain Text"
+          />
+          <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+            Add
+          </MKButton>
+        </FormGroup>
+      </div>
     </BaseLayout>
   );
 }
