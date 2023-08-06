@@ -28,6 +28,7 @@ import AuthContext from "context/AuthContext";
 
 function Connect4() {
   const editorRef = useRef();
+  const id = 1;
 
   const [comments, setComments] = useState([]);
   const [rootComment] = useState("");
@@ -47,7 +48,7 @@ function Connect4() {
         if (status === 201) {
           // Successfully added comment
           getComments(({ data: { results } }) => {
-            setComments(results.filter(({ pageName }) => pageName === "connect4"));
+            setComments(results.filter(({ project }) => project === id));
           });
         }
       },
@@ -61,7 +62,7 @@ function Connect4() {
 
   useEffect(() => {
     getComments(({ data: { results } }) => {
-      setComments(results.filter(({ pageName }) => pageName === "connect4"));
+      setComments(results.filter(({ project }) => project === id));
     });
   }, []);
 
