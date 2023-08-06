@@ -22,11 +22,17 @@ jest.mock("draft-convert", () => {
 describe("DHEditor", () => {
   it("renders", () => {
     const ref = React.createRef();
+
+    // By default, isPlainText is false
     const { container } = render(
       <ThemeProvider theme={theme}>
         <DHEditor ref={ref} />
       </ThemeProvider>
     );
+
+    // Get current text
+    let val = ref.current.getRootComment();
+    expect(val).toEqual("<p>Test content</p>");
 
     expect(container).toMatchSnapshot();
   });
