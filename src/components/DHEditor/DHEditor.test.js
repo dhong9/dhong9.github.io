@@ -34,6 +34,9 @@ describe("DHEditor", () => {
     let val = ref.current.getRootComment();
     expect(val).toEqual("<p>Test content</p>");
 
+    // Set isPlainText to true
+    ref.current.handleSetPlainText(true);
+
     expect(container).toMatchSnapshot();
   });
 });
