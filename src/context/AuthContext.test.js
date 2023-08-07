@@ -7,7 +7,6 @@ import jwtDecode from "jwt-decode";
 // Service functions
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-const mock = new MockAdapter(axios);
 
 // Component to test
 import AuthContext, { AuthProvider } from "context/AuthContext";
@@ -22,6 +21,9 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
+const mock = new MockAdapter(axios);
+mock.onGet("/accounts/token/refresh/").reply(200, { access: "new_token", refresh: "new_refresh" });
+
 jest.mock("jwt-decode");
 
 // Mock JWT components
@@ -34,11 +36,8 @@ const setMockTokensInLocalStorage = () => {
 };
 
 describe("AuthContext", () => {
-  let mockPostRequest;
   beforeEach(() => {
     localStorage.clear();
-    mockPostRequest = jest.fn();
-    jest.spyOn(axios, "create").mockReturnValue({ post: mockPostRequest });
   });
 
   afterEach(() => {
@@ -63,11 +62,9 @@ describe("AuthContext", () => {
   it("updates token - valid refresh token", () => {
     // Set the mock token in the localStorage before rendering the component
     setMockTokensInLocalStorage();
-    
+
     const mockPayload = { user: "John Doe", exp: 1893456000 };
     jwtDecode.mockReturnValueOnce(mockPayload);
-
-    mockPostRequest.mockResolvedValueOnce({ status: 200, data: { access: "new_access", refresh: "new_refresh" } });
 
     const contextData = {
       loginUser: jest.fn(),
