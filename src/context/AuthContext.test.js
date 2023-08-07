@@ -25,10 +25,6 @@ mock.onGet("/accounts/token/").reply(200, {});
 mock.onPost("/accounts/token/").reply(200, {});
 
 describe("AuthContext", () => {
-  beforeEach(() => {
-    window.localStorage.clear();
-  });
-
   it("renders", () => {
     const contextData = {
       loginUser: jest.fn(),
@@ -44,9 +40,6 @@ describe("AuthContext", () => {
   });
 
   it("updates token", () => {
-    // Set fake authentication token
-    const fakeToken = { access: "abcdef" };
-    localStorage.setItem("authTokens", JSON.stringify(fakeToken));
 
     const contextData = {
       loginUser: jest.fn(),
