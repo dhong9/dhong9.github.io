@@ -1,6 +1,10 @@
 // React testing libraries
 import renderer from "react-test-renderer";
 
+// JWT
+import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
+
 // Service functions
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
@@ -19,12 +23,17 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
-jest.mock('jwt-decode', () => jest.fn());
+jest.mock('jsonwebtoken');
+jest.mock('jwt-decode');
 
 mock.onGet("/accounts/token/").reply(200, {});
 mock.onPost("/accounts/token/").reply(200, {});
 
 describe("AuthContext", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+  });
+
   it("renders", () => {
     const contextData = {
       loginUser: jest.fn(),
@@ -40,6 +49,11 @@ describe("AuthContext", () => {
   });
 
   it("updates token", () => {
+    // Set fake authentication token
+    const mockToken = 'mocked_jwt_value';
+    jwt.sign.mockReturnValue(mockToken);
+    const mockPayload = { user: 'John Doe', exp: 1893456000 };
+    jwtDecode.mockReturnValue(mockPayload);
 
     const contextData = {
       loginUser: jest.fn(),
