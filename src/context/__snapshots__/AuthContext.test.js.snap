@@ -2,4 +2,4 @@
 
 exports[`AuthContext renders 1`] = `"Hello world!"`;
 
-exports[`AuthContext updates token 1`] = `"Hello world!"`;
+exports[`AuthContext updates token - valid refresh token 1`] = `"Hello world!"`;

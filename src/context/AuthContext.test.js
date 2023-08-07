@@ -28,17 +28,22 @@ jest.mock("jwt-decode");
 const mockToken = "mocked_jwt_value";
 const refreshToken = "mocked_refresh_value";
 
-mock.onGet("/accounts/token/").reply(200, {});
-mock.onPost("/accounts/token/").reply(200, {});
-mock.onPost("/accounts/token/refresh/").reply(200, { access: mockToken, refresh: refreshToken });
+// Helper function to set mock tokens in localStorage
+const setMockTokensInLocalStorage = () => {
+  localStorage.setItem("authTokens", JSON.stringify({ access: mockToken, refresh: refreshToken }));
+};
 
 describe("AuthContext", () => {
+  let mockPostRequest;
   beforeEach(() => {
     localStorage.clear();
+    mockPostRequest = jest.fn();
+    jest.spyOn(axios, "create").mockReturnValue({ post: mockPostRequest });
   });
 
   afterEach(() => {
     localStorage.removeItem("authTokens");
+    jest.clearAllMocks();
   });
 
   it("renders", () => {
@@ -55,16 +60,14 @@ describe("AuthContext", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("updates token", () => {
+  it("updates token - valid refresh token", () => {
     // Set the mock token in the localStorage before rendering the component
-    localStorage.setItem(
-      "authTokens",
-      JSON.stringify({ access: mockToken, refresh: refreshToken })
-    );
-
-    // Set a mock payload for the decoded token
+    setMockTokensInLocalStorage();
+    
     const mockPayload = { user: "John Doe", exp: 1893456000 };
-    jwtDecode.mockReturnValue(mockPayload);
+    jwtDecode.mockReturnValueOnce(mockPayload);
+
+    mockPostRequest.mockResolvedValueOnce({ status: 200, data: { access: "new_access", refresh: "new_refresh" } });
 
     const contextData = {
       loginUser: jest.fn(),
