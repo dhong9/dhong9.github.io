@@ -24,8 +24,13 @@ jest.mock("services/baseService", () => ({
 
 jest.mock("jwt-decode");
 
+// Mock JWT components
+const mockToken = "mocked_jwt_value";
+const refreshToken = "mocked_refresh_value";
+
 mock.onGet("/accounts/token/").reply(200, {});
 mock.onPost("/accounts/token/").reply(200, {});
+mock.onPost("/accounts/token/refresh/").reply(200, { access: mockToken, refresh: refreshToken });
 
 describe("AuthContext", () => {
   beforeEach(() => {
@@ -51,10 +56,6 @@ describe("AuthContext", () => {
   });
 
   it("updates token", () => {
-    // Mock JWT components
-    const mockToken = "mocked_jwt_value";
-    const refreshToken = "mocked_refresh_value";
-
     // Set the mock token in the localStorage before rendering the component
     localStorage.setItem(
       "authTokens",
