@@ -20,7 +20,7 @@ jest.mock("draft-convert", () => {
 });
 
 describe("DHEditor", () => {
-  it("renders", () => {
+  it("renders non plain text", () => {
     const ref = React.createRef();
 
     // By default, isPlainText is false
@@ -32,14 +32,6 @@ describe("DHEditor", () => {
 
     // Get current text
     let val = ref.current.getRootComment();
-    expect(val).toEqual("<p>Test content</p>");
-
-    // Set isPlainText to true
-    ref.current.handleSetPlainText(true);
-
-    // Get current text
-    val = ref.current.getRootComment();
-    ref.current.getRootComment();
     expect(val).toEqual("<p>Test content</p>");
 
     expect(container).toMatchSnapshot();

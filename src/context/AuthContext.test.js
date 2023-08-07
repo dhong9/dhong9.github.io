@@ -33,7 +33,7 @@ describe("AuthContext", () => {
     const component = renderer.create(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
-          <div>Hello world!</div>
+          Hello world!
         </AuthProvider>
       </AuthContext.Provider>
     );

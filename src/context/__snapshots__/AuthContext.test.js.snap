@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AuthContext renders 1`] = `
-<div>
-  Hello world!
-</div>
-`;
+exports[`AuthContext renders 1`] = `"Hello world!"`;
