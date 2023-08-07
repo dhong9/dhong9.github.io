@@ -2,7 +2,7 @@
 import renderer from "react-test-renderer";
 
 // JWT
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 
 // Service functions
 import axios from "axios";
@@ -22,14 +22,18 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
-jest.mock('jwt-decode');
+jest.mock("jwt-decode");
 
 mock.onGet("/accounts/token/").reply(200, {});
 mock.onPost("/accounts/token/").reply(200, {});
 
 describe("AuthContext", () => {
   beforeEach(() => {
-    window.localStorage.clear();
+    localStorage.clear();
+  });
+
+  afterEach(() => {
+    localStorage.removeItem("authTokens");
   });
 
   it("renders", () => {
@@ -47,14 +51,18 @@ describe("AuthContext", () => {
   });
 
   it("updates token", () => {
-    // Set your mock JWT value here
-    const mockToken = 'mocked_jwt_value';
+    // Mock JWT components
+    const mockToken = "mocked_jwt_value";
+    const refreshToken = "mocked_refresh_value";
 
     // Set the mock token in the localStorage before rendering the component
-    localStorage.setItem('authTokens', JSON.stringify({ authTokens: mockToken }));
+    localStorage.setItem(
+      "authTokens",
+      JSON.stringify({ access: mockToken, refresh: refreshToken })
+    );
 
     // Set a mock payload for the decoded token
-    const mockPayload = { user: 'John Doe', exp: 1893456000 };
+    const mockPayload = { user: "John Doe", exp: 1893456000 };
     jwtDecode.mockReturnValue(mockPayload);
 
     const contextData = {
