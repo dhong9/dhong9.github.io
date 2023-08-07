@@ -1,11 +1,9 @@
 // React testing libraries
 import renderer from "react-test-renderer";
-import { useContext } from "react";
 
 // Service functions
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { getRequest, postRequest } from "services/baseService";
 const mock = new MockAdapter(axios);
 
 // Component to test
@@ -21,20 +19,24 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
+jest.mock('jwt-decode', () => jest.fn());
+
 mock.onGet("/accounts/token/").reply(200, {});
 mock.onPost("/accounts/token/").reply(200, {});
 
 describe("AuthContext", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+  });
+
   it("renders", () => {
     const contextData = {
-      loginUser: jest.fn()
+      loginUser: jest.fn(),
     };
 
     const component = renderer.create(
       <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          Hello world!
-        </AuthProvider>
+        <AuthProvider>Hello world!</AuthProvider>
       </AuthContext.Provider>
     );
     let tree = component.toJSON();
@@ -42,15 +44,17 @@ describe("AuthContext", () => {
   });
 
   it("updates token", () => {
+    // Set fake authentication token
+    const fakeToken = { access: "abcdef" };
+    localStorage.setItem("authTokens", JSON.stringify(fakeToken));
+
     const contextData = {
-      loginUser: jest.fn()
+      loginUser: jest.fn(),
     };
 
     const component = renderer.create(
       <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          Hello world!
-        </AuthProvider>
+        <AuthProvider>Hello world!</AuthProvider>
       </AuthContext.Provider>
     );
 
