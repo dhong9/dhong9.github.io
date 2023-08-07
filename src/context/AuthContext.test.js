@@ -40,4 +40,25 @@ describe("AuthContext", () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it("updates token", () => {
+    const contextData = {
+      loginUser: jest.fn()
+    };
+
+    const component = renderer.create(
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          Hello world!
+        </AuthProvider>
+      </AuthContext.Provider>
+    );
+
+    jest.useFakeTimers();
+    setTimeout(() => {
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    }, 4 * 1000 * 60);
+    jest.runAllTimers();
+  });
 });
