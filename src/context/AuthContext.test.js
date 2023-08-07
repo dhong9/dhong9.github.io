@@ -50,6 +50,8 @@ describe("AuthContext", () => {
 
   it("updates token", () => {
     // Set fake authentication token
+    const fakeToken = { access: "abcdef" };
+    localStorage.setItem("authTokens", JSON.stringify(fakeToken));
     const mockToken = 'mocked_jwt_value';
     jwt.sign.mockReturnValue(mockToken);
     const mockPayload = { user: 'John Doe', exp: 1893456000 };
