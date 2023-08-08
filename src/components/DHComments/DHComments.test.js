@@ -41,7 +41,7 @@ describe("DHComments", () => {
       email: "tester@ctc.org",
     };
 
-    const pageName = "Principles";
+    const pageName = 11;
 
     const { container, getByText, getByPlaceholderText } = render(
       <ThemeProvider theme={theme}>

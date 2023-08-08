@@ -89,13 +89,13 @@ export default function DHComments({ comments, pageName, user }) {
 DHComments.propTypes = {
   comments: PropTypes.arrayOf(PropTypes.object),
   addComment: PropTypes.func,
-  pageName: PropTypes.string,
+  pageName: PropTypes.number,
   user: PropTypes.object,
 };
 
 DHComments.defaultProps = {
   comments: null,
   addComment: null,
-  pageName: "",
+  pageName: -1,
   user: null,
 };

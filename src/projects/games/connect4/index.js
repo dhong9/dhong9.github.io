@@ -543,7 +543,7 @@ function Connect4() {
 
       <div className="comments-container">
         {comments.length ? (
-          <DHComments comments={comments} pageName="connect4" user={user} />
+          <DHComments comments={comments} pageName={id} user={user} />
         ) : (
           <div></div>
         )}

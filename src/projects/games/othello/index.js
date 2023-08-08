@@ -459,7 +459,7 @@ function Othello() {
 
       <div className="comments-container">
         {comments.length ? (
-          <DHComments comments={comments} pageName="2048" user={user} />
+          <DHComments comments={comments} pageName={id} user={user} />
         ) : (
           <div></div>
         )}

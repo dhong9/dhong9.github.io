@@ -115,7 +115,7 @@ function PictureShuffle() {
 
       <div className="comments-container">
         {comments.length ? (
-          <DHComments comments={comments} pageName="2048" isPlainText={isPlainText} user={user} />
+          <DHComments comments={comments} pageName={id} isPlainText={isPlainText} user={user} />
         ) : (
           <div></div>
         )}

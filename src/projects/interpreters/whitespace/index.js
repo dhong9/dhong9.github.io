@@ -124,7 +124,7 @@ function WhiteSpace() {
 
       <div className="comments-container">
         {comments.length ? (
-          <DHComments comments={comments} pageName="Whitespace" user={user} />
+          <DHComments comments={comments} pageName={id} user={user} />
         ) : (
           <div></div>
         )}
