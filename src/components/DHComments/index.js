@@ -25,13 +25,13 @@ export default function DHComments({ comments, pageName, user }) {
   const [rootComment, setRootComment] = useState("");
   const [parentComment, setParentComment] = useState(-1);
 
-  const handleReply = () => {
+  const handleReply = (parentId) => {
+    console.log("Parent: ", parentId);
+    setParentComment(parentId);
     setShowReplyBox(true);
   };
 
   const onAdd = () => {
-    console.log("Parent: ", parentComment);
-    setParentComment(parentComment);
     addComment(console.log, pageName, user.username, user.email, rootComment, true);
   };
 
@@ -50,7 +50,14 @@ export default function DHComments({ comments, pageName, user }) {
               <Typography variant="subtitle1" paragraph>
                 {isPlainText ? body : parse(body)}
               </Typography>
-              <Typography variant="a" href="#" color="primary" onClick={handleReply}>
+              <Typography
+                variant="a"
+                href="#"
+                color="primary"
+                onClick={() => {
+                  handleReply(parentComment);
+                }}
+              >
                 Reply...
               </Typography>
               {showReplyBox && (
