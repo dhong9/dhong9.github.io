@@ -27,6 +27,7 @@ export default function DHComments({ comments, pageName, user }) {
 
   const handleReply = (parentId) => {
     console.log("Parent: ", parentId);
+    console.log("Original parent: ", parentComment);
     setParentComment(parentId);
     setShowReplyBox(true);
   };
@@ -55,7 +56,7 @@ export default function DHComments({ comments, pageName, user }) {
                 href="#"
                 color="primary"
                 onClick={() => {
-                  handleReply(parentComment);
+                  handleReply(id);
                 }}
               >
                 Reply...
