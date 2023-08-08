@@ -4,7 +4,7 @@ export const getComments = (success) => {
   getRequest("comments", success, console.error);
 };
 
-export const addComment = (success, project, name, email, body, isPlainText, parent=null) => {
+export const addComment = (success, project, name, email, body, isPlainText, parent = null) => {
   postRequest(
     "comments",
     {

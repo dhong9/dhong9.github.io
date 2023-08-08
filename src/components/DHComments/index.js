@@ -23,17 +23,15 @@ import { addComment } from "services/commentsService";
 export default function DHComments({ comments, pageName, user }) {
   const [showReplyBox, setShowReplyBox] = useState(false);
   const [rootComment, setRootComment] = useState("");
-  const [parentComment, setParentComment] = useState(-1);
+  const [parentComment, setParentComment] = useState(null);
 
   const handleReply = (parentId) => {
-    console.log("Parent: ", parentId);
-    console.log("Original parent: ", parentComment);
     setParentComment(parentId);
     setShowReplyBox(true);
   };
 
   const onAdd = () => {
-    addComment(console.log, pageName, user.username, user.email, rootComment, true);
+    addComment(console.log, pageName, user.username, user.email, rootComment, true, parentComment);
   };
 
   return (
