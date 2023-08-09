@@ -30,7 +30,7 @@ export default function DHComments({ comments, pageName, user }) {
 
   const [showReplyBox, setShowReplyBox] = useState(false);
   const [parentComment, setParentComment] = useState(null);
-  const [isPlainText, setIsPlainText] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleReply = (parentId) => {
     setParentComment(parentId);
@@ -39,7 +39,7 @@ export default function DHComments({ comments, pageName, user }) {
 
   const handleChange = (event) => {
     const checked = event.target.checked;
-    setIsPlainText(checked);
+    setIsChecked(checked);
     editorRef.current.handleSetPlainText(checked);
   };
 
@@ -50,7 +50,7 @@ export default function DHComments({ comments, pageName, user }) {
       user.username,
       user.email,
       editorRef.current.getRootComment(),
-      isPlainText,
+      isChecked,
       parentComment
     );
   };
@@ -85,7 +85,7 @@ export default function DHComments({ comments, pageName, user }) {
                   <DHEditor ref={editorRef} />
                   <FormGroup>
                     <FormControlLabel
-                      control={<Checkbox checked={isPlainText} onChange={handleChange} />}
+                      control={<Checkbox checked={isChecked} onChange={handleChange} />}
                       label="Plain Text"
                     />
                     <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
