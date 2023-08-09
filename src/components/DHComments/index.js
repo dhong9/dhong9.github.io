@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 
 // @mui material components
 import Paper from "@mui/material/Paper";
@@ -9,7 +9,12 @@ import CardContent from "@mui/material/CardContent";
 
 // Sections components
 import MKButton from "components/MKButton";
-import MKInput from "components/MKInput";
+import DHEditor from "components/DHEditor";
+
+// Form
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 // HTML parser
 import parse from "html-react-parser";
@@ -21,17 +26,33 @@ import PropTypes from "prop-types";
 import { addComment } from "services/commentsService";
 
 export default function DHComments({ comments, pageName, user }) {
+  const editorRef = useRef();
+
   const [showReplyBox, setShowReplyBox] = useState(false);
-  const [rootComment, setRootComment] = useState("");
   const [parentComment, setParentComment] = useState(null);
+  const [isPlainText, setIsPlainText] = useState(false);
 
   const handleReply = (parentId) => {
     setParentComment(parentId);
     setShowReplyBox(true);
   };
 
+  const handleChange = (event) => {
+    const checked = event.target.checked;
+    setIsPlainText(checked);
+    editorRef.current.handleSetPlainText(checked);
+  };
+
   const onAdd = () => {
-    addComment(console.log, pageName, user.username, user.email, rootComment, true, parentComment);
+    addComment(
+      console.log,
+      pageName,
+      user.username,
+      user.email,
+      editorRef.current.getRootComment(),
+      isPlainText,
+      parentComment
+    );
   };
 
   return (
@@ -61,20 +82,16 @@ export default function DHComments({ comments, pageName, user }) {
               </Typography>
               {showReplyBox && (
                 <>
-                  <MKInput
-                    variant="standard"
-                    label="What do you think?"
-                    placeholder="Add a comment"
-                    InputLabelProps={{ shrink: true }}
-                    multiline
-                    fullWidth
-                    rows={6}
-                    onChange={(e) => setRootComment(e.target.value)}
-                    value={rootComment}
-                  />{" "}
-                  <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
-                    Add
-                  </MKButton>
+                  <DHEditor ref={editorRef} />
+                  <FormGroup>
+                    <FormControlLabel
+                      control={<Checkbox checked={isPlainText} onChange={handleChange} />}
+                      label="Plain Text"
+                    />
+                    <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+                      Add
+                    </MKButton>
+                  </FormGroup>
                 </>
               )}
             </CardContent>
