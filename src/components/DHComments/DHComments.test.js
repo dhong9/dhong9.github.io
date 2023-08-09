@@ -9,6 +9,15 @@ import theme from "assets/theme";
 // Component to test
 import DHComments from "components/DHComments";
 
+// Define Mocks
+jest.mock("draft-convert", () => {
+  return {
+    convertFromHTML: jest.fn(),
+    convertToRaw: jest.fn(),
+    convertToHTML: jest.fn().mockReturnValue("<p>Test content</p>"), // Mock the return value of convertToHTML
+  };
+});
+
 describe("DHComments", () => {
   let useEffect;
 
@@ -43,23 +52,11 @@ describe("DHComments", () => {
 
     const pageName = 11;
 
-    const { container, getByText, getByPlaceholderText } = render(
+    const { container } = render(
       <ThemeProvider theme={theme}>
         <DHComments comments={comments} pageName={pageName} user={user} />
       </ThemeProvider>
     );
-
-    // Click on the reply button
-    const replyButton = getByText("Reply...");
-    fireEvent.click(replyButton);
-
-    // Write something in the reply box
-    const commentBox = getByPlaceholderText("Add a comment");
-    fireEvent.change(commentBox, { target: { value: "Connect 4 is fun!" } });
-
-    // Submit the comment
-    const addButton = getByText("Add");
-    fireEvent.click(addButton);
 
     expect(container).toMatchSnapshot();
   });

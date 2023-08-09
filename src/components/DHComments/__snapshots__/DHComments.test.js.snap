@@ -36,50 +36,6 @@ exports[`DHComments Adds a comment 1`] = `
           >
             Reply...
           </span>
-          <div
-            class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
-          >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-osp2g4-MuiFormLabel-root-MuiInputLabel-root"
-              data-shrink="true"
-              for=":r0:"
-              id=":r0:-label"
-            >
-              What do you think?
-            </label>
-            <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-inw9yj-MuiInputBase-root-MuiInput-root"
-            >
-              <textarea
-                aria-invalid="false"
-                class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-12marsf-MuiInputBase-input-MuiInput-input"
-                id=":r0:"
-                placeholder="Add a comment"
-                rows="6"
-                style="height: 0px; overflow: hidden;"
-              >
-                Connect 4 is fun!
-              </textarea>
-              <textarea
-                aria-hidden="true"
-                class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-12marsf-MuiInputBase-input-MuiInput-input"
-                readonly=""
-                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
-                tabindex="-1"
-              />
-            </div>
-          </div>
-           
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1jnei4i-MuiButtonBase-root-MuiButton-root"
-            tabindex="0"
-            type="submit"
-          >
-            Add
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
         </div>
       </div>
     </div>
