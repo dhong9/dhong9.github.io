@@ -25,11 +25,28 @@ afterEach(() => {
 jest.mock("components/MKBox/MKBoxRoot", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-      __esModule: true,
-      default: forwardRef(() => <p>Mock Box</p>)
+    __esModule: true,
+    default: forwardRef(({ children, ownerState, ...rest }, ref) => (
+      <div ref={ref} {...rest}>
+        {children}
+      </div>
+    )),
   };
 });
-
+jest.mock("@mui/material/Container", () => {
+  const { forwardRef } = jest.requireActual("react");
+  return {
+      __esModule: true,
+      default: forwardRef(() => <div>MUI Container</div>)
+  };
+});
+jest.mock("@mui/material/Grid", () => {
+  const { forwardRef } = jest.requireActual("react");
+  return {
+      __esModule: true,
+      default: forwardRef(() => <div>MUI Grid</div>)
+  };
+});
 jest.mock("layouts/sections/components/View", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -50,6 +67,9 @@ jest.mock("draft-convert", () => {
     convertToRaw: jest.fn(),
   };
 });
+jest.mock("react-router-dom", () => ({
+  Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+}));
 
 describe("2048", () => {
   it("renders", () => {

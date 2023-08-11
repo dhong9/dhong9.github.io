@@ -1,7 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`2048 renders 1`] = `
-<p>
-  Mock Box
-</p>
+<div
+  display="flex"
+  flexDirection="column"
+  minHeight="100vh"
+>
+  <div
+    py={0.25}
+  >
+    <div>
+      MUI Container
+    </div>
+  </div>
+  <div>
+    MUI Container
+  </div>
+  <div
+    mt="auto"
+  >
+    <div
+      component="footer"
+      py={6}
+    >
+      <div>
+        MUI Grid
+      </div>
+    </div>
+  </div>
+</div>
 `;
