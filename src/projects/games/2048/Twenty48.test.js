@@ -72,8 +72,23 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("2048", () => {
-  it("renders", () => {
-    useContextMock.mockReturnValue("Test Value");
+  it("renders with user", () => {
+    const user = {
+      username: "tester",
+      email: "tester@ctc.org",
+    };
+    useContextMock.mockReturnValue({user});
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <Twenty48 />
+      </ThemeProvider>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("renders without user", () => {
+    useContextMock.mockReturnValue("Test value");
     const component = renderer.create(
       <ThemeProvider theme={theme}>
         <Twenty48 />
