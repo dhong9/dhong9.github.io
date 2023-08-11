@@ -2,6 +2,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
+// Material Kit 2 React themes
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
+
 // Component to test
 import Twenty48 from "projects/games/2048";
 
@@ -18,13 +22,14 @@ afterEach(() => {
 });
 
 // Define Mocks
-jest.mock("layouts/sections/components/BaseLayout", () => {
+jest.mock("components/MKBox/MKBoxRoot", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Layout</div>),
+      __esModule: true,
+      default: forwardRef(() => <p>Mock Box</p>)
   };
 });
+
 jest.mock("layouts/sections/components/View", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -49,7 +54,11 @@ jest.mock("draft-convert", () => {
 describe("2048", () => {
   it("renders", () => {
     useContextMock.mockReturnValue("Test Value");
-    const component = renderer.create(<Twenty48 />);
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <Twenty48 />
+      </ThemeProvider>
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
