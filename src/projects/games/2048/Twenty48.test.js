@@ -18,13 +18,6 @@ afterEach(() => {
 });
 
 // Define Mocks
-jest.mock("components/MKButton", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <button>Mock Button</button>),
-  };
-});
 jest.mock("components/MKBox", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
