@@ -7024,7 +7024,9 @@ exports[`2048 adds a comment 1`] = `
                 id=":r0:"
                 rows="6"
                 style="height: 0px; overflow: hidden;"
-              />
+              >
+                Hello, world!
+              </textarea>
               <textarea
                 aria-hidden="true"
                 class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-12marsf-MuiInputBase-input-MuiInput-input"
@@ -14237,7 +14239,7 @@ exports[`2048 renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-7937"
+            id="rdw-wrapper-7552"
           >
             <div
               aria-hidden="false"
@@ -14623,15 +14625,15 @@ exports[`2048 renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="38fvu"
-                        data-offset-key="frb8p-0-0"
+                        data-editor="526fv"
+                        data-offset-key="4p57d-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="frb8p-0-0"
+                          data-offset-key="4p57d-0-0"
                         >
                           <span
-                            data-offset-key="frb8p-0-0"
+                            data-offset-key="4p57d-0-0"
                           >
                             <br
                               data-text="true"

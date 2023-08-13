@@ -112,6 +112,14 @@ describe("2048", () => {
     const checkbox = getByRole("checkbox");
     fireEvent.click(checkbox);
 
+    // Write something in there
+    const commentBox = getByRole("textbox");
+    fireEvent.change(commentBox, { target: { value: "Hello, world!" } });
+
+    // Add the comment
+    const addButton = getByRole("button");
+    fireEvent.click(addButton);
+
     expect(container).toMatchSnapshot();
   });
 
