@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PictureShuffle renders 1`] = `
+exports[`PictureShuffle renders with user 1`] = `
+<div>
+  Mock Layout
+</div>
+`;
+
+exports[`PictureShuffle renders without user 1`] = `
 <div>
   Mock Layout
 </div>
