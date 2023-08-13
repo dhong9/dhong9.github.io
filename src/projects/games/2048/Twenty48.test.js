@@ -1,6 +1,5 @@
 // React testing libraries
-import React from "react";
-import renderer from "react-test-renderer";
+import { render, fireEvent } from "@testing-library/react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -98,7 +97,7 @@ describe("2048", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
-    const component = renderer.create(
+    const { container } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -107,8 +106,7 @@ describe("2048", () => {
         </AuthProvider>
       </AuthContext.Provider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it("renders without user", () => {
@@ -116,7 +114,7 @@ describe("2048", () => {
       loginUser: jest.fn(),
     };
 
-    const component = renderer.create(
+    const { container } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -125,7 +123,6 @@ describe("2048", () => {
         </AuthProvider>
       </AuthContext.Provider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
