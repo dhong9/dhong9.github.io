@@ -3273,7 +3273,7 @@ exports[`BrainF adds a comment 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-362"
+            id="rdw-wrapper-4652"
           >
             <div
               aria-hidden="false"
@@ -3659,15 +3659,15 @@ exports[`BrainF adds a comment 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="8g2ba"
-                        data-offset-key="aue4u-0-0"
+                        data-editor="843f"
+                        data-offset-key="ffqbe-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="aue4u-0-0"
+                          data-offset-key="ffqbe-0-0"
                         >
                           <span
-                            data-offset-key="aue4u-0-0"
+                            data-offset-key="ffqbe-0-0"
                           >
                             <br
                               data-text="true"
@@ -7145,7 +7145,7 @@ exports[`BrainF renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-6262"
+            id="rdw-wrapper-3729"
           >
             <div
               aria-hidden="false"
@@ -7531,15 +7531,15 @@ exports[`BrainF renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="achfp"
-                        data-offset-key="ctg12-0-0"
+                        data-editor="76a9f"
+                        data-offset-key="but2p-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="ctg12-0-0"
+                          data-offset-key="but2p-0-0"
                         >
                           <span
-                            data-offset-key="ctg12-0-0"
+                            data-offset-key="but2p-0-0"
                           >
                             <br
                               data-text="true"
