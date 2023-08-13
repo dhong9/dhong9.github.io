@@ -13,20 +13,6 @@ import AuthContext, { AuthProvider } from "context/AuthContext";
 import BaseLayout from "layouts/sections/components/BaseLayout";
 
 // Define Mocks
-jest.mock("@mui/material/Container", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Container</div>),
-  };
-});
-jest.mock("@mui/material/Grid", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Grid</div>),
-  };
-});
 jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
