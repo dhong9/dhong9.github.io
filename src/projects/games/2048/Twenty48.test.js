@@ -9,6 +9,7 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
+import jwtDecode from "jwt-decode";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
@@ -36,6 +37,7 @@ mock.onPost("/comments").reply(200, commentData);
 
 
 // Define Mocks
+jest.mock("jwt-decode");
 jest.mock("@mui/material/Container", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -62,14 +64,31 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("2048", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  afterEach(() => {
+    localStorage.removeItem("authTokens");
+    jest.clearAllMocks();
+  });
+
   it("renders with user", () => {
-    const user = {
-      username: "tester",
-      email: "tester@ctc.org",
-    };
+    localStorage.setItem(
+      "authTokens",
+      JSON.stringify({ access: mockToken, refresh: refreshToken })
+    );
+
+    // Set a mock payload for the decoded token
+    const mockPayload = { user: "John Doe", exp: 1893456000 };
+    jwtDecode.mockReturnValue(mockPayload);
+
+    // Mock tokens
+    const mockToken = "mocked_jwt_value";
+    const refreshToken = "mocked_refresh_value";
+
     const contextData = {
       loginUser: jest.fn(),
-      user,
     };
     const component = renderer.create(
       <AuthContext.Provider value={contextData}>
