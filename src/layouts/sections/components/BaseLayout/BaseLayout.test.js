@@ -47,13 +47,6 @@ jest.mock("@mui/material/Grid", () => {
     default: forwardRef(() => <div>MUI Grid</div>),
   };
 });
-jest.mock("layouts/sections/components/View", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock View</div>),
-  };
-});
 jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
