@@ -6,15 +6,46 @@ import { render, fireEvent } from "@testing-library/react";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
+// Axios
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+
 // Component to test
 import DHComments from "components/DHComments";
+
+// Setup axios mock
+const mock = new MockAdapter(axios);
+
+const commentData = {
+  comments: [
+    {
+      id: 1,
+      project: 2,
+      name: "John Adams",
+      email: "john_adams@aol.com",
+      body: "Play connect 4 with me",
+      create: "2023-05-26T17:42:43.263337Z",
+      updated: "2023-05-26T17:42:43.263383Z",
+      active: true,
+      parent: null,
+    },
+  ],
+};
+
+jest.mock("services/baseService", () => ({
+  getRequest: jest.fn(),
+  postRequest: jest.fn(),
+}));
+
+mock.onGet("/comments").reply(200, { data: { results: commentData } });
+mock.onPost("/comments").reply(201, commentData);
 
 // Define Mocks
 jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
+    convertToHTML: jest.fn(),
     convertToRaw: jest.fn(),
-    convertToHTML: jest.fn().mockReturnValue("<p>Test content</p>"), // Mock the return value of convertToHTML
   };
 });
 
@@ -52,7 +83,7 @@ describe("DHComments", () => {
 
     const pageName = 11;
 
-    const { container, getByText } = render(
+    const { container, getByText, getByRole } = render(
       <ThemeProvider theme={theme}>
         <DHComments comments={comments} pageName={pageName} user={user} />
       </ThemeProvider>
@@ -61,6 +92,18 @@ describe("DHComments", () => {
     // Get reply button
     const replyBtn = getByText("Reply...");
     fireEvent.click(replyBtn);
+
+    // Set reply to plain text
+    const plainTextBox = getByText("Plain Text");
+    fireEvent.click(plainTextBox);
+
+    // Write something in the reply box
+    const replyBox = getByRole("textbox");
+    fireEvent.change(replyBox, { target: { value: "Goodbye world!" } });
+
+    // Submit reply
+    const addBtn = getByText("Add");
+    fireEvent.click(addBtn);
 
     expect(container).toMatchSnapshot();
   });
