@@ -1,6 +1,7 @@
 // Sections components
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
+import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import DHComments from "components/DHComments";
 import DHEditor from "components/DHEditor";
@@ -464,15 +465,21 @@ function Othello() {
           <div></div>
         )}
         <DHEditor ref={editorRef} />
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={isPlainText} onChange={handleChange} />}
-            label="Plain Text"
-          />
-          <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
-            Add
-          </MKButton>
-        </FormGroup>
+        {user ? (
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={isPlainText} onChange={handleChange} />}
+              label="Plain Text"
+            />
+            <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+              Add
+            </MKButton>
+          </FormGroup>
+        ) : (
+          <MKBox>
+            <i>You must be logged into comment</i>
+          </MKBox>
+        )}
       </div>
     </BaseLayout>
   );
