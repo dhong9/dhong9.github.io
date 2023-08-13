@@ -1,13 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Othello renders with user 1`] = `
-<div>
-  Mock Layout
+<div
+  display="flex"
+  flexDirection="column"
+  minHeight="100vh"
+>
+  <div
+    py={0.25}
+  >
+    <div>
+      MUI Container
+    </div>
+  </div>
+  <div>
+    MUI Container
+  </div>
+  <div
+    mt="auto"
+  >
+    <div
+      component="footer"
+      py={6}
+    >
+      <div>
+        MUI Grid
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Othello renders without user 1`] = `
-<div>
-  Mock Layout
+<div
+  display="flex"
+  flexDirection="column"
+  minHeight="100vh"
+>
+  <div
+    py={0.25}
+  >
+    <div>
+      MUI Container
+    </div>
+  </div>
+  <div>
+    MUI Container
+  </div>
+  <div
+    mt="auto"
+  >
+    <div
+      component="footer"
+      py={6}
+    >
+      <div>
+        MUI Grid
+      </div>
+    </div>
+  </div>
 </div>
 `;

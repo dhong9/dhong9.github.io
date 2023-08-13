@@ -21,26 +21,30 @@ afterEach(() => {
   React.useContext = realUseContext;
 });
 
-// Mocks
-jest.mock("components/MKButton", () => {
+// Define Mocks
+jest.mock("components/MKBox/MKBoxRoot", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <button>Mock Button</button>),
+    default: forwardRef(({ children, ownerState, ...rest }, ref) => (
+      <div ref={ref} {...rest}>
+        {children}
+      </div>
+    )),
   };
 });
-jest.mock("components/MKBox", () => {
+jest.mock("@mui/material/Container", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Box</div>),
+      __esModule: true,
+      default: forwardRef(() => <div>MUI Container</div>)
   };
 });
-jest.mock("layouts/sections/components/BaseLayout", () => {
+jest.mock("@mui/material/Grid", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Layout</div>),
+      __esModule: true,
+      default: forwardRef(() => <div>MUI Grid</div>)
   };
 });
 jest.mock("layouts/sections/components/View", () => {
@@ -61,9 +65,11 @@ jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
     convertToRaw: jest.fn(),
-    convertToHTML: jest.fn().mockReturnValue("<p>Test content</p>"), // Mock the return value of convertToHTML
   };
 });
+jest.mock("react-router-dom", () => ({
+  Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+}));
 
 describe("BrainF", () => {
   it("renders with user", () => {

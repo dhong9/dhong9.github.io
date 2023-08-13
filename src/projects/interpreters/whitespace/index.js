@@ -129,15 +129,21 @@ function WhiteSpace() {
           <div></div>
         )}
         <DHEditor ref={editorRef} />
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={isPlainText} onChange={handlePlainTextChange} />}
-            label="Plain Text"
-          />
-          <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
-            Add
-          </MKButton>
-        </FormGroup>
+        {user ? (
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={isPlainText} onChange={handlePlainTextChange} />}
+              label="Plain Text"
+            />
+            <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+              Add
+            </MKButton>
+          </FormGroup>
+        ) : (
+          <MKBox>
+            <i>You must be logged into comment</i>
+          </MKBox>
+        )}
       </div>
     </BaseLayout>
   );

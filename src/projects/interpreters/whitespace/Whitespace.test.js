@@ -2,6 +2,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
+// Material Kit 2 React themes
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
+
 // Component to test
 import Whitespace from "projects/interpreters/whitespace";
 
@@ -17,26 +21,30 @@ afterEach(() => {
   React.useContext = realUseContext;
 });
 
-// Mocks
-jest.mock("components/MKButton", () => {
+// Define Mocks
+jest.mock("components/MKBox/MKBoxRoot", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <button>Mock Button</button>),
+    default: forwardRef(({ children, ownerState, ...rest }, ref) => (
+      <div ref={ref} {...rest}>
+        {children}
+      </div>
+    )),
   };
 });
-jest.mock("components/MKBox", () => {
+jest.mock("@mui/material/Container", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Box</div>),
+      __esModule: true,
+      default: forwardRef(() => <div>MUI Container</div>)
   };
 });
-jest.mock("layouts/sections/components/BaseLayout", () => {
+jest.mock("@mui/material/Grid", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Layout</div>),
+      __esModule: true,
+      default: forwardRef(() => <div>MUI Grid</div>)
   };
 });
 jest.mock("layouts/sections/components/View", () => {
@@ -57,15 +65,36 @@ jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
     convertToRaw: jest.fn(),
-    convertToHTML: jest.fn().mockReturnValue("<p>Test content</p>"), // Mock the return value of convertToHTML
   };
 });
+jest.mock("react-router-dom", () => ({
+  Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+}));
 
 describe("Whitespace", () => {
-  it("renders", () => {
-    useContextMock.mockReturnValue("Test Value");
-    const component = renderer.create(<Whitespace />);
+  it("renders with user", () => {
+    const user = {
+      username: "tester",
+      email: "tester@ctc.org",
+    };
+    useContextMock.mockReturnValue({user});
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <Whitespace />
+      </ThemeProvider>
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it("renders without user", () => {
+    useContextMock.mockReturnValue("Test value");
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <Whitespace />
+      </ThemeProvider>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });;
 });
