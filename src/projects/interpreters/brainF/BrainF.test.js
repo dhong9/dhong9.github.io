@@ -1,59 +1,51 @@
 // React testing libraries
-import React from "react";
-import renderer from "react-test-renderer";
+import { render, fireEvent } from "@testing-library/react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
+// Authentication
+import axios from "axios";
+import AuthContext, { AuthProvider } from "context/AuthContext";
+import jwtDecode from "jwt-decode";
+
+// Axios
+import MockAdapter from "axios-mock-adapter";
+
 // Component to test
 import BrainF from "projects/interpreters/brainF";
 
-let realUseContext;
-let useContextMock;
-// Setup mock
-beforeEach(() => {
-  realUseContext = React.useContext;
-  useContextMock = React.useContext = jest.fn();
-});
-// Cleanup mock
-afterEach(() => {
-  React.useContext = realUseContext;
-});
+// Define Mocks
+// Setup axios mock
+const mock = new MockAdapter(axios);
+
+const commentData = {
+  comments: [
+    {
+      id: 1,
+      project: 2,
+      name: "John Adams",
+      email: "john_adams@aol.com",
+      body: "Play connect 4 with me",
+      create: "2023-05-26T17:42:43.263337Z",
+      updated: "2023-05-26T17:42:43.263383Z",
+      active: true,
+      parent: null,
+    },
+  ],
+};
+
+jest.mock("services/baseService", () => ({
+  getRequest: jest.fn(),
+  postRequest: jest.fn(),
+}));
+
+mock.onGet("/comments").reply(200, { data: { results: commentData } });
+mock.onPost("/comments").reply(201, commentData);
 
 // Define Mocks
-jest.mock("components/MKBox/MKBoxRoot", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(({ children, ownerState, ...rest }, ref) => (
-      <div ref={ref} {...rest}>
-        {children}
-      </div>
-    )),
-  };
-});
-jest.mock("@mui/material/Container", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-      __esModule: true,
-      default: forwardRef(() => <div>MUI Container</div>)
-  };
-});
-jest.mock("@mui/material/Grid", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-      __esModule: true,
-      default: forwardRef(() => <div>MUI Grid</div>)
-  };
-});
-jest.mock("layouts/sections/components/View", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock View</div>),
-  };
-});
+jest.mock("jwt-decode");
 jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -64,37 +56,69 @@ jest.mock("react-monaco-editor", () => {
 jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
+    convertToHTML: jest.fn(),
     convertToRaw: jest.fn(),
   };
 });
 jest.mock("react-router-dom", () => ({
   Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+  useNavigate: jest.fn,
 }));
 
 describe("BrainF", () => {
-  it("renders with user", () => {
-    const user = {
-      username: "tester",
-      email: "tester@ctc.org",
-    };
-    useContextMock.mockReturnValue({user});
-    const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <BrainF />
-      </ThemeProvider>
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  afterEach(() => {
+    localStorage.removeItem("authTokens");
+    jest.clearAllMocks();
+  });
+
+  it("adds a comment", () => {
+    localStorage.setItem(
+      "authTokens",
+      JSON.stringify({ access: mockToken, refresh: refreshToken })
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    // Set a mock payload for the decoded token
+    const mockPayload = { user: "John Doe", exp: 1893456000 };
+    jwtDecode.mockReturnValue(mockPayload);
+
+    // Mock tokens
+    const mockToken = "mocked_jwt_value";
+    const refreshToken = "mocked_refresh_value";
+
+    const contextData = {
+      loginUser: jest.fn(),
+    };
+    const { container, getByRole } = render(
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <BrainF />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   it("renders without user", () => {
-    useContextMock.mockReturnValue("Test value");
-    const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <BrainF />
-      </ThemeProvider>
+    const contextData = {
+      loginUser: jest.fn(),
+    };
+
+    const { container } = render(
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <BrainF />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
