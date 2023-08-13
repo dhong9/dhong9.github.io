@@ -23,11 +23,6 @@ jest.mock("jwt-decode");
 const mockToken = "mocked_jwt_value";
 const refreshToken = "mocked_refresh_value";
 
-// Helper function to set mock tokens in localStorage
-const setMockTokensInLocalStorage = () => {
-  localStorage.setItem("authTokens", JSON.stringify({ access: mockToken, refresh: refreshToken }));
-};
-
 describe("AuthContext", () => {
   beforeEach(() => {
     localStorage.clear();

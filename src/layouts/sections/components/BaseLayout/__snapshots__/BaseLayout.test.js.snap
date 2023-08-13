@@ -2,12 +2,10 @@
 
 exports[`BaseLayout renders 1`] = `
 <div
-  display="flex"
-  flexDirection="column"
-  minHeight="100vh"
+  className="MuiBox-root css-rz5wyk"
 >
   <div
-    py={0.25}
+    className="MuiBox-root css-1k16k3j"
   >
     <div>
       MUI Container
@@ -17,16 +15,15 @@ exports[`BaseLayout renders 1`] = `
     MUI Container
   </div>
   <div
-    mt="auto"
+    className="MuiBox-root css-15j0roq"
   >
-    <div
-      component="footer"
-      py={6}
+    <footer
+      className="MuiBox-root css-1u2wc6v"
     >
       <div>
         MUI Grid
       </div>
-    </div>
+    </footer>
   </div>
 </div>
 `;

@@ -109,7 +109,7 @@
       "node_modules",
       "src"
     ],
-    "testEnvironment": "jsdom",
+    "testEnvironment": "jest-environment-jsdom",
     "testTimeout": 30000
   }
 }

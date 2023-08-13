@@ -6,33 +6,13 @@ import renderer from "react-test-renderer";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
+// Authentication
+import AuthContext, { AuthProvider } from "context/AuthContext";
+
 // Component to test
 import BaseLayout from "layouts/sections/components/BaseLayout";
 
-let realUseContext;
-let useContextMock;
-// Setup mock
-beforeEach(() => {
-  realUseContext = React.useContext;
-  useContextMock = React.useContext = jest.fn();
-});
-// Cleanup mock
-afterEach(() => {
-  React.useContext = realUseContext;
-});
-
 // Define Mocks
-jest.mock("components/MKBox/MKBoxRoot", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(({ children, ownerState, ...rest }, ref) => (
-      <div ref={ref} {...rest}>
-        {children}
-      </div>
-    )),
-  };
-});
 jest.mock("@mui/material/Container", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -62,17 +42,25 @@ jest.mock("draft-convert", () => {
 });
 jest.mock("react-router-dom", () => ({
   Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+  useNavigate: jest.fn,
 }));
 
 describe("BaseLayout", () => {
   it("renders", () => {
-    useContextMock.mockReturnValue("Test Value");
+    const contextData = {
+      loginUser: jest.fn(),
+    };
+
     const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <BaseLayout title="Test Layout" breadcrumb={[]}>
-          Base
-        </BaseLayout>
-      </ThemeProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <BaseLayout title="Test Layout" breadcrumb={[]}>
+              Base
+            </BaseLayout>
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
