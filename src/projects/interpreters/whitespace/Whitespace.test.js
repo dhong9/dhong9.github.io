@@ -50,7 +50,7 @@ jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <div>Mock Editor</div>),
+    default: forwardRef(() => <textarea data-testId="editor"></textarea>),
   };
 });
 jest.mock("draft-convert", () => {
@@ -92,7 +92,7 @@ describe("WhiteSpace", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
-    const { container, getByRole } = render(
+    const { container } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -105,12 +105,12 @@ describe("WhiteSpace", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("renders without user", () => {
+  it("visualizes output", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
 
-    const { container } = render(
+    const { container, getByRole, getByTestId, getByText } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -119,6 +119,20 @@ describe("WhiteSpace", () => {
         </AuthProvider>
       </AuthContext.Provider>
     );
+
+    // Enable visualizing
+    const checkbox = getByRole("checkbox");
+    fireEvent.click(checkbox);
+
+    // Write some code in the code editor
+    const editor = getByTestId("editor");
+    const whitespaceCode = "SSTT";
+    fireEvent.change(editor, { target: { value: whitespaceCode } });
+
+    // Run code
+    const submitBtn = getByText("Show value");
+    fireEvent.click(submitBtn);
+
     expect(container).toMatchSnapshot();
   });
 });

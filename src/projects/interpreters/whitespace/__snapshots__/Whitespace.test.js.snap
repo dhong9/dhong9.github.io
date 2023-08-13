@@ -314,9 +314,9 @@ exports[`WhiteSpace adds a comment 1`] = `
               <div
                 class="codeOutput MuiBox-root css-qvguyh"
               >
-                <div>
-                  Mock Editor
-                </div>
+                <textarea
+                  data-testid="editor"
+                />
               </div>
             </div>
           </div>
@@ -403,7 +403,7 @@ exports[`WhiteSpace adds a comment 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-1517"
+            id="rdw-wrapper-2444"
           >
             <div
               aria-hidden="false"
@@ -789,15 +789,15 @@ exports[`WhiteSpace adds a comment 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="bkbco"
-                        data-offset-key="bf7b7-0-0"
+                        data-editor="7r1q6"
+                        data-offset-key="6udj4-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="bf7b7-0-0"
+                          data-offset-key="6udj4-0-0"
                         >
                           <span
-                            data-offset-key="bf7b7-0-0"
+                            data-offset-key="6udj4-0-0"
                           >
                             <br
                               data-text="true"
@@ -1000,7 +1000,7 @@ exports[`WhiteSpace adds a comment 1`] = `
 </div>
 `;
 
-exports[`WhiteSpace renders without user 1`] = `
+exports[`WhiteSpace visualizes output 1`] = `
 <div>
   <div
     class="MuiBox-root css-rz5wyk"
@@ -1316,9 +1316,9 @@ exports[`WhiteSpace renders without user 1`] = `
               <div
                 class="codeOutput MuiBox-root css-qvguyh"
               >
-                <div>
-                  Mock Editor
-                </div>
+                <textarea
+                  data-testid="editor"
+                />
               </div>
             </div>
           </div>
@@ -1359,7 +1359,7 @@ exports[`WhiteSpace renders without user 1`] = `
             class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-knlq9b-MuiFormControlLabel-root"
           >
             <span
-              class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-root MuiCheckbox-colorPrimary css-xyabx4-MuiButtonBase-root-MuiCheckbox-root"
+              class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary Mui-checked MuiCheckbox-root MuiCheckbox-colorPrimary css-xyabx4-MuiButtonBase-root-MuiCheckbox-root"
             >
               <input
                 class="PrivateSwitchBase-input css-1m9pwf3"
@@ -1369,12 +1369,12 @@ exports[`WhiteSpace renders without user 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17ceore-MuiSvgIcon-root"
-                data-testid="CheckBoxOutlineBlankIcon"
+                data-testid="CheckBoxIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
                 <path
-                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
                 />
               </svg>
               <span
@@ -1399,13 +1399,18 @@ exports[`WhiteSpace renders without user 1`] = `
           </button>
         </div>
         <div
+          class="MuiBox-root css-141e185"
+        >
+          // some comment
+        </div>
+        <div
           class="comments-container"
         >
           <div />
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-7564"
+            id="rdw-wrapper-2184"
           >
             <div
               aria-hidden="false"
@@ -1515,6 +1520,7 @@ exports[`WhiteSpace renders without user 1`] = `
                 class="rdw-fontsize-wrapper"
               >
                 <div
+                  aria-expanded="false"
                   aria-label="rdw-dropdown"
                   class="rdw-dropdown-wrapper rdw-fontsize-dropdown"
                 >
@@ -1537,6 +1543,7 @@ exports[`WhiteSpace renders without user 1`] = `
                 class="rdw-fontfamily-wrapper"
               >
                 <div
+                  aria-expanded="false"
                   aria-label="rdw-dropdown"
                   class="rdw-dropdown-wrapper rdw-fontfamily-dropdown"
                 >
@@ -1791,15 +1798,15 @@ exports[`WhiteSpace renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="atbm2"
-                        data-offset-key="k2tf-0-0"
+                        data-editor="effh9"
+                        data-offset-key="1a07o-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="k2tf-0-0"
+                          data-offset-key="1a07o-0-0"
                         >
                           <span
-                            data-offset-key="k2tf-0-0"
+                            data-offset-key="1a07o-0-0"
                           >
                             <br
                               data-text="true"
