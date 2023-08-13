@@ -1,37 +1,17 @@
 // React testing libraries
-import React from "react";
-import renderer from "react-test-renderer";
+import { render, fireEvent } from "@testing-library/react";
+
+// Material Kit 2 React themes
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
+
+// Authentication
+import AuthContext, { AuthProvider } from "context/AuthContext";
 
 // Component to test
 import SignUp from "pages/LandingPages/SignUp";
 
-let realUseContext;
-let useContextMock;
-// Setup mock
-beforeEach(() => {
-  realUseContext = React.useContext;
-  useContextMock = React.useContext = jest.fn();
-});
-// Cleanup mock
-afterEach(() => {
-  React.useContext = realUseContext;
-});
-
 // Define Mocks
-jest.mock("examples/Navbars/DefaultNavbar", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Navbar</div>),
-  };
-});
-jest.mock("components/MKBox", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(() => <div>Mock Box</div>),
-  };
-});
 jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -39,18 +19,33 @@ jest.mock("react-monaco-editor", () => {
     default: forwardRef(() => <div>Mock Editor</div>),
   };
 });
-jest.mock('draft-convert', () => {
+jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
+    convertToHTML: jest.fn(),
     convertToRaw: jest.fn(),
   };
 });
+jest.mock("react-router-dom", () => ({
+  Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+  useNavigate: jest.fn,
+}));
 
 describe("SignUp", () => {
   it("renders", () => {
-    useContextMock.mockReturnValue("Test Value");
-    const component = renderer.create(<SignUp />);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const contextData = {
+      loginUser: jest.fn(),
+    };
+    const { container } = render(
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <SignUp />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
+    );
+
+    expect(container).toMatchSnapshot();
   });
 });
