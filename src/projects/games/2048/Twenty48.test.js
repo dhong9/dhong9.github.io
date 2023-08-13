@@ -36,17 +36,6 @@ mock.onPost("/comments").reply(200, commentData);
 
 
 // Define Mocks
-jest.mock("components/MKBox/MKBoxRoot", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-    __esModule: true,
-    default: forwardRef(({ children, ownerState, ...rest }, ref) => (
-      <div ref={ref} {...rest}>
-        {children}
-      </div>
-    )),
-  };
-});
 jest.mock("@mui/material/Container", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
