@@ -6,20 +6,34 @@ import renderer from "react-test-renderer";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
+// Authentication
+import axios from "axios";
+import AuthContext, { AuthProvider } from "context/AuthContext";
+
+// Axios
+import MockAdapter from "axios-mock-adapter";
+
 // Component to test
 import Twenty48 from "projects/games/2048";
 
-let realUseContext;
-let useContextMock;
-// Setup mock
-beforeEach(() => {
-  realUseContext = React.useContext;
-  useContextMock = React.useContext = jest.fn();
-});
-// Cleanup mock
-afterEach(() => {
-  React.useContext = realUseContext;
-});
+// Setup axios mock
+const mock = new MockAdapter(axios);
+
+const commentData = {
+  comments: [
+    { id: 1, text: "Comment 1" },
+    { id: 2, text: "Comment 2" },
+  ],
+};
+
+jest.mock("services/baseService", () => ({
+  getRequest: jest.fn(),
+  postRequest: jest.fn(),
+}));
+
+mock.onGet("/comments").reply(200, commentData);
+mock.onPost("/comments").reply(200, commentData);
+
 
 // Define Mocks
 jest.mock("components/MKBox/MKBoxRoot", () => {
@@ -40,13 +54,6 @@ jest.mock("@mui/material/Container", () => {
       default: forwardRef(() => <div>MUI Container</div>)
   };
 });
-jest.mock("@mui/material/Grid", () => {
-  const { forwardRef } = jest.requireActual("react");
-  return {
-      __esModule: true,
-      default: forwardRef(() => <div>MUI Grid</div>)
-  };
-});
 jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -62,6 +69,7 @@ jest.mock("draft-convert", () => {
 });
 jest.mock("react-router-dom", () => ({
   Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+  useNavigate: jest.fn,
 }));
 
 describe("2048", () => {
@@ -70,22 +78,36 @@ describe("2048", () => {
       username: "tester",
       email: "tester@ctc.org",
     };
-    useContextMock.mockReturnValue({user});
+    const contextData = {
+      loginUser: jest.fn(),
+      user,
+    };
     const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <Twenty48 />
-      </ThemeProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <Twenty48 />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("renders without user", () => {
-    useContextMock.mockReturnValue("Test value");
+    const contextData = {
+      loginUser: jest.fn(),
+    };
+
     const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <Twenty48 />
-      </ThemeProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <Twenty48 />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
