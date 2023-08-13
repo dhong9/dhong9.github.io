@@ -403,7 +403,7 @@ exports[`WhiteSpace adds a comment 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-9166"
+            id="rdw-wrapper-1517"
           >
             <div
               aria-hidden="false"
@@ -789,15 +789,15 @@ exports[`WhiteSpace adds a comment 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="2h12h"
-                        data-offset-key="538a-0-0"
+                        data-editor="bkbco"
+                        data-offset-key="bf7b7-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="538a-0-0"
+                          data-offset-key="bf7b7-0-0"
                         >
                           <span
-                            data-offset-key="538a-0-0"
+                            data-offset-key="bf7b7-0-0"
                           >
                             <br
                               data-text="true"
@@ -1405,7 +1405,7 @@ exports[`WhiteSpace renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-4053"
+            id="rdw-wrapper-7564"
           >
             <div
               aria-hidden="false"
@@ -1791,15 +1791,15 @@ exports[`WhiteSpace renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="1c8ru"
-                        data-offset-key="1jpqn-0-0"
+                        data-editor="atbm2"
+                        data-offset-key="k2tf-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="1jpqn-0-0"
+                          data-offset-key="k2tf-0-0"
                         >
                           <span
-                            data-offset-key="1jpqn-0-0"
+                            data-offset-key="k2tf-0-0"
                           >
                             <br
                               data-text="true"
