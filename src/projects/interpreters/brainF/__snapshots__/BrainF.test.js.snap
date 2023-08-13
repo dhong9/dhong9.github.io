@@ -314,9 +314,9 @@ exports[`BrainF adds a comment 1`] = `
               <div
                 class="codeOutput MuiBox-root css-qvguyh"
               >
-                <div>
-                  Mock Editor
-                </div>
+                <textarea
+                  data-testid="editor"
+                />
               </div>
             </div>
           </div>
@@ -3273,7 +3273,7 @@ exports[`BrainF adds a comment 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-9596"
+            id="rdw-wrapper-9508"
           >
             <div
               aria-hidden="false"
@@ -3659,15 +3659,15 @@ exports[`BrainF adds a comment 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="7m39t"
-                        data-offset-key="15cqc-0-0"
+                        data-editor="20bbl"
+                        data-offset-key="6jmdh-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="15cqc-0-0"
+                          data-offset-key="6jmdh-0-0"
                         >
                           <span
-                            data-offset-key="15cqc-0-0"
+                            data-offset-key="6jmdh-0-0"
                           >
                             <br
                               data-text="true"
@@ -4218,9 +4218,9 @@ exports[`BrainF visualizes output 1`] = `
                     />
                   </table>
                 </div>
-                <div>
-                  Mock Editor
-                </div>
+                <textarea
+                  data-testid="editor"
+                />
               </div>
             </div>
           </div>
@@ -7177,7 +7177,7 @@ exports[`BrainF visualizes output 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-3135"
+            id="rdw-wrapper-2012"
           >
             <div
               aria-hidden="false"
@@ -7265,6 +7265,7 @@ exports[`BrainF visualizes output 1`] = `
                 class="rdw-block-wrapper"
               >
                 <div
+                  aria-expanded="false"
                   aria-label="rdw-dropdown"
                   class="rdw-dropdown-wrapper rdw-block-dropdown"
                 >
@@ -7286,6 +7287,7 @@ exports[`BrainF visualizes output 1`] = `
                 class="rdw-fontsize-wrapper"
               >
                 <div
+                  aria-expanded="false"
                   aria-label="rdw-dropdown"
                   class="rdw-dropdown-wrapper rdw-fontsize-dropdown"
                 >
@@ -7308,6 +7310,7 @@ exports[`BrainF visualizes output 1`] = `
                 class="rdw-fontfamily-wrapper"
               >
                 <div
+                  aria-expanded="false"
                   aria-label="rdw-dropdown"
                   class="rdw-dropdown-wrapper rdw-fontfamily-dropdown"
                 >
@@ -7415,6 +7418,7 @@ exports[`BrainF visualizes output 1`] = `
                 </div>
               </div>
               <div
+                aria-expanded="false"
                 aria-haspopup="true"
                 aria-label="rdw-color-picker"
                 class="rdw-colorpicker-wrapper"
@@ -7453,6 +7457,7 @@ exports[`BrainF visualizes output 1`] = `
                 </div>
               </div>
               <div
+                aria-expanded="false"
                 aria-haspopup="true"
                 aria-label="rdw-embedded-control"
                 class="rdw-embedded-wrapper"
@@ -7468,6 +7473,7 @@ exports[`BrainF visualizes output 1`] = `
                 </div>
               </div>
               <div
+                aria-expanded="false"
                 aria-haspopup="true"
                 aria-label="rdw-emoji-control"
                 class="rdw-emoji-wrapper"
@@ -7483,6 +7489,7 @@ exports[`BrainF visualizes output 1`] = `
                 </div>
               </div>
               <div
+                aria-expanded="false"
                 aria-haspopup="true"
                 aria-label="rdw-image-control"
                 class="rdw-image-wrapper"
@@ -7558,15 +7565,15 @@ exports[`BrainF visualizes output 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="5c2aa"
-                        data-offset-key="3339n-0-0"
+                        data-editor="3rcn4"
+                        data-offset-key="12e3d-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="3339n-0-0"
+                          data-offset-key="12e3d-0-0"
                         >
                           <span
-                            data-offset-key="3339n-0-0"
+                            data-offset-key="12e3d-0-0"
                           >
                             <br
                               data-text="true"

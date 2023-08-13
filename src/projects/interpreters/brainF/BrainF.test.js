@@ -50,7 +50,7 @@ jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <div>Mock Editor</div>),
+    default: forwardRef(() => <textarea data-testid="editor"></textarea>),
   };
 });
 jest.mock("draft-convert", () => {
@@ -110,7 +110,7 @@ describe("BrainF", () => {
       loginUser: jest.fn(),
     };
 
-    const { container, getByRole } = render(
+    const { container, getByRole, getByTestId, getByText } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -123,6 +123,15 @@ describe("BrainF", () => {
     // Enable visualizing
     const checkbox = getByRole("checkbox");
     fireEvent.click(checkbox);
+
+    // Write some code in the code editor
+    const editor = getByTestId("editor");
+    const brainFCode = ">++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<++.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.";
+    fireEvent.change(editor, { target: { value: brainFCode } });
+
+    // Run code
+    const submitBtn = getByText("Show value");
+    fireEvent.click(submitBtn);
 
     expect(container).toMatchSnapshot();
   });
