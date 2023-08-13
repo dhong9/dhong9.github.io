@@ -14239,7 +14239,7 @@ exports[`2048 renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-4512"
+            id="rdw-wrapper-2574"
           >
             <div
               aria-hidden="false"
@@ -14625,15 +14625,15 @@ exports[`2048 renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="7gfjt"
-                        data-offset-key="b98qd-0-0"
+                        data-editor="da7g1"
+                        data-offset-key="oie5-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="b98qd-0-0"
+                          data-offset-key="oie5-0-0"
                         >
                           <span
-                            data-offset-key="b98qd-0-0"
+                            data-offset-key="oie5-0-0"
                           >
                             <br
                               data-text="true"
