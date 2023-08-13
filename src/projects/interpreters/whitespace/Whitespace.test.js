@@ -92,7 +92,7 @@ describe("WhiteSpace", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
-    const { container } = render(
+    const { container, getByText } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -101,6 +101,10 @@ describe("WhiteSpace", () => {
         </AuthProvider>
       </AuthContext.Provider>
     );
+
+    // Enable plain text
+    const plainTextbox = getByText("Plain Text");
+    fireEvent.click(plainTextbox);
 
     expect(container).toMatchSnapshot();
   });
