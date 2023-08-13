@@ -1,6 +1,13 @@
-import renderer from "react-test-renderer";
-import BaseLayout from "layouts/sections/components/BaseLayout";
+// React testing libraries
 import React from "react";
+import renderer from "react-test-renderer";
+
+// Material Kit 2 React themes
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
+
+// Component to test
+import BaseLayout from "layouts/sections/components/BaseLayout";
 
 let realUseContext;
 let useContextMock;
@@ -15,25 +22,36 @@ afterEach(() => {
 });
 
 // Define Mocks
-jest.mock("components/MKBox", () => {
+jest.mock("components/MKBox/MKBoxRoot", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <div>Mock Box</div>),
+    default: forwardRef(({ children, ownerState, ...rest }, ref) => (
+      <div ref={ref} {...rest}>
+        {children}
+      </div>
+    )),
   };
 });
-jest.mock("components/MKTypography", () => {
+jest.mock("@mui/material/Container", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <p>Mock Typography</p>),
+    default: forwardRef(() => <div>MUI Container</div>),
   };
 });
-jest.mock("examples/Breadcrumbs", () => {
+jest.mock("@mui/material/Grid", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <div>Mock Breadcrumbs</div>),
+    default: forwardRef(() => <div>MUI Grid</div>),
+  };
+});
+jest.mock("layouts/sections/components/View", () => {
+  const { forwardRef } = jest.requireActual("react");
+  return {
+    __esModule: true,
+    default: forwardRef(() => <div>Mock View</div>),
   };
 });
 jest.mock("react-monaco-editor", () => {
@@ -49,14 +67,19 @@ jest.mock("draft-convert", () => {
     convertToRaw: jest.fn(),
   };
 });
+jest.mock("react-router-dom", () => ({
+  Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
+}));
 
 describe("BaseLayout", () => {
   it("renders", () => {
     useContextMock.mockReturnValue("Test Value");
     const component = renderer.create(
-      <BaseLayout title="Test Layout" breadcrumb={[]}>
-        Base
-      </BaseLayout>
+      <ThemeProvider theme={theme}>
+        <BaseLayout title="Test Layout" breadcrumb={[]}>
+          Base
+        </BaseLayout>
+      </ThemeProvider>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
