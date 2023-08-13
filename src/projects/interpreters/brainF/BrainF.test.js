@@ -92,7 +92,7 @@ describe("BrainF", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
-    const { container, getByRole } = render(
+    const { container } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -105,12 +105,12 @@ describe("BrainF", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("renders without user", () => {
+  it("visualizes output", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
 
-    const { container } = render(
+    const { container, getByRole } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -119,6 +119,11 @@ describe("BrainF", () => {
         </AuthProvider>
       </AuthContext.Provider>
     );
+
+    // Enable visualizing
+    const checkbox = getByRole("checkbox");
+    fireEvent.click(checkbox);
+
     expect(container).toMatchSnapshot();
   });
 });

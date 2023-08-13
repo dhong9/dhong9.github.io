@@ -3273,7 +3273,7 @@ exports[`BrainF adds a comment 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-4652"
+            id="rdw-wrapper-9596"
           >
             <div
               aria-hidden="false"
@@ -3659,15 +3659,15 @@ exports[`BrainF adds a comment 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="843f"
-                        data-offset-key="ffqbe-0-0"
+                        data-editor="7m39t"
+                        data-offset-key="15cqc-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="ffqbe-0-0"
+                          data-offset-key="15cqc-0-0"
                         >
                           <span
-                            data-offset-key="ffqbe-0-0"
+                            data-offset-key="15cqc-0-0"
                           >
                             <br
                               data-text="true"
@@ -3870,7 +3870,7 @@ exports[`BrainF adds a comment 1`] = `
 </div>
 `;
 
-exports[`BrainF renders without user 1`] = `
+exports[`BrainF visualizes output 1`] = `
 <div>
   <div
     class="MuiBox-root css-rz5wyk"
@@ -4186,6 +4186,38 @@ exports[`BrainF renders without user 1`] = `
               <div
                 class="codeOutput MuiBox-root css-qvguyh"
               >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableContainer-root css-yge2n-MuiPaper-root-MuiTableContainer-root"
+                >
+                  <table
+                    aria-label="simple table"
+                    class="MuiTable-root css-obgg9p-MuiTable-root"
+                  >
+                    <thead
+                      class="MuiTableHead-root css-1rbtvt5-MuiTableHead-root"
+                    >
+                      <tr
+                        class="MuiTableRow-root MuiTableRow-head css-n3cyd2-MuiTableRow-root"
+                      >
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1as1wpd-MuiTableCell-root"
+                          scope="col"
+                        >
+                          Cell Number
+                        </th>
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1as1wpd-MuiTableCell-root"
+                          scope="col"
+                        >
+                          Value
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+                    />
+                  </table>
+                </div>
                 <div>
                   Mock Editor
                 </div>
@@ -7099,7 +7131,7 @@ exports[`BrainF renders without user 1`] = `
             class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-knlq9b-MuiFormControlLabel-root"
           >
             <span
-              class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-root MuiCheckbox-colorPrimary css-xyabx4-MuiButtonBase-root-MuiCheckbox-root"
+              class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary Mui-checked MuiCheckbox-root MuiCheckbox-colorPrimary css-xyabx4-MuiButtonBase-root-MuiCheckbox-root"
             >
               <input
                 class="PrivateSwitchBase-input css-1m9pwf3"
@@ -7109,12 +7141,12 @@ exports[`BrainF renders without user 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-17ceore-MuiSvgIcon-root"
-                data-testid="CheckBoxOutlineBlankIcon"
+                data-testid="CheckBoxIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
                 <path
-                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
                 />
               </svg>
               <span
@@ -7145,7 +7177,7 @@ exports[`BrainF renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-3729"
+            id="rdw-wrapper-3135"
           >
             <div
               aria-hidden="false"
@@ -7233,7 +7265,6 @@ exports[`BrainF renders without user 1`] = `
                 class="rdw-block-wrapper"
               >
                 <div
-                  aria-expanded="false"
                   aria-label="rdw-dropdown"
                   class="rdw-dropdown-wrapper rdw-block-dropdown"
                 >
@@ -7384,7 +7415,6 @@ exports[`BrainF renders without user 1`] = `
                 </div>
               </div>
               <div
-                aria-expanded="false"
                 aria-haspopup="true"
                 aria-label="rdw-color-picker"
                 class="rdw-colorpicker-wrapper"
@@ -7423,7 +7453,6 @@ exports[`BrainF renders without user 1`] = `
                 </div>
               </div>
               <div
-                aria-expanded="false"
                 aria-haspopup="true"
                 aria-label="rdw-embedded-control"
                 class="rdw-embedded-wrapper"
@@ -7439,7 +7468,6 @@ exports[`BrainF renders without user 1`] = `
                 </div>
               </div>
               <div
-                aria-expanded="false"
                 aria-haspopup="true"
                 aria-label="rdw-emoji-control"
                 class="rdw-emoji-wrapper"
@@ -7455,7 +7483,6 @@ exports[`BrainF renders without user 1`] = `
                 </div>
               </div>
               <div
-                aria-expanded="false"
                 aria-haspopup="true"
                 aria-label="rdw-image-control"
                 class="rdw-image-wrapper"
@@ -7531,15 +7558,15 @@ exports[`BrainF renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="76a9f"
-                        data-offset-key="but2p-0-0"
+                        data-editor="5c2aa"
+                        data-offset-key="3339n-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="but2p-0-0"
+                          data-offset-key="3339n-0-0"
                         >
                           <span
-                            data-offset-key="but2p-0-0"
+                            data-offset-key="3339n-0-0"
                           >
                             <br
                               data-text="true"
