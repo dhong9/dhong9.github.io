@@ -45,11 +45,11 @@ mock.onPost("/comments").reply(200, commentData);
 
 // Define Mocks
 jest.mock("jwt-decode");
-jest.mock("@mui/material/Container", () => {
+jest.mock("react-p5", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-    __esModule: true,
-    default: forwardRef(() => <div>MUI Container</div>),
+      __esModule: true,
+      default: forwardRef(() => <div>Sketch</div>)
   };
 });
 jest.mock("react-monaco-editor", () => {
@@ -62,6 +62,7 @@ jest.mock("react-monaco-editor", () => {
 jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
+    convertToHTML: jest.fn(),
     convertToRaw: jest.fn(),
   };
 });
@@ -80,7 +81,7 @@ describe("2048", () => {
     jest.clearAllMocks();
   });
 
-  it("renders with user", () => {
+  it("adds a comment", () => {
     localStorage.setItem(
       "authTokens",
       JSON.stringify({ access: mockToken, refresh: refreshToken })
