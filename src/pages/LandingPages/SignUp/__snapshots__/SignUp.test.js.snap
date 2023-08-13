@@ -241,8 +241,8 @@ exports[`SignUp renders 1`] = `
                   class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
                 >
                   <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-uk4jy3-MuiFormLabel-root-MuiInputLabel-root"
-                    data-shrink="false"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-5rxz7w-MuiFormLabel-root-MuiInputLabel-root"
+                    data-shrink="true"
                     for=":r0:"
                     id=":r0:-label"
                   >
@@ -263,7 +263,7 @@ exports[`SignUp renders 1`] = `
                       class="MuiOutlinedInput-notchedOutline css-135f4hd-MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="css-yjsfm1"
+                        class="css-14lo706"
                       >
                         <span>
                           Username
@@ -280,8 +280,8 @@ exports[`SignUp renders 1`] = `
                   class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
                 >
                   <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-uk4jy3-MuiFormLabel-root-MuiInputLabel-root"
-                    data-shrink="false"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-5rxz7w-MuiFormLabel-root-MuiInputLabel-root"
+                    data-shrink="true"
                     for=":r1:"
                     id=":r1:-label"
                   >
@@ -302,7 +302,7 @@ exports[`SignUp renders 1`] = `
                       class="MuiOutlinedInput-notchedOutline css-135f4hd-MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="css-yjsfm1"
+                        class="css-14lo706"
                       >
                         <span>
                           Email
@@ -319,8 +319,8 @@ exports[`SignUp renders 1`] = `
                   class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
                 >
                   <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-uk4jy3-MuiFormLabel-root-MuiInputLabel-root"
-                    data-shrink="false"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-5rxz7w-MuiFormLabel-root-MuiInputLabel-root"
+                    data-shrink="true"
                     for=":r2:"
                     id=":r2:-label"
                   >
@@ -341,7 +341,7 @@ exports[`SignUp renders 1`] = `
                       class="MuiOutlinedInput-notchedOutline css-135f4hd-MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="css-yjsfm1"
+                        class="css-14lo706"
                       >
                         <span>
                           Password
@@ -358,8 +358,8 @@ exports[`SignUp renders 1`] = `
                   class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
                 >
                   <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-uk4jy3-MuiFormLabel-root-MuiInputLabel-root"
-                    data-shrink="false"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-5rxz7w-MuiFormLabel-root-MuiInputLabel-root"
+                    data-shrink="true"
                     for=":r3:"
                     id=":r3:-label"
                   >
@@ -380,7 +380,7 @@ exports[`SignUp renders 1`] = `
                       class="MuiOutlinedInput-notchedOutline css-135f4hd-MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="css-yjsfm1"
+                        class="css-14lo706"
                       >
                         <span>
                           Confirm Password
@@ -390,23 +390,7 @@ exports[`SignUp renders 1`] = `
                   </div>
                 </div>
               </div>
-              <div
-                class="MuiBox-root css-oh6zk8"
-              >
-                <ul
-                  style="color: red; font-size: 10pt;"
-                >
-                  <li>
-                    Username is required.
-                  </li>
-                  <li>
-                    Password is required.
-                  </li>
-                  <li>
-                    Password confirmation is required.
-                  </li>
-                </ul>
-              </div>
+              <div />
               <div
                 class="MuiBox-root css-1id64jh"
               >

@@ -37,7 +37,7 @@ describe("SignUp", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
-    const { container, getByLabelText, getByText } = render(
+    const { container, getByLabelText, getByText, queryByText } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -58,9 +58,23 @@ describe("SignUp", () => {
     fireEvent.click(signUpButton);
 
     // Check that errors are shown
-    expect(getByText("Username is required.")).toBeInTheDocument();
-    expect(getByText("Password is required.")).toBeInTheDocument();
-    expect(getByText("Password confirmation is required.")).toBeInTheDocument();
+    expect(queryByText("Username is required.")).toBeInTheDocument();
+    expect(queryByText("Password is required.")).toBeInTheDocument();
+    expect(queryByText("Password confirmation is required.")).toBeInTheDocument();
+
+    // Put data into the form
+    fireEvent.change(usernameInput, { target: { value: "expertTester" } });
+    fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
+    fireEvent.change(passwordInput, { target: { value: "validPassword" } });
+    fireEvent.change(password2Input, { target: { value: "validPassword" } });
+
+    // Resubmit data
+    fireEvent.click(signUpButton);
+
+    // Errors should clear
+    expect(queryByText("Username is required.")).not.toBeInTheDocument();
+    expect(queryByText("Password is required.")).not.toBeInTheDocument();
+    expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
 
     expect(container).toMatchSnapshot();
   });
