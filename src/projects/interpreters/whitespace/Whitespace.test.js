@@ -50,7 +50,7 @@ jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <textarea data-testId="editor"></textarea>),
+    default: forwardRef(() => <textarea data-testid="editor"></textarea>),
   };
 });
 jest.mock("draft-convert", () => {
