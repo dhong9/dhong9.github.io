@@ -98,7 +98,7 @@ describe("2048", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
-    const { container } = render(
+    const { container, getByRole } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -107,6 +107,11 @@ describe("2048", () => {
         </AuthProvider>
       </AuthContext.Provider>
     );
+
+    // Toggle plain text
+    const checkbox = getByRole("checkbox");
+    fireEvent.click(checkbox);
+
     expect(container).toMatchSnapshot();
   });
 
