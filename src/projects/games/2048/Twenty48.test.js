@@ -41,7 +41,7 @@ jest.mock("services/baseService", () => ({
 }));
 
 mock.onGet("/comments").reply(200, { data: { results: commentData } });
-mock.onPost("/comments").reply(200, commentData);
+mock.onPost("/comments").reply(201, commentData);
 
 // Define Mocks
 jest.mock("jwt-decode");
