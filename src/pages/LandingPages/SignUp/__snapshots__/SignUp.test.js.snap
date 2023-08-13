@@ -391,6 +391,23 @@ exports[`SignUp renders 1`] = `
                 </div>
               </div>
               <div
+                class="MuiBox-root css-oh6zk8"
+              >
+                <ul
+                  style="color: red; font-size: 10pt;"
+                >
+                  <li>
+                    Username is required.
+                  </li>
+                  <li>
+                    Password is required.
+                  </li>
+                  <li>
+                    Password confirmation is required.
+                  </li>
+                </ul>
+              </div>
+              <div
                 class="MuiBox-root css-1id64jh"
               >
                 <button

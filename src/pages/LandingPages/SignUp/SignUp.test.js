@@ -1,5 +1,6 @@
 // React testing libraries
 import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -36,7 +37,7 @@ describe("SignUp", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
-    const { container } = render(
+    const { container, getByLabelText, getByText } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -45,6 +46,21 @@ describe("SignUp", () => {
         </AuthProvider>
       </AuthContext.Provider>
     );
+
+    // Get form elements
+    const usernameInput = getByLabelText("Username");
+    const emailInput = getByLabelText("Email");
+    const passwordInput = getByLabelText("Password");
+    const password2Input = getByLabelText("Confirm Password");
+    const signUpButton = getByText("sign up");
+
+    // Sign up with no form input
+    fireEvent.click(signUpButton);
+
+    // Check that errors are shown
+    expect(getByText("Username is required.")).toBeInTheDocument();
+    expect(getByText("Password is required.")).toBeInTheDocument();
+    expect(getByText("Password confirmation is required.")).toBeInTheDocument();
 
     expect(container).toMatchSnapshot();
   });
