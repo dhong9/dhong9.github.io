@@ -22,8 +22,17 @@ const mock = new MockAdapter(axios);
 
 const commentData = {
   comments: [
-    { id: 1, text: "Comment 1" },
-    { id: 2, text: "Comment 2" },
+    {
+      id: 1,
+      project: 2,
+      name: "John Adams",
+      email: "john_adams@aol.com",
+      body: "Play connect 4 with me",
+      create: "2023-05-26T17:42:43.263337Z",
+      updated: "2023-05-26T17:42:43.263383Z",
+      active: true,
+      parent: null,
+    },
   ],
 };
 
@@ -32,17 +41,16 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
-mock.onGet("/comments").reply(200, commentData);
+mock.onGet("/comments").reply(200, { data: { results: commentData } });
 mock.onPost("/comments").reply(200, commentData);
-
 
 // Define Mocks
 jest.mock("jwt-decode");
 jest.mock("@mui/material/Container", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-      __esModule: true,
-      default: forwardRef(() => <div>MUI Container</div>)
+    __esModule: true,
+    default: forwardRef(() => <div>MUI Container</div>),
   };
 });
 jest.mock("react-monaco-editor", () => {
