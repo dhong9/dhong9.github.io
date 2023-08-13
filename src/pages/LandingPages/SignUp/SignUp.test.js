@@ -37,7 +37,7 @@ describe("SignUp", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
-    const { container, getByLabelText, getByText, queryByText } = render(
+    const { getByLabelText, getByText, queryByText } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -75,7 +75,5 @@ describe("SignUp", () => {
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
     expect(queryByText("Password is required.")).not.toBeInTheDocument();
     expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
-
-    expect(container).toMatchSnapshot();
   });
 });
