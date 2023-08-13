@@ -110,6 +110,6 @@
       "src"
     ],
     "testEnvironment": "jest-environment-jsdom",
-    "testTimeout": 60000
+    "testTimeout": 30000
   }
 }
