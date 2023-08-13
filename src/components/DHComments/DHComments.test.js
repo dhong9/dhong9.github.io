@@ -52,11 +52,15 @@ describe("DHComments", () => {
 
     const pageName = 11;
 
-    const { container } = render(
+    const { container, getByText } = render(
       <ThemeProvider theme={theme}>
         <DHComments comments={comments} pageName={pageName} user={user} />
       </ThemeProvider>
     );
+
+    // Get reply button
+    const replyBtn = getByText("Reply...");
+    fireEvent.click(replyBtn);
 
     expect(container).toMatchSnapshot();
   });
