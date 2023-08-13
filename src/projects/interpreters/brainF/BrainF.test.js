@@ -2,6 +2,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
+// Material Kit 2 React themes
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "assets/theme";
+
 // Component to test
 import BrainF from "projects/interpreters/brainF";
 
@@ -62,9 +66,28 @@ jest.mock("draft-convert", () => {
 });
 
 describe("BrainF", () => {
-  it("renders", () => {
-    useContextMock.mockReturnValue("Test Value");
-    const component = renderer.create(<BrainF />);
+  it("renders with user", () => {
+    const user = {
+      username: "tester",
+      email: "tester@ctc.org",
+    };
+    useContextMock.mockReturnValue({user});
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <BrainF />
+      </ThemeProvider>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("renders without user", () => {
+    useContextMock.mockReturnValue("Test value");
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <BrainF />
+      </ThemeProvider>
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
