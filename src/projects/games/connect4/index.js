@@ -47,41 +47,6 @@ function Connect4() {
         if (status === 201) {
           // Successfully added comment
           getComments(({ data: { results } }) => {
-            // Map ID to comment object
-            const commentMap = {};
-            for (const result of results) {
-              commentMap[result.id] = result;
-            }
-            // Build comment tree
-            const commentTree = {};
-            for (const result of results) {
-              const parent = result.parent;
-              if (parent) {
-                // If there is a parent, traverse comment tree
-                // to determine which comment it falls under
-                const stack = [commentTree];
-                while (stack.length) {
-                  const current = stack.pop();
-                  for (const key in current) {
-                    // If the current comment's parent matches with
-                    // the current key, then add it under the found
-                    // comment
-                    if (result.parent === key) {
-                      current[key] = result;
-                      break;
-                    }
-                    if (current[key]) {
-                      stack.push(current[key]);
-                    }
-                  }
-                }
-              } else {
-                // If there is no parent, then add it to the
-                // comment tree as a new root comment
-                commentTree[result.id] = {};
-              }
-            }
-            console.log(commentTree);
             setComments(results.filter(({ project }) => project === id));
           });
         }
