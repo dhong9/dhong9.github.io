@@ -21,16 +21,16 @@ mock.onGet("/comments").reply(200, commentData);
 mock.onPost("/comments").reply(200, commentData);
 
 describe("CommentsService", () => {
-  // it("gets comments", () => {
-  //   // Create success and error spy functions
-  //   const success = jest.fn();
+  it("gets comments", () => {
+    // Create success and error spy functions
+    const success = jest.fn();
 
-  //   // Get comments
-  //   getComments(success);
+    // Get comments
+    getComments(success);
 
-  //   // Verify that getRequest was called correctly
-  //   expect(getRequest).toHaveBeenCalledWith("comments", success, console.error);
-  // });
+    // Verify that getRequest was called correctly
+    expect(getRequest).toHaveBeenCalledWith("comments", success, console.error);
+  });
 
   it("posts a comment", () => {
     // Create success and error spy functions

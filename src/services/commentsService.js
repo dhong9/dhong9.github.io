@@ -1,7 +1,7 @@
 import { getRequest, postRequest } from "services/baseService";
 
 // Utility functions for processing comments data
-const buildCommentMap = (comments) => {
+export const buildCommentMap = (comments) => {
   const commentsMap = {};
   for (const comment of comments) {
     commentsMap[comment.id] = comment;
@@ -9,7 +9,7 @@ const buildCommentMap = (comments) => {
   return commentsMap;
 };
 
-const buildCommentTree = (comments) => {
+export const buildCommentTree = (comments) => {
   const commentTree = {};
   for (const { id, parent } of comments) {
     // If there is parent, find where to put the
@@ -41,20 +41,7 @@ const buildCommentTree = (comments) => {
 // Service functions
 
 export const getComments = (success) => {
-  getRequest(
-    "comments",
-    (obj) => {
-      const {
-        data: { results },
-      } = obj;
-      const commentsMap = buildCommentMap(results);
-      const commentsTree = buildCommentTree(results);
-      console.log("Comments map: ", commentsMap);
-      console.log("Comments tree: ", commentsTree);
-      success(obj);
-    },
-    console.error
-  );
+  getRequest("comments", success, console.error);
 };
 
 export const addComment = (success, project, name, email, body, isPlainText, parent = null) => {
