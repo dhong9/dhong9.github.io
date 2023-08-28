@@ -41,7 +41,20 @@ const buildCommentTree = (comments) => {
 // Service functions
 
 export const getComments = (success) => {
-  getRequest("comments", success, console.error);
+  getRequest(
+    "comments",
+    (obj) => {
+      const {
+        data: { results },
+      } = obj;
+      const commentsMap = buildCommentMap(results);
+      const commentsTree = buildCommentTree(results);
+      console.log("Comments map: ", commentsMap);
+      console.log("Comments tree: ", commentsTree);
+      success(obj);
+    },
+    console.error
+  );
 };
 
 export const addComment = (success, project, name, email, body, isPlainText, parent = null) => {
