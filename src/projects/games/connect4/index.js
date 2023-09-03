@@ -21,7 +21,12 @@ import Sketch from "react-p5";
 import { useContext, useEffect, useState, useRef } from "react";
 
 // Service
-import { getComments, addComment, buildCommentTree } from "services/commentsService";
+import {
+  getComments,
+  addComment,
+  buildCommentTree,
+  buildCommentMap,
+} from "services/commentsService";
 
 // Authentication
 import AuthContext from "context/AuthContext";
@@ -533,21 +538,29 @@ function Connect4() {
   };
 
   // Build comments map and hierarchy tree
-  const commentsTree = buildCommentTree(comments);
-  const flattenComments = (commentTree) => {
-    const dfs = (tree, root, depth = 0) => {
-      console.log(root, depth);
-      if (Object.keys(tree)) {
-        for (const child in tree) {
-          dfs(tree[child], child, depth + 1);
+  const sortComments = (comments) => {
+    const sortedComments = [];
+
+    const commentMap = buildCommentMap(comments);
+    const commentsTree = buildCommentTree(comments);
+    const flattenComments = (commentTree) => {
+      const dfs = (tree, root, depth = 0) => {
+        console.log(root, depth);
+        sortedComments.push(commentMap[root]);
+        if (Object.keys(tree)) {
+          for (const child in tree) {
+            dfs(tree[child], child, depth + 1);
+          }
         }
+      };
+      for (const root in commentTree) {
+        dfs(commentTree[root], root);
       }
     };
-    for (const root in commentTree) {
-      dfs(commentTree[root], root);
-    }
+
+    flattenComments(commentsTree);
+    return sortedComments;
   };
-  flattenComments(commentsTree);
 
   return (
     <BaseLayout
@@ -560,7 +573,7 @@ function Connect4() {
 
       <div className="comments-container">
         {comments.length ? (
-          <DHComments comments={comments} pageName={id} user={user} />
+          <DHComments comments={sortComments(comments)} pageName={id} user={user} />
         ) : (
           <div></div>
         )}
