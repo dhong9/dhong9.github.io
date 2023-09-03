@@ -21,7 +21,7 @@ import DHEditor from "components/DHEditor";
 import { useContext, useEffect, useState, useRef } from "react";
 
 // Service
-import { getComments, addComment } from "services/commentsService";
+import { getComments, addComment, sortComments } from "services/commentsService";
 
 // Authentication
 import AuthContext from "context/AuthContext";
@@ -124,7 +124,7 @@ function WhiteSpace() {
 
       <div className="comments-container">
         {comments.length ? (
-          <DHComments comments={comments} pageName={id} user={user} />
+          <DHComments comments={sortComments(comments)} pageName={id} user={user} />
         ) : (
           <div></div>
         )}
