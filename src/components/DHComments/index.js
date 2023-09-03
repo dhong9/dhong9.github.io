@@ -57,8 +57,8 @@ export default function DHComments({ comments, pageName, user }) {
 
   return (
     <Paper style={{ padding: "40px 20px" }}>
-      {comments.map(({ id, body, name, create, isPlainText }) => (
-        <Grid key={id} item xs={12} md={6}>
+      {comments.map(({ id, body, name, create, isPlainText, depth }) => (
+        <Grid key={id} item xs={12} md={6} sx={{ ml: depth }}>
           <Card sx={{ display: "flex" }}>
             <CardContent sx={{ flex: 1 }}>
               <Typography component="h2" variant="h5">
