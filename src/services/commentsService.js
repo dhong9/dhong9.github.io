@@ -46,7 +46,7 @@ export const sortComments = (comments) => {
   const commentsTree = buildCommentTree(comments);
   const flattenComments = (commentTree) => {
     const dfs = (tree, root, depth = 0) => {
-      sortedComments.push(commentMap[root]);
+      sortedComments.push({...commentMap[root], depth});
       if (Object.keys(tree)) {
         for (const child in tree) {
           dfs(tree[child], child, depth + 1);
