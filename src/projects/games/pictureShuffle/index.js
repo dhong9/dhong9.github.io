@@ -21,7 +21,7 @@ import Sketch from "react-p5";
 import { useContext, useEffect, useState, useRef } from "react";
 
 // Service
-import { getComments, addComment } from "services/commentsService";
+import { getComments, addComment, sortComments } from "services/commentsService";
 
 // Authentication
 import AuthContext from "context/AuthContext";
@@ -116,7 +116,7 @@ function PictureShuffle() {
 
       <div className="comments-container">
         {comments.length ? (
-          <DHComments comments={comments} pageName={id} isPlainText={isPlainText} user={user} />
+          <DHComments comments={sortComments(comments)} pageName={id} isPlainText={isPlainText} user={user} />
         ) : (
           <div></div>
         )}
