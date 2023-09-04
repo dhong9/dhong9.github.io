@@ -2,12 +2,7 @@
 
 exports[`DefaultNavbarDropdown renders with route 1`] = `
 <div
-  alignItems="baseline"
-  color="dark"
-  display="flex"
-  mx={1}
-  opacity={0.6}
-  p={1}
+  className="MuiBox-root css-111f5ru"
   routes={
     [
       {
@@ -18,29 +13,13 @@ exports[`DefaultNavbarDropdown renders with route 1`] = `
       },
     ]
   }
-  sx={
-    {
-      "cursor": "pointer",
-      "userSelect": "none",
-    }
-  }
 >
-  <div
-    color="inherit"
-    lineHeight={1}
-    sx={
-      {
-        "& *": {
-          "verticalAlign": "middle",
-        },
-        "alignSelf": "center",
-      }
-    }
-    variant="body2"
+  <p
+    className="MuiTypography-root MuiTypography-body2 css-incl6n-MuiTypography-root"
   >
     <svg
       aria-hidden={true}
-      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-eimhud-MuiSvgIcon-root"
       data-testid="FacebookIcon"
       focusable="false"
       viewBox="0 0 24 24"
@@ -49,42 +28,26 @@ exports[`DefaultNavbarDropdown renders with route 1`] = `
         d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"
       />
     </svg>
-  </div>
-  <div
-    color="dark"
-    fontWeight="regular"
-    sx={
-      {
-        "fontWeight": "100%",
-        "ml": 1,
-        "mr": 0.25,
-      }
-    }
-    textTransform="capitalize"
-    variant="button"
+  </p>
+  <span
+    className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
   >
     Routed Navbar
-  </div>
-  <div
-    color="dark"
-    ml="auto"
-    variant="body2"
+  </span>
+  <p
+    className="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
   >
-    <div>
-      MUI Icon
-    </div>
-  </div>
+    <span
+      aria-hidden={true}
+      className="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit css-x5zaln-MuiIcon-root"
+    />
+  </p>
 </div>
 `;
 
 exports[`DefaultNavbarDropdown renders without route 1`] = `
 <div
-  alignItems="baseline"
-  color="dark"
-  display="flex"
-  mx={1}
-  opacity={0.6}
-  p={1}
+  className="MuiBox-root css-111f5ru"
   routes={
     [
       {
@@ -94,29 +57,13 @@ exports[`DefaultNavbarDropdown renders without route 1`] = `
       },
     ]
   }
-  sx={
-    {
-      "cursor": "pointer",
-      "userSelect": "none",
-    }
-  }
 >
-  <div
-    color="inherit"
-    lineHeight={1}
-    sx={
-      {
-        "& *": {
-          "verticalAlign": "middle",
-        },
-        "alignSelf": "center",
-      }
-    }
-    variant="body2"
+  <p
+    className="MuiTypography-root MuiTypography-body2 css-incl6n-MuiTypography-root"
   >
     <svg
       aria-hidden={true}
-      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-eimhud-MuiSvgIcon-root"
       data-testid="FacebookIcon"
       focusable="false"
       viewBox="0 0 24 24"
@@ -125,30 +72,19 @@ exports[`DefaultNavbarDropdown renders without route 1`] = `
         d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"
       />
     </svg>
-  </div>
-  <div
-    color="dark"
-    fontWeight="regular"
-    sx={
-      {
-        "fontWeight": "100%",
-        "ml": 1,
-        "mr": 0.25,
-      }
-    }
-    textTransform="capitalize"
-    variant="button"
+  </p>
+  <span
+    className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
   >
     Not Routed Navbar
-  </div>
-  <div
-    color="dark"
-    ml="auto"
-    variant="body2"
+  </span>
+  <p
+    className="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
   >
-    <div>
-      MUI Icon
-    </div>
-  </div>
+    <span
+      aria-hidden={true}
+      className="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit css-x5zaln-MuiIcon-root"
+    />
+  </p>
 </div>
 `;
