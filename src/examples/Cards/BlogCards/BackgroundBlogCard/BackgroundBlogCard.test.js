@@ -27,7 +27,7 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("BackgroundBlogCard", () => {
-  it("renders", () => {
+  it("renders internal type", () => {
     const component = renderer.create(
       <ThemeProvider theme={theme}>
         <BackgroundBlogCard
@@ -35,6 +35,21 @@ describe("BackgroundBlogCard", () => {
           description="Queen of the skies"
           image="https://jooinn.com/images1280_/boeing-747.jpg"
           action={{ type: "internal", route: "/", label: "Read more..." }}
+        />
+      </ThemeProvider>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("renders external type", () => {
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <BackgroundBlogCard
+          title="Boeing 747"
+          description="Queen of the skies"
+          image="https://jooinn.com/images1280_/boeing-747.jpg"
+          action={{ type: "external", route: "/", label: "Read more..." }}
         />
       </ThemeProvider>
     );

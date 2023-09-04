@@ -1,6 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BackgroundBlogCard renders 1`] = `
+exports[`BackgroundBlogCard renders external type 1`] = `
+<div
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-tj95r-MuiPaper-root-MuiCard-root"
+>
+  <div
+    className="MuiBox-root css-hwgoop"
+  >
+    <div
+      className="MuiBox-root css-fyv4a6"
+    >
+      <h2
+        className="MuiTypography-root MuiTypography-h2 css-1qu2wyd-MuiTypography-root"
+      >
+        Boeing 747
+      </h2>
+      <p
+        className="MuiTypography-root MuiTypography-body2 css-1fvfs31-MuiTypography-root"
+      >
+        Queen of the skies
+      </p>
+      <a
+        className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone MuiTypography-root MuiTypography-body2 css-jxqcqk-MuiTypography-root-MuiLink-root-MuiTypography-root"
+        href="/"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        rel="noreferrer"
+        target="_blank"
+      >
+        Read more...
+        <span
+          aria-hidden={true}
+          className="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit css-fnit94-MuiIcon-root"
+        >
+          arrow_forward
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BackgroundBlogCard renders internal type 1`] = `
 <div
   className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-tj95r-MuiPaper-root-MuiCard-root"
 >
