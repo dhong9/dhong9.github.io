@@ -1,4 +1,41 @@
-function Twenty48_Util() {}
+function Twenty48_Util() {
+
+  // Helper function to spawn a random tile
+  const spawnTile = (board, rand) => {
+    // Decide what value tile should be
+    let n = 2;
+    if (rand) {
+      n = Math.random() * 100 < 80 ? 2 : 4;
+    }
+
+    // Find a random empty cell
+    let r;
+    let c;
+    do {
+      r = Math.floor(Math.random() * 4);
+      c = Math.floor(Math.random() * 4);
+    } while (board[r][c]);
+
+    // Return coordinate and tile value
+    return [r, c, n];
+  };
+
+  // Initialize 4x4 empty board
+  this.board = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ];
+
+  // Guarantee one '2' tile
+  const [r1, c1, n1] = spawnTile(this.board, false);
+  this.board[r1][c1] = n1;
+
+  // Other tile can be either '2' or '4'
+  const [r2, c2, n2] = spawnTile(this.board, true);
+  this.board[r2][c2] = n2;
+}
 
 /**
  * Copies 2D array by value into another 2D array
@@ -31,7 +68,7 @@ Twenty48_Util.prototype.rot90 = (board) => {
  * @returns board with tiles moved
  */
 Twenty48_Util.prototype.makeMove = (board, dir) => {
-  let updatedBoard = twenty48_util.copyBoard(board);
+  let updatedBoard = this.copyBoard(board);
 
   // Helper function to move tiles
   const move = (j) => {
@@ -49,7 +86,7 @@ Twenty48_Util.prototype.makeMove = (board, dir) => {
     }
 
     // Rotate
-    return twenty48_util.rot90(updatedBoard);
+    return this.rot90(updatedBoard);
   };
 
   for (let j = 0; j < 4; j += 1) {
