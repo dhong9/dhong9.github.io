@@ -1,6 +1,6 @@
 // React testing libraries
-import renderer from "react-test-renderer";
 import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -20,7 +20,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("DefaultNavbar", () => {
   it("renders with route", () => {
-    const component = renderer.create(
+    const { container } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbar
           routes={[
@@ -32,7 +32,6 @@ describe("DefaultNavbar", () => {
             },
             {
               label: "Doughnut",
-              route: "/rider",
               icon: <DonutSmallIcon />,
               name: "doughnut",
               collapse: [
@@ -44,12 +43,12 @@ describe("DefaultNavbar", () => {
         />
       </ThemeProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it("renders without route", () => {
-    const component = renderer.create(
+    const { container } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbar
           routes={[
@@ -61,7 +60,6 @@ describe("DefaultNavbar", () => {
             },
             {
               label: "Doughnut",
-              route: "/rider",
               icon: <DonutSmallIcon />,
               name: "doughnut",
               collapse: [
@@ -73,8 +71,8 @@ describe("DefaultNavbar", () => {
         />
       </ThemeProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it("expands with columns", () => {
@@ -136,7 +134,7 @@ describe("DefaultNavbar", () => {
     window.innerWidth = 500;
     fireEvent(window, new Event("resize"));
 
-    const component = renderer.create(
+    const { container } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbar
           routes={[
@@ -148,7 +146,6 @@ describe("DefaultNavbar", () => {
             },
             {
               label: "Doughnut",
-              route: "/rider",
               icon: <DonutSmallIcon />,
               name: "doughnut",
               collapse: [
@@ -160,7 +157,6 @@ describe("DefaultNavbar", () => {
         />
       </ThemeProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
