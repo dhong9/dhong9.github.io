@@ -119,22 +119,6 @@ function Twenty48() {
   };
 
   /**
-   * Rotates board 90 degrees counter clockwise
-   * @param {number[][]} board current game board
-   * @returns rotated board
-   */
-  const rot90 = (board) => {
-    const result = [];
-    for (let i = 0; i < 4; i += 1) {
-      result.push([]);
-      for (let j = 3; j >= 0; j -= 1) {
-        result[i][3 - j] = board[j][i];
-      }
-    }
-    return result;
-  };
-
-  /**
    * Moves tile in board all to one side
    * @param {number[][]} board current game board
    * @param {string} dir direction to move tiles in (L, U, R, D)
@@ -159,7 +143,7 @@ function Twenty48() {
       }
 
       // Rotate
-      return rot90(updatedBoard);
+      return twenty48_util.rot90(updatedBoard);
     };
 
     for (let j = 0; j < 4; j += 1) {
