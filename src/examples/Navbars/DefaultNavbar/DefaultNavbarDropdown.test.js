@@ -56,17 +56,21 @@ jest.mock("@mui/material/Link", () => {
   };
 });
 jest.mock("components/MKBox", () => {
-  const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <div>Mock Box</div>),
+    default: jest.fn().mockImplementation((props) => {
+      const { children } = props;
+      return <div {...props}>{children}</div>;
+    }),
   };
 });
 jest.mock("components/MKTypography", () => {
-  const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <div>Mock Typography</div>),
+    default: jest.fn().mockImplementation((props) => {
+      const { children } = props;
+      return <div {...props}>{children}</div>;
+    }),
   };
 });
 jest.mock("components/MKButton", () => {

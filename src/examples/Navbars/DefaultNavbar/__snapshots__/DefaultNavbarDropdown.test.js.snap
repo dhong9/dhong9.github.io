@@ -1,13 +1,154 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DefaultNavbarDropdown renders with route 1`] = `
-<div>
-  Mock Box
+<div
+  alignItems="baseline"
+  color="dark"
+  display="flex"
+  mx={1}
+  opacity={0.6}
+  p={1}
+  routes={
+    [
+      {
+        "icon": <Memo />,
+        "label": "Navbar",
+        "name": "Github",
+        "route": "/default",
+      },
+    ]
+  }
+  sx={
+    {
+      "cursor": "pointer",
+      "userSelect": "none",
+    }
+  }
+>
+  <div
+    color="inherit"
+    lineHeight={1}
+    sx={
+      {
+        "& *": {
+          "verticalAlign": "middle",
+        },
+        "alignSelf": "center",
+      }
+    }
+    variant="body2"
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      data-testid="FacebookIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"
+      />
+    </svg>
+  </div>
+  <div
+    color="dark"
+    fontWeight="regular"
+    sx={
+      {
+        "fontWeight": "100%",
+        "ml": 1,
+        "mr": 0.25,
+      }
+    }
+    textTransform="capitalize"
+    variant="button"
+  >
+    Routed Navbar
+  </div>
+  <div
+    color="dark"
+    ml="auto"
+    variant="body2"
+  >
+    <div>
+      MUI Icon
+    </div>
+  </div>
 </div>
 `;
 
 exports[`DefaultNavbarDropdown renders without route 1`] = `
-<div>
-  Mock Box
+<div
+  alignItems="baseline"
+  color="dark"
+  display="flex"
+  mx={1}
+  opacity={0.6}
+  p={1}
+  routes={
+    [
+      {
+        "icon": <Memo />,
+        "label": "Regular",
+        "name": "Github",
+      },
+    ]
+  }
+  sx={
+    {
+      "cursor": "pointer",
+      "userSelect": "none",
+    }
+  }
+>
+  <div
+    color="inherit"
+    lineHeight={1}
+    sx={
+      {
+        "& *": {
+          "verticalAlign": "middle",
+        },
+        "alignSelf": "center",
+      }
+    }
+    variant="body2"
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      data-testid="FacebookIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"
+      />
+    </svg>
+  </div>
+  <div
+    color="dark"
+    fontWeight="regular"
+    sx={
+      {
+        "fontWeight": "100%",
+        "ml": 1,
+        "mr": 0.25,
+      }
+    }
+    textTransform="capitalize"
+    variant="button"
+  >
+    Not Routed Navbar
+  </div>
+  <div
+    color="dark"
+    ml="auto"
+    variant="body2"
+  >
+    <div>
+      MUI Icon
+    </div>
+  </div>
 </div>
 `;
