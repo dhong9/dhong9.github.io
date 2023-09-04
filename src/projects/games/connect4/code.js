@@ -40,7 +40,7 @@ const copyBoard = board => board.map(row => [...row]);
 const dropPiece = (board, row, col, piece) => board[row][col] = piece;
 
 /**
- * Checks if column is cully occupied
+ * Checks if column is fully occupied
  * @param {number[][]} board current game board
  * @param {number} col column to check (0-6)
  * @returns true if column has an empty slot
