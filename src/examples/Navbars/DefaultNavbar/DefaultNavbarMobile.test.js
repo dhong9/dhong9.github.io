@@ -1,5 +1,6 @@
 // React testing libraries
-import renderer from "react-test-renderer";
+import React from "react";
+import { render, fireEvent } from "@testing-library/react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -19,7 +20,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("DefaultNavbarMobile", () => {
   it("renders with route", () => {
-    const component = renderer.create(
+    const { container } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbarMobile
           routes={[
@@ -50,12 +51,11 @@ describe("DefaultNavbarMobile", () => {
         />
       </ThemeProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it("renders without route", () => {
-    const component = renderer.create(
+    const { container } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbarMobile
           routes={[
@@ -86,7 +86,6 @@ describe("DefaultNavbarMobile", () => {
         />
       </ThemeProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
