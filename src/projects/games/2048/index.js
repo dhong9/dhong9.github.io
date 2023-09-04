@@ -12,7 +12,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 // 2048 code
-import Twenty48_Util from "projects/games/2048/Twenty48";
+import Twenty48_Util from "projects/games/2048/Twenty48_Util";
 import twenty48Code from "projects/games/2048/code";
 
 // p5
@@ -118,41 +118,6 @@ function Twenty48() {
     return board;
   };
 
-  /**
-   * Moves tile in board all to one side
-   * @param {number[][]} board current game board
-   * @param {string} dir direction to move tiles in (L, U, R, D)
-   * @returns board with tiles moved
-   */
-  const makeMove = (board, dir) => {
-    let updatedBoard = twenty48_util.copyBoard(board);
-
-    // Helper function to move tiles
-    const move = (j) => {
-      if ("LDRU"[j] === dir) {
-        updatedBoard = updatedBoard.map((row) =>
-          row.map(
-            (_, x) =>
-              +row
-                .filter((a) => a)
-                .join(" ")
-                .replace(/\b(\d+) \1\b/g, (a, b) => b * 2)
-                .split(/ /)[x] || 0
-          )
-        );
-      }
-
-      // Rotate
-      return twenty48_util.rot90(updatedBoard);
-    };
-
-    for (let j = 0; j < 4; j += 1) {
-      updatedBoard = move(j);
-    }
-
-    return updatedBoard;
-  };
-
   // Initialize game board
   let board = createBoard();
 
@@ -242,7 +207,7 @@ function Twenty48() {
     } else if (arrow === "ArrowRight") {
       dir = "D";
     }
-    board = makeMove(board, dir);
+    board = twenty48_util.makeMove(board, dir);
 
     // If tiles moved,
     // then spawn a new tile
