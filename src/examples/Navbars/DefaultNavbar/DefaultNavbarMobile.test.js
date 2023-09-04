@@ -1,6 +1,6 @@
 // React testing libraries
-import React from "react";
 import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -20,7 +20,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("DefaultNavbarMobile", () => {
   it("renders with route", () => {
-    const { container, getByText } = render(
+    const { queryByText } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbarMobile
           routes={[
@@ -33,7 +33,6 @@ describe("DefaultNavbarMobile", () => {
             },
             {
               label: "Doughnut",
-              route: "/rider",
               icon: <DonutSmallIcon />,
               name: "doughnut",
               description: "Deep fry me",
@@ -52,14 +51,19 @@ describe("DefaultNavbarMobile", () => {
       </ThemeProvider>
     );
 
+    // Everything starts collapsed
+    expect(queryByText("boston")).not.toBeInTheDocument();
+    expect(queryByText("brooklyn")).not.toBeInTheDocument();
+
     // Expand doughnut URL
-    const doughnut = getByText("doughnut");
+    const doughnut = queryByText("doughnut");
     fireEvent.click(doughnut);
-    expect(container).toMatchSnapshot();
+    expect(queryByText("boston")).toBeInTheDocument();
+    expect(queryByText("brooklyn")).toBeInTheDocument();
   });
 
   it("renders without route", () => {
-    const { container, getByText } = render(
+    const { queryByText } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbarMobile
           routes={[
@@ -72,7 +76,6 @@ describe("DefaultNavbarMobile", () => {
             },
             {
               label: "Doughnut",
-              route: "/rider",
               icon: <DonutSmallIcon />,
               name: "doughnut",
               description: "Eat me",
@@ -91,9 +94,13 @@ describe("DefaultNavbarMobile", () => {
       </ThemeProvider>
     );
 
+    expect(queryByText("boston")).not.toBeInTheDocument();
+    expect(queryByText("brooklyn")).not.toBeInTheDocument();
+
     // Expand doughnut URL
-    const doughnut = getByText("doughnut");
+    const doughnut = queryByText("doughnut");
     fireEvent.click(doughnut);
-    expect(container).toMatchSnapshot();
+    expect(queryByText("boston")).toBeInTheDocument();
+    expect(queryByText("brooklyn")).toBeInTheDocument();
   });
 });
