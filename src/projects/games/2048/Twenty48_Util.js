@@ -1,5 +1,4 @@
 function Twenty48_Util() {
-
   // Helper function to spawn a random tile
   const spawnTile = (board, rand) => {
     // Decide what value tile should be

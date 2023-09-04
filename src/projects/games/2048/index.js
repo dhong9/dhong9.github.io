@@ -67,59 +67,8 @@ function Twenty48() {
     });
   }, []);
 
-  /**
-   * Spawns a tile (2 or 4) on a random empty
-   * tile of the board
-   * @param {number[][]} board current game board
-   * @param {boolean} rand flag for randomly using a 2 or a 4
-   * @returns array with coordinate and tile value
-   */
-  const spawnTile = (board, rand) => {
-    // Decide what value tile should be
-    let n = 2;
-    if (rand) {
-      n = Math.random() * 100 < 80 ? 2 : 4;
-    }
-
-    // Find a random empty cell
-    let r;
-    let c;
-    do {
-      r = Math.floor(Math.random() * 4);
-      c = Math.floor(Math.random() * 4);
-    } while (board[r][c]);
-
-    // Return coordinate and tile value
-    return [r, c, n];
-  };
-
-  /**
-   * Initializes a game board with 2 randomly
-   * spawned tiles
-   * @returns initial 2048 game board
-   */
-  const createBoard = () => {
-    // Initialize 4x4 empty board
-    const board = [
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-    ];
-
-    // Guarantee one '2' tile
-    const [r1, c1, n1] = spawnTile(board, false);
-    board[r1][c1] = n1;
-
-    // Other tile can be either '2' or '4'
-    const [r2, c2, n2] = spawnTile(board, true);
-    board[r2][c2] = n2;
-
-    return board;
-  };
-
   // Initialize game board
-  let board = createBoard();
+  let board = twenty48_util.board;
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
@@ -213,7 +162,7 @@ function Twenty48() {
     // then spawn a new tile
     const tilesMoved = board.some((a, i) => a.some((c, j) => c - prevBoard[i][j]));
     if (tilesMoved) {
-      const [r, c, n] = spawnTile(board, true);
+      const [r, c, n] = twenty48_util.spawnTile(board, true);
       board[r][c] = n;
     }
   };
