@@ -20,7 +20,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("DefaultNavbarMobile", () => {
   it("renders with route", () => {
-    const { container } = render(
+    const { container, getByText } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbarMobile
           routes={[
@@ -51,11 +51,15 @@ describe("DefaultNavbarMobile", () => {
         />
       </ThemeProvider>
     );
+
+    // Expand doughnut URL
+    const doughnut = getByText("doughnut");
+    fireEvent.click(doughnut);
     expect(container).toMatchSnapshot();
   });
 
   it("renders without route", () => {
-    const { container } = render(
+    const { container, getByText } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbarMobile
           routes={[
@@ -86,6 +90,10 @@ describe("DefaultNavbarMobile", () => {
         />
       </ThemeProvider>
     );
+
+    // Expand doughnut URL
+    const doughnut = getByText("doughnut");
+    fireEvent.click(doughnut);
     expect(container).toMatchSnapshot();
   });
 });
