@@ -1468,7 +1468,7 @@ exports[`Connect4 adds a comment 1`] = `
                     >
                       43
                     </span>
-                     * Checks if column is cully occupied
+                     * Checks if column is fully occupied
 
                   </span>
                   <span
@@ -19865,7 +19865,7 @@ exports[`Connect4 renders without user 1`] = `
                     >
                       43
                     </span>
-                     * Checks if column is cully occupied
+                     * Checks if column is fully occupied
 
                   </span>
                   <span
@@ -36584,7 +36584,7 @@ exports[`Connect4 renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-3476"
+            id="rdw-wrapper-5360"
           >
             <div
               aria-hidden="false"
@@ -36970,15 +36970,15 @@ exports[`Connect4 renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="5d30b"
-                        data-offset-key="ei1i6-0-0"
+                        data-editor="929tv"
+                        data-offset-key="elvhm-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="ei1i6-0-0"
+                          data-offset-key="elvhm-0-0"
                         >
                           <span
-                            data-offset-key="ei1i6-0-0"
+                            data-offset-key="elvhm-0-0"
                           >
                             <br
                               data-text="true"

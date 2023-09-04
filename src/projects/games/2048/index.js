@@ -12,6 +12,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 // 2048 code
+import Twenty48_Util from "projects/games/2048/Twenty48";
 import twenty48Code from "projects/games/2048/code";
 
 // p5
@@ -27,6 +28,7 @@ import { getComments, addComment, sortComments } from "services/commentsService"
 import AuthContext from "context/AuthContext";
 
 function Twenty48() {
+  const twenty48_util = new Twenty48_Util();
   const editorRef = useRef();
   const id = 2;
 
@@ -117,14 +119,6 @@ function Twenty48() {
   };
 
   /**
-   * Copies 2D array by value into another 2D array
-   * @param {number[][]} board current game board
-   * represented by 2D array of numbers
-   * @returns deep copy of input board
-   */
-  const copyBoard = (board) => board.map((row) => [...row]);
-
-  /**
    * Rotates board 90 degrees counter clockwise
    * @param {number[][]} board current game board
    * @returns rotated board
@@ -147,7 +141,7 @@ function Twenty48() {
    * @returns board with tiles moved
    */
   const makeMove = (board, dir) => {
-    let updatedBoard = copyBoard(board);
+    let updatedBoard = twenty48_util.copyBoard(board);
 
     // Helper function to move tiles
     const move = (j) => {
@@ -250,7 +244,7 @@ function Twenty48() {
 
   const keyPressed = (p5, e) => {
     // Save previous board state
-    const prevBoard = copyBoard(board);
+    const prevBoard = twenty48_util.copyBoard(board);
 
     // Move tiles on board
     const arrow = e.key;
