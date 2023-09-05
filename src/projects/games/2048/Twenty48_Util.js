@@ -1,25 +1,5 @@
 class Twenty48_Util {
   constructor() {
-    // Helper function to spawn a random tile
-    const spawnTile = (board, rand) => {
-      // Decide what value tile should be
-      let n = 2;
-      if (rand) {
-        n = Math.random() * 100 < 80 ? 2 : 4;
-      }
-
-      // Find a random empty cell
-      let r;
-      let c;
-      do {
-        r = Math.floor(Math.random() * 4);
-        c = Math.floor(Math.random() * 4);
-      } while (board[r][c]);
-
-      // Return coordinate and tile value
-      return [r, c, n];
-    };
-
     // Initialize 4x4 empty board
     this.board = [
       [0, 0, 0, 0],
@@ -29,12 +9,30 @@ class Twenty48_Util {
     ];
 
     // Guarantee one '2' tile
-    const [r1, c1, n1] = spawnTile(this.board, false);
-    this.board[r1][c1] = n1;
+    this.spawnTile(this.board, false);
 
     // Other tile can be either '2' or '4'
-    const [r2, c2, n2] = spawnTile(this.board, true);
-    this.board[r2][c2] = n2;
+    this.spawnTile(this.board, true);
+  }
+
+  /**
+   * Spawns a tile (2 or 4) on a random empty
+   * tile of the board
+   * @param {number[][]} board current game board
+   * @param {boolean} rand flag for randomly using a 2 or a 4
+   */
+  spawnTile(board, rand) {
+    // Decide what value tile should be
+    const n = rand ? (Math.random() * 100 < 80 ? 2 : 4) : 2;
+
+    // Find a random empty cell
+    let r, c;
+    do {
+      r = (Math.random() * 4) | 0;
+      c = (Math.random() * 4) | 0;
+    } while (board[r][c]);
+
+    board[r][c] = n;
   }
 
   /**

@@ -36584,7 +36584,7 @@ exports[`Connect4 renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-8522"
+            id="rdw-wrapper-7637"
           >
             <div
               aria-hidden="false"
@@ -36970,15 +36970,15 @@ exports[`Connect4 renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="eb59n"
-                        data-offset-key="evk7r-0-0"
+                        data-editor="cr7ic"
+                        data-offset-key="6416h-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="evk7r-0-0"
+                          data-offset-key="6416h-0-0"
                         >
                           <span
-                            data-offset-key="evk7r-0-0"
+                            data-offset-key="6416h-0-0"
                           >
                             <br
                               data-text="true"

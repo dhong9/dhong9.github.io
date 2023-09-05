@@ -162,8 +162,7 @@ function Twenty48() {
     // then spawn a new tile
     const tilesMoved = board.some((a, i) => a.some((c, j) => c - prevBoard[i][j]));
     if (tilesMoved) {
-      const [r, c, n] = twenty48_util.spawnTile(board, true);
-      board[r][c] = n;
+      twenty48_util.spawnTile(board, true);
     }
   };
 
