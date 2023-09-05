@@ -54,7 +54,7 @@ class Connect4_Util {
 
     // Check each column
     for (let c = 0; c < COLS; c += 1) {
-      if (isValidLocation(board, c)) {
+      if (this.isValidLocation(board, c)) {
         validLocations.push(c);
       }
     }
@@ -80,7 +80,7 @@ class Connect4_Util {
 
     // No rows are open at this point
     return -1;
-  };
+  }
 
   /**
    * Checks board for a winner
@@ -142,7 +142,7 @@ class Connect4_Util {
 
     // No winner
     return 0;
-  };
+  }
 
   /**
    * Checks for a tie in a game board
@@ -177,7 +177,7 @@ class Connect4_Util {
       return -100; // Lose
     }
     return 0;
-  };
+  }
 
   /**
    *
@@ -207,7 +207,7 @@ class Connect4_Util {
           opp += board[r][c + i] === 1;
         }
 
-        score += calcWindow(count, empty, opp);
+        score += this.calcWindow(count, empty, opp);
       }
     }
 
@@ -223,7 +223,7 @@ class Connect4_Util {
           opp += board[r + i][c] === 1;
         }
 
-        score += calcWindow(count, empty, opp);
+        score += this.calcWindow(count, empty, opp);
       }
     }
 
@@ -239,7 +239,7 @@ class Connect4_Util {
           opp += board[r + i][c + i] === 1;
         }
 
-        score += calcWindow(count, empty, opp);
+        score += this.calcWindow(count, empty, opp);
       }
     }
 
@@ -255,12 +255,12 @@ class Connect4_Util {
           opp += board[r + 3 - i][c + i] === 1;
         }
 
-        score += calcWindow(count, empty, opp);
+        score += this.calcWindow(count, empty, opp);
       }
     }
 
     return score;
-  };
+  }
 
   /**
    * Applies minmax algorithm on current board state to calculate next move
@@ -272,8 +272,8 @@ class Connect4_Util {
    * @returns pair with move and score
    */
   minimax(board, depth = 4, alpha = -1 / 0, beta = 1 / 0, maximizingPlayer = true) {
-    const validLocations = getValidLocations(board);
-    const winner = winningMove(board);
+    const validLocations = this.getValidLocations(board);
+    const winner = this.winningMove(board);
     const isTerminalNode = winner || !validLocations.length;
 
     if (depth < 1 || isTerminalNode) {
@@ -287,7 +287,7 @@ class Connect4_Util {
           score = 0; // No winner
         }
       } else {
-        score = scorePosition(board, 2);
+        score = this.scorePosition(board, 2);
       }
       return [-1, score];
     }
@@ -297,10 +297,10 @@ class Connect4_Util {
       let column = validLocations[Math.floor(Math.random() * validLocations.length)];
       for (let i = 0; i < validLocations.length; i += 1) {
         const col = validLocations[i];
-        let bCopy = copyBoard(board);
-        const row = getNextOpenRow(bCopy, col);
-        bCopy = dropPiece(bCopy, row, col, 2);
-        const newScore = minimax(bCopy, depth - 1, alpha, beta, false)[1];
+        let bCopy = this.copyBoard(board);
+        const row = this.getNextOpenRow(bCopy, col);
+        bCopy = this.dropPiece(bCopy, row, col, 2);
+        const newScore = this.minimax(bCopy, depth - 1, alpha, beta, false)[1];
         if (newScore > value) {
           value = newScore;
           column = col;
@@ -317,10 +317,10 @@ class Connect4_Util {
     let column = validLocations[Math.floor(Math.random() * validLocations.length)];
     for (let i = 0; i < validLocations.length; i += 1) {
       const col = validLocations[i];
-      let bCopy = copyBoard(board);
-      const row = getNextOpenRow(bCopy, col);
-      bCopy = dropPiece(bCopy, row, col, 1);
-      const newScore = minimax(bCopy, depth - 1, alpha, beta, true)[1];
+      let bCopy = this.copyBoard(board);
+      const row = this.getNextOpenRow(bCopy, col);
+      bCopy = this.dropPiece(bCopy, row, col, 1);
+      const newScore = this.minimax(bCopy, depth - 1, alpha, beta, true)[1];
       if (newScore < value) {
         value = newScore;
         column = col;
@@ -331,8 +331,7 @@ class Connect4_Util {
       }
     }
     return [column, value];
-  };
-
+  }
 }
 
 export default Connect4_Util;

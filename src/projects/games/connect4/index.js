@@ -12,6 +12,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 // Connect 4 code
+import Connect4_Util from "projects/games/connect4/Connect4_Util";
 import connect4Code from "projects/games/connect4/code";
 
 // p5
@@ -27,6 +28,7 @@ import { getComments, addComment, sortComments } from "services/commentsService"
 import AuthContext from "context/AuthContext";
 
 function Connect4() {
+  const connect4_util = new Connect4_Util();
   const editorRef = useRef();
   const id = 1;
 
@@ -76,32 +78,12 @@ function Connect4() {
   // Functions to run game
 
   /**
-   * Initializes an empty 2D array of size ROWS x COLS
-   * @returns 2D array of zeros
-   */
-  const createBoard = () => [...Array(ROWS)].map(() => Array(COLS).fill(0));
-
-  /**
    * Copies 2D array by value into another 2D array
    * @param {number[][]} board current game board
    * represented by 2D array of numbers
    * @returns deep copy of input board
    */
   const copyBoard = (board) => board.map((row) => [...row]);
-
-  /**
-   * Sets board at given coordinate to player number
-   * @param {number[][]} board current game board
-   * @param {number} row board's row
-   * @param {number} col board's column
-   * @param {number} piece player number (1 or 2)
-   * @returns Copy of game board with updated coordinate
-   */
-  const dropPiece = (board, row, col, piece) => {
-    const bCopy = copyBoard(board);
-    bCopy[row][col] = piece;
-    return bCopy;
-  };
 
   /**
    * Checks if column is fully occupied
@@ -401,7 +383,7 @@ function Connect4() {
         const col = validLocations[i];
         let bCopy = copyBoard(board);
         const row = getNextOpenRow(bCopy, col);
-        bCopy = dropPiece(bCopy, row, col, 2);
+        bCopy = connect4_util.dropPiece(bCopy, row, col, 2);
         const newScore = minimax(bCopy, depth - 1, alpha, beta, false)[1];
         if (newScore > value) {
           value = newScore;
@@ -421,7 +403,7 @@ function Connect4() {
       const col = validLocations[i];
       let bCopy = copyBoard(board);
       const row = getNextOpenRow(bCopy, col);
-      bCopy = dropPiece(bCopy, row, col, 1);
+      bCopy = connect4_util.dropPiece(bCopy, row, col, 1);
       const newScore = minimax(bCopy, depth - 1, alpha, beta, true)[1];
       if (newScore < value) {
         value = newScore;
@@ -436,7 +418,7 @@ function Connect4() {
   };
 
   // Initialize game board
-  let board = createBoard();
+  let board = connect4_util.board;
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
@@ -507,7 +489,7 @@ function Connect4() {
         if (isValidLocation(board, col)) {
           // Place token in board
           const row = getNextOpenRow(board, col);
-          board = dropPiece(board, row, col, p);
+          board = connect4_util.dropPiece(board, row, col, p);
 
           // Check for a win
           win = winningMove(board);
@@ -520,7 +502,7 @@ function Connect4() {
         if (p > 1) {
           [col] = minimax(board, 4, -1 / 0, 1 / 0, true);
           const row = getNextOpenRow(board, col);
-          board = dropPiece(board, row, col, p);
+          board = connect4_util.dropPiece(board, row, col, p);
 
           // Check for a win
           win = winningMove(board);
