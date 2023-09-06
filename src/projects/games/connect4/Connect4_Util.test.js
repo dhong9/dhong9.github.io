@@ -25,4 +25,18 @@ describe("Connect4_Util", () => {
         const dropPieceBoard = game.dropPiece(testBoard, 3, 2, 1);
         expect(dropPieceBoard).toEqual(correctBoard);
     });
+
+    it("gets valid locations", () => {
+        const testBoard = [
+            [0, 2, 1, 0, 0, 1, 0],
+            [0, 1, 2, 0, 0, 1, 0],
+            [0, 2, 1, 0, 2, 1, 0],
+            [1, 1, 1, 0, 2, 1, 0],
+            [1, 2, 2, 1, 1, 1, 0],
+            [1, 2, 1, 2, 1, 2, 0]
+        ];
+        const validLocations = [0, 3, 4, 6];
+        const foundLocations = game.getValidLocations(testBoard);
+        expect(foundLocations).toEqual(validLocations);
+    });
 });
