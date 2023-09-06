@@ -183,4 +183,17 @@ describe("Connect4_Util", () => {
     expect(game2Play).toEqual([1, 1 / 0]);
     expect(game3Play).toEqual([1, 1 / 0]);
   });
+
+  it("calculates window", () => {
+    const window1 = game.calcWindow(4, 1, 2);
+    const window2 = game.calcWindow(3, 1, 2);
+    const window3 = game.calcWindow(2, 2, 2);
+    const window4 = game.calcWindow(1, 1, 3);
+    const window5 = game.calcWindow(2, 1, 4);
+    expect(window1).toEqual(100);
+    expect(window2).toEqual(5);
+    expect(window3).toEqual(2);
+    expect(window4).toEqual(-4);
+    expect(window5).toEqual(-100);
+  });
 });
