@@ -55,13 +55,15 @@ describe("CommentsService", () => {
     const comments = [
       {id: 1, body: "Hello, world!"},
       {id: 2, body: "Goodbye!"},
-      {id: 3, body: "It's nice to see you", parent: 1}
+      {id: 3, body: "It's nice to see you", parent: 1},
+      {id: 4, body: "Get out", parent: 2}
     ];
     const sortedComments = sortComments(comments);
     const expectedComments = [
       {id: 1, body: "Hello, world!", depth: 0},
       {id: 3, body: "It's nice to see you", parent: 1, depth: 1},
-      {id: 2, body: "Goodbye!", depth: 0}
+      {id: 2, body: "Goodbye!", depth: 0},
+      {id: 4, body: "Get out", parent: 2, depth: 1}
     ]
     expect(sortedComments).toEqual(expectedComments);
   });
