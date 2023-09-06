@@ -139,5 +139,18 @@ describe("Connect4_Util", () => {
         const win1 = game.checkTie(winner1);
         expect(win0).toBeTruthy();
         expect(win1).toBeFalsy();
-    })
+    });
+
+    it("calculates minimax", () => {
+        const tieBoard = [
+            [1, 2, 1, 2, 1, 2, 0],
+            [1, 2, 1, 1, 1, 2, 1],
+            [2, 1, 2, 2, 2, 1, 2],
+            [1, 2, 1, 1, 1, 2, 1],
+            [2, 1, 2, 2, 2, 1, 2],
+            [2, 2, 2, 1, 1, 1, 2]
+        ];
+        const tiePlay = game.minimax(tieBoard);
+        expect(tiePlay).toEqual([6, 0]);
+    });
 });

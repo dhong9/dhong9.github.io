@@ -369,7 +369,7 @@ function Connect4() {
 
       let col = Math.floor(((p5.mouseX - xOffset) / boardWidth) * COLS);
 
-      if (!win && !connect4_utilcheckTie(board)) {
+      if (!win && !connect4_util.checkTie(board)) {
         if (connect4_util.isValidLocation(board, col)) {
           // Place token in board
           const row = connect4_util.getNextOpenRow(board, col);
