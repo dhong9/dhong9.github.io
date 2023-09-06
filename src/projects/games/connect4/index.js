@@ -122,13 +122,6 @@ function Connect4() {
   };
 
   /**
-   * Checks for a tie in a game board
-   * @param {number[][]} board current board
-   * @returns true if board is filled and has no winner
-   */
-  const checkTie = (board) => board.every((row) => row.every((v) => v));
-
-  /**
    * Calculates weight distributions for different scenarios
    * @param {number} count how many same-colored piees in a row
    * @param {number} empty number of empty cells
@@ -352,7 +345,7 @@ function Connect4() {
       p5.textSize(p5.height / 8);
       p5.fill(0);
       p5.text(`${win < 2 ? "Black" : "Red"} Wins!`, p5.width / 2, p5.height / 2 + yOffset);
-    } else if (checkTie(board)) {
+    } else if (connect4_util.checkTie(board)) {
       p5.noFill();
       p5.fill(255, 255, 255, 100);
 
@@ -376,7 +369,7 @@ function Connect4() {
 
       let col = Math.floor(((p5.mouseX - xOffset) / boardWidth) * COLS);
 
-      if (!win && !checkTie(board)) {
+      if (!win && !connect4_utilcheckTie(board)) {
         if (connect4_util.isValidLocation(board, col)) {
           // Place token in board
           const row = connect4_util.getNextOpenRow(board, col);

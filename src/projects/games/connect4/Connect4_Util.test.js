@@ -98,13 +98,46 @@ describe("Connect4_Util", () => {
             [1, 1, 2, 2, 1, 0, 0],
             [1, 2, 1, 1, 2, 0, 0]
         ];
+        const winner4 = [
+            [2, 0, 0, 0, 0, 0, 0],
+            [1, 2, 0, 0, 1, 0, 0],
+            [1, 1, 2, 0, 1, 0, 0],
+            [2, 1, 1, 2, 1, 0, 0],
+            [1, 1, 2, 2, 1, 0, 0],
+            [1, 2, 1, 1, 2, 0, 0]
+        ];
         const win0 = game.winningMove(tieBoard);
         const win1 = game.winningMove(winner1);
         const win2 = game.winningMove(winner2);
         const win3 = game.winningMove(winner3);
+        const win4 = game.winningMove(winner4);
         expect(win0).toEqual(0);
         expect(win1).toEqual(1);
         expect(win2).toEqual(2);
         expect(win3).toEqual(2);
+        expect(win4).toEqual(1);
+    });
+
+    it("identifies ties", () => {
+        const tieBoard = [
+            [1, 2, 1, 2, 1, 2, 1],
+            [1, 2, 1, 1, 1, 2, 1],
+            [2, 1, 2, 2, 2, 1, 2],
+            [1, 2, 1, 1, 1, 2, 1],
+            [2, 1, 2, 2, 2, 1, 2],
+            [2, 2, 2, 1, 1, 1, 2]
+        ];
+        const winner1 = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 2, 2, 0, 0, 0],
+            [1, 1, 1, 1, 2, 0, 0]
+        ];
+        const win0 = game.checkTie(tieBoard);
+        const win1 = game.checkTie(winner1);
+        expect(win0).toBeTruthy();
+        expect(win1).toBeFalsy();
     })
 });
