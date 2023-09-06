@@ -122,68 +122,6 @@ function Connect4() {
   };
 
   /**
-   * Checks board for a winner
-   * @param {number[][]} board current game board
-   * @returns player number (1 or 2) if there is a winner, else 0
-   */
-  const winningMove = (board) => {
-    // Horizontals
-    for (let r = 0; r < ROWS; r += 1) {
-      for (let c = 0; c < COLS - 3; c += 1) {
-        let match = true;
-        for (let i = 0; i < 3; i += 1) {
-          match = match && board[r][c] && board[r][c + i] === board[r][c + i + 1];
-        }
-        if (match) {
-          return board[r][c];
-        }
-      }
-    }
-
-    // Verticals
-    for (let r = 0; r < ROWS - 3; r += 1) {
-      for (let c = 0; c < COLS; c += 1) {
-        let match = true;
-        for (let i = 0; i < 3; i += 1) {
-          match = match && board[r][c] && board[r + i][c] === board[r + i + 1][c];
-        }
-        if (match) {
-          return board[r][c];
-        }
-      }
-    }
-
-    // Top-left/Bottom-right diagonal
-    for (let r = 0; r < ROWS - 3; r += 1) {
-      for (let c = 0; c < COLS - 3; c += 1) {
-        let match = true;
-        for (let i = 0; i < 3; i += 1) {
-          match = match && board[r][c] && board[r + i][c + i] === board[r + i + 1][c + i + 1];
-        }
-        if (match) {
-          return board[r][c];
-        }
-      }
-    }
-
-    // Bottom-left/Top-right diagonal
-    for (let r = 3; r < ROWS; r += 1) {
-      for (let c = 0; c < COLS - 3; c += 1) {
-        let match = true;
-        for (let i = 0; i < 3; i += 1) {
-          match = match && board[r][c] && board[r - i][c + i] === board[r - i - 1][c + i + 1];
-        }
-        if (match) {
-          return board[r][c];
-        }
-      }
-    }
-
-    // No winner
-    return 0;
-  };
-
-  /**
    * Checks for a tie in a game board
    * @param {number[][]} board current board
    * @returns true if board is filled and has no winner
@@ -310,7 +248,7 @@ function Connect4() {
    */
   const minimax = (board, depth = 4, alpha = -1 / 0, beta = 1 / 0, maximizingPlayer = true) => {
     const validLocations = connect4_util.getValidLocations(board);
-    const winner = winningMove(board);
+    const winner = connect4_util.winningMove(board);
     const isTerminalNode = winner || !validLocations.length;
 
     if (depth < 1 || isTerminalNode) {
@@ -445,7 +383,7 @@ function Connect4() {
           board = connect4_util.dropPiece(board, row, col, p);
 
           // Check for a win
-          win = winningMove(board);
+          win = connect4_util.winningMove(board);
 
           // Change player
           p = p > 1 ? 1 : 2;
@@ -458,7 +396,7 @@ function Connect4() {
           board = connect4_util.dropPiece(board, row, col, p);
 
           // Check for a win
-          win = winningMove(board);
+          win = connect4_util.winningMove(board);
 
           // Change player
           p = p > 1 ? 1 : 2;

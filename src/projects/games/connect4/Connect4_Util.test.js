@@ -64,4 +64,37 @@ describe("Connect4_Util", () => {
         expect(col5).toEqual(-1);
         expect(col6).toEqual(5);
     });
+
+    it("identifies winning board", () => {
+        const tieBoard = [
+            [1, 2, 1, 2, 1, 2, 1],
+            [1, 2, 1, 1, 1, 2, 1],
+            [2, 1, 2, 2, 2, 1, 2],
+            [1, 2, 1, 1, 1, 2, 1],
+            [2, 1, 2, 2, 2, 1, 2],
+            [2, 2, 2, 1, 1, 1, 2]
+        ];
+        const winner1 = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 2, 2, 0, 0, 0],
+            [1, 1, 1, 1, 2, 0, 0]
+        ];
+        const winner2 = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 2, 0, 0],
+            [0, 0, 1, 2, 1, 0, 0],
+            [0, 0, 2, 2, 1, 0, 0],
+            [1, 2, 1, 1, 2, 0, 0]
+        ];
+        const win0 = game.winningMove(tieBoard);
+        const win1 = game.winningMove(winner1);
+        const win2 = game.winningMove(winner2);
+        expect(win0).toEqual(0);
+        expect(win1).toEqual(1);
+        expect(win2).toEqual(2);
+    })
 });
