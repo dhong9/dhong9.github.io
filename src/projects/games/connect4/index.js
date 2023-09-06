@@ -86,34 +86,6 @@ function Connect4() {
   const copyBoard = (board) => board.map((row) => [...row]);
 
   /**
-   * Checks if column is fully occupied
-   * @param {number[][]} board current game board
-   * @param {number} col column to check (0-6)
-   * @returns true if column has an empty slot
-   */
-  const isValidLocation = (board, col) => col >= 0 && col <= 6 && !board[0][col];
-
-  /**
-   * Gets all columns that can be played in
-   * @param {number[][]} board current game board
-   * @returns array of columns that are not full
-   */
-  const getValidLocations = (board) => {
-    // Column numbers that can be dropped in
-    const validLocations = [];
-
-    // Check each column
-    for (let c = 0; c < COLS; c += 1) {
-      if (isValidLocation(board, c)) {
-        validLocations.push(c);
-      }
-    }
-
-    // Return column numbers
-    return validLocations;
-  };
-
-  /**
    * Gets row number that piece lands on when dropped into
    * a column
    * @param {number[][]} board current game board
@@ -356,7 +328,7 @@ function Connect4() {
    * @returns pair with move and score
    */
   const minimax = (board, depth = 4, alpha = -1 / 0, beta = 1 / 0, maximizingPlayer = true) => {
-    const validLocations = getValidLocations(board);
+    const validLocations = connect4_util.getValidLocations(board);
     const winner = winningMove(board);
     const isTerminalNode = winner || !validLocations.length;
 
@@ -486,7 +458,7 @@ function Connect4() {
       let col = Math.floor(((p5.mouseX - xOffset) / boardWidth) * COLS);
 
       if (!win && !checkTie(board)) {
-        if (isValidLocation(board, col)) {
+        if (connect4_util.isValidLocation(board, col)) {
           // Place token in board
           const row = getNextOpenRow(board, col);
           board = connect4_util.dropPiece(board, row, col, p);
