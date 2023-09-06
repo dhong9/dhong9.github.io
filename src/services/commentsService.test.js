@@ -1,7 +1,7 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { getRequest, postRequest } from "services/baseService";
-import { getComments, addComment } from "services/commentsService";
+import { getComments, addComment, sortComments } from "services/commentsService";
 
 const mock = new MockAdapter(axios);
 
@@ -49,5 +49,20 @@ describe("CommentsService", () => {
       parent: null,
     };
     expect(postRequest).toHaveBeenCalledWith("comments", commentPost, success, console.error);
+  });
+
+  it("sorts comments", () => {
+    const comments = [
+      {id: 1, body: "Hello, world!"},
+      {id: 2, body: "Goodbye!"},
+      {id: 3, body: "It's nice to see you", parent: 1}
+    ];
+    const sortedComments = sortComments(comments);
+    const expectedComments = [
+      {id: 1, body: "Hello, world!", depth: 0},
+      {id: 3, body: "It's nice to see you", parent: 1, depth: 1},
+      {id: 2, body: "Goodbye!", depth: 0}
+    ]
+    expect(sortedComments).toEqual(expectedComments);
   });
 });
