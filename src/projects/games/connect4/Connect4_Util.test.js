@@ -39,4 +39,29 @@ describe("Connect4_Util", () => {
         const foundLocations = game.getValidLocations(testBoard);
         expect(foundLocations).toEqual(validLocations);
     });
+
+    it("gets next open row", () => {
+        const testBoard = [
+            [0, 2, 1, 0, 0, 1, 0],
+            [0, 1, 2, 0, 0, 1, 0],
+            [0, 2, 1, 0, 2, 1, 0],
+            [1, 1, 1, 0, 2, 1, 0],
+            [1, 2, 2, 1, 1, 1, 0],
+            [1, 2, 1, 2, 1, 2, 0]
+        ];
+        const col0 = game.getNextOpenRow(testBoard, 0);
+        const col1 = game.getNextOpenRow(testBoard, 1);
+        const col2 = game.getNextOpenRow(testBoard, 2);
+        const col3 = game.getNextOpenRow(testBoard, 3);
+        const col4 = game.getNextOpenRow(testBoard, 4);
+        const col5 = game.getNextOpenRow(testBoard, 5);
+        const col6 = game.getNextOpenRow(testBoard, 6);
+        expect(col0).toEqual(2);
+        expect(col1).toEqual(-1);
+        expect(col2).toEqual(-1);
+        expect(col3).toEqual(3);
+        expect(col4).toEqual(1);
+        expect(col5).toEqual(-1);
+        expect(col6).toEqual(5);
+    });
 });

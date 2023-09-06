@@ -25921,7 +25921,7 @@ exports[`Othello renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-7539"
+            id="rdw-wrapper-9789"
           >
             <div
               aria-hidden="false"
@@ -26307,15 +26307,15 @@ exports[`Othello renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="2kmt6"
-                        data-offset-key="dl5kp-0-0"
+                        data-editor="3dpr"
+                        data-offset-key="4m915-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="dl5kp-0-0"
+                          data-offset-key="4m915-0-0"
                         >
                           <span
-                            data-offset-key="dl5kp-0-0"
+                            data-offset-key="4m915-0-0"
                           >
                             <br
                               data-text="true"

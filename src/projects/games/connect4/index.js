@@ -86,25 +86,6 @@ function Connect4() {
   const copyBoard = (board) => board.map((row) => [...row]);
 
   /**
-   * Gets row number that piece lands on when dropped into
-   * a column
-   * @param {number[][]} board current game board
-   * @param {number} col column number to check
-   * @returns first valid row number if one exists, else -1
-   */
-  const getNextOpenRow = (board, col) => {
-    // Start from the bottommost row
-    for (let r = ROWS - 1; r >= 0; r -= 1) {
-      if (!board[r][col]) {
-        return r;
-      }
-    }
-
-    // No rows are open at this point
-    return -1;
-  };
-
-  /**
    * Draws player tokens on board
    * @param {p5Object} p5 p5.js library
    * @param {number[][]} board current game board
@@ -354,7 +335,7 @@ function Connect4() {
       for (let i = 0; i < validLocations.length; i += 1) {
         const col = validLocations[i];
         let bCopy = copyBoard(board);
-        const row = getNextOpenRow(bCopy, col);
+        const row = connect4_util.getNextOpenRow(bCopy, col);
         bCopy = connect4_util.dropPiece(bCopy, row, col, 2);
         const newScore = minimax(bCopy, depth - 1, alpha, beta, false)[1];
         if (newScore > value) {
@@ -374,7 +355,7 @@ function Connect4() {
     for (let i = 0; i < validLocations.length; i += 1) {
       const col = validLocations[i];
       let bCopy = copyBoard(board);
-      const row = getNextOpenRow(bCopy, col);
+      const row = connect4_util.getNextOpenRow(bCopy, col);
       bCopy = connect4_util.dropPiece(bCopy, row, col, 1);
       const newScore = minimax(bCopy, depth - 1, alpha, beta, true)[1];
       if (newScore < value) {
@@ -460,7 +441,7 @@ function Connect4() {
       if (!win && !checkTie(board)) {
         if (connect4_util.isValidLocation(board, col)) {
           // Place token in board
-          const row = getNextOpenRow(board, col);
+          const row = connect4_util.getNextOpenRow(board, col);
           board = connect4_util.dropPiece(board, row, col, p);
 
           // Check for a win
@@ -473,7 +454,7 @@ function Connect4() {
         // Computer move
         if (p > 1) {
           [col] = minimax(board, 4, -1 / 0, 1 / 0, true);
-          const row = getNextOpenRow(board, col);
+          const row = connect4_util.getNextOpenRow(board, col);
           board = connect4_util.dropPiece(board, row, col, p);
 
           // Check for a win
