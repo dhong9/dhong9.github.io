@@ -78,14 +78,6 @@ function Connect4() {
   // Functions to run game
 
   /**
-   * Copies 2D array by value into another 2D array
-   * @param {number[][]} board current game board
-   * represented by 2D array of numbers
-   * @returns deep copy of input board
-   */
-  const copyBoard = (board) => board.map((row) => [...row]);
-
-  /**
    * Draws player tokens on board
    * @param {p5Object} p5 p5.js library
    * @param {number[][]} board current game board
@@ -119,186 +111,6 @@ function Connect4() {
         p5.ellipse(c * w + w / 2 + xOffset, r * w + w / 2 + w + yOffset, 0.8 * w);
       }
     }
-  };
-
-  /**
-   * Calculates weight distributions for different scenarios
-   * @param {number} count how many same-colored piees in a row
-   * @param {number} empty number of empty cells
-   * @param {number} opp number of opponent's piece
-   * @returns point value of current scenario within the board
-   */
-  const calcWindow = (count, empty, opp) => {
-    if (count === 4) {
-      return 100; // Win
-    }
-    if (count === 3 && empty === 1) {
-      return 5; // One away from winning
-    }
-    if (count === 2 && empty === 2) {
-      return 2; // 2 moves from winning
-    }
-    if (opp === 3 && empty === 1) {
-      return -4; // Opponent is one from winning
-    }
-    if (opp === 4) {
-      return -100; // Lose
-    }
-    return 0;
-  };
-
-  /**
-   *
-   * @param {number[][]} board current game board
-   * @param {number} pNum player number (1 or 2)
-   * @returns score of board as a whole
-   */
-  const scorePosition = (board, pNum) => {
-    let score = 0;
-
-    // Center preference
-    let centerCount = 0;
-    for (let r = 0; r < ROWS; r += 1) {
-      centerCount += board[r][Math.floor(COLS / 2)] === pNum;
-    }
-    score += centerCount * 3;
-
-    // Horizontal
-    for (let r = 0; r < ROWS; r += 1) {
-      for (let c = 0; c < COLS - 3; c += 1) {
-        let count = 0;
-        let empty = 0;
-        let opp = 0;
-        for (let i = 0; i < 4; i += 1) {
-          count += board[r][c + i] === pNum;
-          empty += !board[r][c + i];
-          opp += board[r][c + i] === 1;
-        }
-
-        score += calcWindow(count, empty, opp);
-      }
-    }
-
-    // Vertical
-    for (let c = 0; c < COLS; c += 1) {
-      for (let r = 0; r < ROWS - 3; r += 1) {
-        let count = 0;
-        let empty = 0;
-        let opp = 0;
-        for (let i = 0; i < 4; i += 1) {
-          count += board[r + i][c] === pNum;
-          empty += !board[r + i][c];
-          opp += board[r + i][c] === 1;
-        }
-
-        score += calcWindow(count, empty, opp);
-      }
-    }
-
-    // Positive-sloped diagonal
-    for (let r = 0; r < 3; r += 1) {
-      for (let c = 0; c < 4; c += 1) {
-        let count = 0;
-        let empty = 0;
-        let opp = 0;
-        for (let i = 0; i < 4; i += 1) {
-          count += board[r + i][c + i] === pNum;
-          empty += !board[r + i][c + i];
-          opp += board[r + i][c + i] === 1;
-        }
-
-        score += calcWindow(count, empty, opp);
-      }
-    }
-
-    // Negative-sloped diagonal
-    for (let r = 0; r < 3; r += 1) {
-      for (let c = 0; c < 4; c += 1) {
-        let count = 0;
-        let empty = 0;
-        let opp = 0;
-        for (let i = 0; i < 4; i += 1) {
-          count += board[r + 3 - i][c + i] === pNum;
-          empty += !board[r + 3 - i][c + i];
-          opp += board[r + 3 - i][c + i] === 1;
-        }
-
-        score += calcWindow(count, empty, opp);
-      }
-    }
-
-    return score;
-  };
-
-  /**
-   * Applies minmax algorithm on current board state to calculate next move
-   * @param {number[][]} board current game board
-   * @param {number} depth number of steps to calculate forward
-   * @param {number} alpha
-   * @param {number} beta
-   * @param {number} maximizingPlayer playing as (1 or 2)
-   * @returns pair with move and score
-   */
-  const minimax = (board, depth = 4, alpha = -1 / 0, beta = 1 / 0, maximizingPlayer = true) => {
-    const validLocations = connect4_util.getValidLocations(board);
-    const winner = connect4_util.winningMove(board);
-    const isTerminalNode = winner || !validLocations.length;
-
-    if (depth < 1 || isTerminalNode) {
-      let score;
-      if (isTerminalNode) {
-        if (winner > 1) {
-          score = 1 / 0; // Winner is computer
-        } else if (winner) {
-          score = -1 / 0; // Winner is player
-        } else {
-          score = 0; // No winner
-        }
-      } else {
-        score = scorePosition(board, 2);
-      }
-      return [-1, score];
-    }
-
-    if (maximizingPlayer) {
-      let value = -1 / 0;
-      let column = validLocations[Math.floor(Math.random() * validLocations.length)];
-      for (let i = 0; i < validLocations.length; i += 1) {
-        const col = validLocations[i];
-        let bCopy = copyBoard(board);
-        const row = connect4_util.getNextOpenRow(bCopy, col);
-        bCopy = connect4_util.dropPiece(bCopy, row, col, 2);
-        const newScore = minimax(bCopy, depth - 1, alpha, beta, false)[1];
-        if (newScore > value) {
-          value = newScore;
-          column = col;
-        }
-        const a = Math.max(alpha, value);
-        if (a >= beta) {
-          break;
-        }
-      }
-      return [column, value];
-    }
-
-    let value = 1 / 0;
-    let column = validLocations[Math.floor(Math.random() * validLocations.length)];
-    for (let i = 0; i < validLocations.length; i += 1) {
-      const col = validLocations[i];
-      let bCopy = copyBoard(board);
-      const row = connect4_util.getNextOpenRow(bCopy, col);
-      bCopy = connect4_util.dropPiece(bCopy, row, col, 1);
-      const newScore = minimax(bCopy, depth - 1, alpha, beta, true)[1];
-      if (newScore < value) {
-        value = newScore;
-        column = col;
-      }
-      const b = Math.min(beta, value);
-      if (alpha >= b) {
-        break;
-      }
-    }
-    return [column, value];
   };
 
   // Initialize game board
@@ -384,7 +196,7 @@ function Connect4() {
 
         // Computer move
         if (p > 1) {
-          [col] = minimax(board, 4, -1 / 0, 1 / 0, true);
+          [col] = connect4_util.minimax(board, 4, -1 / 0, 1 / 0, true);
           const row = connect4_util.getNextOpenRow(board, col);
           board = connect4_util.dropPiece(board, row, col, p);
 
