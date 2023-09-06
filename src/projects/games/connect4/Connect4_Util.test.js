@@ -90,11 +90,21 @@ describe("Connect4_Util", () => {
             [0, 0, 2, 2, 1, 0, 0],
             [1, 2, 1, 1, 2, 0, 0]
         ];
+        const winner3 = [
+            [2, 0, 0, 0, 0, 0, 0],
+            [1, 2, 0, 0, 0, 0, 0],
+            [1, 1, 2, 0, 1, 0, 0],
+            [2, 1, 1, 2, 1, 0, 0],
+            [1, 1, 2, 2, 1, 0, 0],
+            [1, 2, 1, 1, 2, 0, 0]
+        ];
         const win0 = game.winningMove(tieBoard);
         const win1 = game.winningMove(winner1);
         const win2 = game.winningMove(winner2);
+        const win3 = game.winningMove(winner3);
         expect(win0).toEqual(0);
         expect(win1).toEqual(1);
         expect(win2).toEqual(2);
+        expect(win3).toEqual(2);
     })
 });
