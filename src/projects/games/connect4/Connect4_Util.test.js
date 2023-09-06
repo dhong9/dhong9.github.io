@@ -150,7 +150,7 @@ describe("Connect4_Util", () => {
       [2, 1, 2, 2, 2, 1, 2],
       [2, 2, 2, 1, 1, 1, 2],
     ];
-    const winner1 = [
+    const game1 = [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
@@ -158,9 +158,29 @@ describe("Connect4_Util", () => {
       [0, 0, 2, 2, 0, 0, 0],
       [0, 0, 1, 1, 0, 0, 0],
     ];
+    const game2 = [
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 1, 0, 0, 0, 0],
+      [0, 0, 2, 2, 2, 0, 0],
+      [0, 1, 1, 1, 2, 0, 0],
+    ];
+    const game3 = [
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 1, 0, 0, 0, 0],
+      [0, 0, 2, 2, 2, 1, 0],
+      [2, 1, 1, 1, 2, 1, 0],
+    ];
     const tiePlay = game.minimax(tieBoard);
-    const winner1Play = game.minimax(winner1);
+    const game1Play = game.minimax(game1);
+    const game2Play = game.minimax(game2);
+    const game3Play = game.minimax(game3);
     expect(tiePlay).toEqual([6, 0]);
-    expect(winner1Play).toEqual([1, 7]);
+    expect(game1Play).toEqual([1, 7]);
+    expect(game2Play).toEqual([1, 1 / 0]);
+    expect(game3Play).toEqual([1, 1 / 0]);
   });
 });
