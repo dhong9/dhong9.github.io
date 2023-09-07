@@ -61,6 +61,86 @@ class Othello_Util {
     }
     return board;
   }
+
+  /**
+   * Checks a direction from a cell to see if we can make a move
+   * @param {number[][]} board current game board
+   * @param {number} r row
+   * @param {number} c column
+   * @param {number} deltaRow row direction
+   * @param {number} deltaCol column direction
+   * @param {number} myPiece the piece being played
+   * @param {number} opponentPiece the piece opposite to what's being played
+   * @returns true if piece can be flipped at coordinate
+   */
+  checkFlip(board, r, c, deltaRow, deltaCol, myPiece, opponentPiece) {
+    let row = r;
+    let col = c;
+
+    if (this.inBounds(row, col) && board[row][col] === opponentPiece) {
+      while (this.inBounds(row + deltaRow, col + deltaCol)) {
+        row += deltaRow;
+        col += deltaCol;
+        if (!board[row][col]) {
+          // not consecutive
+          return false;
+        }
+        if (board[row][col] === myPiece) {
+          // At least one piece we can flip
+          return true;
+        }
+        // It is an opponent piece, just keep scanning in our direction
+      }
+    }
+    return false; // Either no consecutive opponent pieces or hit the edge
+  };
+
+  /**
+   * Checks if piece can be placed at specified coordinate
+   * @param {number[][]} board current game board
+   * @param {number} r row
+   * @param {number} c column
+   * @param {number} piece the piece being played
+   * @returns true if move is valid
+   */
+  validMove(board, r, c, piece) {
+    // Check that the coordinates are empty
+    if (!this.inBounds(r, c) || board[r][c]) {
+      return false;
+    }
+
+    // Figure out the character of the opponent's piece
+    let opponent = 2;
+    if (piece === 2) {
+      opponent = 1;
+    }
+
+    // If we can flip in any direction, it is valid
+    return directions.some(([deltaRow, deltaCol]) =>
+      this.checkFlip(board, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent)
+    );
+  };
+
+  /**
+   * Gets list of tiles that can be played
+   * @param {number[][]} board current game board
+   * @param {number} the piece being played
+   * @returns list of coordinates that can be played
+   */
+  getMoveList(board, piece) {
+    const moves = [];
+
+    // Check each square of the board and if we can move there, remember the coords
+    for (let r = 0; r < N; r += 1) {
+      for (let c = 0; c < N; c += 1) {
+        if (validMove(board, r, c, piece)) {
+          moves.push([r, c]);
+        }
+      }
+    }
+
+    return moves;
+  };
 }
 
 export default Othello_Util;

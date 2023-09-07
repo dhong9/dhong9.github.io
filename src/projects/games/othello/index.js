@@ -85,86 +85,6 @@ function Othello() {
   // Functions to run game
 
   /**
-   * Checks a direction from a cell to see if we can make a move
-   * @param {number[][]} board current game board
-   * @param {number} r row
-   * @param {number} c column
-   * @param {number} deltaRow row direction
-   * @param {number} deltaCol column direction
-   * @param {number} myPiece the piece being played
-   * @param {number} opponentPiece the piece opposite to what's being played
-   * @returns true if piece can be flipped at coordinate
-   */
-  const checkFlip = (board, r, c, deltaRow, deltaCol, myPiece, opponentPiece) => {
-    let row = r;
-    let col = c;
-
-    if (othello_util.inBounds(row, col) && board[row][col] === opponentPiece) {
-      while (othello_util.inBounds(row + deltaRow, col + deltaCol)) {
-        row += deltaRow;
-        col += deltaCol;
-        if (!board[row][col]) {
-          // not consecutive
-          return false;
-        }
-        if (board[row][col] === myPiece) {
-          // At least one piece we can flip
-          return true;
-        }
-        // It is an opponent piece, just keep scanning in our direction
-      }
-    }
-    return false; // Either no consecutive opponent pieces or hit the edge
-  };
-
-  /**
-   * Checks if piece can be placed at specified coordinate
-   * @param {number[][]} board current game board
-   * @param {number} r row
-   * @param {number} c column
-   * @param {number} piece the piece being played
-   * @returns true if move is valid
-   */
-  const validMove = (board, r, c, piece) => {
-    // Check that the coordinates are empty
-    if (!othello_util.inBounds(r, c) || board[r][c]) {
-      return false;
-    }
-
-    // Figure out the character of the opponent's piece
-    let opponent = 2;
-    if (piece === 2) {
-      opponent = 1;
-    }
-
-    // If we can flip in any direction, it is valid
-    return directions.some(([deltaRow, deltaCol]) =>
-      checkFlip(board, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent)
-    );
-  };
-
-  /**
-   * Gets list of tiles that can be played
-   * @param {number[][]} board current game board
-   * @param {number} the piece being played
-   * @returns list of coordinates that can be played
-   */
-  const getMoveList = (board, piece) => {
-    const moves = [];
-
-    // Check each square of the board and if we can move there, remember the coords
-    for (let r = 0; r < N; r += 1) {
-      for (let c = 0; c < N; c += 1) {
-        if (validMove(board, r, c, piece)) {
-          moves.push([r, c]);
-        }
-      }
-    }
-
-    return moves;
-  };
-
-  /**
    * Place a piece at specified coordinate
    * @param {number[][]} board current game board
    * @param {number} r row
@@ -187,8 +107,26 @@ function Othello() {
       const [deltaRow, deltaCol] = directions[i];
       // If pieces can be flipped in that direction,
       // then flip all valid pieces
-      if (checkFlip(bCopy, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent)) {
-        bCopy = othello_util.flipPieces(bCopy, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent);
+      if (
+        othello_util.checkFlip(
+          bCopy,
+          r + deltaRow,
+          c + deltaCol,
+          deltaRow,
+          deltaCol,
+          piece,
+          opponent
+        )
+      ) {
+        bCopy = othello_util.flipPieces(
+          bCopy,
+          r + deltaRow,
+          c + deltaCol,
+          deltaRow,
+          deltaCol,
+          piece,
+          opponent
+        );
       }
     }
 
@@ -225,7 +163,8 @@ function Othello() {
    * @param {number[][]} board current game board
    * @returns true if both players are out of moves
    */
-  const gameOver = (board) => !getMoveList(board, 1)[0] && !getMoveList(board, 2)[0];
+  const gameOver = (board) =>
+    !othelloCode.getMoveList(board, 1)[0] && !othelloCode.getMoveList(board, 2)[0];
 
   const minimaxValue = (board, originalTurn, currentTurn, searchPly) => {
     if (searchPly === 5 || gameOver(board)) {
@@ -238,7 +177,7 @@ function Othello() {
       opponent = 1;
     }
 
-    const moves = getMoveList(board, currentTurn);
+    const moves = othelloCode.getMoveList(board, currentTurn);
 
     if (!moves[0]) {
       // if no moves skip to next player's turn
@@ -276,7 +215,7 @@ function Othello() {
       opponent = 1;
     }
 
-    const moves = getMoveList(board, whoseTurn);
+    const moves = othelloCode.getMoveList(board, whoseTurn);
 
     // If there are no moves, return -1
     if (!moves[0]) {
@@ -306,7 +245,7 @@ function Othello() {
 
   // Initialize game board
   let board = othello_util.board;
-  let moves = getMoveList(board, curPlayer);
+  let moves = othelloCode.getMoveList(board, curPlayer);
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
@@ -374,7 +313,7 @@ function Othello() {
 
       const c = Math.floor(((p5.mouseX - xOffset) / boardWidth) * N);
       const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
-      if (validMove(board, r, c, curPlayer)) {
+      if (othello_util.validMove(board, r, c, curPlayer)) {
         board = makeMove(board, r, c, curPlayer);
         if (curPlayer === 1) {
           curPlayer = 2;
@@ -386,7 +325,7 @@ function Othello() {
         } else {
           curPlayer = 1;
         }
-        moves = getMoveList(board, curPlayer);
+        moves = othello_util.getMoveList(board, curPlayer);
       }
     }
   };
