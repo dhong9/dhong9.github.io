@@ -88,5 +88,19 @@ describe("Othello_Util", () => {
     const expectedMove = [2, 3];
     const calcMove = game.minimaxDecision(board, 2);
     expect(calcMove).toEqual(expectedMove);
+
+    const tieBoard = [
+      [2, 2, 2, 2, 2, 1, 2, 1],
+      [1, 2, 2, 1, 1, 1, 2, 1],
+      [2, 2, 2, 2, 2, 2, 2, 1],
+      [2, 2, 2, 2, 2, 2, 2, 1],
+      [1, 2, 2, 1, 2, 2, 2, 1],
+      [1, 1, 2, 1, 1, 2, 2, 1],
+      [1, 1, 2, 2, 1, 1, 2, 1],
+      [1, 1, 1, 1, 1, 1, 1, 0],
+    ];
+    const expectedTieMove = [-1, -1];
+    const calcTieMove = game.minimaxDecision(tieBoard, 2);
+    expect(calcTieMove).toEqual(expectedTieMove);
   });
 });
