@@ -73,4 +73,20 @@ describe("Othello_Util", () => {
     const moveList = game.getMoveList(board, 2);
     expect(expectedMoveList).toEqual(moveList);
   });
+
+  it("makes minimax decisions", () => {
+    const board = [
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 1, 2, 0, 0, 0],
+      [0, 0, 0, 2, 1, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+    ];
+    const expectedMove = [2, 3];
+    const calcMove = game.minimaxDecision(board, 2);
+    expect(calcMove).toEqual(expectedMove);
+  });
 });

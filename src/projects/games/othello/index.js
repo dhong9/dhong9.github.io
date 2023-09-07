@@ -74,83 +74,6 @@ function Othello() {
 
   // Functions to run game
 
-  const minimaxValue = (board, originalTurn, currentTurn, searchPly) => {
-    if (searchPly === 5 || gameOver(board)) {
-      // Change to desired ply lookahead
-      return heuristic(board, originalTurn);
-    }
-
-    let opponent = 2;
-    if (currentTurn === 2) {
-      opponent = 1;
-    }
-
-    const moves = othelloCode.getMoveList(board, currentTurn);
-
-    if (!moves[0]) {
-      // if no moves skip to next player's turn
-      return minimaxValue(board, originalTurn, opponent, searchPly + 1);
-    }
-
-    // Remember the best move
-    let bestMoveVal = -99999; // for finding max
-    if (originalTurn !== currentTurn) {
-      bestMoveVal = 99999; // for finding min
-    }
-    // Try out every single move
-    for (let i = 0; i < moves.length; i += 1) {
-      const [moveRow, moveCol] = moves[i];
-      // Apply the move to a new board
-      let tempBoard = othello_util.copyBoard(board);
-      tempBoard = makeMove(tempBoard, moveRow, moveCol, currentTurn);
-      // Recursive call
-      const val = minimaxValue(tempBoard, originalTurn, opponent, searchPly + 1);
-      // Remember best move
-      if (originalTurn === currentTurn && val > bestMoveVal) {
-        // Remember max if it's the originator's turn
-        bestMoveVal = val;
-      } else if (val < bestMoveVal) {
-        // Remember min if it's opponent turn
-        bestMoveVal = val;
-      }
-    }
-    return bestMoveVal;
-  };
-
-  const minimaxDecision = (board, whoseTurn) => {
-    let opponent = 2;
-    if (whoseTurn === 2) {
-      opponent = 1;
-    }
-
-    const moves = othelloCode.getMoveList(board, whoseTurn);
-
-    // If there are no moves, return -1
-    if (!moves[0]) {
-      return [-1, -1];
-    }
-
-    let bestMoveVal = -99999;
-    let [bestX, bestY] = moves[0];
-
-    // Try out every move
-    for (let i = 0; i < moves.length; i += 1) {
-      const [moveRow, moveCol] = moves[i];
-      let tempBoard = othello_util.copyBoard(board);
-      tempBoard = makeMove(tempBoard, moveRow, moveCol, whoseTurn);
-      // Recursive call, initial search ply = 1
-      const val = minimaxValue(tempBoard, whoseTurn, opponent, 1);
-      // Remember best move
-      if (val > bestMoveVal) {
-        bestMoveVal = val;
-        bestX = moveRow;
-        bestY = moveCol;
-      }
-    }
-
-    return [bestX, bestY];
-  };
-
   // Initialize game board
   let board = othello_util.board;
   let moves = othello_util.getMoveList(board, curPlayer);
@@ -222,12 +145,12 @@ function Othello() {
       const c = Math.floor(((p5.mouseX - xOffset) / boardWidth) * N);
       const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
       if (othello_util.validMove(board, r, c, curPlayer)) {
-        board = makeMove(board, r, c, curPlayer);
+        board = othello_util.makeMove(board, r, c, curPlayer);
         if (curPlayer === 1) {
           curPlayer = 2;
-          const computerMove = minimaxDecision(board, curPlayer);
+          const computerMove = othello_util.minimaxDecision(board, curPlayer);
           if (computerMove[0] !== -1) {
-            board = makeMove(board, computerMove[0], computerMove[1], curPlayer);
+            board = othello_util.makeMove(board, computerMove[0], computerMove[1], curPlayer);
             curPlayer = 1;
           }
         } else {

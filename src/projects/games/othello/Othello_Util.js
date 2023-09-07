@@ -175,17 +175,7 @@ class Othello_Util {
       const [deltaRow, deltaCol] = directions[i];
       // If pieces can be flipped in that direction,
       // then flip all valid pieces
-      if (
-        this.checkFlip(
-          bCopy,
-          r + deltaRow,
-          c + deltaCol,
-          deltaRow,
-          deltaCol,
-          piece,
-          opponent
-        )
-      ) {
+      if (this.checkFlip(bCopy, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent)) {
         bCopy = this.flipPieces(
           bCopy,
           r + deltaRow,
@@ -234,6 +224,83 @@ class Othello_Util {
    */
   gameOver(board) {
     return !this.getMoveList(board, 1)[0] && !this.getMoveList(board, 2)[0];
+  }
+
+  minimaxValue(board, originalTurn, currentTurn, searchPly) {
+    if (searchPly === 5 || this.gameOver(board)) {
+      // Change to desired ply lookahead
+      return this.heuristic(board, originalTurn);
+    }
+
+    let opponent = 2;
+    if (currentTurn === 2) {
+      opponent = 1;
+    }
+
+    const moves = this.getMoveList(board, currentTurn);
+
+    if (!moves[0]) {
+      // if no moves skip to next player's turn
+      return this.minimaxValue(board, originalTurn, opponent, searchPly + 1);
+    }
+
+    // Remember the best move
+    let bestMoveVal = -99999; // for finding max
+    if (originalTurn !== currentTurn) {
+      bestMoveVal = 99999; // for finding min
+    }
+    // Try out every single move
+    for (let i = 0; i < moves.length; i += 1) {
+      const [moveRow, moveCol] = moves[i];
+      // Apply the move to a new board
+      let tempBoard = this.copyBoard(board);
+      tempBoard = this.makeMove(tempBoard, moveRow, moveCol, currentTurn);
+      // Recursive call
+      const val = this.minimaxValue(tempBoard, originalTurn, opponent, searchPly + 1);
+      // Remember best move
+      if (originalTurn === currentTurn && val > bestMoveVal) {
+        // Remember max if it's the originator's turn
+        bestMoveVal = val;
+      } else if (val < bestMoveVal) {
+        // Remember min if it's opponent turn
+        bestMoveVal = val;
+      }
+    }
+    return bestMoveVal;
+  }
+
+  minimaxDecision(board, whoseTurn) {
+    let opponent = 2;
+    if (whoseTurn === 2) {
+      opponent = 1;
+    }
+
+    const moves = this.getMoveList(board, whoseTurn);
+
+    // If there are no moves, return -1
+    if (!moves[0]) {
+      return [-1, -1];
+    }
+
+    let bestMoveVal = -99999;
+    let [bestX, bestY] = moves[0];
+
+    // Try out every move
+    for (let i = 0; i < moves.length; i += 1) {
+      const [moveRow, moveCol] = moves[i];
+      let tempBoard = this.copyBoard(board);
+      tempBoard = this.makeMove(tempBoard, moveRow, moveCol, whoseTurn);
+      // Recursive call, initial search ply = 1
+      const val = this.minimaxValue(tempBoard, whoseTurn, opponent, 1);
+      // Remember best move
+      if (val > bestMoveVal) {
+        bestMoveVal = val;
+        bestX = moveRow;
+        bestY = moveCol;
+      }
+    }
+
+    return [bestX, bestY];
   }
 }
 
