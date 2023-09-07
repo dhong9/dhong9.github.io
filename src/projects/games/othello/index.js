@@ -245,7 +245,7 @@ function Othello() {
 
   // Initialize game board
   let board = othello_util.board;
-  let moves = othelloCode.getMoveList(board, curPlayer);
+  let moves = othello_util.getMoveList(board, curPlayer);
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref

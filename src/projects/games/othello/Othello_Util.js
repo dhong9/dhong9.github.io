@@ -1,5 +1,15 @@
 // Constants
 const N = 8;
+const directions = [
+  [-1, 0],
+  [1, 0],
+  [0, -1],
+  [0, 1],
+  [-1, -1],
+  [1, 1],
+  [-1, 1],
+  [1, -1],
+];
 
 class Othello_Util {
   constructor() {
@@ -93,7 +103,7 @@ class Othello_Util {
       }
     }
     return false; // Either no consecutive opponent pieces or hit the edge
-  };
+  }
 
   /**
    * Checks if piece can be placed at specified coordinate
@@ -119,7 +129,7 @@ class Othello_Util {
     return directions.some(([deltaRow, deltaCol]) =>
       this.checkFlip(board, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent)
     );
-  };
+  }
 
   /**
    * Gets list of tiles that can be played
@@ -133,14 +143,14 @@ class Othello_Util {
     // Check each square of the board and if we can move there, remember the coords
     for (let r = 0; r < N; r += 1) {
       for (let c = 0; c < N; c += 1) {
-        if (validMove(board, r, c, piece)) {
+        if (this.validMove(board, r, c, piece)) {
           moves.push([r, c]);
         }
       }
     }
 
     return moves;
-  };
+  }
 }
 
 export default Othello_Util;
