@@ -161,7 +161,7 @@ class Othello_Util {
    */
   makeMove(board, r, c, piece) {
     // Put the piece at x,y
-    let bCopy = othello_util.copyBoard(board);
+    let bCopy = this.copyBoard(board);
     bCopy[r][c] = piece;
 
     // Figure out the character of the opponent's piece
@@ -176,7 +176,7 @@ class Othello_Util {
       // If pieces can be flipped in that direction,
       // then flip all valid pieces
       if (
-        othello_util.checkFlip(
+        this.checkFlip(
           bCopy,
           r + deltaRow,
           c + deltaCol,
@@ -186,7 +186,7 @@ class Othello_Util {
           opponent
         )
       ) {
-        bCopy = othello_util.flipPieces(
+        bCopy = this.flipPieces(
           bCopy,
           r + deltaRow,
           c + deltaCol,
@@ -199,7 +199,7 @@ class Othello_Util {
     }
 
     return bCopy;
-  };
+  }
 
   /**
    * Counts player's pieces on the board
@@ -215,7 +215,7 @@ class Othello_Util {
       }
     }
     return total;
-  };
+  }
 
   /**
    * Calculates how behind/ahead player's piece is of/from opponent
@@ -224,7 +224,16 @@ class Othello_Util {
    * @returns heuristic score of current position
    */
   heuristic(board, whoseTurn) {
-    return score(board, whoseTurn) - score(board, whoseTurn === 2 ? 1 : 2);
+    return this.score(board, whoseTurn) - this.score(board, whoseTurn === 2 ? 1 : 2);
+  }
+
+  /**
+   * Checks if game is over
+   * @param {number[][]} board current game board
+   * @returns true if both players are out of moves
+   */
+  gameOver(board) {
+    return !this.getMoveList(board, 1)[0] && !this.getMoveList(board, 2)[0];
   }
 }
 

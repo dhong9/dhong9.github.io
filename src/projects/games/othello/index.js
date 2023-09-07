@@ -71,26 +71,8 @@ function Othello() {
 
   // Constants
   const N = 8;
-  const directions = [
-    [-1, 0],
-    [1, 0],
-    [0, -1],
-    [0, 1],
-    [-1, -1],
-    [1, 1],
-    [-1, 1],
-    [1, -1],
-  ];
 
   // Functions to run game
-
-  /**
-   * Checks if game is over
-   * @param {number[][]} board current game board
-   * @returns true if both players are out of moves
-   */
-  const gameOver = (board) =>
-    !othelloCode.getMoveList(board, 1)[0] && !othelloCode.getMoveList(board, 2)[0];
 
   const minimaxValue = (board, originalTurn, currentTurn, searchPly) => {
     if (searchPly === 5 || gameOver(board)) {
