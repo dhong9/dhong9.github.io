@@ -52,4 +52,20 @@ describe("Othello_Util", () => {
       ];
       expect(flippedBoard2).toEqual(correctBoard2);
   });
+
+  it("gets move list", () => {
+    const board = [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 2, 0, 0, 0],
+        [0, 0, 0, 2, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+      ];
+      const expectedMoveList = [[2, 3], [3, 2], [4, 5], [5, 4]];
+      const moveList = game.getMoveList(board, 2);
+      expect(expectedMoveList).toEqual(moveList);
+  });
 });
