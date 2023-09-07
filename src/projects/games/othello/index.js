@@ -13,6 +13,7 @@ import Checkbox from "@mui/material/Checkbox";
 
 // Othello code
 import othelloCode from "projects/games/othello/code";
+import Othello_Util from "projects/games/othello/Othello_Util";
 
 // p5
 import Sketch from "react-p5";
@@ -26,6 +27,7 @@ import { getComments, addComment, sortComments } from "services/commentsService"
 import AuthContext from "context/AuthContext";
 
 function Othello() {
+  const othello_util = new Othello_Util();
   const editorRef = useRef();
   const id = 4;
 
@@ -83,66 +85,6 @@ function Othello() {
   // Functions to run game
 
   /**
-   * Initializes an 8x8 array with player pieces
-   * @returns 2D array of with first 4 player pieces
-   */
-  const createBoard = () => {
-    // Fill board with zeros
-    const board = [...Array(N)].map(() => Array(N).fill(0));
-
-    // Initial tokens
-    board[3][3] = 2;
-    board[3][4] = 1;
-    board[4][3] = 1;
-    board[4][4] = 2;
-
-    return board;
-  };
-
-  /**
-   * Copies 2D array by value into another 2D array
-   * @param {number[][]} board current game board
-   * represented by 2D array of numbers
-   * @returns deep copy of input board
-   */
-  const copyBoard = (board) => board.map((row) => [...row]);
-
-  /**
-   * Checks if coordinate is within board boundaries
-   * @param {number} r row to check
-   * @param {number} c column to check
-   * @returns true if coordinate fits in an 8x8 grid
-   */
-  const inBounds = (r, c) => r >= 0 && r < N && c >= 0 && c < N;
-
-  /**
-   * Flips pieces in the given direction until we don't hit any more opponent pieces
-   * @param {number[][]} board current game board
-   * @param {number} r row
-   * @param {number} c column
-   * @param {number} deltaRow row direction
-   * @param {number} deltaCol column direction
-   * @param {number} myPiece the piece being played
-   * @param {number} opponentPiece the piece opposite to what's being played
-   */
-  const flipPieces = (board, r, c, deltaRow, deltaCol, myPiece, opponentPiece) => {
-    if (inBounds(r, c) && board[r][c] === opponentPiece) {
-      const bCopy = copyBoard(board);
-      bCopy[r][c] = myPiece;
-      return flipPieces(
-        bCopy,
-        r + deltaRow,
-        c + deltaCol,
-        deltaRow,
-        deltaCol,
-        myPiece,
-        opponentPiece
-      );
-    }
-    return board;
-  };
-
-  /**
    * Checks a direction from a cell to see if we can make a move
    * @param {number[][]} board current game board
    * @param {number} r row
@@ -157,8 +99,8 @@ function Othello() {
     let row = r;
     let col = c;
 
-    if (inBounds(row, col) && board[row][col] === opponentPiece) {
-      while (inBounds(row + deltaRow, col + deltaCol)) {
+    if (othello_util.inBounds(row, col) && board[row][col] === opponentPiece) {
+      while (othello_util.inBounds(row + deltaRow, col + deltaCol)) {
         row += deltaRow;
         col += deltaCol;
         if (!board[row][col]) {
@@ -185,7 +127,7 @@ function Othello() {
    */
   const validMove = (board, r, c, piece) => {
     // Check that the coordinates are empty
-    if (!inBounds(r, c) || board[r][c]) {
+    if (!othello_util.inBounds(r, c) || board[r][c]) {
       return false;
     }
 
@@ -231,7 +173,7 @@ function Othello() {
    */
   const makeMove = (board, r, c, piece) => {
     // Put the piece at x,y
-    let bCopy = copyBoard(board);
+    let bCopy = othello_util.copyBoard(board);
     bCopy[r][c] = piece;
 
     // Figure out the character of the opponent's piece
@@ -246,7 +188,7 @@ function Othello() {
       // If pieces can be flipped in that direction,
       // then flip all valid pieces
       if (checkFlip(bCopy, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent)) {
-        bCopy = flipPieces(bCopy, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent);
+        bCopy = othello_util.flipPieces(bCopy, r + deltaRow, c + deltaCol, deltaRow, deltaCol, piece, opponent);
       }
     }
 
@@ -312,7 +254,7 @@ function Othello() {
     for (let i = 0; i < moves.length; i += 1) {
       const [moveRow, moveCol] = moves[i];
       // Apply the move to a new board
-      let tempBoard = copyBoard(board);
+      let tempBoard = othello_util.copyBoard(board);
       tempBoard = makeMove(tempBoard, moveRow, moveCol, currentTurn);
       // Recursive call
       const val = minimaxValue(tempBoard, originalTurn, opponent, searchPly + 1);
@@ -347,7 +289,7 @@ function Othello() {
     // Try out every move
     for (let i = 0; i < moves.length; i += 1) {
       const [moveRow, moveCol] = moves[i];
-      let tempBoard = copyBoard(board);
+      let tempBoard = othello_util.copyBoard(board);
       tempBoard = makeMove(tempBoard, moveRow, moveCol, whoseTurn);
       // Recursive call, initial search ply = 1
       const val = minimaxValue(tempBoard, whoseTurn, opponent, 1);
@@ -363,7 +305,7 @@ function Othello() {
   };
 
   // Initialize game board
-  let board = createBoard();
+  let board = othello_util.board;
   let moves = getMoveList(board, curPlayer);
 
   const setup = (p5, canvasParentRef) => {
