@@ -50,6 +50,7 @@ import bgImage from "assets/images/Pacific_selfie_bubbles.jpg";
 import SignIn from "layouts/pages/authentication/sign-in";
 import SignUp from "layouts/pages/authentication/sign-up";
 import SignOut from "layouts/pages/authentication/sign-out";
+import Profile from "layouts/pages/authentication/profile";
 import AuthContext from "context/AuthContext";
 
 // Services
@@ -135,6 +136,11 @@ function Presentation() {
     },
   ];
   const signedInOptions = [
+    {
+      name: "profile",
+      route: "/pages/authentication/profile",
+      component: <Profile />,
+    },
     {
       name: "sign out",
       route: "/pages/authentication/sign-out",
