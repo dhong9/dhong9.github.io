@@ -38,6 +38,7 @@ import Breadcrumbs from "examples/Breadcrumbs";
 import SignIn from "layouts/pages/authentication/sign-in";
 import SignUp from "layouts/pages/authentication/sign-up";
 import SignOut from "layouts/pages/authentication/sign-out";
+import Profile from "layouts/pages/authentication/profile";
 import AuthContext from "context/AuthContext";
 
 // Routes
@@ -59,6 +60,11 @@ function BaseLayout({ breadcrumb, title, children }) {
     },
   ];
   const signedInOptions = [
+    {
+      name: "profile",
+      route: "/pages/authentication/profile",
+      component: <Profile />,
+    },
     {
       name: "sign out",
       route: "/pages/authentication/sign-out",
