@@ -15,6 +15,7 @@ import routes from "routes";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
