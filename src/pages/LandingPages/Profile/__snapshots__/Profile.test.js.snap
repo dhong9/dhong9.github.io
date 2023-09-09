@@ -3,10 +3,10 @@
 exports[`Profile renders 1`] = `
 [
   <div
-    className="MuiContainer-root MuiContainer-maxWidthLg css-nqeyix-MuiContainer-root"
+    className="MuiContainer-root MuiContainer-maxWidthLg css-1rujksk-MuiContainer-root"
   >
     <div
-      className="MuiBox-root css-1yv1dw1"
+      className="MuiBox-root css-t25fv4"
     >
       <div
         className="MuiBox-root css-1dyncq9"
@@ -15,7 +15,7 @@ exports[`Profile renders 1`] = `
           href="/"
         >
           <span
-            className="MuiTypography-root MuiTypography-button css-lan4mq-MuiTypography-root"
+            className="MuiTypography-root MuiTypography-button css-n07g5z-MuiTypography-root"
           >
             Daniel Hong Portfolio
           </span>
@@ -42,12 +42,12 @@ exports[`Profile renders 1`] = `
               </svg>
             </p>
             <span
-              className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-button css-1vt2rd0-MuiTypography-root"
             >
               doughnut rider
             </span>
             <p
-              className="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-body2 css-174uyvw-MuiTypography-root"
             >
               <span
                 aria-hidden={true}
@@ -56,7 +56,7 @@ exports[`Profile renders 1`] = `
             </p>
           </a>
           <div
-            className="MuiBox-root css-111f5ru"
+            className="MuiBox-root css-bgea9c"
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
@@ -71,12 +71,12 @@ exports[`Profile renders 1`] = `
               </span>
             </p>
             <span
-              className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-button css-1vt2rd0-MuiTypography-root"
             >
               sections
             </span>
             <p
-              className="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-body2 css-174uyvw-MuiTypography-root"
             >
               <span
                 aria-hidden={true}
@@ -87,7 +87,7 @@ exports[`Profile renders 1`] = `
             </p>
           </div>
           <a
-            className="MuiBox-root css-111f5ru"
+            className="MuiBox-root css-bgea9c"
             href="https://github.com/dhong9/dhong9.github.io"
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -110,12 +110,12 @@ exports[`Profile renders 1`] = `
               </svg>
             </p>
             <span
-              className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-button css-1vt2rd0-MuiTypography-root"
             >
               github
             </span>
             <p
-              className="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-body2 css-174uyvw-MuiTypography-root"
             >
               <span
                 aria-hidden={true}
@@ -124,7 +124,7 @@ exports[`Profile renders 1`] = `
             </p>
           </a>
           <div
-            className="MuiBox-root css-111f5ru"
+            className="MuiBox-root css-bgea9c"
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
@@ -144,10 +144,10 @@ exports[`Profile renders 1`] = `
               </svg>
             </p>
             <span
-              className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-button css-1vt2rd0-MuiTypography-root"
             />
             <p
-              className="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-body2 css-174uyvw-MuiTypography-root"
             >
               <span
                 aria-hidden={true}
@@ -162,7 +162,7 @@ exports[`Profile renders 1`] = `
           className="MuiBox-root css-13l63k6"
         />
         <div
-          className="MuiBox-root css-1kcb7bo"
+          className="MuiBox-root css-9skpnh"
           onClick={[Function]}
         >
           <span
@@ -174,12 +174,34 @@ exports[`Profile renders 1`] = `
         </div>
       </div>
       <div
-        className="MuiBox-root css-1kfwhtq"
+        className="MuiBox-root css-yhb49f"
       />
     </div>
   </div>,
-  <h3>
-    My Profile
-  </h3>,
+  <div
+    className="MuiBox-root css-1adool0"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 css-9svixu-MuiGrid-root"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-11 MuiGrid-grid-sm-9 MuiGrid-grid-md-5 MuiGrid-grid-lg-4 MuiGrid-grid-xl-3 css-1auz1p1-MuiGrid-root"
+      >
+        <div
+          className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1h15ts-MuiPaper-root-MuiCard-root"
+        >
+          <div
+            className="MuiBox-root css-15m7mkq"
+          >
+            <h4
+              className="MuiTypography-root MuiTypography-h4 css-o30d1n-MuiTypography-root"
+            >
+              My Profile
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
 ]
 `;
