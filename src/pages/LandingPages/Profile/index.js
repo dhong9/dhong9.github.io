@@ -27,6 +27,8 @@ function Profile() {
 
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
 
   const accountObj = {
     name: user.username,
@@ -79,6 +81,22 @@ function Profile() {
                       label="Email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
+                      fullWidth
+                    />
+                  </MKBox>
+                  <MKBox mb={2}>
+                    <MKInput
+                      type="password"
+                      label="Password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      fullWidth
+                    />
+                  </MKBox>
+                  <MKBox mb={2}>
+                    <MKInput
+                      type="password"
+                      label="Confirm Password"
+                      onChange={(e) => setPassword2(e.target.value)}
                       fullWidth
                     />
                   </MKBox>
