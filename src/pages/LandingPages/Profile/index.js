@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -28,6 +29,14 @@ import bgImage from "assets/images/SF_Hologram.png";
 
 function Profile() {
   let { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    // If the user is not logged in, redirect to sign in page
+    if (!user) {
+      const history = useNavigate();
+      history("/pages/authentication/sign-in");
+    }
+  }, []);
 
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
