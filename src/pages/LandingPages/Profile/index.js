@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -15,6 +15,7 @@ import routes from "routes";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
 // Authentication
@@ -23,6 +24,8 @@ import AuthContext from "context/AuthContext";
 
 function Profile() {
   let { user } = useContext(AuthContext);
+
+  const [username, setUsername] = useState(user.username);
 
   const accountObj = {
     name: user.username,
@@ -57,6 +60,19 @@ function Profile() {
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
                   My Profile
                 </MKTypography>
+              </MKBox>
+              <MKBox pt={4} pb={3} px={3}>
+                <MKBox component="form" role="form">
+                  <MKBox mb={2}>
+                    <MKInput
+                      type="text"
+                      label="Username"
+                      onChange={(e) => setUsername(e.target.value)}
+                      value={username}
+                      fullWidth
+                    />
+                  </MKBox>
+                </MKBox>
               </MKBox>
             </Card>
           </Grid>
