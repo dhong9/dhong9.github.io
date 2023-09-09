@@ -34,6 +34,7 @@ import { AuthProvider } from "context/AuthContext";
 import SignInPage from "layouts/pages/authentication/sign-in";
 import SignUpPage from "layouts/pages/authentication/sign-up";
 import SignOutPage from "layouts/pages/authentication/sign-out";
+import ProfilePage from "layouts/pages/authentication/profile";
 
 // Forums
 import ForumsPost from "pages/LandingPages/ForumsPost";
@@ -71,6 +72,7 @@ export default function App() {
           <Route path="/pages/authentication/sign-in" element={<SignInPage />} />
           <Route path="/pages/authentication/sign-up" element={<SignUpPage />} />
           <Route path="/pages/authentication/sign-out" element={<SignOutPage />} />
+          <Route path="/pages/authentication/profile" element={<ProfilePage />} />
           <Route path="/doughnutRider/posts/:id" element={<ForumsPost />} />
           <Route path="/doughnutRider/categories/:id" element={<ForumsCategories />} />
         </Routes>
