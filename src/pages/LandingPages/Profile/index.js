@@ -30,6 +30,15 @@ function Profile() {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("Username: ", username);
+    console.log("Email: ", email);
+    console.log("Password: ", password);
+    console.log("Password2: ", password2);
+  };
+
   const accountObj = {
     name: user.username,
     icon: <AccountCircleIcon />,
@@ -99,6 +108,11 @@ function Profile() {
                       onChange={(e) => setPassword2(e.target.value)}
                       fullWidth
                     />
+                  </MKBox>
+                  <MKBox mt={4} mb={1}>
+                    <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
+                      save changes
+                    </MKButton>
                   </MKBox>
                 </MKBox>
               </MKBox>
