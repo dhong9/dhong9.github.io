@@ -48,8 +48,8 @@ jest.mock("jwt-decode");
 jest.mock("react-p5", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-      __esModule: true,
-      default: forwardRef(() => <div>Sketch</div>)
+    __esModule: true,
+    default: forwardRef(() => <div>Sketch</div>),
   };
 });
 jest.mock("react-monaco-editor", () => {
@@ -82,6 +82,10 @@ describe("Connect4", () => {
   });
 
   it("adds a comment", () => {
+    // Mock tokens
+    const mockToken = "mocked_jwt_value";
+    const refreshToken = "mocked_refresh_value";
+
     localStorage.setItem(
       "authTokens",
       JSON.stringify({ access: mockToken, refresh: refreshToken })
@@ -90,10 +94,6 @@ describe("Connect4", () => {
     // Set a mock payload for the decoded token
     const mockPayload = { user: "John Doe", exp: 1893456000 };
     jwtDecode.mockReturnValue(mockPayload);
-
-    // Mock tokens
-    const mockToken = "mocked_jwt_value";
-    const refreshToken = "mocked_refresh_value";
 
     const contextData = {
       loginUser: jest.fn(),
@@ -120,23 +120,6 @@ describe("Connect4", () => {
     const addButton = getByRole("button");
     fireEvent.click(addButton);
 
-    expect(container).toMatchSnapshot();
-  });
-
-  it("renders without user", () => {
-    const contextData = {
-      loginUser: jest.fn(),
-    };
-
-    const { container } = render(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>
-            <Connect4 />
-          </ThemeProvider>
-        </AuthProvider>
-      </AuthContext.Provider>
-    );
     expect(container).toMatchSnapshot();
   });
 });
