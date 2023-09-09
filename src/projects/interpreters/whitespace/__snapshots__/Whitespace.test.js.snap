@@ -1018,7 +1018,7 @@ exports[`WhiteSpace visualizes output 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-6637"
+            id="rdw-wrapper-140"
           >
             <div
               aria-hidden="false"
@@ -1406,15 +1406,15 @@ exports[`WhiteSpace visualizes output 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="b2fkr"
-                        data-offset-key="cbiea-0-0"
+                        data-editor="ava0"
+                        data-offset-key="7g6cl-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="cbiea-0-0"
+                          data-offset-key="7g6cl-0-0"
                         >
                           <span
-                            data-offset-key="cbiea-0-0"
+                            data-offset-key="7g6cl-0-0"
                           >
                             <br
                               data-text="true"

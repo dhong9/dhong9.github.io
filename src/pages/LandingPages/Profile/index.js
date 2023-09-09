@@ -26,6 +26,7 @@ function Profile() {
   let { user } = useContext(AuthContext);
 
   const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
 
   const accountObj = {
     name: user.username,
@@ -69,6 +70,15 @@ function Profile() {
                       label="Username"
                       onChange={(e) => setUsername(e.target.value)}
                       value={username}
+                      fullWidth
+                    />
+                  </MKBox>
+                  <MKBox mb={2}>
+                    <MKInput
+                      type="email"
+                      label="Email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
                       fullWidth
                     />
                   </MKBox>
