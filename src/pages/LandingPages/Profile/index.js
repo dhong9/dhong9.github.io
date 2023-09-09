@@ -34,7 +34,7 @@ function Profile() {
     // If the user is not logged in, redirect to sign in page
     if (!user) {
       const history = useNavigate();
-      history("/pages/authentication/sign-in");
+      history("/");
     }
   }, []);
 
@@ -64,7 +64,7 @@ function Profile() {
     ],
   };
 
-  return (
+  return user ? (
     <>
       <DefaultNavbar routes={[...routes, accountObj]} transparent light />
       <MKBox
@@ -152,6 +152,8 @@ function Profile() {
         </Grid>
       </MKBox>
     </>
+  ) : (
+    <p>You must be logged in to view/edit your profile.</p>
   );
 }
 
