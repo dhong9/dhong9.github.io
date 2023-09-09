@@ -14,7 +14,6 @@ import SignOut from "layouts/pages/authentication/sign-out";
 import AuthContext from "context/AuthContext";
 
 function Profile() {
-
   let { user } = useContext(AuthContext);
 
   const accountObj = {
