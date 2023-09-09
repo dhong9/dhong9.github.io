@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile renders 1`] = `
+<div>
+  <h3>
+    My Profile
+  </h3>
+</div>
+`;
