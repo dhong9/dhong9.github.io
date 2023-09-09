@@ -82,6 +82,10 @@ describe("2048", () => {
   });
 
   it("adds a comment", () => {
+    // Mock tokens
+    const mockToken = "mocked_jwt_value";
+    const refreshToken = "mocked_refresh_value";
+    
     localStorage.setItem(
       "authTokens",
       JSON.stringify({ access: mockToken, refresh: refreshToken })
@@ -90,10 +94,6 @@ describe("2048", () => {
     // Set a mock payload for the decoded token
     const mockPayload = { user: "John Doe", exp: 1893456000 };
     jwtDecode.mockReturnValue(mockPayload);
-
-    // Mock tokens
-    const mockToken = "mocked_jwt_value";
-    const refreshToken = "mocked_refresh_value";
 
     const contextData = {
       loginUser: jest.fn(),
