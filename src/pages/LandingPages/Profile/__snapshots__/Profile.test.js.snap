@@ -179,6 +179,9 @@ exports[`Profile renders 1`] = `
     </div>
   </div>,
   <div
+    className="MuiBox-root css-woio14"
+  />,
+  <div
     className="MuiBox-root css-1adool0"
   >
     <div
