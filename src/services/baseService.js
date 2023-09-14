@@ -26,3 +26,9 @@ export const postRequest = (endpoint, payload, success, error, config = {}) =>
     .post(baseURL + endpoint, payload, { maxRedirects: 0, ...config })
     .then(success)
     .catch(error);
+
+export const putRequest = (endpoint, payload, success, error, config = {}) =>
+  axios
+    .put(baseURL + endpoint, payload, { maxRedirects: 0, ...config })
+    .then(success)
+    .catch(error);
