@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
         error(err);
       }
     );
-  }
+  };
 
   const logoutUser = () => {
     localStorage.removeItem("authTokens");

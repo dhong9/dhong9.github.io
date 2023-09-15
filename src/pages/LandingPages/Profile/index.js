@@ -27,7 +27,7 @@ import AuthContext from "context/AuthContext";
 import bgImage from "assets/images/SF_Hologram.png";
 
 function Profile() {
-  let { user } = useContext(AuthContext);
+  let { user, updateUser } = useContext(AuthContext);
 
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
@@ -37,10 +37,7 @@ function Profile() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Username: ", username);
-    console.log("Email: ", email);
-    console.log("Password: ", password);
-    console.log("Password2: ", password2);
+    updateUser(email, username, password, password2, console.log, console.error);
   };
 
   const accountObj = {
