@@ -37,7 +37,7 @@ function Profile() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    updateUser(email, username, password, password2, console.log, console.error);
+    updateUser(user.id, email, username, password, password2, console.log, console.error);
   };
 
   const accountObj = {
