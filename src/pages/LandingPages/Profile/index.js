@@ -28,6 +28,7 @@ import bgImage from "assets/images/SF_Hologram.png";
 
 function Profile() {
   let { user, updateUser } = useContext(AuthContext);
+  console.log(user);
 
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
