@@ -64,6 +64,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateUser = (id, email, username, password, password2, success, error) => {
+    console.log(user);
     putRequest(
       "accounts/update/" + id + "/",
       {
