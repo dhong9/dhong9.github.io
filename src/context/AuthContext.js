@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { postRequest } from "services/baseService";
+import { postRequest, putRequest } from "services/baseService";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -64,22 +64,21 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateUser = (id, email, username, password, password2, success, error) => {
-    console.log(user);
-    console.log(id, email, username, password, password2, success, error);
-    // putRequest(
-    //   "accounts/update/" + id + "/",
-    //   {
-    //     email,
-    //     username,
-    //     password,
-    //     password2,
-    //   },
-    //   success,
-    //   (err) => {
-    //     console.error(err);
-    //     error(err);
-    //   }
-    // );
+    putRequest(
+      "accounts/update/" + id + "/",
+      {
+        email,
+        username,
+        password,
+        password2,
+      },
+      success,
+      (err) => {
+        console.error(err);
+        error(err);
+      },
+      { Authorization: `Bearer ${JSON.parse(user)}` }
+    );
   };
 
   const logoutUser = () => {
