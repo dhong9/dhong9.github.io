@@ -65,20 +65,21 @@ export const AuthProvider = ({ children }) => {
 
   const updateUser = (id, email, username, password, password2, success, error) => {
     console.log(user);
-    putRequest(
-      "accounts/update/" + id + "/",
-      {
-        email,
-        username,
-        password,
-        password2,
-      },
-      success,
-      (err) => {
-        console.error(err);
-        error(err);
-      }
-    );
+    console.log(id, email, username, password, password2, success, error);
+    // putRequest(
+    //   "accounts/update/" + id + "/",
+    //   {
+    //     email,
+    //     username,
+    //     password,
+    //     password2,
+    //   },
+    //   success,
+    //   (err) => {
+    //     console.error(err);
+    //     error(err);
+    //   }
+    // );
   };
 
   const logoutUser = () => {
