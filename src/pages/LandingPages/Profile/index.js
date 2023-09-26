@@ -14,6 +14,9 @@ import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
+
 // Routes
 import routes from "routes";
 
@@ -31,6 +34,9 @@ function Profile() {
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [profileSeverity, setProfileSeverity] = useState("info");
+  const [profileMessage, setProfileMessage] = useState("");
   const [formErrors, setFormErrors] = useState([]);
 
   const handleSubmit = (e) => {
@@ -51,7 +57,23 @@ function Profile() {
     // If form input requirements are met,
     // sign the user up
     if (!formErrors[0]) {
-      updateUser(user.user_id, email, username, password, password2, console.log, console.error);
+      updateUser(
+        user.user_id,
+        email,
+        username,
+        password,
+        password2,
+        () => {
+          setProfileSeverity("success");
+          setProfileMessage("Successfully logged in!");
+          setSnackbarOpen(true);
+        },
+        (signupResponse) => {
+          setProfileSeverity("error");
+          setProfileMessage(signupResponse.message);
+          setSnackbarOpen(true);
+        }
+      );
     }
   };
 
@@ -67,9 +89,21 @@ function Profile() {
     ],
   };
 
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
+  };
+
   return (
     <>
       <DefaultNavbar routes={[...routes, accountObj]} transparent light />
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity={profileSeverity}
+        message={profileMessage}
+      />
       <MKBox
         position="absolute"
         top={0}
