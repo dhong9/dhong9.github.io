@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
         console.error(err);
         error(err);
       },
-      { Authorization: `Bearer ${JSON.stringify(user)}` }
+      { Authorization: `Bearer ${authTokens.access}` }
     );
   };
 
