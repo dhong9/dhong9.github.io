@@ -9,15 +9,13 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
-
-// Routes
-import routes from "routes";
-
-// Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
+
+// Routes
+import routes from "routes";
 
 // Authentication
 import SignOut from "layouts/pages/authentication/sign-out";
@@ -33,11 +31,28 @@ function Profile() {
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [formErrors, setFormErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Check form data
+    const errors = [];
+    if (!username.trim()) {
+      errors.push("Username is required.");
+    }
+    if (!password.trim()) {
+      errors.push("Password is required.");
+    }
+    if (!password2.trim()) {
+      errors.push("Password confirmation is required.");
+    }
+    setFormErrors(errors);
 
-    updateUser(user.user_id, email, username, password, password2, console.log, console.error);
+    // If form input requirements are met,
+    // sign the user up
+    if (!formErrors[0]) {
+      updateUser(user.user_id, email, username, password, password2, console.log, console.error);
+    }
   };
 
   const accountObj = {
@@ -128,6 +143,18 @@ function Profile() {
                       fullWidth
                     />
                   </MKBox>
+                  {/* Show any form errors */}
+                  {formErrors[0] ? (
+                    <MKBox display="flex" alignItems="center" ml={-1}>
+                      <ul style={{ color: "red", fontSize: "10pt" }}>
+                        {formErrors.map((error, i) => (
+                          <li key={i}>{error}</li>
+                        ))}
+                      </ul>
+                    </MKBox>
+                  ) : (
+                    <div></div>
+                  )}
                   <MKBox mt={4} mb={1}>
                     <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
                       save changes
