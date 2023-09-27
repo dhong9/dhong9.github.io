@@ -43,7 +43,7 @@ function Profile() {
     e.preventDefault();
     // Check form data
     const errors = [];
-    if (!username.trim()) {
+    if (!username?.trim()) {
       errors.push("Username is required.");
     }
     if (!password.trim()) {

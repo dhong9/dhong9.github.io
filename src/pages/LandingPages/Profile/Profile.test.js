@@ -1,5 +1,6 @@
 // React testing libraries
-import renderer from "react-test-renderer";
+import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -58,9 +59,11 @@ describe("Profile", () => {
 
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "giri"
+      }
     };
-
-    const component = renderer.create(
+    const { getByLabelText, getByText, queryByText } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
@@ -69,7 +72,32 @@ describe("Profile", () => {
         </AuthProvider>
       </AuthContext.Provider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    // Get form elements
+    const usernameInput = getByLabelText("Username");
+    const emailInput = getByLabelText("Email");
+    const passwordInput = getByLabelText("Password");
+    const password2Input = getByLabelText("Confirm Password");
+    const saveButton = getByText("save changes");
+
+    fireEvent.change(usernameInput, { target: { value: "" } });
+    fireEvent.change(emailInput, { target: { value: "" } });
+
+    // Sign up with no form input
+    fireEvent.click(saveButton);
+
+    // Put data into the form
+    fireEvent.change(usernameInput, { target: { value: "expertTester" } });
+    fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
+    fireEvent.change(passwordInput, { target: { value: "validPassword" } });
+    fireEvent.change(password2Input, { target: { value: "validPassword" } });
+
+    // Resubmit data
+    fireEvent.click(saveButton);
+
+    // Errors should clear
+    expect(queryByText("Username is required.")).not.toBeInTheDocument();
+    expect(queryByText("Password is required.")).not.toBeInTheDocument();
+    expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
   });
 });
