@@ -7,11 +7,26 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
 // Authentication
+import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
 import jwtDecode from "jwt-decode";
 
+// Axios
+import MockAdapter from "axios-mock-adapter";
+
 // Component to test
 import Profile from "pages/LandingPages/Profile";
+
+jest.mock("services/baseService", () => ({
+  getRequest: jest.fn(),
+  putRequest: jest.fn(),
+  postRequest: jest.fn(),
+}));
+
+// Setup axios mock
+const mock = new MockAdapter(axios);
+
+mock.onPost("accounts/update/").reply(200, {});
 
 // Define Mocks
 jest.mock("jwt-decode");
