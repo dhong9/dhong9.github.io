@@ -24,7 +24,7 @@ jest.mock("services/baseService", () => ({
 // Setup axios mock
 const mock = new MockAdapter(axios);
 
-mock.onPost("/register").reply(200, {});
+mock.onPost("accounts/register/").reply(200, {});
 
 // Define Mocks
 jest.mock("react-monaco-editor", () => {
