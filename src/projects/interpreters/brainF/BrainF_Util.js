@@ -4,7 +4,7 @@ class BrainF_Util {
     this.cells = {};
     this.res = "";
     this.currCell = 0;
-    
+
     // Bind function context
     this.moveRight = this.moveRight.bind(this);
     this.moveLeft = this.moveLeft.bind(this);
@@ -73,9 +73,9 @@ class BrainF_Util {
 
     // Interpret each character
     for (let c = 0; c < this.src.length; c++) {
-        if (this.src[c] in ops) {
-            c = ops[this.src[c]](c)
-        }
+      if (this.src[c] in ops) {
+        c = ops[this.src[c]](c);
+      }
     }
 
     return this.res;
