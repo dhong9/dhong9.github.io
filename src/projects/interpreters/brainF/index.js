@@ -3,6 +3,7 @@ import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 
 // BrainF code
+import BrainF_Util from "projects/interpreters/brainF/BrainF_Util";
 import brainFCode from "projects/interpreters/brainF/code";
 
 // Generic interpreter
@@ -103,70 +104,12 @@ function BrainF() {
    * @returns aggregate of all char prints
    */
   const brainF = (src) => {
-    // Clear all cells
-    setCells({});
+    const brainF_util = new BrainF_Util(src);
+    brainF_util.evaluate();
 
-    let i = 0; // Current cell
-    let res = "";
+    setCells(brainF_util.cells);
 
-    // Operator functions
-    const moveRight = (c) => {
-      i++;
-      return c;
-    };
-    const moveLeft = (c) => {
-      i = Math.max(i - 1, 0);
-      return c;
-    };
-    const increment = (c) => {
-      cells[i] = (cells[i] || 0) + 1;
-      return c;
-    };
-    const decrement = (c) => {
-      cells[i] = cells[i] ? cells[i] - 1 : 255;
-      return c;
-    };
-    const print = (c) => {
-      res += String.fromCharCode(cells[i]);
-      return c;
-    };
-    const beginLoop = (c) => {
-      c = cells[i] ? c : [...src].findIndex((v, j) => j > c && v === "]") + 1;
-      return c;
-    };
-    const endLoop = (c) => {
-      if (cells[i]) {
-        let j = 0;
-        for (let k = 0; k < c; k++) {
-          if (src[k] === "[") j = k;
-        }
-        c = j;
-      }
-      return c;
-    };
-
-    // Valid operations
-    const ops = {
-      ">": moveRight,
-      "<": moveLeft,
-      "+": increment,
-      "-": decrement,
-      ".": print,
-      ",": null,
-      "[": beginLoop,
-      "]": endLoop,
-      "!": null,
-    };
-
-    for (let c = 0; c < src.length; c++) {
-      if (src[c] in ops) {
-        c = ops[src[c]](c);
-      }
-    }
-
-    setCells(cells);
-
-    return res;
+    return brainF_util.res;
   };
 
   return (
