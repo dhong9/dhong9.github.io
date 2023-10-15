@@ -1,6 +1,6 @@
 const esoterics = {
-  // Whitespace programming language
-  whitespace: ["S", "T"], // Spaces and tabs
+  // Mini Scheme programming language
+  minischeme: ["define", "if"],
 
   // BrainF
   brainF: [">", "<", ",", "\\[", "\\]", "\\.", "\\+", "\\-"],

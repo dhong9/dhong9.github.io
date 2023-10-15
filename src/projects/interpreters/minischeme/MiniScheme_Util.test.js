@@ -1,5 +1,5 @@
 // Unit to test
-import MiniScheme_Util from "projects/interpreters/whitespace/MiniScheme_Util";
+import MiniScheme_Util from "projects/interpreters/minischeme/MiniScheme_Util";
 
 describe("MiniScheme_Util", () => {
   it("adds numbers", () => {

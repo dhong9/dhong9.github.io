@@ -59,9 +59,9 @@ export default [
       },
       {
         image: `${gamesPrefix}/060/207/156/large/daniel-hong-grid.jpg`,
-        name: "Whitespace",
+        name: "Mini Scheme",
         count: 2,
-        route: "/sections/interpreters/whitespace",
+        route: "/sections/interpreters/minischeme",
       },
     ],
   },

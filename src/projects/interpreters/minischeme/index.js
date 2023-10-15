@@ -2,8 +2,8 @@
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 
-// WhiteSpace code
-import whitespaceCode from "projects/interpreters/whitespace/code";
+// Mini Scheme code
+import minischemeCode from "projects/interpreters/minischeme/code";
 
 // Generic interpreter
 import Interpreter from "../interpreter";
@@ -26,7 +26,7 @@ import { getComments, addComment, sortComments } from "services/commentsService"
 // Authentication
 import AuthContext from "context/AuthContext";
 
-function WhiteSpace() {
+function MiniScheme() {
   const editorRef = useRef();
   const id = 6;
 
@@ -95,8 +95,8 @@ function WhiteSpace() {
         { label: "Page Headers" },
       ]}
     >
-      <View title="Header 1" code={whitespaceCode} height="40rem">
-        <Interpreter codeUpdate={setCodeSrc} language="whitespace" />
+      <View title="Header 1" code={minischemeCode} height="40rem">
+        <Interpreter codeUpdate={setCodeSrc} language="minischeme" />
       </View>
 
       <FormGroup>
@@ -149,4 +149,4 @@ function WhiteSpace() {
   );
 }
 
-export default WhiteSpace;
+export default MiniScheme;

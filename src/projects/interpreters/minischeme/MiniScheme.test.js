@@ -14,7 +14,7 @@ import jwtDecode from "jwt-decode";
 import MockAdapter from "axios-mock-adapter";
 
 // Component to test
-import WhiteSpace from "projects/interpreters/whitespace";
+import MiniScheme from "projects/interpreters/minischeme";
 
 // Define Mocks
 // Setup axios mock
@@ -65,7 +65,7 @@ jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn,
 }));
 
-describe("WhiteSpace", () => {
+describe("MiniScheme", () => {
   beforeEach(() => {
     localStorage.clear();
   });
@@ -96,7 +96,7 @@ describe("WhiteSpace", () => {
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
-            <WhiteSpace />
+            <MiniScheme />
           </ThemeProvider>
         </AuthProvider>
       </AuthContext.Provider>
@@ -118,7 +118,7 @@ describe("WhiteSpace", () => {
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
-            <WhiteSpace />
+            <MiniScheme />
           </ThemeProvider>
         </AuthProvider>
       </AuthContext.Provider>
@@ -130,8 +130,8 @@ describe("WhiteSpace", () => {
 
     // Write some code in the code editor
     const editor = getByTestId("editor");
-    const whitespaceCode = "SSTT";
-    fireEvent.change(editor, { target: { value: whitespaceCode } });
+    const minischemeCode = "(+ 1 1)";
+    fireEvent.change(editor, { target: { value: minischemeCode } });
 
     // Run code
     const submitBtn = getByText("Show value");

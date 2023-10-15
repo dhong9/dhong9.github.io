@@ -51,7 +51,7 @@ import Othello from "projects/games/othello";
 
 // Interpreters
 import BrainF from "projects/interpreters/brainF";
-import WhiteSpace from "projects/interpreters/whitespace";
+import MiniScheme from "projects/interpreters/minischeme";
 import DoughnutRiderPage from "layouts/pages/doughnut-rider";
 
 const routes = [
@@ -103,9 +103,9 @@ const routes = [
             component: <BrainF />,
           },
           {
-            name: "whitespace",
-            route: "/sections/interpreters/whitespace",
-            component: <WhiteSpace />,
+            name: "minischeme",
+            route: "/sections/interpreters/minischeme",
+            component: <MiniScheme />,
           },
         ],
       },
