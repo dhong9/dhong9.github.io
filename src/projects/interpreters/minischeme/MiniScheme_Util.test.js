@@ -8,4 +8,11 @@ describe("MiniScheme_Util", () => {
     const res = ms.run();
     expect(res).toEqual(15);
   });
+
+  it("defines variables", () => {
+    const src = "(define x 12.2) (- x 1.1)";
+    const ms = new MiniScheme_Util(src);
+    const res = ms.run();
+    expect(res).toEqual(11.1);
+  })
 });
