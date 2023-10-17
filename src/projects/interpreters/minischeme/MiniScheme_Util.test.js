@@ -14,5 +14,16 @@ describe("MiniScheme_Util", () => {
     const ms = new MiniScheme_Util(src);
     const res = ms.run();
     expect(res).toEqual(11.1);
+  });
+
+  it("handles booleans", () => {
+    const src = "(if #t 1 0)";
+    const src2 = "(if #f 1 0)";
+    const ms1 = new MiniScheme_Util(src);
+    const ms2 = new MiniScheme_Util(src2);
+    const res1 = ms1.run();
+    const res2 = ms2.run();
+    expect(res1).toEqual(1);
+    expect(res2).toEqual(0);
   })
 });
