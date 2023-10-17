@@ -3,6 +3,7 @@ import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 
 // Mini Scheme code
+import MiniScheme_Util from "projects/interpreters/minischeme/MiniScheme_Util";
 import minischemeCode from "projects/interpreters/minischeme/code";
 
 // Generic interpreter
@@ -33,7 +34,7 @@ function MiniScheme() {
   // Interpreter states
   const [visualize, setVisualize] = useState(false);
   const [codeOutput, setCodeOutput] = useState("");
-  const [codeSrc, setCodeSrc] = useState("// some comment");
+  const [codeSrc, setCodeSrc] = useState("(+ 1 1)");
 
   // Comments states
   const [comments, setComments] = useState([]);
@@ -60,7 +61,18 @@ function MiniScheme() {
   };
 
   const showOutput = () => {
-    setCodeOutput(codeSrc);
+    setCodeOutput(runScheme(codeSrc));
+  };
+
+  /**
+   * Processes MiniScheme code and returns its output
+   * @param {String} src source code
+   * @returns last code output
+   */
+  const runScheme = (src) => {
+    const miniScheme_util = new MiniScheme_Util(src);
+    const res = miniScheme_util.run();
+    return res;
   };
 
   const onAdd = () => {

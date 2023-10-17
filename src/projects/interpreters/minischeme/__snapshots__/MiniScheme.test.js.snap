@@ -33367,7 +33367,7 @@ exports[`MiniScheme visualizes output 1`] = `
         <div
           class="MuiBox-root css-141e185"
         >
-          // some comment
+          2
         </div>
         <div
           class="comments-container"
@@ -33376,7 +33376,7 @@ exports[`MiniScheme visualizes output 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-413"
+            id="rdw-wrapper-1872"
           >
             <div
               aria-hidden="false"
@@ -33764,15 +33764,15 @@ exports[`MiniScheme visualizes output 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="65qg2"
-                        data-offset-key="4phmf-0-0"
+                        data-editor="9kujn"
+                        data-offset-key="335a9-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="4phmf-0-0"
+                          data-offset-key="335a9-0-0"
                         >
                           <span
-                            data-offset-key="4phmf-0-0"
+                            data-offset-key="335a9-0-0"
                           >
                             <br
                               data-text="true"

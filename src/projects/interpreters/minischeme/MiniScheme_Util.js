@@ -152,7 +152,6 @@ class MiniScheme_Util {
     const tree = [];
     const stack = [];
     let curr = tree;
-    let i = 0; // Ensures that token added is unique
 
     for (const [val, type] of tokens) {
       if (type === "lparen") {
@@ -170,7 +169,6 @@ class MiniScheme_Util {
         // These are terminal nodes
         curr.push(val + " " + type);
       }
-      i++;
     }
 
     return tree;
