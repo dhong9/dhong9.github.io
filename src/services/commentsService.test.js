@@ -1,7 +1,7 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { getRequest, postRequest } from "services/baseService";
-import { getComments, addComment, sortComments } from "services/commentsService";
+import { getComments, getCommentById, addComment, sortComments } from "services/commentsService";
 
 const mock = new MockAdapter(axios);
 
@@ -30,6 +30,17 @@ describe("CommentsService", () => {
 
     // Verify that getRequest was called correctly
     expect(getRequest).toHaveBeenCalledWith("comments", success, console.error);
+  });
+
+  it("gets comment by ID", () =>{
+    // Create success and error spy functions
+    const success = jest.fn();
+
+    // Get comments
+    getCommentById(1, success);
+
+    // Verify that getRequest was called correctly
+    expect(getRequest).toHaveBeenCalledWith("comments/1", success, console.error);
   });
 
   it("posts a comment", () => {

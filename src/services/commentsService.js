@@ -68,6 +68,10 @@ export const getComments = (success) => {
   getRequest("comments", success, console.error);
 };
 
+export const getCommentById = (id, success) => {
+  getRequest("comments/" + id, success, console.error);
+};
+
 export const addComment = (success, project, name, email, body, isPlainText, parent = null) => {
   postRequest(
     "comments",
