@@ -1,0 +1,10 @@
+{
+    "File Template": {
+        "prefix": ["file-header"],
+        "body": [
+            "/**",
+            "*/"
+        ],
+        "description": "Basic documentation at top of file."
+    }
+}
