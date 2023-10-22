@@ -25,6 +25,7 @@
             "}",
             "",
             "export default ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/};"
-        ]
+        ],
+        "description": "Function component template."
     }
 }
