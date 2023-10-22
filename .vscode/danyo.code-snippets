@@ -1,5 +1,5 @@
 {
-    "File Template": {
+    "File Copyright": {
         "prefix": ["file-copyright"],
         "body": [
             "/**",
@@ -17,5 +17,14 @@
             "*/"
         ],
         "description": "Copyright header."
+    },
+    "Component Template": {
+        "prefix": ["component-template"],
+        "body": [
+            "function ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}() {",
+            "}",
+            "",
+            "export default ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/};"
+        ]
     }
 }
