@@ -35,6 +35,7 @@ import SignInPage from "layouts/pages/authentication/sign-in";
 import SignUpPage from "layouts/pages/authentication/sign-up";
 import SignOutPage from "layouts/pages/authentication/sign-out";
 import ProfilePage from "layouts/pages/authentication/profile";
+import VerifyEmailPage from "layouts/pages/authentication/verify-email";
 
 // Forums
 import ForumsPost from "pages/LandingPages/ForumsPost";
@@ -75,6 +76,7 @@ export default function App() {
           <Route path="/pages/authentication/profile" element={<ProfilePage />} />
           <Route path="/doughnutRider/posts/:id" element={<ForumsPost />} />
           <Route path="/doughnutRider/categories/:id" element={<ForumsCategories />} />
+          <Route path="/verify-email/:key" element={<VerifyEmailPage />} />
         </Routes>
       </AuthProvider>
     </ThemeProvider>

@@ -13,11 +13,11 @@ Coded by www.danyo.tech
 */
 
 function VerifyEmail() {
-    return (
-        <>
-            <h1>Verify Email</h1>
-        </>
-    );
+  return (
+    <>
+      <h1>Verify Email</h1>
+    </>
+  );
 }
 
 export default VerifyEmail;
