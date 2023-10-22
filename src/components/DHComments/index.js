@@ -28,13 +28,11 @@ import { addComment } from "services/commentsService";
 export default function DHComments({ comments, pageName, user }) {
   const editorRef = useRef();
 
-  const [showReplyBox, setShowReplyBox] = useState(false);
   const [parentComment, setParentComment] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
 
   const handleReply = (parentId) => {
     setParentComment(parentId);
-    setShowReplyBox(true);
   };
 
   const handleChange = (event) => {
@@ -80,7 +78,7 @@ export default function DHComments({ comments, pageName, user }) {
               >
                 Reply...
               </Typography>
-              {showReplyBox && (
+              {parentComment === id && (
                 <>
                   <DHEditor ref={editorRef} />
                   <FormGroup>
