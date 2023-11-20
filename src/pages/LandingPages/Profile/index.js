@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 
 // @mui material components
 import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 
 // @mui material icons
@@ -75,6 +76,11 @@ function Profile() {
         }
       );
     }
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    console.log("Warning!");
   };
 
   const accountObj = {
@@ -192,6 +198,16 @@ function Profile() {
                   <MKBox mt={4} mb={1}>
                     <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
                       save changes
+                    </MKButton>
+                  </MKBox>
+
+                  {/* Form divider */}
+                  <Divider />
+
+                  {/* Danger zone */}
+                  <MKBox mt={4} mb={1}>
+                    <MKButton variant="gradient" color="info" onClick={handleDelete} fullWidth>
+                      delete account
                     </MKButton>
                   </MKBox>
                 </MKBox>
