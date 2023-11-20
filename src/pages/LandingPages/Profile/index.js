@@ -201,12 +201,10 @@ function Profile() {
                     </MKButton>
                   </MKBox>
 
-                  {/* Form divider */}
-                  <Divider />
-
                   {/* Danger zone */}
+                  <Divider>DANGER ZONE</Divider>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" onClick={handleDelete} fullWidth>
+                    <MKButton variant="gradient" color="error" onClick={handleDelete} fullWidth>
                       delete account
                     </MKButton>
                   </MKBox>
