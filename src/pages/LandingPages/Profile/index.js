@@ -202,7 +202,11 @@ function Profile() {
                   </MKBox>
 
                   {/* Danger zone */}
-                  <Divider>DANGER ZONE</Divider>
+                  <Divider variant="middle">
+                    <MKTypography variant="h6" fontWeight="medium">
+                      DANGER ZONE
+                    </MKTypography>
+                  </Divider>
                   <MKBox mt={4} mb={1}>
                     <MKButton variant="gradient" color="error" onClick={handleDelete} fullWidth>
                       delete account
