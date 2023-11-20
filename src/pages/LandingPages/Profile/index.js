@@ -60,6 +60,7 @@ function Profile() {
 
   const openModal = () => {
     setModalIsOpen(true);
+    console.log("Opened modal");
   };
 
   const closeModal = () => {
