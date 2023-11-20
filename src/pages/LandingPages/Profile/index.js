@@ -1,3 +1,17 @@
+/**
+=========================================================
+* Danyo-1.1
+=========================================================
+
+* Copyright 2023 Danyo (https://www.danyo.tech)
+
+Coded by www.danyo.tech
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
+
 import { useContext, useState } from "react";
 
 // @mui material components
@@ -17,6 +31,9 @@ import MKTypography from "components/MKTypography";
 
 // DH React components
 import DHSnackbar from "components/DHSnackbar";
+
+// Modal
+import Modal from "react-modal";
 
 // Routes
 import routes from "routes";
@@ -39,6 +56,15 @@ function Profile() {
   const [profileSeverity, setProfileSeverity] = useState("info");
   const [profileMessage, setProfileMessage] = useState("");
   const [formErrors, setFormErrors] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,7 +106,7 @@ function Profile() {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    console.log("Warning!");
+    openModal();
   };
 
   const accountObj = {
@@ -101,6 +127,17 @@ function Profile() {
     }
   };
 
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
+
   return (
     <>
       <DefaultNavbar routes={[...routes, accountObj]} transparent light />
@@ -110,6 +147,23 @@ function Profile() {
         severity={profileSeverity}
         message={profileMessage}
       />
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2>Hello</h2>
+        <button onClick={closeModal}>close</button>
+        <div>I am a modal</div>
+        <form>
+          <input />
+          <button>tab navigation</button>
+          <button>stays</button>
+          <button>inside</button>
+          <button>the modal</button>
+        </form>
+      </Modal>
       <MKBox
         position="absolute"
         top={0}
