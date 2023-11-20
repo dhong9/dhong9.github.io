@@ -32,6 +32,7 @@ import MKTypography from "components/MKTypography";
 
 // DH React components
 import DHSnackbar from "components/DHSnackbar";
+import DeleteAccount from "pages/LandingPages/DeleteAccount";
 
 // Routes
 import routes from "routes";
@@ -148,12 +149,7 @@ function Profile() {
       />
       <Modal open={modalIsOpen} onClose={closeModal}>
         <MKBox sx={style}>
-          <MKTypography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </MKTypography>
-          <MKTypography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </MKTypography>
+          <DeleteAccount />
         </MKBox>
       </Modal>
       <MKBox

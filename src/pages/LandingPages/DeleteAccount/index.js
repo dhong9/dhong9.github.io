@@ -22,29 +22,27 @@ import MKTypography from "components/MKTypography";
 
 function DeleteAccount() {
   return (
-    <MKBox px={1} width="100%" height="100vh" mx="auto" position="relative" zIndex={2}>
-      <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
-        <Grid item xs={11} sm={9} md={5} lg={4} xl={3}>
-          <Card>
-            <MKBox
-              variant="gradient"
-              bgColor="info"
-              borderRadius="lg"
-              coloredShadow="info"
-              mx={2}
-              mt={-3}
-              p={2}
-              mb={1}
-              textAlign="center"
-            >
-              <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-                Are You Sure?
-              </MKTypography>
-            </MKBox>
-          </Card>
-        </Grid>
+    <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
+      <Grid item xs={11} sm={9} md={5} lg={4} xl={3}>
+        <Card>
+          <MKBox
+            variant="gradient"
+            bgColor="info"
+            borderRadius="lg"
+            coloredShadow="info"
+            mx={2}
+            mt={-3}
+            p={2}
+            mb={1}
+            textAlign="center"
+          >
+            <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+              Are You Sure?
+            </MKTypography>
+          </MKBox>
+        </Card>
       </Grid>
-    </MKBox>
+    </Grid>
   );
 }
 
