@@ -26,7 +26,7 @@ function DeleteAccount() {
       <MKTypography variant="h4" fontWeight="medium" color="black" mt={1}>
         Are You Sure?
       </MKTypography>
-      <MKTypography variant="p" fontWeight="medium" color="black" mt={1}>
+      <MKTypography variant="p" color="black" mt={1}>
         Type your username <strong>Guest</strong> to confirm.
       </MKTypography>
       <MKInput
