@@ -13,14 +13,27 @@ Coded by www.danyo.tech
 */
 
 // Material Kit 2 React examples
+import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
 function DeleteAccount() {
+  const [username, setUsername] = useState("");
+
   return (
     <>
-      <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+      <MKTypography variant="h4" fontWeight="medium" color="black" mt={1}>
         Are You Sure?
       </MKTypography>
+      <MKTypography variant="p" fontWeight="medium" color="black" mt={1}>
+        Type your username <strong>Guest</strong> to confirm.
+      </MKTypography>
+      <MKInput
+        type="text"
+        label="Username"
+        onChange={(e) => setUsername(e.target.value)}
+        value={username}
+        fullWidth
+      />
     </>
   );
 }
