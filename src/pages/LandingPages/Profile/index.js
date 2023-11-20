@@ -18,6 +18,7 @@ import { useContext, useState } from "react";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
+import Modal from "@mui/material/Modal";
 
 // @mui material icons
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -31,9 +32,6 @@ import MKTypography from "components/MKTypography";
 
 // DH React components
 import DHSnackbar from "components/DHSnackbar";
-
-// Modal
-import Modal from "react-modal";
 
 // Routes
 import routes from "routes";
@@ -60,7 +58,6 @@ function Profile() {
 
   const openModal = () => {
     setModalIsOpen(true);
-    console.log("Opened modal");
   };
 
   const closeModal = () => {
@@ -128,15 +125,16 @@ function Profile() {
     }
   };
 
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-    },
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
   };
 
   return (
@@ -148,22 +146,15 @@ function Profile() {
         severity={profileSeverity}
         message={profileMessage}
       />
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <h2>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+      <Modal open={modalIsOpen} onClose={closeModal}>
+        <MKBox sx={style}>
+          <MKTypography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </MKTypography>
+          <MKTypography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </MKTypography>
+        </MKBox>
       </Modal>
       <MKBox
         position="absolute"
