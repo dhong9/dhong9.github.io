@@ -29,14 +29,20 @@ describe("DefaultNavbar", () => {
               route: "/default",
               icon: <GitHubIcon />,
               name: "Github",
+              description: "Power version control software",
             },
             {
               label: "Doughnut",
               icon: <DonutSmallIcon />,
               name: "doughnut",
+              description: "deep fried",
               collapse: [
-                { name: "boston" },
-                { name: "brooklyn", collapse: [{ name: "new york" }] },
+                { name: "boston", description: "a major city" },
+                {
+                  name: "brooklyn",
+                  description: "a major city",
+                  collapse: [{ name: "new york", description: "East Coast" }],
+                },
               ],
             },
           ]}
@@ -57,14 +63,20 @@ describe("DefaultNavbar", () => {
               route: "/default",
               icon: <GitHubIcon />,
               name: "Github",
+              description: "Powerful version control software",
             },
             {
               label: "Doughnut",
               icon: <DonutSmallIcon />,
               name: "doughnut",
+              description: "also spelled donut",
               collapse: [
-                { name: "boston" },
-                { name: "brooklyn", collapse: [{ name: "new york" }] },
+                { name: "boston", description: "get their cream pie" },
+                {
+                  name: "brooklyn",
+                  description: "a major city",
+                  collapse: [{ name: "new york", description: "east coast" }],
+                },
               ],
             },
           ]}
