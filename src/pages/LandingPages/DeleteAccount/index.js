@@ -26,6 +26,10 @@ function DeleteAccount() {
 
   let { user } = useContext(AuthContext);
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <MKTypography variant="h4" fontWeight="medium" color="black" mt={1}>
@@ -41,6 +45,15 @@ function DeleteAccount() {
         value={username}
         fullWidth
       />
+      <MKButton
+        variant="gradient"
+        color="error"
+        onClick={handleDelete}
+        enabled={username == (user ? user.username : "Guest")}
+        fullWidth
+      >
+        delete account
+      </MKButton>
     </>
   );
 }
