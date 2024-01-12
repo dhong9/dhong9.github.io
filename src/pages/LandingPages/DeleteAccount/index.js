@@ -12,14 +12,19 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 // Material Kit 2 React examples
 import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
+// Authentication
+import AuthContext from "context/AuthContext";
+
 function DeleteAccount() {
   const [username, setUsername] = useState("");
+
+  let { user } = useContext(AuthContext);
 
   return (
     <>
@@ -27,7 +32,7 @@ function DeleteAccount() {
         Are You Sure?
       </MKTypography>
       <MKTypography variant="p" color="black" mt={1}>
-        Type your username <strong>Guest</strong> to confirm.
+        Type your username <strong>{user.username}</strong> to confirm.
       </MKTypography>
       <MKInput
         type="text"
