@@ -50,7 +50,7 @@ function DeleteAccount() {
         variant="gradient"
         color="error"
         onClick={handleDelete}
-        enabled={username == (user ? user.username : "Guest")}
+        disabled={username !== (user ? user.username : "Guest")}
         fullWidth
       >
         delete account

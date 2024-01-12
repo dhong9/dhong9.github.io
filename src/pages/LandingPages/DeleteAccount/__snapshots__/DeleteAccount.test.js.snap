@@ -60,9 +60,8 @@ exports[`DeleteAccount renders 1`] = `
     </div>
   </div>,
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-h11g0n-MuiButtonBase-root-MuiButton-root"
-    disabled={false}
-    enabled={false}
+    className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-h11g0n-MuiButtonBase-root-MuiButton-root"
+    disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
     onContextMenu={[Function]}
@@ -76,7 +75,7 @@ exports[`DeleteAccount renders 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    tabIndex={0}
+    tabIndex={-1}
     type="button"
   >
     delete account
