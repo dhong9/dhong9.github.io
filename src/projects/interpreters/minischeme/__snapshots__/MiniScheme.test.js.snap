@@ -16766,7 +16766,7 @@ exports[`MiniScheme adds a comment 1`] = `
               class="MuiTypography-root MuiTypography-body2 css-1yibnup-MuiTypography-root"
             >
               Copyright © 
-              2023
+              2024
                Material by
                
               <a
@@ -33376,7 +33376,7 @@ exports[`MiniScheme visualizes output 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-1619"
+            id="rdw-wrapper-7122"
           >
             <div
               aria-hidden="false"
@@ -33764,15 +33764,15 @@ exports[`MiniScheme visualizes output 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="38vna"
-                        data-offset-key="7e6cb-0-0"
+                        data-editor="4e9bq"
+                        data-offset-key="e4ckk-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="7e6cb-0-0"
+                          data-offset-key="e4ckk-0-0"
                         >
                           <span
-                            data-offset-key="7e6cb-0-0"
+                            data-offset-key="e4ckk-0-0"
                           >
                             <br
                               data-text="true"
@@ -33915,7 +33915,7 @@ exports[`MiniScheme visualizes output 1`] = `
               class="MuiTypography-root MuiTypography-body2 css-1yibnup-MuiTypography-root"
             >
               Copyright © 
-              2023
+              2024
                Material by
                
               <a

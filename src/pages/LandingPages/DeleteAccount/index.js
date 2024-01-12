@@ -32,7 +32,7 @@ function DeleteAccount() {
         Are You Sure?
       </MKTypography>
       <MKTypography variant="p" color="black" mt={1}>
-        Type your username <strong>{user.username}</strong> to confirm.
+        Type your username <strong>{user ? user.username : "Guest"}</strong> to confirm.
       </MKTypography>
       <MKInput
         type="text"

@@ -7201,7 +7201,7 @@ exports[`2048 adds a comment 1`] = `
               class="MuiTypography-root MuiTypography-body2 css-1yibnup-MuiTypography-root"
             >
               Copyright © 
-              2023
+              2024
                Material by
                
               <a
@@ -14239,7 +14239,7 @@ exports[`2048 renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-6863"
+            id="rdw-wrapper-9300"
           >
             <div
               aria-hidden="false"
@@ -14625,15 +14625,15 @@ exports[`2048 renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="371o1"
-                        data-offset-key="67f8t-0-0"
+                        data-editor="2kg8p"
+                        data-offset-key="1ts74-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="67f8t-0-0"
+                          data-offset-key="1ts74-0-0"
                         >
                           <span
-                            data-offset-key="67f8t-0-0"
+                            data-offset-key="1ts74-0-0"
                           >
                             <br
                               data-text="true"
@@ -14776,7 +14776,7 @@ exports[`2048 renders without user 1`] = `
               class="MuiTypography-root MuiTypography-body2 css-1yibnup-MuiTypography-root"
             >
               Copyright © 
-              2023
+              2024
                Material by
                
               <a

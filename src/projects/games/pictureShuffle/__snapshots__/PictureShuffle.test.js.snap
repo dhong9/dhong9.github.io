@@ -8547,7 +8547,7 @@ exports[`PictureShuffle adds a comment 1`] = `
               class="MuiTypography-root MuiTypography-body2 css-1yibnup-MuiTypography-root"
             >
               Copyright © 
-              2023
+              2024
                Material by
                
               <a
@@ -16931,7 +16931,7 @@ exports[`PictureShuffle renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-5212"
+            id="rdw-wrapper-4567"
           >
             <div
               aria-hidden="false"
@@ -17317,15 +17317,15 @@ exports[`PictureShuffle renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="f9u6p"
-                        data-offset-key="9qvff-0-0"
+                        data-editor="d0v4o"
+                        data-offset-key="ajn4p-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="9qvff-0-0"
+                          data-offset-key="ajn4p-0-0"
                         >
                           <span
-                            data-offset-key="9qvff-0-0"
+                            data-offset-key="ajn4p-0-0"
                           >
                             <br
                               data-text="true"
@@ -17468,7 +17468,7 @@ exports[`PictureShuffle renders without user 1`] = `
               class="MuiTypography-root MuiTypography-body2 css-1yibnup-MuiTypography-root"
             >
               Copyright © 
-              2023
+              2024
                Material by
                
               <a

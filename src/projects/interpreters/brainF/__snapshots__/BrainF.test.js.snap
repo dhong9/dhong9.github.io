@@ -3457,7 +3457,7 @@ exports[`BrainF adds a comment 1`] = `
               class="MuiTypography-root MuiTypography-body2 css-1yibnup-MuiTypography-root"
             >
               Copyright © 
-              2023
+              2024
                Material by
                
               <a
@@ -6785,7 +6785,7 @@ exports[`BrainF visualizes output 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-717"
+            id="rdw-wrapper-2869"
           >
             <div
               aria-hidden="false"
@@ -7173,15 +7173,15 @@ exports[`BrainF visualizes output 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="8mukb"
-                        data-offset-key="6l9sd-0-0"
+                        data-editor="51k76"
+                        data-offset-key="2jica-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="6l9sd-0-0"
+                          data-offset-key="2jica-0-0"
                         >
                           <span
-                            data-offset-key="6l9sd-0-0"
+                            data-offset-key="2jica-0-0"
                           >
                             <br
                               data-text="true"
@@ -7324,7 +7324,7 @@ exports[`BrainF visualizes output 1`] = `
               class="MuiTypography-root MuiTypography-body2 css-1yibnup-MuiTypography-root"
             >
               Copyright © 
-              2023
+              2024
                Material by
                
               <a
