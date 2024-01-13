@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { postRequest, putRequest } from "services/baseService";
+import { postRequest, putRequest, deleteRequest } from "services/baseService";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -88,6 +88,13 @@ export const AuthProvider = ({ children }) => {
     history("/");
   };
 
+  const deleteUser = (id, success, error) => {
+    deleteRequest("accounts/delete/" + id + "/", success, (err) => {
+      console.error(err);
+      error(err);
+    });
+  };
+
   const contextData = {
     user,
     setUser,
@@ -97,6 +104,7 @@ export const AuthProvider = ({ children }) => {
     loginUser,
     logoutUser,
     updateUser,
+    deleteUser,
   };
 
   const updateToken = () => {
