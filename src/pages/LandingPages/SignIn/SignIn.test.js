@@ -64,7 +64,7 @@ describe("SignIn", () => {
     // Get form elements
     const usernameInput = getByLabelText("Username");
     const passwordInput = getByLabelText("Password");
-    const signInButton = getByText("sign in");
+    const signInButton = getByText("Sign In");
 
     // Sign in with no form input
     fireEvent.click(signInButton);

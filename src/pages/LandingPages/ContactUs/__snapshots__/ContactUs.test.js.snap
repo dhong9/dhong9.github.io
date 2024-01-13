@@ -24,7 +24,7 @@ exports[`ContactUs handles form errors 1`] = `
           <h3
             class="MuiTypography-root MuiTypography-h3 css-u0vnxq-MuiTypography-root"
           >
-            Contact us
+            Contact Me
           </h3>
         </div>
         <div
@@ -211,7 +211,7 @@ exports[`ContactUs renders 1`] = `
         <h3
           className="MuiTypography-root MuiTypography-h3 css-u0vnxq-MuiTypography-root"
         >
-          Contact us
+          Contact Me
         </h3>
       </div>
       <div

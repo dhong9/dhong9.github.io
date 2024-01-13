@@ -118,7 +118,7 @@ function ContactUs({ handleContactResponse }) {
               mt={-3}
             >
               <MKTypography variant="h3" color="white">
-                Contact us
+                Contact Me
               </MKTypography>
             </MKBox>
             <MKBox p={3}>
