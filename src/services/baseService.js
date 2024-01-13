@@ -33,8 +33,8 @@ export const putRequest = (endpoint, payload, success, error, config = {}) =>
     .then(success)
     .catch(error);
 
-export const deleteRequest = (endpoint, success, error, token) =>
+export const deleteRequest = (endpoint, success, error, config = {}) =>
   axios
-    .delete(baseURL + endpoint, { headers: { authorization: "Bearer " + token } })
+    .delete(baseURL + endpoint, { maxRedirects: 0, ...config })
     .then(success)
     .catch(error);
