@@ -119,7 +119,6 @@ material-kit-2-react
     │   │   │    ├── attention-catchers
     │   │   │    ├── components
     │   │   │    ├── elements
-    │   │   │    ├── input-areas
     │   │   │    ├── navigation
     │   │   └──  └── page-sections
     │   ├── pages
