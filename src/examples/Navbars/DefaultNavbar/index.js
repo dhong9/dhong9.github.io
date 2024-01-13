@@ -214,7 +214,6 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
             justifyContent="space-between"
             alignItems="center"
             variant="button"
-            textTransform="capitalize"
             minWidth={item.description ? "14rem" : "12rem"}
             color={item.description ? "dark" : "text"}
             fontWeight={item.description ? "bold" : "regular"}

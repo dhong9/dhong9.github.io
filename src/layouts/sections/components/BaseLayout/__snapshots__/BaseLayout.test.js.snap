@@ -47,7 +47,7 @@ exports[`BaseLayout renders 1`] = `
                 </svg>
               </p>
               <span
-                className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                className="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
               >
                 doughnut rider
               </span>
@@ -76,7 +76,7 @@ exports[`BaseLayout renders 1`] = `
                 </span>
               </p>
               <span
-                className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                className="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
               >
                 sections
               </span>
@@ -115,7 +115,7 @@ exports[`BaseLayout renders 1`] = `
                 </svg>
               </p>
               <span
-                className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                className="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
               >
                 github
               </span>
@@ -149,7 +149,7 @@ exports[`BaseLayout renders 1`] = `
                 </svg>
               </p>
               <span
-                className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                className="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
               >
                 Guest
               </span>

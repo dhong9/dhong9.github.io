@@ -30,7 +30,7 @@ exports[`DefaultNavbarDropdown renders with route 1`] = `
     </svg>
   </p>
   <span
-    className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+    className="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
   >
     Routed Navbar
   </span>
@@ -74,7 +74,7 @@ exports[`DefaultNavbarDropdown renders without route 1`] = `
     </svg>
   </p>
   <span
-    className="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+    className="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
   >
     Not Routed Navbar
   </span>

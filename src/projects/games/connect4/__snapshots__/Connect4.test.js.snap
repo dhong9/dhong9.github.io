@@ -48,7 +48,7 @@ exports[`Connect4 adds a comment 1`] = `
                   </svg>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   doughnut rider
                 </span>
@@ -75,7 +75,7 @@ exports[`Connect4 adds a comment 1`] = `
                   </span>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   sections
                 </span>
@@ -112,7 +112,7 @@ exports[`Connect4 adds a comment 1`] = `
                   </svg>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   github
                 </span>
@@ -144,7 +144,7 @@ exports[`Connect4 adds a comment 1`] = `
                   </svg>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 />
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"

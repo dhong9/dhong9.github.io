@@ -42,7 +42,7 @@ exports[`DefaultNavbar expands with columns 1`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               traveling
             </span>
@@ -122,7 +122,7 @@ exports[`DefaultNavbar expands with columns 2`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               traveling
             </span>
@@ -202,7 +202,7 @@ exports[`DefaultNavbar expands without columns 1`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               flight
             </span>
@@ -282,7 +282,7 @@ exports[`DefaultNavbar expands without columns 2`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               flight
             </span>
@@ -362,7 +362,7 @@ exports[`DefaultNavbar renders with route 1`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               Github
             </span>
@@ -394,7 +394,7 @@ exports[`DefaultNavbar renders with route 1`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               doughnut
             </span>
@@ -474,7 +474,7 @@ exports[`DefaultNavbar renders without route 1`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               Github
             </span>
@@ -506,7 +506,7 @@ exports[`DefaultNavbar renders without route 1`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               doughnut
             </span>
@@ -586,7 +586,7 @@ exports[`DefaultNavbar should resize 1`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               Github
             </span>
@@ -618,7 +618,7 @@ exports[`DefaultNavbar should resize 1`] = `
               </svg>
             </p>
             <span
-              class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
             >
               doughnut
             </span>

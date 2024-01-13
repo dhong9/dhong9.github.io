@@ -48,7 +48,7 @@ exports[`2048 adds a comment 1`] = `
                   </svg>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   doughnut rider
                 </span>
@@ -75,7 +75,7 @@ exports[`2048 adds a comment 1`] = `
                   </span>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   sections
                 </span>
@@ -112,7 +112,7 @@ exports[`2048 adds a comment 1`] = `
                   </svg>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   github
                 </span>
@@ -144,7 +144,7 @@ exports[`2048 adds a comment 1`] = `
                   </svg>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 />
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
@@ -7270,7 +7270,7 @@ exports[`2048 renders without user 1`] = `
                   </svg>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   doughnut rider
                 </span>
@@ -7297,7 +7297,7 @@ exports[`2048 renders without user 1`] = `
                   </span>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   sections
                 </span>
@@ -7334,7 +7334,7 @@ exports[`2048 renders without user 1`] = `
                   </svg>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   github
                 </span>
@@ -7366,7 +7366,7 @@ exports[`2048 renders without user 1`] = `
                   </svg>
                 </p>
                 <span
-                  class="MuiTypography-root MuiTypography-button css-129xe1v-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
                   Guest
                 </span>
@@ -14239,7 +14239,7 @@ exports[`2048 renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-6408"
+            id="rdw-wrapper-2244"
           >
             <div
               aria-hidden="false"
@@ -14625,15 +14625,15 @@ exports[`2048 renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="3i4co"
-                        data-offset-key="8bj4k-0-0"
+                        data-editor="3mpsg"
+                        data-offset-key="4l0ng-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="8bj4k-0-0"
+                          data-offset-key="4l0ng-0-0"
                         >
                           <span
-                            data-offset-key="8bj4k-0-0"
+                            data-offset-key="4l0ng-0-0"
                           >
                             <br
                               data-text="true"
