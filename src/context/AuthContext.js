@@ -89,6 +89,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const deleteUser = (id, success, error) => {
+    console.log("Authorization: ", authTokens.access);
     deleteRequest(
       "accounts/delete/" + id + "/",
       success,
