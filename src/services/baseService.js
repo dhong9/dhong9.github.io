@@ -38,6 +38,7 @@ export const deleteRequest = (endpoint, success, error, token) =>
     .delete({
       url: baseURL + endpoint,
       headers: { Authorization: "Bearer " + token },
+      withCredentials: true,
     })
     .then(success)
     .catch(error);
