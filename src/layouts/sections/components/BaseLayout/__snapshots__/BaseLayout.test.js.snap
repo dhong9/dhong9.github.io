@@ -78,7 +78,7 @@ exports[`BaseLayout renders 1`] = `
               <span
                 className="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
               >
-                sections
+                Sections
               </span>
               <p
                 className="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
@@ -117,7 +117,7 @@ exports[`BaseLayout renders 1`] = `
               <span
                 className="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
               >
-                github
+                Github
               </span>
               <p
                 className="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"

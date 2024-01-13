@@ -77,7 +77,7 @@ exports[`MiniScheme adds a comment 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
-                  sections
+                  Sections
                 </span>
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
@@ -114,7 +114,7 @@ exports[`MiniScheme adds a comment 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
-                  github
+                  Github
                 </span>
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
@@ -16864,7 +16864,7 @@ exports[`MiniScheme visualizes output 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
-                  sections
+                  Sections
                 </span>
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
@@ -16901,7 +16901,7 @@ exports[`MiniScheme visualizes output 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-button css-ny1wgu-MuiTypography-root"
                 >
-                  github
+                  Github
                 </span>
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-wnhb9o-MuiTypography-root"
@@ -33376,7 +33376,7 @@ exports[`MiniScheme visualizes output 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-1330"
+            id="rdw-wrapper-7417"
           >
             <div
               aria-hidden="false"
@@ -33764,15 +33764,15 @@ exports[`MiniScheme visualizes output 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="5qdj1"
-                        data-offset-key="a15hq-0-0"
+                        data-editor="7dffn"
+                        data-offset-key="38kel-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="a15hq-0-0"
+                          data-offset-key="38kel-0-0"
                         >
                           <span
-                            data-offset-key="a15hq-0-0"
+                            data-offset-key="38kel-0-0"
                           >
                             <br
                               data-text="true"

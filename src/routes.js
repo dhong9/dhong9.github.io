@@ -62,16 +62,16 @@ const routes = [
     component: <DoughnutRiderPage />,
   },
   {
-    name: "sections",
+    name: "Sections",
     icon: <Icon>view_day</Icon>,
     collapse: [
       {
-        name: "games",
+        name: "Games",
         description: "See all games",
         dropdown: true,
         collapse: [
           {
-            name: "connect4",
+            name: "Connect4",
             route: "/sections/games/connect4",
             component: <Connect4 />,
           },
@@ -81,19 +81,19 @@ const routes = [
             component: <Twenty48 />,
           },
           {
-            name: "pictureShuffle",
+            name: "PictureShuffle",
             route: "/sections/games/pictureShuffle",
             component: <PictureShuffle />,
           },
           {
-            name: "othello",
+            name: "Othello",
             route: "/sections/games/othello",
             component: <Othello />,
           },
         ],
       },
       {
-        name: "interpreters",
+        name: "Interpreters",
         description: "See all interpreters",
         dropdown: true,
         collapse: [
@@ -112,7 +112,7 @@ const routes = [
     ],
   },
   {
-    name: "github",
+    name: "Github",
     icon: <GitHubIcon />,
     href: "https://github.com/dhong9/dhong9.github.io",
   },
