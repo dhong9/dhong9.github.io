@@ -25,10 +25,11 @@ import AuthContext from "context/AuthContext";
 function DeleteAccount() {
   const [username, setUsername] = useState("");
 
-  let { user } = useContext(AuthContext);
+  let { user, deleteUser } = useContext(AuthContext);
 
   const handleDelete = (e) => {
     e.preventDefault();
+    deleteUser(user.user_id, console.log, console.error);
   };
 
   return (
