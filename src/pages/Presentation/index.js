@@ -125,24 +125,24 @@ function Presentation() {
 
   const signedOutOptions = [
     {
-      name: "sign in",
+      name: "Sign In",
       route: "/pages/authentication/sign-in",
       component: <SignIn />,
     },
     {
-      name: "sign up",
+      name: "Sign Up",
       route: "/pages/authentication/sign-up",
       component: <SignUp />,
     },
   ];
   const signedInOptions = [
     {
-      name: "profile",
+      name: "Profile",
       route: "/pages/authentication/profile",
       component: <Profile />,
     },
     {
-      name: "sign out",
+      name: "Sign Out",
       route: "/pages/authentication/sign-out",
       component: <SignOut />,
     },
