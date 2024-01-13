@@ -32,3 +32,9 @@ export const putRequest = (endpoint, payload, success, error, config = {}) =>
     .put(baseURL + endpoint, payload, { maxRedirects: 0, ...config })
     .then(success)
     .catch(error);
+
+export const deleteRequest = (endpoint, success, error) =>
+  axios
+    .delete(baseURL + endpoint)
+    .then(success)
+    .catch(error);
