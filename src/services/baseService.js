@@ -35,6 +35,6 @@ export const putRequest = (endpoint, payload, success, error, config = {}) =>
 
 export const deleteRequest = (endpoint, success, error, token) =>
   axios
-    .delete(baseURL + endpoint, { headers: { Authorization: "Token " + token } })
+    .delete(baseURL + endpoint, { headers: { authorization: "Bearer " + token } })
     .then(success)
     .catch(error);
