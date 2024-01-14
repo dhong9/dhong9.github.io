@@ -1,56 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DeleteAccount renders 1`] = `
-[
+exports[`DeleteAccount deletes account 1`] = `
+<div>
   <h4
-    className="MuiTypography-root MuiTypography-h4 css-itra91-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-h4 css-itra91-MuiTypography-root"
   >
     Are You Sure?
-  </h4>,
+  </h4>
   <span
-    className="MuiTypography-root MuiTypography-p css-op6jv2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-p css-op6jv2-MuiTypography-root"
   >
     Type your username 
-    <strong>
-      Guest
-    </strong>
+    <strong />
      to confirm.
-  </span>,
+  </span>
   <div
-    className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-uk4jy3-MuiFormLabel-root-MuiInputLabel-root"
-      data-shrink={false}
-      htmlFor=":r0:"
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-uk4jy3-MuiFormLabel-root-MuiInputLabel-root"
+      data-shrink="false"
+      for=":r0:"
       id=":r0:-label"
     >
       Username
     </label>
     <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-12n1zae-MuiInputBase-root-MuiOutlinedInput-root"
-      onClick={[Function]}
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-12n1zae-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input css-5mmmz-MuiInputBase-input-MuiOutlinedInput-input"
-        disabled={false}
+        aria-invalid="false"
+        class="MuiInputBase-input MuiOutlinedInput-input css-5mmmz-MuiInputBase-input-MuiOutlinedInput-input"
         id=":r0:"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
         type="text"
         value=""
       />
       <fieldset
-        aria-hidden={true}
-        className="MuiOutlinedInput-notchedOutline css-135f4hd-MuiOutlinedInput-notchedOutline"
+        aria-hidden="true"
+        class="MuiOutlinedInput-notchedOutline css-135f4hd-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="css-yjsfm1"
+          class="css-yjsfm1"
         >
           <span>
             Username
@@ -58,27 +48,14 @@ exports[`DeleteAccount renders 1`] = `
         </legend>
       </fieldset>
     </div>
-  </div>,
+  </div>
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-h11g0n-MuiButtonBase-root-MuiButton-root"
-    disabled={true}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDragLeave={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex={-1}
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-h11g0n-MuiButtonBase-root-MuiButton-root"
+    disabled=""
+    tabindex="-1"
     type="button"
   >
     delete account
-  </button>,
-]
+  </button>
+</div>
 `;
