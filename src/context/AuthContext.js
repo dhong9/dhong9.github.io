@@ -90,10 +90,15 @@ export const AuthProvider = ({ children }) => {
 
   const deleteUser = (id, success, error) => {
     console.log(authTokens);
-    deleteRequest("accounts/delete/" + id + "/", success, (err) => {
-      console.error(err);
-      error(err);
-    });
+    deleteRequest(
+      "accounts/delete/" + id + "/",
+      success,
+      (err) => {
+        console.error(err);
+        error(err);
+      },
+      { headers: { Authorization: `Bearer ${authTokens.access}` } }
+    );
   };
 
   const contextData = {
