@@ -26,7 +26,6 @@ function DeleteAccount() {
   const [username, setUsername] = useState("");
 
   let { user, deleteUser } = useContext(AuthContext);
-  console.log(user)
 
   const handleDelete = (e) => {
     e.preventDefault();
