@@ -25,10 +25,15 @@ import AuthContext from "context/AuthContext";
 function DeleteAccount() {
   const [username, setUsername] = useState("");
 
-  let { user, deleteUser } = useContext(AuthContext);
+  let { user, logoutUser, deleteUser } = useContext(AuthContext);
 
   const handleDelete = (e) => {
     e.preventDefault();
+
+    // Sign out before deleting the user
+    // Otherwise, the deleted user still maintains their session
+    logoutUser();
+
     deleteUser(user.user_id, console.log, console.error);
   };
 
