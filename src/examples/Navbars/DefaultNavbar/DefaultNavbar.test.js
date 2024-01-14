@@ -96,9 +96,14 @@ describe("DefaultNavbar", () => {
               label: "Traveling",
               icon: <DonutSmallIcon />,
               name: "traveling",
+              descripton: "adds a new perspective",
               collapse: [
-                { name: "chicago" },
-                { name: "san francisco", collapse: [{ name: "california" }] },
+                { name: "chicago", description: "major city in Illinois" },
+                {
+                  name: "san francisco",
+                  description: "major city in California",
+                  collapse: [{ name: "california", description: "the golden state" }],
+                },
               ],
               columns: 2,
             },
@@ -124,9 +129,14 @@ describe("DefaultNavbar", () => {
               label: "Flight",
               icon: <DonutSmallIcon />,
               name: "flight",
+              description: "go high!",
               collapse: [
-                { name: "chicago" },
-                { name: "san francisco", collapse: [{ name: "california" }] },
+                { name: "chicago", description: "major city in Illinois" },
+                {
+                  name: "san francisco",
+                  description: "next to the Pacific coast",
+                  collapse: [{ name: "california", description: "a west coast state" }],
+                },
               ],
             },
           ]}
@@ -155,14 +165,20 @@ describe("DefaultNavbar", () => {
               route: "/default",
               icon: <GitHubIcon />,
               name: "Github",
+              description: "not to be mistaken with Gitlab",
             },
             {
               label: "Doughnut",
               icon: <DonutSmallIcon />,
               name: "doughnut",
+              description: "no, it's not a nut",
               collapse: [
-                { name: "boston" },
-                { name: "brooklyn", collapse: [{ name: "new york" }] },
+                { name: "boston", description: "in the east coast" },
+                {
+                  name: "brooklyn",
+                  description: "has a bridge",
+                  collapse: [{ name: "new york", description: "east coast" }],
+                },
               ],
             },
           ]}
