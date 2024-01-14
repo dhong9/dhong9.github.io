@@ -95,8 +95,7 @@ export const AuthProvider = ({ children }) => {
       (err) => {
         console.error(err);
         error(err);
-      },
-      { headers: { Authorization: `Bearer ${authTokens.access}}` } }
+      }
     );
   };
 
