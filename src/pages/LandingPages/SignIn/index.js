@@ -88,7 +88,7 @@ function SignInBasic() {
         },
         (loginResponse) => {
           setLoginSeverity("error");
-          setLoginMessage(loginResponse.message);
+          setLoginMessage(loginResponse.response.data.detail);
           setSnackbarOpen(true);
         }
       );
