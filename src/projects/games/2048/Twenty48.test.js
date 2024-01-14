@@ -48,8 +48,8 @@ jest.mock("jwt-decode");
 jest.mock("react-p5", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
-      __esModule: true,
-      default: forwardRef(() => <div>Sketch</div>)
+    __esModule: true,
+    default: forwardRef(() => <div>Sketch</div>),
   };
 });
 jest.mock("react-monaco-editor", () => {
@@ -70,6 +70,13 @@ jest.mock("react-router-dom", () => ({
   Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
   useNavigate: jest.fn,
 }));
+jest.mock("examples/Navbars/DefaultNavbar", () => {
+  const { forwardRef } = jest.requireActual("react");
+  return {
+    __esModule: true,
+    default: forwardRef(() => <div>Mock Navbar</div>),
+  };
+});
 
 describe("2048", () => {
   beforeEach(() => {
@@ -85,7 +92,7 @@ describe("2048", () => {
     // Mock tokens
     const mockToken = "mocked_jwt_value";
     const refreshToken = "mocked_refresh_value";
-    
+
     localStorage.setItem(
       "authTokens",
       JSON.stringify({ access: mockToken, refresh: refreshToken })
