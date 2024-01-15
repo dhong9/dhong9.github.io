@@ -1,5 +1,6 @@
 // React testing libraries
-import renderer from "react-test-renderer";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -15,19 +16,22 @@ jest.mock("react-router-dom", () => ({
 
 // Write test cases
 describe("Breadcrumbs", () => {
-  it("renders", () => {
+  it("renders router elements", () => {
     const routes = [
-      { label: "Home", route: "/", name: "Breadcrumbs", collapse: [{ name: "toast" }] },
+      { label: "Home", route: "/crumbs", name: "Bread crumbs", collapse: [{ name: "toast" }] },
       { label: "Products", route: "/products", name: "Stuffs", collapse: [{ name: "things" }] },
       { label: "Shoes", name: "Zapatos", collapse: false },
     ];
 
-    const component = renderer.create(
+    const { queryByText} = render(
       <ThemeProvider theme={theme}>
         <Breadcrumbs routes={routes} />
       </ThemeProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    // Verify that labels are present
+    expect(queryByText("Home")).toBeInTheDocument();
+    expect(queryByText("Products")).toBeInTheDocument();
+    expect(queryByText("Shoes")).toBeInTheDocument();
   });
 });
