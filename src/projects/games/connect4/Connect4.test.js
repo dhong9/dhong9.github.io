@@ -77,6 +77,7 @@ jest.mock("examples/Navbars/DefaultNavbar", () => {
     default: forwardRef(() => <div>Mock Navbar</div>),
   };
 });
+jest.mock("routes", () => []);
 
 describe("Connect4", () => {
   beforeEach(() => {

@@ -64,6 +64,14 @@ jest.mock("react-router-dom", () => ({
   Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
   useNavigate: jest.fn,
 }));
+jest.mock("examples/Navbars/DefaultNavbar", () => {
+  const { forwardRef } = jest.requireActual("react");
+  return {
+    __esModule: true,
+    default: forwardRef(() => <div>Mock Navbar</div>),
+  };
+});
+jest.mock("routes", () => []);
 
 describe("BrainF", () => {
   beforeEach(() => {
