@@ -156,7 +156,7 @@ export const AuthProvider = ({ children }) => {
 
 // Typechecking props of AuthContext
 AuthProvider.propTypes = {
-  children: PropTypes.elementType,
+  children: PropTypes.node,
 };
 
 AuthProvider.defaultProps = {
