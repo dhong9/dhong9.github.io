@@ -1,6 +1,6 @@
-// Unit test libraries
-import React from "react";
-import renderer from "react-test-renderer";
+// React testing libraries
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Component to test
 import SignUpPage from "layouts/pages/authentication/sign-up";
@@ -16,8 +16,7 @@ jest.mock("pages/LandingPages/SignUp", () => {
 
 describe("SignUpPage", () => {
   it("renders", () => {
-    const component = renderer.create(<SignUpPage />);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { queryByText } = render(<SignUpPage />);
+    expect(queryByText("SignUp")).toBeInTheDocument();
   });
 });
