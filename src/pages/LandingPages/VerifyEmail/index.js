@@ -71,6 +71,11 @@ function VerifyEmail() {
                 Verify Email
               </MKTypography>
             </MKBox>
+            <MKBox p={3}>
+              <MKTypography variant="body2" color="text" mb={3}>
+                Please check your email to confirm your account.
+              </MKTypography>
+            </MKBox>
           </MKBox>
         </Grid>
       </Grid>
