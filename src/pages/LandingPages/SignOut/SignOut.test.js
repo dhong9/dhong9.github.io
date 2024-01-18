@@ -1,24 +1,39 @@
-import renderer from "react-test-renderer";
-import SignOut from "pages/LandingPages/SignOut";
-import React from "react";
+// React testing libraries
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
-let realUseContext;
-let useContextMock;
-// Setup mock
-beforeEach(() => {
-    realUseContext = React.useContext;
-    useContextMock = React.useContext = jest.fn();
-});
-// Cleanup mock
-afterEach(() => {
-    React.useContext = realUseContext;
-});
+// Component to test
+import SignOut from "pages/LandingPages/SignOut";
+
+// Authentication
+import AuthContext, { AuthProvider } from "context/AuthContext";
+
+// Mocks
+jest.mock("react-router-dom", () => ({
+  useNavigate: jest.fn,
+}));
 
 describe("SignOut", () => {
-    it("renders", () => {
-        useContextMock.mockReturnValue("Test Value");
-        const component = renderer.create(<SignOut />);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  afterEach(() => {
+    localStorage.removeItem("authTokens");
+    jest.clearAllMocks();
+  });
+  it("renders", () => {
+    const contextData = {
+      logoutUser: jest.fn(),
+    };
+
+    const { queryByText } = render(
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <SignOut />
+        </AuthProvider>
+      </AuthContext.Provider>
+    );
+    expect(queryByText("Logging out...")).toBeInTheDocument();
+  });
 });
