@@ -39,10 +39,10 @@ function DeleteAccount() {
 
   return (
     <>
-      <MKTypography variant="h4" fontWeight="medium" color="black" mt={1}>
+      <MKTypography variant="h4" fontWeight="medium" color="dark" mt={1}>
         Are You Sure?
       </MKTypography>
-      <MKTypography variant="p" color="black" mt={1}>
+      <MKTypography variant="p" color="dark" mt={1}>
         Type your username <strong>{user ? user.username : "Guest"}</strong> to confirm.
       </MKTypography>
       <MKInput

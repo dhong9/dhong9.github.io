@@ -3,12 +3,12 @@
 exports[`DeleteAccount deletes account 1`] = `
 <div>
   <h4
-    class="MuiTypography-root MuiTypography-h4 css-itra91-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-h4 css-besic7-MuiTypography-root"
   >
     Are You Sure?
   </h4>
   <span
-    class="MuiTypography-root MuiTypography-p css-op6jv2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-p css-1b4f3i7-MuiTypography-root"
   >
     Type your username 
     <strong />
