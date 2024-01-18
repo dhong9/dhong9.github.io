@@ -17,6 +17,7 @@ import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKTypography from "components/MKTypography";
 
 // Image
 import bgImage from "assets/images/illustrations/leatherText.png";
@@ -35,6 +36,42 @@ function VerifyEmail() {
             mt={2}
             sx={{ backgroundImage: `url(${bgImage})` }}
           />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={10}
+          md={7}
+          lg={6}
+          xl={4}
+          ml={{ xs: "auto", lg: 6 }}
+          mr={{ xs: "auto", lg: 6 }}
+        >
+          <MKBox
+            bgColor="white"
+            borderRadius="xl"
+            shadow="lg"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            mt={{ xs: 20, sm: 18, md: 20 }}
+            mb={{ xs: 20, sm: 18, md: 20 }}
+            mx={3}
+          >
+            <MKBox
+              variant="gradient"
+              bgColor="info"
+              coloredShadow="info"
+              borderRadius="lg"
+              p={2}
+              mx={2}
+              mt={-3}
+            >
+              <MKTypography variant="h3" color="white">
+                Verify Email
+              </MKTypography>
+            </MKBox>
+          </MKBox>
         </Grid>
       </Grid>
     </>
