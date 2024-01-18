@@ -63,8 +63,12 @@ describe("DeleteAccount", () => {
     };
     jwtDecode.mockReturnValue(mockPayload);
 
+    const contextData = {
+      loginUser: jest.fn(),
+    };
+
     const { container, getByText } = render(
-      <AuthContext.Provider>
+      <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
             <DeleteAccount />
