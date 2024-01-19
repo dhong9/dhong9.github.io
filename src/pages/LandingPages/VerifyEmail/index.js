@@ -12,6 +12,8 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useContext } from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -19,10 +21,19 @@ import Grid from "@mui/material/Grid";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
+// Authentication
+import AuthContext from "context/AuthContext";
+
 // Image
 import bgImage from "assets/images/illustrations/leatherText.png";
 
 function VerifyEmail() {
+  const { user } = useContext(AuthContext);
+
+  const returnToHomePage = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Grid container spacing={3} alignItems="center">
@@ -73,8 +84,20 @@ function VerifyEmail() {
             </MKBox>
             <MKBox p={3}>
               <MKTypography variant="body2" color="text" mb={3}>
-                Please check your email to confirm your account.
+                Please check your email at <strong>{user.email}</strong> to confirm your account.
               </MKTypography>
+              <MKBox width="100%" component="form" method="post" autoComplete="off">
+                <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
+                  <MKButton
+                    type="submit"
+                    variant="gradient"
+                    color="info"
+                    onClick={returnToHomePage}
+                  >
+                    Return to Home Page
+                  </MKButton>
+                </Grid>
+              </MKBox>
             </MKBox>
           </MKBox>
         </Grid>
