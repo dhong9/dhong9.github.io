@@ -49,7 +49,7 @@ import bgImage from "assets/images/Pacific_selfie_bubbles.jpg";
 // Authentication
 import SignIn from "layouts/pages/authentication/sign-in";
 import SignUp from "layouts/pages/authentication/sign-up";
-import SignOutPage from "layouts/pages/authentication/sign-out";
+import SignOut from "layouts/pages/authentication/sign-out";
 import Profile from "layouts/pages/authentication/profile";
 import AuthContext from "context/AuthContext";
 
@@ -148,7 +148,7 @@ function Presentation() {
     {
       name: "Sign Out",
       route: "/pages/authentication/sign-out",
-      component: <SignOutPage onload={signoutSuccess} />,
+      component: <SignOut onload={signoutSuccess} />,
     },
   ];
 
