@@ -63,6 +63,10 @@ export default function App() {
       return null;
     });
 
+  const signoutSuccess = () => {
+    console.log("Sign out success!");
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -72,7 +76,10 @@ export default function App() {
           <Route index element={<Presentation />} />
           <Route path="/pages/authentication/sign-in" element={<SignInPage />} />
           <Route path="/pages/authentication/sign-up" element={<SignUpPage />} />
-          <Route path="/pages/authentication/sign-out" element={<SignOutPage />} />
+          <Route
+            path="/pages/authentication/sign-out"
+            element={<SignOutPage onload={signoutSuccess} />}
+          />
           <Route path="/pages/authentication/profile" element={<ProfilePage />} />
           <Route path="/doughnutRider/posts/:id" element={<ForumsPost />} />
           <Route path="/doughnutRider/categories/:id" element={<ForumsCategories />} />
