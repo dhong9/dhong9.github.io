@@ -91,20 +91,22 @@ function VerifyEmail() {
               </MKTypography>
               <MKBox width="100%" component="form" method="post" autoComplete="off">
                 <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
-                  <MuiLink href="/">Return to Home Page</MuiLink>
+                  <MKBox mt={4} mb={1}>
+                    <MuiLink href="/">Return to Home Page</MuiLink>
+                  </MKBox>
                   <Divider variant="middle">
                     <MKTypography variant="h6" fontWeight="medium">
                       Didn&apos;t receive the confirmation?
                     </MKTypography>
-                    <MKButton
-                      type="submit"
-                      variant="gradient"
-                      color="info"
-                      onClick={sendConfirmation}
-                    >
-                      Resend Confirmation
-                    </MKButton>
                   </Divider>
+                  <MKButton
+                    type="submit"
+                    variant="gradient"
+                    color="info"
+                    onClick={sendConfirmation}
+                  >
+                    Resend Confirmation
+                  </MKButton>
                 </Grid>
               </MKBox>
             </MKBox>
