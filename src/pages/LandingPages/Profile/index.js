@@ -113,7 +113,7 @@ function Profile() {
     icon: <AccountCircleIcon />,
     collapse: [
       {
-        name: "sign out",
+        name: "Sign Out",
         route: "/pages/authentication/sign-out",
         component: <SignOut />,
       },
