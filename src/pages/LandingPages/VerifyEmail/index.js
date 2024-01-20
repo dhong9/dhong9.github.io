@@ -94,7 +94,7 @@ function VerifyEmail() {
                   <MuiLink href="/">Return to Home Page</MuiLink>
                   <Divider variant="middle">
                     <MKTypography variant="h6" fontWeight="medium">
-                      Didn't receive the confirmation?
+                      Didn&apos;t receive the confirmation?
                     </MKTypography>
                     <MKButton
                       type="submit"
