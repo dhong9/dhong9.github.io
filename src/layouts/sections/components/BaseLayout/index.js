@@ -13,7 +13,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -34,6 +34,9 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import CenteredFooter from "examples/Footers/CenteredFooter";
 import Breadcrumbs from "examples/Breadcrumbs";
 
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
+
 // Authentication
 import SignIn from "layouts/pages/authentication/sign-in";
 import SignUp from "layouts/pages/authentication/sign-up";
@@ -45,7 +48,24 @@ import AuthContext from "context/AuthContext";
 import routes from "routes";
 
 function BaseLayout({ breadcrumb, title, children }) {
+  // Sign out properties
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [signoutSeverity, setSignoutSeverity] = useState("info");
+  const [signoutMessage, setSignoutMessage] = useState("");
+
   let { user } = useContext(AuthContext);
+
+  const signoutSuccess = () => {
+    setSignoutSeverity("success");
+    setSignoutMessage("Successfully signed out!");
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
+  };
 
   const signedOutOptions = [
     {
@@ -68,7 +88,7 @@ function BaseLayout({ breadcrumb, title, children }) {
     {
       name: "Sign Out",
       route: "/pages/authentication/sign-out",
-      component: <SignOut />,
+      component: <SignOut onload={signoutSuccess} />,
     },
   ];
 
@@ -79,25 +99,33 @@ function BaseLayout({ breadcrumb, title, children }) {
   };
 
   return (
-    <MKBox display="flex" flexDirection="column" bgColor="white" minHeight="100vh">
-      <MKBox bgColor="white" shadow="sm" py={0.25}>
-        <DefaultNavbar routes={[...routes, accountObj]} transparent relative />
+    <>
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity={signoutSeverity}
+        message={signoutMessage}
+      />
+      <MKBox display="flex" flexDirection="column" bgColor="white" minHeight="100vh">
+        <MKBox bgColor="white" shadow="sm" py={0.25}>
+          <DefaultNavbar routes={[...routes, accountObj]} transparent relative />
+        </MKBox>
+        <Container sx={{ mt: 6 }}>
+          <Grid container item xs={12} flexDirection="column" justifyContent="center" mx="auto">
+            <MKBox width={{ xs: "100%", md: "50%", lg: "25%" }} mb={3}>
+              <Breadcrumbs routes={breadcrumb} />
+            </MKBox>
+            <MKTypography variant="h3" mb={1}>
+              {title}
+            </MKTypography>
+            {children}
+          </Grid>
+        </Container>
+        <MKBox mt="auto">
+          <CenteredFooter />
+        </MKBox>
       </MKBox>
-      <Container sx={{ mt: 6 }}>
-        <Grid container item xs={12} flexDirection="column" justifyContent="center" mx="auto">
-          <MKBox width={{ xs: "100%", md: "50%", lg: "25%" }} mb={3}>
-            <Breadcrumbs routes={breadcrumb} />
-          </MKBox>
-          <MKTypography variant="h3" mb={1}>
-            {title}
-          </MKTypography>
-          {children}
-        </Grid>
-      </Container>
-      <MKBox mt="auto">
-        <CenteredFooter />
-      </MKBox>
-    </MKBox>
+    </>
   );
 }
 

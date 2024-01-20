@@ -5,7 +5,7 @@ exports[`DHEditor renders non plain text 1`] = `
   <div
     aria-label="rdw-wrapper"
     class="wrapper-class rdw-editor-wrapper"
-    id="rdw-wrapper-1309"
+    id="rdw-wrapper-8838"
   >
     <div
       aria-hidden="false"
@@ -391,15 +391,15 @@ exports[`DHEditor renders non plain text 1`] = `
               <div
                 class=""
                 data-block="true"
-                data-editor="afsgi"
-                data-offset-key="9t1b7-0-0"
+                data-editor="1im97"
+                data-offset-key="4ssup-0-0"
               >
                 <div
                   class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                  data-offset-key="9t1b7-0-0"
+                  data-offset-key="4ssup-0-0"
                 >
                   <span
-                    data-offset-key="9t1b7-0-0"
+                    data-offset-key="4ssup-0-0"
                   >
                     <br
                       data-text="true"
