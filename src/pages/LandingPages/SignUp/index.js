@@ -85,8 +85,9 @@ function SignUpBasic() {
         password,
         password2,
         () => {
+          // Show success message
           setSignupSeverity("success");
-          setSignupMessage("Successfully logged in!");
+          setSignupMessage("Successfully signed up!");
           setSnackbarOpen(true);
         },
         (signupResponse) => {
@@ -214,7 +215,14 @@ function SignUpBasic() {
                     <div></div>
                   )}
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
+                    <MKButton
+                      variant="gradient"
+                      color="info"
+                      onClick={handleSubmit}
+                      component={MuiLink}
+                      to="/verify-email/1"
+                      fullWidth
+                    >
                       sign up
                     </MKButton>
                   </MKBox>
