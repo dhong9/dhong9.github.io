@@ -26,6 +26,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "assets/theme";
 import Presentation from "layouts/pages/presentation";
 
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
+
 // Material Kit 2 React routes
 import routes from "routes";
 
@@ -42,6 +45,11 @@ import ForumsPost from "pages/LandingPages/ForumsPost";
 import ForumsCategories from "pages/LandingPages/ForumsCategories";
 
 export default function App() {
+  // Sign out properties
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [signoutSeverity, setSignoutSeverity] = useState("info");
+  const [signoutMessage, setSignoutMessage] = useState("");
+
   const { pathname } = useLocation();
 
   // Setting page scroll to 0 when changing the route
@@ -64,12 +72,26 @@ export default function App() {
     });
 
   const signoutSuccess = () => {
-    console.log("Sign out success!");
+    setSignoutSeverity("success");
+    setSignoutMessage("Successfully signed out!");
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
   };
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity={signoutSeverity}
+        message={signoutMessage}
+      />
       <AuthProvider>
         <Routes>
           {getRoutes(routes)}
