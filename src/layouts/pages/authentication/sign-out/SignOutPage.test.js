@@ -16,7 +16,7 @@ jest.mock("pages/LandingPages/SignOut", () => {
 
 describe("SignOutPage", () => {
   it("renders", () => {
-    const { queryByText } = render(<SignOutPage />);
+    const { queryByText } = render(<SignOutPage onload={console.log} />);
     expect(queryByText("SignOut")).toBeInTheDocument();
   });
 });

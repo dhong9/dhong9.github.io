@@ -121,6 +121,10 @@ function Presentation() {
     setSnackbarOpen(true);
   };
 
+  const signoutSuccess = () => {
+    console.log("Sign out success");
+  };
+
   let { user } = useContext(AuthContext);
 
   const signedOutOptions = [
@@ -144,7 +148,7 @@ function Presentation() {
     {
       name: "Sign Out",
       route: "/pages/authentication/sign-out",
-      component: <SignOut />,
+      component: <SignOut onload={signoutSuccess} />,
     },
   ];
 
