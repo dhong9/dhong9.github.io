@@ -15,11 +15,13 @@ Coded by www.danyo.tech
 import { useContext } from "react";
 
 // @mui material components
+import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
-import MKButton from "components/MKButton";
+import MuiLink from "@mui/material/Link";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Authentication
@@ -31,7 +33,7 @@ import bgImage from "assets/images/illustrations/leatherText.png";
 function VerifyEmail() {
   const { user } = useContext(AuthContext);
 
-  const returnToHomePage = (e) => {
+  const sendConfirmation = (e) => {
     e.preventDefault();
   };
 
@@ -89,14 +91,20 @@ function VerifyEmail() {
               </MKTypography>
               <MKBox width="100%" component="form" method="post" autoComplete="off">
                 <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
-                  <MKButton
-                    type="submit"
-                    variant="gradient"
-                    color="info"
-                    onClick={returnToHomePage}
-                  >
-                    Return to Home Page
-                  </MKButton>
+                  <MuiLink href="/">Return to Home Page</MuiLink>
+                  <Divider variant="middle">
+                    <MKTypography variant="h6" fontWeight="medium">
+                      Didn't receive the confirmation?
+                    </MKTypography>
+                    <MKButton
+                      type="submit"
+                      variant="gradient"
+                      color="info"
+                      onClick={sendConfirmation}
+                    >
+                      Resend Confirmation
+                    </MKButton>
+                  </Divider>
                 </Grid>
               </MKBox>
             </MKBox>
