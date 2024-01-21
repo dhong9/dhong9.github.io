@@ -13,9 +13,6 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-// React
-import { useEffect } from "react";
-
 // Material Kit 2 React pages
 import SignIn from "pages/LandingPages/SignIn";
 
@@ -24,12 +21,11 @@ import PropTypes from "prop-types";
 
 export default function SignInPage({ onsuccess }) {
   // onsuccess will be called by parent component
-  useEffect(onsuccess, []);
 
-  return <SignIn />;
+  return <SignIn onsuccess={onsuccess} />;
 }
 
-// Typechecking props of SignOutPage
+// Typechecking props of SignInPage
 SignInPage.propTypes = {
   onsuccess: PropTypes.func,
 };

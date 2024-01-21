@@ -51,7 +51,10 @@ import AuthContext from "context/AuthContext";
 // Images
 import bgImage from "assets/images/neons_medium.png";
 
-function SignInBasic() {
+// prop-types is a library for typechecking of props
+import PropTypes from "prop-types";
+
+function SignInBasic({ onsuccess }) {
   const { loginUser } = useContext(AuthContext);
   const [rememberMe, setRememberMe] = useState(false);
   const [username, setUsername] = useState("");
@@ -78,20 +81,11 @@ function SignInBasic() {
     // If form input requirements are met,
     // sign the user in
     if (!formErrors[0]) {
-      loginUser(
-        username,
-        password,
-        () => {
-          setLoginSeverity("success");
-          setLoginMessage("Successfully logged in!");
-          setSnackbarOpen(true);
-        },
-        (loginResponse) => {
-          setLoginSeverity("error");
-          setLoginMessage(loginResponse.response.data.detail);
-          setSnackbarOpen(true);
-        }
-      );
+      loginUser(username, password, onsuccess, (loginResponse) => {
+        setLoginSeverity("error");
+        setLoginMessage(loginResponse.response.data.detail);
+        setSnackbarOpen(true);
+      });
     }
   };
 
@@ -240,3 +234,12 @@ function SignInBasic() {
 }
 
 export default SignInBasic;
+
+// Typechecking props of SignOutPage
+SignInBasic.propTypes = {
+  onsuccess: PropTypes.func,
+};
+
+SignInBasic.defaultProps = {
+  onsuccess: null,
+};

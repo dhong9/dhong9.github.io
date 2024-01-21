@@ -55,7 +55,7 @@ describe("SignIn", () => {
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
-            <SignIn />
+            <SignIn onsucess={jest.fn} />
           </ThemeProvider>
         </AuthProvider>
       </AuthContext.Provider>
