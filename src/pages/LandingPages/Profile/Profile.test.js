@@ -121,5 +121,10 @@ describe("Profile", () => {
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
     expect(queryByText("Password is required.")).not.toBeInTheDocument();
     expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
+
+    // Test delete account
+    const deleteButton = getByText("delete account");
+    fireEvent.click(deleteButton);
+    expect(queryByText("Are You Sure?")).toBeInTheDocument();
   });
 });
