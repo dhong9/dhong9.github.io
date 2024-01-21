@@ -10,8 +10,10 @@ import theme from "assets/theme";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 
 // Icons
-import GitHubIcon from "@mui/icons-material/GitHub";
 import DonutSmallIcon from "@mui/icons-material/DonutSmall";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 // Mocks
 jest.mock("react-router-dom", () => ({
@@ -45,7 +47,22 @@ describe("DefaultNavbar", () => {
                 },
               ],
             },
+            {
+              label: "Facebook",
+              route: "/facebook",
+              icon: <FacebookIcon />,
+              name: "Facebook",
+              description: "A book for faces",
+            },
+            {
+              label: "Twitter",
+              route: "/twitter",
+              icon: <TwitterIcon />,
+              name: "Twitter",
+              description: "Send your tweets",
+            },
           ]}
+          rowsPerColumn={2}
         />
       </ThemeProvider>
     );
