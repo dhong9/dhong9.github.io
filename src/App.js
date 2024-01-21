@@ -46,9 +46,12 @@ import ForumsCategories from "pages/LandingPages/ForumsCategories";
 
 export default function App() {
   // Sign out properties
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [signoutSnackbarOpen, setSignoutSnackbarOpen] = useState(false);
   const [signoutSeverity, setSignoutSeverity] = useState("info");
   const [signoutMessage, setSignoutMessage] = useState("");
+  const [signinSnackbarOpen, setSigninSnackbarOpen] = useState(false);
+  const [signinSeverity, setSigninSeverity] = useState("info");
+  const [signinMessage, setSigninMessage] = useState("");
 
   const { pathname } = useLocation();
 
@@ -74,12 +77,24 @@ export default function App() {
   const signoutSuccess = () => {
     setSignoutSeverity("success");
     setSignoutMessage("Successfully signed out!");
+    setSignoutSnackbarOpen(true);
+  };
+
+  const signinSuccess = () => {
+    setSigninSeverity("success");
+    setSigninMessage("Successfully signed in!");
     setSnackbarOpen(true);
   };
 
-  const handleSnackbarClose = (event, reason) => {
+  const handleSignoutSnackbarClose = (event, reason) => {
     if (reason !== "clickaway") {
-      setSnackbarOpen(false);
+      setSignoutSnackbarOpen(false);
+    }
+  };
+
+  const handleSigninSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSigninSnackbarOpen(false);
     }
   };
 
@@ -87,16 +102,25 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <DHSnackbar
-        open={snackbarOpen}
-        onClose={handleSnackbarClose}
+        open={signoutSnackbarOpen}
+        onClose={handleSignoutSnackbarClose}
         severity={signoutSeverity}
         message={signoutMessage}
+      />
+      <DHSnackbar
+        open={signinSnackbarOpen}
+        onClose={handleSigninSnackbarClose}
+        severity={signinSeverity}
+        message={signinMessage}
       />
       <AuthProvider>
         <Routes>
           {getRoutes(routes)}
           <Route index element={<Presentation />} />
-          <Route path="/pages/authentication/sign-in" element={<SignInPage />} />
+          <Route
+            path="/pages/authentication/sign-in"
+            element={<SignInPage onsuccess={signinSuccess} />}
+          />
           <Route path="/pages/authentication/sign-up" element={<SignUpPage />} />
           <Route
             path="/pages/authentication/sign-out"
