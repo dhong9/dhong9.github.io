@@ -29,19 +29,19 @@ describe("View", () => {
     expect(queryByText("Hello")).toBeInTheDocument();
   });
 
-  it("sets success", () => {
+  it("copies code", () => {
     const jsdomPrompt = window.prompt;
     window.prompt = () => {};
-    const { container, getByText } = render(
+    const { queryByText, getByText } = render(
       <ThemeProvider theme={theme}>
-        <View title="Test View" code="" height="100%">
-          Test View
+        <View title="Oranges" code="World" height="100%">
+          Grapefruit
         </View>
       </ThemeProvider>
     );
     const copyButton = getByText("Copy");
     fireEvent.click(copyButton);
-    expect(container).toMatchSnapshot();
+    expect(queryByText("Code successfully copied!")).toBeInTheDocument();
     window.prompt = jsdomPrompt;
   });
 });
