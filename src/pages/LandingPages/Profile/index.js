@@ -91,7 +91,7 @@ function Profile() {
         password2,
         () => {
           setProfileSeverity("success");
-          setProfileMessage("Successfully logged in!");
+          setProfileMessage("Successfully updated profile!");
           setSnackbarOpen(true);
         },
         (signupResponse) => {

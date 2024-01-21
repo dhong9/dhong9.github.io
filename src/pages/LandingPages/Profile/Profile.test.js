@@ -65,7 +65,7 @@ describe("Profile", () => {
     jest.clearAllMocks();
   });
 
-  it("renders", () => {
+  it("updates user profile", () => {
     // Mock tokens
     const mockToken = "mocked_jwt_value";
     const refreshToken = "mocked_refresh_value";
