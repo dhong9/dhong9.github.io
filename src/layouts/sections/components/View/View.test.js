@@ -1,6 +1,6 @@
 // Unit test libraries
-import renderer from "react-test-renderer";
 import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -11,15 +11,22 @@ import View from "layouts/sections/components/View";
 
 describe("View", () => {
   it("renders", () => {
-    const component = renderer.create(
+    const { queryByText, getByText } = render(
       <ThemeProvider theme={theme}>
-        <View title="Test View" code="" height="100%">
-          Test View
+        <View title="Apples" code="Hello" height="100%">
+          Bananas
         </View>
       </ThemeProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(queryByText("Preview")).toBeInTheDocument();
+    expect(queryByText("Apples")).toBeInTheDocument();
+    expect(queryByText("Bananas")).toBeInTheDocument();
+    expect(queryByText("Code")).toBeInTheDocument();
+    
+    const codeTab = getByText("Copy");
+    fireEvent.click(codeTab);
+
+    expect(queryByText("Hello")).toBeInTheDocument();
   });
 
   it("sets success", () => {
