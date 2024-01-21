@@ -82,8 +82,8 @@ describe("Profile", () => {
     const contextData = {
       loginUser: jest.fn(),
       user: {
-        username: "giri"
-      }
+        username: "giri",
+      },
     };
     const { getByLabelText, getByText, queryByText } = render(
       <AuthContext.Provider value={contextData}>
@@ -121,10 +121,18 @@ describe("Profile", () => {
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
     expect(queryByText("Password is required.")).not.toBeInTheDocument();
     expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
+    expect(queryByText("Are You Sure?")).not.toBeInTheDocument();
 
-    // Test delete account
+    // Test delete account modal
     const deleteButton = getByText("delete account");
     fireEvent.click(deleteButton);
     expect(queryByText("Are You Sure?")).toBeInTheDocument();
+
+    // Exit modal
+    fireEvent.keyDown(getByText("Are You Sure?"), {
+      key: "Escape",
+      code: "Escape",
+    });
+    expect(queryByText("Are You Sure?")).not.toBeInTheDocument();
   });
 });
