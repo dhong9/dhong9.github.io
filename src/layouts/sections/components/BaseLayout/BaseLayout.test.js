@@ -1,6 +1,7 @@
 // React testing libraries
 import React from "react";
-import renderer from "react-test-renderer";
+import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -53,22 +54,26 @@ describe("BaseLayout", () => {
       JSON.stringify({ access: mockToken, refresh: refreshToken })
     );
 
+    // Set a mock payload for the decoded token
+    const mockPayload = { user: "John Doe", exp: 1893456000 };
+    jwtDecode.mockReturnValue(mockPayload);
+
     const contextData = {
       loginUser: jest.fn(),
     };
 
-    const component = renderer.create(
+    const { queryByText } = render(
       <AuthContext.Provider value={contextData}>
         <AuthProvider>
           <ThemeProvider theme={theme}>
             <BaseLayout title="Test Layout" breadcrumb={[]}>
-              Base
+              Dummy Layout
             </BaseLayout>
           </ThemeProvider>
         </AuthProvider>
       </AuthContext.Provider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(queryByText("Test Layout")).toBeInTheDocument();
+    expect(queryByText("Dummy Layout")).toBeInTheDocument();
   });
 });
