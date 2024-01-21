@@ -1,5 +1,5 @@
 // React testing libraries
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
@@ -21,8 +21,8 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("DefaultNavbar", () => {
-  it("renders with route", () => {
-    const { container } = render(
+  it("renders with route", async () => {
+    const { container, getByText, queryByText } = render(
       <ThemeProvider theme={theme}>
         <DefaultNavbar
           routes={[
@@ -36,7 +36,7 @@ describe("DefaultNavbar", () => {
             {
               label: "Doughnut",
               icon: <DonutSmallIcon />,
-              name: "doughnut",
+              name: "Doughnut",
               description: "deep fried",
               collapse: [
                 { name: "boston", description: "a major city" },
@@ -66,8 +66,21 @@ describe("DefaultNavbar", () => {
         />
       </ThemeProvider>
     );
+    
+    expect(queryByText("Github")).toBeInTheDocument();
+    expect(queryByText("Doughnut")).toBeInTheDocument();
+    expect(queryByText("Facebook")).toBeInTheDocument();
+    expect(queryByText("Twitter")).toBeInTheDocument();
+    expect(queryByText("brooklyn")).not.toBeInTheDocument();
+    expect(queryByText("boston")).not.toBeInTheDocument();
 
-    expect(container).toMatchSnapshot();
+    // Mouse in nested dropdown
+    const doughnut = getByText("Doughnut");
+    fireEvent.mouseEnter(doughnut);
+    await waitFor(() => {
+      expect(queryByText("brooklyn")).toBeInTheDocument();
+      expect(queryByText("boston")).toBeInTheDocument();
+    });
   });
 
   it("renders without route", () => {
@@ -87,6 +100,7 @@ describe("DefaultNavbar", () => {
               icon: <DonutSmallIcon />,
               name: "doughnut",
               description: "also spelled donut",
+              dropdown: true,
               collapse: [
                 { name: "boston", description: "get their cream pie" },
                 {
