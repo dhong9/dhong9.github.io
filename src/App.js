@@ -83,7 +83,7 @@ export default function App() {
   const signinSuccess = () => {
     setSigninSeverity("success");
     setSigninMessage("Successfully signed in!");
-    setSnackbarOpen(true);
+    setSigninSnackbarOpen(true);
   };
 
   const handleSignoutSnackbarClose = (event, reason) => {
