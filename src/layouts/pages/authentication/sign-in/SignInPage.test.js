@@ -16,7 +16,7 @@ jest.mock("pages/LandingPages/SignIn", () => {
 
 describe("SignInPage", () => {
   it("renders", () => {
-    const { queryByText } = render(<SignInPage />);
+    const { queryByText } = render(<SignInPage onsuccess={jest.fn} />);
     expect(queryByText("SignIn")).toBeInTheDocument();
   });
 });
