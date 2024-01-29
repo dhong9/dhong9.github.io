@@ -6,7 +6,7 @@ export const getContacts = (success) => {
 
 export const addContact = (full_name, email, subject, query_txt, success) =>
   postRequest(
-    "contacts",
+    "contacts/",
     {
       full_name,
       email,

@@ -6,46 +6,52 @@ import { getContacts, addContact } from "services/emailService";
 const mock = new MockAdapter(axios);
 
 const contactsData = {
-    contacts: [
-        {id: 1, full_name: "Johnny Appleseed"},
-        {id: 2, full_name: "Water Melon"}
-    ]
+  contacts: [
+    { id: 1, full_name: "Johnny Appleseed" },
+    { id: 2, full_name: "Water Melon" },
+  ],
 };
 
 jest.mock("services/baseService", () => ({
-    getRequest: jest.fn(),
-    postRequest: jest.fn()
+  getRequest: jest.fn(),
+  postRequest: jest.fn(),
 }));
 
 mock.onGet("/contacts").reply(200, contactsData);
 mock.onPost("/contacts").reply(200, contactsData);
 
 describe("EmailService", () => {
-    it("gets contacts", () => {
-        // Create success and error spy functions
-        const success = jest.fn();
+  it("gets contacts", () => {
+    // Create success and error spy functions
+    const success = jest.fn();
 
-        // Get comments
-        getContacts(success);
+    // Get comments
+    getContacts(success);
 
-        // Verify that getRequest was called correctly
-        expect(getRequest).toHaveBeenCalledWith('contacts', success, console.error);
-    });
+    // Verify that getRequest was called correctly
+    expect(getRequest).toHaveBeenCalledWith("contacts", success, console.error);
+  });
 
-    it("sends emails", () => {
-        // Create success and error spy functions
-        const success = jest.fn();
+  it("sends emails", () => {
+    // Create success and error spy functions
+    const success = jest.fn();
 
-        // Add contact
-        addContact("Water Melon", "watermelon@summer.com", "Summer is here", "Can't wait to go to the pool!", success);
+    // Add contact
+    addContact(
+      "Water Melon",
+      "watermelon@summer.com",
+      "Summer is here",
+      "Can't wait to go to the pool!",
+      success
+    );
 
-        // Verify that postRequest was called correctly
-        const payload = {
-            full_name: "Water Melon",
-            email: "watermelon@summer.com",
-            subject: "Summer is here",
-            query_txt: "Can't wait to go to the pool!",
-        }
-        expect(postRequest).toHaveBeenCalledWith('contacts', payload, success, console.error);
-    });
+    // Verify that postRequest was called correctly
+    const payload = {
+      full_name: "Water Melon",
+      email: "watermelon@summer.com",
+      subject: "Summer is here",
+      query_txt: "Can't wait to go to the pool!",
+    };
+    expect(postRequest).toHaveBeenCalledWith("contacts/", payload, success, console.error);
+  });
 });
