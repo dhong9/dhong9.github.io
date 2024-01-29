@@ -49,9 +49,6 @@ import AuthContext from "context/AuthContext";
 // Images
 import bgImage from "assets/images/neons_medium.png";
 
-// Services
-import { addContact } from "services/emailService";
-
 function SignUpBasic() {
   const { registerUser } = useContext(AuthContext);
   const [username, setUsername] = useState("");
@@ -92,15 +89,6 @@ function SignUpBasic() {
           setSignupSeverity("success");
           setSignupMessage("Successfully signed up!");
           setSnackbarOpen(true);
-
-          // Notify me that user has signed up
-          addContact(
-            "Danyo Tech",
-            "noreply@danyo.tech",
-            "New User Registered",
-            `Email: ${email}\nUsername: ${username}`,
-            console.log
-          );
         },
         (signupResponse) => {
           setSignupSeverity("error");
