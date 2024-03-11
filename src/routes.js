@@ -56,7 +56,7 @@ import DoughnutRiderPage from "layouts/pages/doughnut-rider";
 
 const routes = [
   {
-    name: "doughnut rider",
+    name: "Doughnut Rider",
     route: "/doughnutRider",
     icon: <DonutSmallIcon />,
     component: <DoughnutRiderPage />,
