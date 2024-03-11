@@ -25,5 +25,12 @@ describe("MiniScheme_Util", () => {
     const res2 = ms2.run();
     expect(res1).toEqual(1);
     expect(res2).toEqual(0);
-  })
+  });
+
+  it("handles conditions", () => {
+    const src = "(if (< 1 2) 5 6)";
+    const ms = new MiniScheme_Util(src);
+    const res = ms.run();
+    expect(res).toEqual(5);
+  });
 });
