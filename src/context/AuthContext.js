@@ -59,6 +59,9 @@ export const AuthProvider = ({ children }) => {
       (err) => {
         console.error(err);
         error(err);
+      },
+      {
+        timeout: 2000,
       }
     );
   };
