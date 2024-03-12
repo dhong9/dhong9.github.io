@@ -90,17 +90,17 @@ function SignUpBasic() {
           setSignupMessage("Successfully signed up!");
           setSnackbarOpen(true);
         },
-        ({ data, message }) => {
+        ({ response, message }) => {
           setSignupSeverity("error");
 
           // Error reporting priorites:
           // 1. User exists
           // 2. Email exists
           // 3. Password does not meet requirements
-          if ("username" in data) {
-            setSignupMessage(data["username"][0]);
-          } else if ("email" in data) {
-            setSignupMessage(data["email"][0]);
+          if ("username" in response.data) {
+            setSignupMessage(response.data["username"][0]);
+          } else if ("email" in response.data) {
+            setSignupMessage(response.data["email"][0]);
           } else {
             setSignupMessage(message);
           }
