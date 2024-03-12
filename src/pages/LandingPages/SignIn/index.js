@@ -47,6 +47,7 @@ import routes from "routes";
 
 // Authentication
 import AuthContext from "context/AuthContext";
+import { useGoogleLogin } from "@react-oauth/google";
 
 // Images
 import bgImage from "assets/images/neons_medium.png";
@@ -94,6 +95,14 @@ function SignInBasic({ onsuccess }) {
       setSnackbarOpen(false);
     }
   };
+
+  // Login with Google
+  const googleLogin = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      console.log(tokenResponse);
+      onsuccess();
+    },
+  });
 
   return (
     <>
@@ -147,7 +156,13 @@ function SignInBasic({ onsuccess }) {
                     </MKTypography>
                   </Grid>
                   <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
+                    <MKTypography
+                      onClick={googleLogin}
+                      component={MuiLink}
+                      href="#"
+                      variant="body1"
+                      color="white"
+                    >
                       <GitHubIcon color="inherit" />
                     </MKTypography>
                   </Grid>
