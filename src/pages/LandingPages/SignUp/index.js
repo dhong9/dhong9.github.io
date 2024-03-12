@@ -92,7 +92,16 @@ function SignUpBasic() {
         },
         (signupResponse) => {
           setSignupSeverity("error");
-          setSignupMessage(signupResponse.message);
+
+          // Error reporting priorites:
+          // 1. User exists
+          // 2. Email exists
+          // 3. Password does not meet requirements
+          if ("email" in signupResponse && signupResponse["email"][0]) {
+            setSignupMessage(signupResponse)["email"][0];
+          } else {
+            setSignupMessage(signupResponse.message);
+          }
           setSnackbarOpen(true);
         }
       );
