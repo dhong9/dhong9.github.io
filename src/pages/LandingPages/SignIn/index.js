@@ -156,19 +156,13 @@ function SignInBasic({ onsuccess }) {
                     </MKTypography>
                   </Grid>
                   <Grid item xs={2}>
-                    <MKTypography
-                      onClick={googleLogin}
-                      component={MuiLink}
-                      href="#"
-                      variant="body1"
-                      color="white"
-                    >
+                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
                       <GitHubIcon color="inherit" />
                     </MKTypography>
                   </Grid>
                   <Grid item xs={2}>
                     <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GoogleIcon color="inherit" />
+                      <GoogleIcon onClick={googleLogin} color="inherit" />
                     </MKTypography>
                   </Grid>
                 </Grid>
