@@ -82,7 +82,7 @@ function SignInBasic({ onsuccess }) {
     // If form input requirements are met,
     // sign the user in
     if (!formErrors[0]) {
-      loginUser(username, password, onsuccess, (loginResponse) => {
+      loginUser(username, password, rememberMe, onsuccess, (loginResponse) => {
         setLoginSeverity("error");
         setLoginMessage(loginResponse.response.data.detail);
         setSnackbarOpen(true);

@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
   const history = useNavigate();
 
-  const loginUser = (username, password, success, error) => {
+  const loginUser = (username, password, rememberMe, success, error) => {
     postRequest(
       "accounts/token/",
       { username, password },
@@ -31,7 +31,11 @@ export const AuthProvider = ({ children }) => {
           const data = response.data;
           setAuthTokens(data);
           setUser(jwt_decode(data.access));
-          localStorage.setItem("authTokens", JSON.stringify(data));
+          if (rememberMe) {
+            localStorage.setItem("authTokens", JSON.stringify(data));
+          } else {
+            sessionStorage.setItem("authTokens", JSON.stringify(data));
+          }
           history("/");
           success();
         }
@@ -83,6 +87,7 @@ export const AuthProvider = ({ children }) => {
 
   const logoutUser = () => {
     localStorage.removeItem("authTokens");
+    sessionStorage.removeItem("authTokens");
     setAuthTokens(null);
     setUser(null);
     history("/");
