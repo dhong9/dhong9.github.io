@@ -16,19 +16,15 @@ Coded by www.creative-tim.com
 import React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import App from "App";
 
 const container = document.getElementById("root");
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Create a root.
 const root = ReactDOMClient.createRoot(container);
 
 root.render(
-  <GoogleOAuthProvider clientId={clientId}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </GoogleOAuthProvider>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );

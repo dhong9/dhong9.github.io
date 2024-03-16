@@ -6,6 +6,10 @@ import jwtDecode from "jwt-decode";
 
 // Component to test
 import AuthContext, { AuthProvider } from "context/AuthContext";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
+// Google Client ID
+const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Mocks
 jest.mock("react-router-dom", () => ({
@@ -39,9 +43,11 @@ describe("AuthContext", () => {
     };
 
     const component = renderer.create(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>Hello world!</AuthProvider>
-      </AuthContext.Provider>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>Hello world!</AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -62,9 +68,11 @@ describe("AuthContext", () => {
     };
 
     const component = renderer.create(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>Hello world!</AuthProvider>
-      </AuthContext.Provider>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>Hello world!</AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
     );
 
     jest.useFakeTimers();

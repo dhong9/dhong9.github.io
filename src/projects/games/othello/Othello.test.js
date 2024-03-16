@@ -9,12 +9,16 @@ import theme from "assets/theme";
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
 import jwtDecode from "jwt-decode";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
 
 // Component to test
 import Othello from "projects/games/othello";
+
+// Google Client ID
+const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Define Mocks
 // Setup axios mock
@@ -108,13 +112,15 @@ describe("Othello", () => {
       loginUser: jest.fn(),
     };
     const { container, getByRole } = render(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>
-            <Othello />
-          </ThemeProvider>
-        </AuthProvider>
-      </AuthContext.Provider>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>
+            <ThemeProvider theme={theme}>
+              <Othello />
+            </ThemeProvider>
+          </AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
     );
 
     // Toggle plain text

@@ -1,6 +1,6 @@
 // Unit test libraries
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -12,10 +12,14 @@ import DeleteAccount from "pages/LandingPages/DeleteAccount";
 // Authentication
 import AuthContext, { AuthProvider } from "context/AuthContext";
 import jwtDecode from "jwt-decode";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
+
+// Google Client ID
+const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Setup axios mock
 const mock = new MockAdapter(axios);
@@ -68,19 +72,21 @@ describe("DeleteAccount", () => {
     };
 
     const { container, getByText } = render(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>
-            <DeleteAccount />
-          </ThemeProvider>
-        </AuthProvider>
-      </AuthContext.Provider>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>
+            <ThemeProvider theme={theme}>
+              <DeleteAccount />
+            </ThemeProvider>
+          </AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
     );
 
     // Delete button should be disabled
     const deleteButton = getByText("delete account");
     expect(deleteButton).toHaveProperty("disabled", true);
-    
+
     expect(container).toMatchSnapshot();
   });
 });

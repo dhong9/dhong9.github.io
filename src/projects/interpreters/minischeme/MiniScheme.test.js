@@ -9,12 +9,16 @@ import theme from "assets/theme";
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
 import jwtDecode from "jwt-decode";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
 
 // Component to test
 import MiniScheme from "projects/interpreters/minischeme";
+
+// Google Client ID
+const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Define Mocks
 // Setup axios mock
@@ -101,13 +105,15 @@ describe("MiniScheme", () => {
       loginUser: jest.fn(),
     };
     const { container, getByText } = render(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>
-            <MiniScheme />
-          </ThemeProvider>
-        </AuthProvider>
-      </AuthContext.Provider>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>
+            <ThemeProvider theme={theme}>
+              <MiniScheme />
+            </ThemeProvider>
+          </AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
     );
 
     // Enable plain text
@@ -123,13 +129,15 @@ describe("MiniScheme", () => {
     };
 
     const { container, getByRole, getByTestId, getByText } = render(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>
-            <MiniScheme />
-          </ThemeProvider>
-        </AuthProvider>
-      </AuthContext.Provider>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>
+            <ThemeProvider theme={theme}>
+              <MiniScheme />
+            </ThemeProvider>
+          </AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
     );
 
     // Enable visualizing

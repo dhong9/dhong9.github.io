@@ -9,9 +9,13 @@ import theme from "assets/theme";
 // Authentication
 import AuthContext, { AuthProvider } from "context/AuthContext";
 import jwtDecode from "jwt-decode";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Component to test
 import VerifyEmail from "pages/LandingPages/VerifyEmail";
+
+// Google Client ID
+const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Mocks
 jest.mock("jwt-decode");
@@ -42,13 +46,15 @@ describe("VerifyEmail", () => {
       },
     };
     const { queryByText } = render(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>
-            <VerifyEmail />
-          </ThemeProvider>
-        </AuthProvider>
-      </AuthContext.Provider>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>
+            <ThemeProvider theme={theme}>
+              <VerifyEmail />
+            </ThemeProvider>
+          </AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
     );
 
     expect(queryByText("Verify Email")).toBeInTheDocument();

@@ -7,6 +7,10 @@ import SignOut from "pages/LandingPages/SignOut";
 
 // Authentication
 import AuthContext, { AuthProvider } from "context/AuthContext";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
+// Google Client ID
+const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Mocks
 jest.mock("react-router-dom", () => ({
@@ -28,11 +32,13 @@ describe("SignOut", () => {
     };
 
     const { queryByText } = render(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          <SignOut />
-        </AuthProvider>
-      </AuthContext.Provider>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>
+            <SignOut />
+          </AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
     );
     expect(queryByText("Logging out...")).toBeInTheDocument();
   });

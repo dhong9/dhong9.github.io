@@ -1,6 +1,6 @@
 // React testing libraries
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
@@ -10,9 +10,13 @@ import theme from "assets/theme";
 // Authentication
 import AuthContext, { AuthProvider } from "context/AuthContext";
 import jwtDecode from "jwt-decode";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Component to test
 import BaseLayout from "layouts/sections/components/BaseLayout";
+
+// Google Client ID
+const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Define Mocks
 jest.mock("jwt-decode");
@@ -63,15 +67,17 @@ describe("BaseLayout", () => {
     };
 
     const { queryByText } = render(
-      <AuthContext.Provider value={contextData}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>
-            <BaseLayout title="Test Layout" breadcrumb={[]}>
-              Dummy Layout
-            </BaseLayout>
-          </ThemeProvider>
-        </AuthProvider>
-      </AuthContext.Provider>
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>
+            <ThemeProvider theme={theme}>
+              <BaseLayout title="Test Layout" breadcrumb={[]}>
+                Dummy Layout
+              </BaseLayout>
+            </ThemeProvider>
+          </AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
     );
     expect(queryByText("Test Layout")).toBeInTheDocument();
     expect(queryByText("Dummy Layout")).toBeInTheDocument();

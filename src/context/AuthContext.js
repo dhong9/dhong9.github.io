@@ -1,16 +1,23 @@
 import { createContext, useState, useEffect } from "react";
+import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { postRequest, putRequest, deleteRequest } from "services/baseService";
+import { getGoogleUser } from "services/googleService";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
 const AuthContext = createContext();
 
+// Google Client ID
+const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
+
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
+  // Django login properties
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null
   );
@@ -18,6 +25,10 @@ export const AuthProvider = ({ children }) => {
     localStorage.getItem("authTokens") ? jwt_decode(localStorage.getItem("authTokens")) : null
   );
   const [loading, setLoading] = useState(true);
+
+  // Google login properties
+  const [googleUser, setGoogleUser] = useState([]);
+  const [profile, setProfile] = useState([]);
 
   const history = useNavigate();
 
@@ -105,6 +116,19 @@ export const AuthProvider = ({ children }) => {
     );
   };
 
+  // Google login functions
+  const googleLogin = useGoogleLogin({
+    onSuccess: (codeResponse) => setGoogleUser(codeResponse),
+    onError: (error) => {
+      console.error(error);
+    },
+  });
+
+  const gmailLogout = () => {
+    googleLogout();
+    setProfile(null);
+  };
+
   const contextData = {
     user,
     setUser,
@@ -115,6 +139,9 @@ export const AuthProvider = ({ children }) => {
     logoutUser,
     updateUser,
     deleteUser,
+    profile,
+    googleLogin,
+    gmailLogout,
   };
 
   const updateToken = () => {
@@ -143,6 +170,17 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    // Get Google user
+    if (googleUser) {
+      getGoogleUser(
+        googleUser.access_token,
+        (res) => {
+          setProfile(res.data);
+        },
+        console.error
+      );
+    }
+
     if (loading) {
       updateToken();
     }
@@ -156,7 +194,11 @@ export const AuthProvider = ({ children }) => {
     return () => clearInterval(interval);
   }, [authTokens, loading]);
 
-  return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>;
+  return (
+    <GoogleOAuthProvider clientId={clientId}>
+      <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
+    </GoogleOAuthProvider>
+  );
 };
 
 // Typechecking props of AuthContext
