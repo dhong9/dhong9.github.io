@@ -127,6 +127,8 @@ function Presentation() {
 
   let { user, profile } = useContext(AuthContext);
 
+  console.log(profile);
+
   const signedOutOptions = [
     {
       name: "Sign In",
