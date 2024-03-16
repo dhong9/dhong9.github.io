@@ -119,6 +119,7 @@ export const AuthProvider = ({ children }) => {
     onSuccess: (codeResponse) => {
       sessionStorage.setItem("googleUser", JSON.stringify(codeResponse));
       setGoogleUser(codeResponse);
+      history("/");
     },
     onError: (error) => {
       console.error(error);
