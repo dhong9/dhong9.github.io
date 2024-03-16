@@ -23,7 +23,9 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Google login properties
-  const [googleUser, setGoogleUser] = useState([]);
+  const [googleUser, setGoogleUser] = useState(() =>
+    sessionStorage.getItem("googleUser") ? JSON.parse(sessionStorage.getItem("googleUser")) : null
+  );
   const [profile, setProfile] = useState([]);
 
   const history = useNavigate();
@@ -114,7 +116,10 @@ export const AuthProvider = ({ children }) => {
 
   // Google login functions
   const googleLogin = useGoogleLogin({
-    onSuccess: (codeResponse) => setGoogleUser(codeResponse),
+    onSuccess: (codeResponse) => {
+      sessionStorage.setItem("googleUser", JSON.stringify(codeResponse));
+      setGoogleUser(codeResponse);
+    },
     onError: (error) => {
       console.error(error);
     },
@@ -123,6 +128,8 @@ export const AuthProvider = ({ children }) => {
   const gmailLogout = () => {
     googleLogout();
     setProfile(null);
+    sessionStorage.removeItem("googleUser");
+    history("/");
   };
 
   const contextData = {
