@@ -55,7 +55,7 @@ import bgImage from "assets/images/neons_medium.png";
 import PropTypes from "prop-types";
 
 function SignInBasic({ onsuccess }) {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleLogin } = useContext(AuthContext);
   const [rememberMe, setRememberMe] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -152,7 +152,13 @@ function SignInBasic({ onsuccess }) {
                     </MKTypography>
                   </Grid>
                   <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
+                    <MKTypography
+                      onClick={googleLogin}
+                      component={MuiLink}
+                      href="#"
+                      variant="body1"
+                      color="white"
+                    >
                       <GoogleIcon color="inherit" />
                     </MKTypography>
                   </Grid>
