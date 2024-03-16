@@ -135,6 +135,7 @@ export const AuthProvider = ({ children }) => {
     logoutUser,
     updateUser,
     deleteUser,
+    googleUser,
     profile,
     googleLogin,
     gmailLogout,

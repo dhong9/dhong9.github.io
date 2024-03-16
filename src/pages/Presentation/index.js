@@ -125,9 +125,10 @@ function Presentation() {
     console.log("Sign out success");
   };
 
-  let { user, profile } = useContext(AuthContext);
+  let { user, profile, googleUser } = useContext(AuthContext);
 
-  console.log(profile);
+  console.log("Google User: ", googleUser);
+  console.log("Profile: ", profile);
 
   const signedOutOptions = [
     {
