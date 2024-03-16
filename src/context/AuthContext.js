@@ -4,15 +4,11 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { postRequest, putRequest, deleteRequest } from "services/baseService";
 import { getGoogleUser } from "services/googleService";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
 const AuthContext = createContext();
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 export default AuthContext;
 
@@ -194,11 +190,7 @@ export const AuthProvider = ({ children }) => {
     return () => clearInterval(interval);
   }, [authTokens, loading]);
 
-  return (
-    <GoogleOAuthProvider clientId={clientId}>
-      <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
-    </GoogleOAuthProvider>
-  );
+  return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>;
 };
 
 // Typechecking props of AuthContext
