@@ -4,9 +4,9 @@ import { useEffect, useContext } from "react";
 import AuthContext from "context/AuthContext";
 
 function SignOutBasic() {
-  const { logoutUser } = useContext(AuthContext);
+  const { profile, logoutUser, gmailLogout } = useContext(AuthContext);
 
-  useEffect(logoutUser, []);
+  useEffect(profile ? gmailLogout : logoutUser, []);
 
   return <div>Logging out...</div>;
 }
