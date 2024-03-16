@@ -35,6 +35,10 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
+jest.mock("services/googleService", () => ({
+  getGoogleUser: jest.fn(),
+}));
+
 mock.onDelete("/delete\\/\\d+/").reply(200, {});
 
 describe("DeleteAccount", () => {

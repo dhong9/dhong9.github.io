@@ -58,6 +58,9 @@ jest.mock("examples/Navbars/DefaultNavbar", () => {
     default: forwardRef(() => <div>Mock Navbar</div>),
   };
 });
+jest.mock("services/googleService", () => ({
+  getGoogleUser: jest.fn(),
+}));
 
 describe("Profile", () => {
   beforeEach(() => {

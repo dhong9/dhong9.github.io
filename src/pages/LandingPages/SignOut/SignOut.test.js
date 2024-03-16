@@ -16,6 +16,9 @@ const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleuserc
 jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn,
 }));
+jest.mock("services/googleService", () => ({
+  getGoogleUser: jest.fn(),
+}));
 
 describe("SignOut", () => {
   beforeEach(() => {

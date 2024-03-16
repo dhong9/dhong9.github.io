@@ -21,6 +21,10 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
+jest.mock("services/googleService", () => ({
+  getGoogleUser: jest.fn(),
+}));
+
 jest.mock("jwt-decode");
 
 // Mock JWT components

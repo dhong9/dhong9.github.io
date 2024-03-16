@@ -37,6 +37,9 @@ jest.mock("react-router-dom", () => ({
   Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
   useNavigate: jest.fn,
 }));
+jest.mock("services/googleService", () => ({
+  getGoogleUser: jest.fn(),
+}));
 
 describe("BaseLayout", () => {
   beforeEach(() => {

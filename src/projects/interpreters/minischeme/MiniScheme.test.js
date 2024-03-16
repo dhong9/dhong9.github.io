@@ -45,6 +45,10 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
+jest.mock("services/googleService", () => ({
+  getGoogleUser: jest.fn(),
+}));
+
 mock.onGet("/comments").reply(200, { data: { results: commentData } });
 mock.onPost("/comments").reply(201, commentData);
 

@@ -22,6 +22,9 @@ jest.mock("jwt-decode");
 jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn,
 }));
+jest.mock("services/googleService", () => ({
+  getGoogleUser: jest.fn(),
+}));
 
 describe("VerifyEmail", () => {
   it("renders", () => {
