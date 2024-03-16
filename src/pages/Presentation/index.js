@@ -155,7 +155,7 @@ function Presentation() {
   const accountObj = {
     name: user ? user.username : profile ? profile.name : "Guest",
     icon: <AccountCircleIcon />,
-    collapse: user ? signedInOptions : signedOutOptions,
+    collapse: user || profile ? signedInOptions : signedOutOptions,
   };
 
   return (
