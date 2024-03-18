@@ -11,6 +11,8 @@ import View from "layouts/sections/components/View";
 
 describe("View", () => {
   it("renders", () => {
+    const jsdomPrompt = window.prompt;
+    window.prompt = () => {};
     const { queryByText, getByText } = render(
       <ThemeProvider theme={theme}>
         <View title="Apples" code="Hello" height="100%">
@@ -22,11 +24,12 @@ describe("View", () => {
     expect(queryByText("Apples")).toBeInTheDocument();
     expect(queryByText("Bananas")).toBeInTheDocument();
     expect(queryByText("Code")).toBeInTheDocument();
-    
+
     const codeTab = getByText("Copy");
     fireEvent.click(codeTab);
 
     expect(queryByText("Hello")).toBeInTheDocument();
+    window.prompt = jsdomPrompt;
   });
 
   it("copies code", () => {
