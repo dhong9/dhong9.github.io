@@ -16,12 +16,13 @@ export const AuthProvider = ({ children }) => {
   // Getting auth token priority
   // 1. Session storage
   // 2. Local storage
-
+  const sessionToken = sessionStorage.getItem("authTokens");
+  const localToken = localStorage.getItem("authTokens");
   const [authTokens, setAuthTokens] = useState(() =>
-    localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null
+    sessionToken ? JSON.parse(sessionToken) : localToken ? JSON.parse(localToken) : null
   );
   const [user, setUser] = useState(() =>
-    localStorage.getItem("authTokens") ? jwt_decode(localStorage.getItem("authTokens")) : null
+    sessionToken ? jwt_decode(sessionToken) : localToken ? jwt_decode(localToken) : null
   );
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState([]);
