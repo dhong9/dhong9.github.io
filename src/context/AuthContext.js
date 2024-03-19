@@ -181,13 +181,13 @@ export const AuthProvider = ({ children }) => {
       );
     }
 
-    if (loading) {
+    if (!profile && loading) {
       updateToken();
     }
 
     const REFRESH_INTERVAL = 1000 * 60 * 4; // 4 minutes
     const interval = setInterval(() => {
-      if (authTokens) {
+      if (!profile && authTokens) {
         updateToken();
       }
     }, REFRESH_INTERVAL);
