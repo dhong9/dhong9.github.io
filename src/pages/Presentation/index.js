@@ -125,7 +125,7 @@ function Presentation() {
     console.log("Sign out success");
   };
 
-  let { user, profile, googleUser } = useContext(AuthContext);
+  let { user, profile } = useContext(AuthContext);
 
   const signedOutOptions = [
     {
@@ -153,9 +153,9 @@ function Presentation() {
   ];
 
   const accountObj = {
-    name: user ? user.username : googleUser ? profile.name : "Guest",
+    name: user ? user.username || profile.name : "Guest",
     icon: <AccountCircleIcon />,
-    collapse: user || googleUser ? signedInOptions : signedOutOptions,
+    collapse: user ? signedInOptions : signedOutOptions,
   };
 
   return (

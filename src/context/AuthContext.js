@@ -13,7 +13,10 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  // Django login properties
+  // Getting auth token priority
+  // 1. Session storage
+  // 2. Local storage
+
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null
   );
@@ -21,11 +24,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.getItem("authTokens") ? jwt_decode(localStorage.getItem("authTokens")) : null
   );
   const [loading, setLoading] = useState(true);
-
-  // Google login properties
-  const [googleUser, setGoogleUser] = useState(() =>
-    sessionStorage.getItem("googleUser") ? JSON.parse(sessionStorage.getItem("googleUser")) : null
-  );
   const [profile, setProfile] = useState([]);
 
   const history = useNavigate();
@@ -95,6 +93,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
+    googleLogout();
     localStorage.removeItem("authTokens");
     sessionStorage.removeItem("authTokens");
     setAuthTokens(null);
@@ -117,22 +116,16 @@ export const AuthProvider = ({ children }) => {
   // Google login functions
   const googleLogin = useGoogleLogin({
     onSuccess: (codeResponse) => {
-      console.log(codeResponse);
-      sessionStorage.setItem("googleUser", JSON.stringify(codeResponse));
-      setGoogleUser(codeResponse);
+      // data has access and refresh tokens
+      setAuthTokens(codeResponse);
+      setUser(jwt_decode(codeResponse.access_token));
+      sessionStorage.setItem("authTokens", JSON.stringify(codeResponse));
       history("/");
     },
     onError: (error) => {
       console.error(error);
     },
   });
-
-  const gmailLogout = () => {
-    googleLogout();
-    setProfile(null);
-    sessionStorage.removeItem("googleUser");
-    history("/");
-  };
 
   const contextData = {
     user,
@@ -144,10 +137,8 @@ export const AuthProvider = ({ children }) => {
     logoutUser,
     updateUser,
     deleteUser,
-    googleUser,
     profile,
     googleLogin,
-    gmailLogout,
   };
 
   const updateToken = () => {
@@ -177,9 +168,9 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Get Google user
-    if (googleUser) {
+    if (authTokens && authTokens.access_token) {
       getGoogleUser(
-        googleUser.access_token,
+        authTokens.access_token,
         (res) => {
           setProfile(res.data);
         },

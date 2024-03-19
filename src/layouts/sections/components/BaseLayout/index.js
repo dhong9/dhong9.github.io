@@ -53,7 +53,7 @@ function BaseLayout({ breadcrumb, title, children }) {
   const [signoutSeverity, setSignoutSeverity] = useState("info");
   const [signoutMessage, setSignoutMessage] = useState("");
 
-  let { user, profile, googleUser } = useContext(AuthContext);
+  let { user, profile } = useContext(AuthContext);
 
   const signoutSuccess = () => {
     setSignoutSeverity("success");
@@ -93,9 +93,9 @@ function BaseLayout({ breadcrumb, title, children }) {
   ];
 
   const accountObj = {
-    name: user ? user.username : googleUser ? profile.name : "Guest",
+    name: user ? user.username || profile.name : "Guest",
     icon: <AccountCircleIcon />,
-    collapse: user || googleUser ? signedInOptions : signedOutOptions,
+    collapse: user ? signedInOptions : signedOutOptions,
   };
 
   return (
