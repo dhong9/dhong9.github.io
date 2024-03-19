@@ -120,7 +120,7 @@ export const AuthProvider = ({ children }) => {
       console.log("Google login success");
       // data has access and refresh tokens
       setAuthTokens(codeResponse);
-      setUser(jwt_decode(codeResponse.access_token));
+      setUser(codeResponse);
       sessionStorage.setItem("authTokens", JSON.stringify(codeResponse));
       history("/");
     },
