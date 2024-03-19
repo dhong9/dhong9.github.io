@@ -116,6 +116,7 @@ export const AuthProvider = ({ children }) => {
   // Google login functions
   const googleLogin = useGoogleLogin({
     onSuccess: (codeResponse) => {
+      console.log("Google login success");
       // data has access and refresh tokens
       setAuthTokens(codeResponse);
       setUser(jwt_decode(codeResponse.access_token));
@@ -123,6 +124,7 @@ export const AuthProvider = ({ children }) => {
       history("/");
     },
     onError: (error) => {
+      console.error("Google login failed");
       console.error(error);
     },
   });
