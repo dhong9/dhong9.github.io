@@ -117,6 +117,7 @@ export const AuthProvider = ({ children }) => {
   // Google login functions
   const googleLogin = useGoogleLogin({
     onSuccess: (codeResponse) => {
+      console.log(codeResponse);
       sessionStorage.setItem("googleUser", JSON.stringify(codeResponse));
       setGoogleUser(codeResponse);
       history("/");
