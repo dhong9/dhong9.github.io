@@ -24,6 +24,7 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 
 // Material Kit 2 React components
+import MKAvatar from "components/MKAvatar";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
@@ -55,6 +56,8 @@ import AuthContext from "context/AuthContext";
 
 // Services
 import { getProjects } from "services/projectsService";
+
+import team1 from "assets/images/team-1.jpg";
 
 function Presentation() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -154,7 +157,7 @@ function Presentation() {
 
   const accountObj = {
     name: user ? user.username || profile.name : "Guest",
-    icon: <AccountCircleIcon />,
+    icon: user ? <MKAvatar src={team1} alt="team 1" size="sm" /> : <AccountCircleIcon />,
     collapse: user ? signedInOptions : signedOutOptions,
   };
 
