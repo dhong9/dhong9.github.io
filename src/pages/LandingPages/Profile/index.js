@@ -45,9 +45,9 @@ import AuthContext from "context/AuthContext";
 import bgImage from "assets/images/SF_Hologram.png";
 
 function Profile() {
-  let { user, updateUser } = useContext(AuthContext);
+  let { user, profile, updateUser } = useContext(AuthContext);
 
-  const [username, setUsername] = useState(user.username);
+  const [username, setUsername] = useState(user.username || profile.name);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
