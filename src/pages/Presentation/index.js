@@ -157,7 +157,7 @@ function Presentation() {
 
   const accountObj = {
     name: user ? user.username || profile.name : "Guest",
-    icon: user ? <MKAvatar src={team1} alt="team 1" size="sm" /> : <AccountCircleIcon />,
+    icon: user ? <MKAvatar src={team1} alt="team 1" size="xs" /> : <AccountCircleIcon />,
     collapse: user ? signedInOptions : signedOutOptions,
   };
 
