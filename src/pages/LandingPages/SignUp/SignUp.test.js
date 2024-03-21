@@ -28,8 +28,6 @@ jest.mock("services/baseService", () => ({
 // Setup axios mock
 const mock = new MockAdapter(axios);
 
-mock.onPost("accounts/register/").reply(200, {});
-
 // Define Mocks
 jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
@@ -54,7 +52,10 @@ jest.mock("services/googleService", () => ({
 }));
 
 describe("SignUp", () => {
-  it("renders", () => {
+  it("signs up with success", () => {
+    // Force register endpoint to pass
+    mock.onPost("accounts/register/").reply(200, { data: {} });
+
     const contextData = {
       loginUser: jest.fn(),
     };
@@ -98,5 +99,47 @@ describe("SignUp", () => {
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
     expect(queryByText("Password is required.")).not.toBeInTheDocument();
     expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
+  });
+
+  it("reports duplicate username", () => {
+    // Force register endpoint to fail
+    mock.onPost("accounts/register/").reply(400, {
+      data: {
+        username: ["Username already in use"],
+      },
+    });
+
+    const contextData = {
+      loginUser: jest.fn(),
+    };
+    const { container, getByLabelText, getByText } = render(
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>
+            <ThemeProvider theme={theme}>
+              <SignUp />
+            </ThemeProvider>
+          </AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
+    );
+
+    // Get form elements
+    const usernameInput = getByLabelText("Username");
+    const emailInput = getByLabelText("Email");
+    const passwordInput = getByLabelText("Password");
+    const password2Input = getByLabelText("Confirm Password");
+    const signUpButton = getByText("sign up");
+
+    // Put data into the form
+    fireEvent.change(usernameInput, { target: { value: "expertTester" } });
+    fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
+    fireEvent.change(passwordInput, { target: { value: "validPassword" } });
+    fireEvent.change(password2Input, { target: { value: "validPassword" } });
+
+    // Resubmit data
+    fireEvent.click(signUpButton);
+
+    expect(container).toMatchSnapshot();
   });
 });
