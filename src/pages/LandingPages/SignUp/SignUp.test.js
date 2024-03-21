@@ -104,15 +104,18 @@ describe("SignUp", () => {
   it("reports duplicate username", () => {
     // Force register endpoint to fail
     mock.onPost("accounts/register/").reply(400, {
-      data: {
-        username: ["Username already in use"],
+      response: {
+        data: {
+          username: ["Username already in use"],
+        },
       },
+      message: "Oh no, something's wrong",
     });
 
     const contextData = {
       loginUser: jest.fn(),
     };
-    const { container, getByLabelText, getByText } = render(
+    const { getByLabelText, getByText, queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthContext.Provider value={contextData}>
           <AuthProvider>
@@ -140,6 +143,9 @@ describe("SignUp", () => {
     // Resubmit data
     fireEvent.click(signUpButton);
 
-    expect(container).toMatchSnapshot();
+    // Errors should clear
+    expect(queryByText("Username is required.")).not.toBeInTheDocument();
+    expect(queryByText("Password is required.")).not.toBeInTheDocument();
+    expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
   });
 });
