@@ -53,7 +53,7 @@ jest.mock("services/googleService", () => ({
 
 describe("SignUp", () => {
   it("signs up with success", () => {
-    // Force register endpoint to pass
+    // Mock success endpoint
     mock.onPost("accounts/register/").reply(200, { data: {} });
 
     const contextData = {
