@@ -20,11 +20,6 @@ import SignUp from "pages/LandingPages/SignUp";
 // Google Client ID
 const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
-jest.mock("services/baseService", () => ({
-  getRequest: jest.fn(),
-  postRequest: jest.fn(),
-}));
-
 // Setup axios mock
 const mock = new MockAdapter(axios);
 
@@ -54,7 +49,7 @@ jest.mock("services/googleService", () => ({
 describe("SignUp", () => {
   it("signs up with success", () => {
     // Mock success endpoint
-    mock.onPost("accounts/register/").reply(200, { data: {} });
+    mock.onPost("https://dhong9.pythonanywhere.com/accounts/register/").reply(200, { data: {} });
 
     const contextData = {
       loginUser: jest.fn(),
@@ -103,7 +98,7 @@ describe("SignUp", () => {
 
   it("reports duplicate username", () => {
     // Force register endpoint to fail
-    mock.onPost("accounts/register/").reply(400, {
+    mock.onPost("https://dhong9.pythonanywhere.com/accounts/register/").reply(400, {
       response: {
         data: {
           username: ["Username already in use"],
@@ -151,7 +146,7 @@ describe("SignUp", () => {
 
   it("reports duplicate email", () => {
     // Force register endpoint to fail
-    mock.onPost("accounts/register/").reply(400, {
+    mock.onPost("https://dhong9.pythonanywhere.com/accounts/register/").reply(400, {
       response: {
         data: {
           email: ["Email already in use"],
