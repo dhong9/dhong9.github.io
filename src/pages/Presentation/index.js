@@ -57,8 +57,6 @@ import AuthContext from "context/AuthContext";
 // Services
 import { getProjects } from "services/projectsService";
 
-import team1 from "assets/images/team-1.jpg";
-
 function Presentation() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [contactSeverity, setContactSeverity] = useState("info");
