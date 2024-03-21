@@ -148,4 +148,52 @@ describe("SignUp", () => {
     expect(queryByText("Password is required.")).not.toBeInTheDocument();
     expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
   });
+
+  it("reports duplicate email", () => {
+    // Force register endpoint to fail
+    mock.onPost("accounts/register/").reply(400, {
+      response: {
+        data: {
+          email: ["Email already in use"],
+        },
+      },
+      message: "Oh no, something's wrong",
+    });
+
+    const contextData = {
+      loginUser: jest.fn(),
+    };
+    const { getByLabelText, getByText, queryByText } = render(
+      <GoogleOAuthProvider clientId={clientId}>
+        <AuthContext.Provider value={contextData}>
+          <AuthProvider>
+            <ThemeProvider theme={theme}>
+              <SignUp />
+            </ThemeProvider>
+          </AuthProvider>
+        </AuthContext.Provider>
+      </GoogleOAuthProvider>
+    );
+
+    // Get form elements
+    const usernameInput = getByLabelText("Username");
+    const emailInput = getByLabelText("Email");
+    const passwordInput = getByLabelText("Password");
+    const password2Input = getByLabelText("Confirm Password");
+    const signUpButton = getByText("sign up");
+
+    // Put data into the form
+    fireEvent.change(usernameInput, { target: { value: "expertTester" } });
+    fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
+    fireEvent.change(passwordInput, { target: { value: "validPassword" } });
+    fireEvent.change(password2Input, { target: { value: "validPassword" } });
+
+    // Resubmit data
+    fireEvent.click(signUpButton);
+
+    // Errors should clear
+    expect(queryByText("Username is required.")).not.toBeInTheDocument();
+    expect(queryByText("Password is required.")).not.toBeInTheDocument();
+    expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
+  });
 });
