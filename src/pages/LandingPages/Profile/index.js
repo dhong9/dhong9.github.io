@@ -199,8 +199,8 @@ function Profile() {
                   <MKBox mb={2} justifyContent="center" display="flex">
                     <MKAvatar
                       src={user && profile.picture ? profile.picture : defaultProfileImage}
-                      alt={`${profile.name} profile picture`}
-                      size="xs"
+                      alt={`${user ? profile.name : "Default"} profile picture`}
+                      size="xxl"
                     />
                   </MKBox>
                   <MKBox mb={2}>
