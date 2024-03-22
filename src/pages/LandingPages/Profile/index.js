@@ -115,7 +115,7 @@ function Profile() {
       user && profile.picture ? (
         <MKAvatar src={profile.picture} alt={`${profile.name} profile picture`} size="xs" />
       ) : (
-        <AccountCircleIcon />
+        <AccountCircleIcon fontSize="large" />
       ),
     collapse: [
       {
