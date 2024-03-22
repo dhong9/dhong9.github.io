@@ -194,7 +194,7 @@ function Profile() {
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
-                  <MKBox mb={2} alignItems="center">
+                  <MKBox mb={2} alignItems="center" display="flex">
                     <MKAvatar src={team1} alt="team 1" size="xxl" />
                   </MKBox>
                   <MKBox mb={2}>
