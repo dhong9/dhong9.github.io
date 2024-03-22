@@ -45,8 +45,6 @@ import AuthContext from "context/AuthContext";
 // Images
 import bgImage from "assets/images/SF_Hologram.png";
 
-import team1 from "assets/images/team-1.jpg";
-
 function Profile() {
   let { user, profile, updateUser } = useContext(AuthContext);
 
