@@ -15,9 +15,6 @@ Coded by www.creative-tim.com
 
 import { useContext, useEffect, useState } from "react";
 
-// @mui material icons
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -46,6 +43,7 @@ import routes from "routes";
 
 // Images
 import bgImage from "assets/images/Pacific_selfie_bubbles.jpg";
+import defaultProfileImage from "assets/images/default_profile.jpg";
 
 // Authentication
 import SignIn from "layouts/pages/authentication/sign-in";
@@ -155,12 +153,13 @@ function Presentation() {
 
   const accountObj = {
     name: user ? user.username || profile.name : "Guest",
-    icon:
-      user && profile.picture ? (
-        <MKAvatar src={profile.picture} alt={`${profile.name} profile picture`} size="xs" />
-      ) : (
-        <AccountCircleIcon />
-      ),
+    icon: (
+      <MKAvatar
+        src={user && profile.picture ? profile.picture : defaultProfileImage}
+        alt={`${user ? profile.name : "Default"} profile picture`}
+        size="xs"
+      />
+    ),
     collapse: user ? signedInOptions : signedOutOptions,
   };
 

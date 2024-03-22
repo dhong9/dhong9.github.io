@@ -20,9 +20,6 @@ import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Modal from "@mui/material/Modal";
 
-// @mui material icons
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import MKAvatar from "components/MKAvatar";
@@ -44,6 +41,7 @@ import AuthContext from "context/AuthContext";
 
 // Images
 import bgImage from "assets/images/SF_Hologram.png";
+import defaultProfileImage from "assets/images/default_profile.jpg";
 
 function Profile() {
   let { user, profile, updateUser } = useContext(AuthContext);
@@ -111,12 +109,13 @@ function Profile() {
 
   const accountObj = {
     name: user.username || profile.name,
-    icon:
-      user && profile.picture ? (
-        <MKAvatar src={profile.picture} alt={`${profile.name} profile picture`} size="xs" />
-      ) : (
-        <AccountCircleIcon fontSize="large" />
-      ),
+    icon: (
+      <MKAvatar
+        src={user && profile.picture ? profile.picture : defaultProfileImage}
+        alt={`${user ? profile.name : "Default"} profile picture`}
+        size="xs"
+      />
+    ),
     collapse: [
       {
         name: "Sign Out",
@@ -198,15 +197,11 @@ function Profile() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2} justifyContent="center" display="flex">
-                    {user && profile.picture ? (
-                      <MKAvatar
-                        src={profile.picture}
-                        alt={`${profile.name} profile picture`}
-                        size="xxl"
-                      />
-                    ) : (
-                      <AccountCircleIcon />
-                    )}
+                    <MKAvatar
+                      src={user && profile.picture ? profile.picture : defaultProfileImage}
+                      alt={`${profile.name} profile picture`}
+                      size="xs"
+                    />
                   </MKBox>
                   <MKBox mb={2}>
                     <MKInput

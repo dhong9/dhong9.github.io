@@ -18,14 +18,12 @@ import { useContext, useState } from "react";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-// @mui material icons
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
+import MKAvatar from "components/MKAvatar";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
@@ -46,6 +44,9 @@ import AuthContext from "context/AuthContext";
 
 // Routes
 import routes from "routes";
+
+// Images
+import defaultProfileImage from "assets/images/default_profile.jpg";
 
 function BaseLayout({ breadcrumb, title, children }) {
   // Sign out properties
@@ -94,7 +95,13 @@ function BaseLayout({ breadcrumb, title, children }) {
 
   const accountObj = {
     name: user ? user.username || profile.name : "Guest",
-    icon: <AccountCircleIcon />,
+    icon: (
+      <MKAvatar
+        src={user && profile.picture ? profile.picture : defaultProfileImage}
+        alt={`${user ? profile.name : "Default"} profile picture`}
+        size="xs"
+      />
+    ),
     collapse: user ? signedInOptions : signedOutOptions,
   };
 
