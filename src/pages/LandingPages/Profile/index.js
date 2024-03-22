@@ -112,8 +112,13 @@ function Profile() {
   };
 
   const accountObj = {
-    name: user.username,
-    icon: <AccountCircleIcon />,
+    name: user.username || profile.name,
+    icon:
+      user && profile.picture ? (
+        <MKAvatar src={profile.picture} alt={`${profile.name} profile picture`} size="xs" />
+      ) : (
+        <AccountCircleIcon />
+      ),
     collapse: [
       {
         name: "Sign Out",
@@ -195,7 +200,15 @@ function Profile() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2} justifyContent="center" display="flex">
-                    <MKAvatar src={team1} alt="team 1" size="xxl" />
+                    {user && profile.picture ? (
+                      <MKAvatar
+                        src={profile.picture}
+                        alt={`${profile.name} profile picture`}
+                        size="xxl"
+                      />
+                    ) : (
+                      <AccountCircleIcon />
+                    )}
                   </MKBox>
                   <MKBox mb={2}>
                     <MKInput
