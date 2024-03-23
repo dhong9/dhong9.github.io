@@ -57,13 +57,13 @@ import { getProjects } from "services/projectsService";
 import { getUserProfile } from "services/accountsService";
 
 function Presentation() {
+  const { user, profile } = useContext(AuthContext);
+
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [contactSeverity, setContactSeverity] = useState("info");
   const [contactMessage, setContactMessage] = useState("");
   const [projects, setProjects] = useState([]);
   const [profileImage, setProfileImage] = useState(defaultProfileImage);
-
-  let { user, profile } = useContext(AuthContext);
 
   useEffect(() => {
     getProjects(({ data: { results } }) => {

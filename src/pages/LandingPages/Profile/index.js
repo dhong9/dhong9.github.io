@@ -12,7 +12,7 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -43,6 +43,9 @@ import AuthContext from "context/AuthContext";
 import bgImage from "assets/images/SF_Hologram.png";
 import defaultProfileImage from "assets/images/default_profile.jpg";
 
+// Services
+import { getUserProfile } from "services/accountsService";
+
 function Profile() {
   let { user, profile, updateUser } = useContext(AuthContext);
 
@@ -55,6 +58,16 @@ function Profile() {
   const [profileMessage, setProfileMessage] = useState("");
   const [formErrors, setFormErrors] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [profileImage, setProfileImage] = useState(defaultProfileImage);
+
+  useEffect(() => {
+    // If there is a user, then get their profile info
+    if (user) {
+      getUserProfile(user.user_id, ({ data: { image } }) => {
+        setProfileImage(image);
+      });
+    }
+  });
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -108,11 +121,15 @@ function Profile() {
   };
 
   const accountObj = {
+    // If the user is logged in, use their account's username
     name: user.username || profile.name,
+
+    // If the user has a profile picture from Google, use that image
+    // Otherwise, use the picture tied to the site's account
     icon: (
       <MKAvatar
-        src={user && profile.picture ? profile.picture : defaultProfileImage}
-        alt={`${user ? profile.name : "Default"} profile picture`}
+        src={user && profile.picture ? profile.picture : profileImage}
+        alt="Profile picture"
         size="xs"
       />
     ),
@@ -197,9 +214,11 @@ function Profile() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2} justifyContent="center" display="flex">
+                    {/* If the user has a profile picture from Google, use that image*/}
+                    {/* Otherwise, use the picture tied to the site's account */}
                     <MKAvatar
-                      src={user && profile.picture ? profile.picture : defaultProfileImage}
-                      alt={`${user ? profile.name : "Default"} profile picture`}
+                      src={user && profile.picture ? profile.picture : profileImage}
+                      alt="Profile picture"
                       size="xxl"
                     />
                   </MKBox>
