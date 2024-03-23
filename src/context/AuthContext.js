@@ -26,10 +26,12 @@ export const AuthProvider = ({ children }) => {
   );
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState([]);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const history = useNavigate();
 
   const loginUser = (username, password, rememberMe, success, error) => {
+    setRememberMe(rememberMe);
     postRequest(
       "accounts/token/",
       { username, password },
@@ -157,7 +159,11 @@ export const AuthProvider = ({ children }) => {
           const data = response.data;
           setAuthTokens(data);
           setUser(jwt_decode(data.access));
-          localStorage.setItem("authTokens", JSON.stringify(data));
+          if (rememberMe) {
+            localStorage.setItem("authTokens", JSON.stringify(data));
+          } else {
+            sessionStorage.setItem("authTokens", JSON.stringify(data));
+          }
         } else {
           logoutUser();
         }
