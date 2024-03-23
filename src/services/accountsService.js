@@ -12,8 +12,23 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { getRequest } from "services/baseService";
+import { getRequest, postRequest } from "services/baseService";
 
+/**
+ * Gets user profile by ID
+ * @param {number} id user ID
+ * @param {Function} success success callback
+ */
 export const getUserProfile = (id, success) => {
   getRequest("accounts/profiles/" + id, success, console.error);
+};
+
+/**
+ * Registers a user
+ * @param {object} user user registration details
+ * @param {Function} success success callback
+ * @param {Function} error error callback
+ */
+export const addAccount = (user, success, error) => {
+  postRequest("accounts/register/", user, success, error);
 };

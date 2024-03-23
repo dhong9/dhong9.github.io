@@ -2,7 +2,10 @@ import { createContext, useState, useEffect } from "react";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+
+// Services
 import { postRequest, putRequest, deleteRequest } from "services/baseService";
+import { addAccount } from "services/accountsService";
 import { getGoogleUser } from "services/googleService";
 
 // prop-types is a library for typechecking of props
@@ -58,8 +61,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const registerUser = (email, username, password, password2, success, error) => {
-    postRequest(
-      "accounts/register/",
+    addAccount(
       {
         email,
         username,
