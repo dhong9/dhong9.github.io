@@ -168,8 +168,6 @@ function Profile() {
     p: 4,
   };
 
-  console.log(profile);
-
   return (
     <>
       <DefaultNavbar routes={[...routes, accountObj]} transparent light />
