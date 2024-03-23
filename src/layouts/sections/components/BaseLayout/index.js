@@ -13,7 +13,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -48,13 +48,26 @@ import routes from "routes";
 // Images
 import defaultProfileImage from "assets/images/default_profile.jpg";
 
+// Services
+import { getUserProfile } from "services/accountsService";
+
 function BaseLayout({ breadcrumb, title, children }) {
+  const { user, profile } = useContext(AuthContext);
+
   // Sign out properties
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [signoutSeverity, setSignoutSeverity] = useState("info");
   const [signoutMessage, setSignoutMessage] = useState("");
+  const [profileImage, setProfileImage] = useState(defaultProfileImage);
 
-  let { user, profile } = useContext(AuthContext);
+  useEffect(() => {
+    // If there is a user, then get their profile info
+    if (user) {
+      getUserProfile(user.user_id, ({ data: { image } }) => {
+        setProfileImage(image);
+      });
+    }
+  });
 
   const signoutSuccess = () => {
     setSignoutSeverity("success");
@@ -94,11 +107,15 @@ function BaseLayout({ breadcrumb, title, children }) {
   ];
 
   const accountObj = {
+    // If the user is logged in, use their account's username
     name: user ? user.username || profile.name : "Guest",
+
+    // If the user has a profile picture from Google, use that image
+    // Otherwise, use the picture tied to the site's account
     icon: (
       <MKAvatar
-        src={user && profile.picture ? profile.picture : defaultProfileImage}
-        alt={`${user ? profile.name : "Default"} profile picture`}
+        src={user && profile.picture ? profile.picture : profileImage}
+        alt="Profile picture"
         size="xs"
       />
     ),
