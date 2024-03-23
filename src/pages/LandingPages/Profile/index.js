@@ -251,22 +251,27 @@ function Profile() {
                       fullWidth
                     />
                   </MKBox>
-                  <MKBox mb={2}>
-                    <MKInput
-                      type="password"
-                      label="Password"
-                      onChange={(e) => setPassword(e.target.value)}
-                      fullWidth
-                    />
-                  </MKBox>
-                  <MKBox mb={2}>
-                    <MKInput
-                      type="password"
-                      label="Confirm Password"
-                      onChange={(e) => setPassword2(e.target.value)}
-                      fullWidth
-                    />
-                  </MKBox>
+                  {/* If user has a profile, then they shouldn't be able to change password and delete account */}
+                  {!profile && (
+                    <>
+                      <MKBox mb={2}>
+                        <MKInput
+                          type="password"
+                          label="Password"
+                          onChange={(e) => setPassword(e.target.value)}
+                          fullWidth
+                        />
+                      </MKBox>
+                      <MKBox mb={2}>
+                        <MKInput
+                          type="password"
+                          label="Confirm Password"
+                          onChange={(e) => setPassword2(e.target.value)}
+                          fullWidth
+                        />
+                      </MKBox>
+                    </>
+                  )}
                   {/* Show any form errors */}
                   {formErrors[0] ? (
                     <MKBox display="flex" alignItems="center" ml={-1}>
