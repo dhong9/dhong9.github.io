@@ -31,6 +31,7 @@ jest.mock("services/baseService", () => ({
 const mock = new MockAdapter(axios);
 
 mock.onPost("accounts/update/").reply(200, {});
+mock.onGet("accounts/profiles/undefined").reply(200, { data: { image: "myProfile.jpg" } });
 
 // Define Mocks
 jest.mock("jwt-decode");
