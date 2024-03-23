@@ -61,6 +61,7 @@ function Presentation() {
   const [contactSeverity, setContactSeverity] = useState("info");
   const [contactMessage, setContactMessage] = useState("");
   const [projects, setProjects] = useState([]);
+  const [profileImage, setProfileImage] = useState(defaultProfileImage);
 
   let { user, profile } = useContext(AuthContext);
 
@@ -106,7 +107,9 @@ function Presentation() {
 
     // If there is a user, then get their profile info
     if (user) {
-      getUserProfile(user.user_id, console.log);
+      getUserProfile(user.user_id, ({ data: { image } }) => {
+        setProfileImage(image);
+      });
     }
 
     console.log(projects);
@@ -159,11 +162,15 @@ function Presentation() {
   ];
 
   const accountObj = {
+    // If the user is logged in, use their account's username
     name: user ? user.username || profile.name : "Guest",
+
+    // If the user has a profile picture from Google, use that image
+    // Otherwise, use the picture tied to the site's account
     icon: (
       <MKAvatar
-        src={user && profile.picture ? profile.picture : defaultProfileImage}
-        alt={`${user ? profile.name : "Default"} profile picture`}
+        src={user && profile.picture ? profile.picture : profileImage}
+        alt="Profile picture"
         size="xs"
       />
     ),
