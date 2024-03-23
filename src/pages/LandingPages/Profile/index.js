@@ -47,7 +47,7 @@ import defaultProfileImage from "assets/images/default_profile.jpg";
 import { getUserProfile } from "services/accountsService";
 
 function Profile() {
-  let { user, profile, updateUser } = useContext(AuthContext);
+  const { user, profile, updateUser } = useContext(AuthContext);
 
   const [username, setUsername] = useState(user.username || profile.name);
   const [email, setEmail] = useState(user.email);
@@ -159,6 +159,8 @@ function Profile() {
     boxShadow: 24,
     p: 4,
   };
+
+  console.log(profile);
 
   return (
     <>
