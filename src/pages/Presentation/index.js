@@ -99,8 +99,8 @@ function Presentation() {
       }
 
       setProjects(projects);
-      console.log(projects);
     });
+    console.log(projects);
   }, []);
 
   const handleSnackbarClose = (event, reason) => {
