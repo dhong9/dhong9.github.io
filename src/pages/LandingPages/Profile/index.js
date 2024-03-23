@@ -160,9 +160,6 @@ function Profile() {
     p: 4,
   };
 
-  console.log("Profile: ", profile);
-  console.log("User: ", user);
-
   return (
     <>
       <DefaultNavbar routes={[...routes, accountObj]} transparent light />
@@ -226,11 +223,13 @@ function Profile() {
                     />
                   </MKBox>
                   <MKBox mb={2}>
+                    {/* If login is NOT through Django, then make the fields readonly */}
                     <MKInput
                       type="text"
                       label="Username"
                       onChange={(e) => setUsername(e.target.value)}
                       value={username}
+                      disabled={!!(user && profile)}
                       fullWidth
                     />
                   </MKBox>
@@ -240,6 +239,7 @@ function Profile() {
                       label="Email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
+                      disabled={!!(user && profile)}
                       fullWidth
                     />
                   </MKBox>
