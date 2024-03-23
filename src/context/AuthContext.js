@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     sessionToken ? jwt_decode(sessionToken) : localToken ? jwt_decode(localToken) : null
   );
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState([]);
+  const [profile, setProfile] = useState(null);
   const [rememberMe, setRememberMe] = useState(false);
 
   const history = useNavigate();
@@ -120,7 +120,6 @@ export const AuthProvider = ({ children }) => {
   // Google login functions
   const googleLogin = useGoogleLogin({
     onSuccess: (codeResponse) => {
-      console.log("Google login success");
       // data has access and refresh tokens
       setAuthTokens(codeResponse);
       setUser(codeResponse);
@@ -128,7 +127,6 @@ export const AuthProvider = ({ children }) => {
       history("/");
     },
     onError: (error) => {
-      console.error("Google login failed");
       console.error(error);
     },
   });
