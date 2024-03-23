@@ -160,7 +160,8 @@ function Profile() {
     p: 4,
   };
 
-  console.log(profile);
+  console.log("Profile: ", profile);
+  console.log("User: ", user);
 
   return (
     <>
