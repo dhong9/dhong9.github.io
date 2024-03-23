@@ -62,6 +62,7 @@ function Profile() {
   const [profileImage, setProfileImage] = useState(defaultProfileImage);
 
   useEffect(() => {
+    console.log(user);
     // If there is a user, then get their profile info
     if (user) {
       getUserProfile(user.user_id, ({ data: { image } }) => {
