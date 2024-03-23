@@ -99,6 +99,7 @@ function Presentation() {
       }
 
       setProjects(projects);
+      console.log(projects);
     });
   }, []);
 
