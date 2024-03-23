@@ -13,6 +13,7 @@ Coded by www.danyo.tech
 */
 
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -49,7 +50,7 @@ import { getUserProfile } from "services/accountsService";
 function Profile() {
   const { user, profile, updateUser } = useContext(AuthContext);
 
-  const [username, setUsername] = useState(user?.username || profile?.name);
+  const [username, setUsername] = useState(user?.username || profile?.name || "Guest");
   const [email, setEmail] = useState(user?.email || profile?.email);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -66,6 +67,11 @@ function Profile() {
       getUserProfile(user.user_id, ({ data: { image } }) => {
         setProfileImage(image);
       });
+    }
+    // User and profile is not defined
+    // So, kick them over to login page
+    else if (!profile) {
+      useNavigate("/pages/authentication/sign-in");
     }
   });
 
