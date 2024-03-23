@@ -61,8 +61,9 @@ function Profile() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [profileImage, setProfileImage] = useState(defaultProfileImage);
 
+  const history = useNavigate();
+
   useEffect(() => {
-    console.log(user);
     // If there is a user, then get their profile info
     if (user) {
       getUserProfile(user.user_id, ({ data: { image } }) => {
@@ -72,7 +73,7 @@ function Profile() {
     // User and profile is not defined
     // So, kick them over to login page
     else if (!profile) {
-      useNavigate("/pages/authentication/sign-in");
+      history("/pages/authentication/sign-in");
     }
   });
 
