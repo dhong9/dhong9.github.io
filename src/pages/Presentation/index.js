@@ -100,7 +100,6 @@ function Presentation() {
 
       setProjects(projects);
     });
-    console.log(projects);
   }, []);
 
   const handleSnackbarClose = (event, reason) => {
@@ -163,7 +162,7 @@ function Presentation() {
     collapse: user ? signedInOptions : signedOutOptions,
   };
 
-  console.log(profile);
+  console.log(user);
 
   return (
     <>
