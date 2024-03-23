@@ -32,3 +32,13 @@ export const getUserProfile = (id, success) => {
 export const addAccount = (user, success, error) => {
   postRequest("accounts/register/", user, success, error);
 };
+
+/**
+ * Logs in a user
+ * @param {object} user user login details
+ * @param {*} success success callback
+ * @param {*} error error callback
+ */
+export const loginAccount = (user, success, error) => {
+  postRequest("accounts/token/", user, success, error);
+};

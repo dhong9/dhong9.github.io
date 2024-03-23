@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 // Services
 import { postRequest, putRequest, deleteRequest } from "services/baseService";
-import { addAccount } from "services/accountsService";
+import { addAccount, loginAccount } from "services/accountsService";
 import { getGoogleUser } from "services/googleService";
 
 // prop-types is a library for typechecking of props
@@ -35,8 +35,7 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = (username, password, rememberMe, success, error) => {
     setRememberMe(rememberMe);
-    postRequest(
-      "accounts/token/",
+    loginAccount(
       { username, password },
       (response) => {
         if (response.status === 200) {

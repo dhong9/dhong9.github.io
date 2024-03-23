@@ -15,7 +15,7 @@ Coded by www.danyo.tech
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { getRequest, postRequest } from "services/baseService";
-import { getUserProfile, addAccount } from "services/accountsService";
+import { getUserProfile, addAccount, loginAccount } from "services/accountsService";
 
 const mock = new MockAdapter(axios);
 
@@ -58,5 +58,20 @@ describe("AccountsService", () => {
 
     // Verify that postRequest was called correctly
     expect(postRequest).toHaveBeenCalledWith("accounts/register/", user, success, error);
+  });
+
+  it("logs in an account", () => {
+    // Create success and error spy functions
+    const success = jest.fn();
+    const error = jest.fn();
+
+    // Fake user
+    const user = {
+      username: "potatoHead",
+      password: "potatoes@123",
+    };
+
+    // Log in user
+    loginAccount(user, success, error);
   });
 });
