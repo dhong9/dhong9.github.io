@@ -54,12 +54,15 @@ import AuthContext from "context/AuthContext";
 
 // Services
 import { getProjects } from "services/projectsService";
+import { getUserProfile } from "services/accountsService";
 
 function Presentation() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [contactSeverity, setContactSeverity] = useState("info");
   const [contactMessage, setContactMessage] = useState("");
   const [projects, setProjects] = useState([]);
+
+  let { user, profile } = useContext(AuthContext);
 
   useEffect(() => {
     getProjects(({ data: { results } }) => {
@@ -100,6 +103,12 @@ function Presentation() {
 
       setProjects(projects);
     });
+
+    // If there is a user, then get their profile info
+    if (user) {
+      getUserProfile(user.user_id, console.log);
+    }
+
     console.log(projects);
   }, []);
 
@@ -123,8 +132,6 @@ function Presentation() {
   const signoutSuccess = () => {
     console.log("Sign out success");
   };
-
-  let { user, profile } = useContext(AuthContext);
 
   const signedOutOptions = [
     {
@@ -162,8 +169,6 @@ function Presentation() {
     ),
     collapse: user ? signedInOptions : signedOutOptions,
   };
-
-  console.log(user);
 
   return (
     <>
