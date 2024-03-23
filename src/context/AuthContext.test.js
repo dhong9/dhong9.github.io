@@ -1,5 +1,6 @@
 // React testing libraries
-import renderer from "react-test-renderer";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 // JWT
 import jwtDecode from "jwt-decode";
@@ -46,15 +47,14 @@ describe("AuthContext", () => {
       loginUser: jest.fn(),
     };
 
-    const component = renderer.create(
+    const { queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthContext.Provider value={contextData}>
           <AuthProvider>Hello world!</AuthProvider>
         </AuthContext.Provider>
       </GoogleOAuthProvider>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(queryByText("Hello world!")).toBeInTheDocument();
   });
 
   it("updates token", () => {
@@ -71,7 +71,7 @@ describe("AuthContext", () => {
       loginUser: jest.fn(),
     };
 
-    const component = renderer.create(
+    const { queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthContext.Provider value={contextData}>
           <AuthProvider>Hello world!</AuthProvider>
@@ -81,8 +81,7 @@ describe("AuthContext", () => {
 
     jest.useFakeTimers();
     setTimeout(() => {
-      let tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(queryByText("Hello world!")).toBeInTheDocument();
     }, 4 * 1000 * 60);
     jest.runAllTimers();
   });

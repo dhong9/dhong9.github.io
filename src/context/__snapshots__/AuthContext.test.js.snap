@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`AuthContext renders 1`] = `"Hello world!"`;
-
-exports[`AuthContext updates token 1`] = `"Hello world!"`;
