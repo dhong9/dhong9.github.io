@@ -16597,7 +16597,7 @@ exports[`PictureShuffle renders without user 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-8108"
+            id="rdw-wrapper-1593"
           >
             <div
               aria-hidden="false"
@@ -16983,15 +16983,15 @@ exports[`PictureShuffle renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="calq0"
-                        data-offset-key="fqvd-0-0"
+                        data-editor="25oq9"
+                        data-offset-key="fh6ls-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="fqvd-0-0"
+                          data-offset-key="fh6ls-0-0"
                         >
                           <span
-                            data-offset-key="fqvd-0-0"
+                            data-offset-key="fh6ls-0-0"
                           >
                             <br
                               data-text="true"
