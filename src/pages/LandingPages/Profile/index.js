@@ -49,8 +49,8 @@ import { getUserProfile } from "services/accountsService";
 function Profile() {
   const { user, profile, updateUser } = useContext(AuthContext);
 
-  const [username, setUsername] = useState(user.username || profile.name);
-  const [email, setEmail] = useState(user.email || profile.email);
+  const [username, setUsername] = useState(user?.username || profile?.name);
+  const [email, setEmail] = useState(user?.email || profile?.email);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -122,13 +122,13 @@ function Profile() {
 
   const accountObj = {
     // If the user is logged in, use their account's username
-    name: user.username || profile.name,
+    name: user?.username || profile?.name,
 
     // If the user has a profile picture from Google, use that image
     // Otherwise, use the picture tied to the site's account
     icon: (
       <MKAvatar
-        src={user && profile.picture ? profile.picture : profileImage}
+        src={user && profile?.picture ? profile.picture : profileImage}
         alt="Profile picture"
         size="xs"
       />
@@ -219,7 +219,7 @@ function Profile() {
                     {/* If the user has a profile picture from Google, use that image*/}
                     {/* Otherwise, use the picture tied to the site's account */}
                     <MKAvatar
-                      src={user && profile.picture ? profile.picture : profileImage}
+                      src={user && profile?.picture ? profile.picture : profileImage}
                       alt="Profile picture"
                       size="xxl"
                     />

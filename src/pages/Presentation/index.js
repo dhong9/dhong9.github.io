@@ -163,13 +163,13 @@ function Presentation() {
 
   const accountObj = {
     // If the user is logged in, use their account's username
-    name: user ? user.username || profile.name : "Guest",
+    name: user?.username || profile?.name || "Guest",
 
     // If the user has a profile picture from Google, use that image
     // Otherwise, use the picture tied to the site's account
     icon: (
       <MKAvatar
-        src={user && profile.picture ? profile.picture : profileImage}
+        src={user && profile?.picture ? profile.picture : profileImage}
         alt="Profile picture"
         size="xs"
       />
