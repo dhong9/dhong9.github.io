@@ -15,6 +15,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import MockAdapter from "axios-mock-adapter";
 
 // Component to test
+import Tile from "projects/games/pictureShuffle/utils/Tile";
 import PictureShuffle from "projects/games/pictureShuffle";
 
 // Google Client ID
@@ -86,6 +87,16 @@ jest.mock("examples/Navbars/DefaultNavbar", () => {
   };
 });
 jest.mock("routes", () => []);
+
+describe("Tile", () => {
+  it("initializes tile", () => {
+    const tile = new Tile(1, 50, 76, 39, null);
+    expect(tile.id).toBe(1);
+    expect(tile.x).toBe(50);
+    expect(tile.y).toBe(76);
+    expect(tile.w).toBe(39);
+  });
+});
 
 describe("PictureShuffle", () => {
   beforeEach(() => {

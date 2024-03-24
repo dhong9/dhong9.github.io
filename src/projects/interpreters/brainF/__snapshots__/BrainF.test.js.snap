@@ -6451,7 +6451,7 @@ exports[`BrainF visualizes output 1`] = `
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-4775"
+            id="rdw-wrapper-1532"
           >
             <div
               aria-hidden="false"
@@ -6839,15 +6839,15 @@ exports[`BrainF visualizes output 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="eldom"
-                        data-offset-key="fu2rd-0-0"
+                        data-editor="cgt45"
+                        data-offset-key="kmsb-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="fu2rd-0-0"
+                          data-offset-key="kmsb-0-0"
                         >
                           <span
-                            data-offset-key="fu2rd-0-0"
+                            data-offset-key="kmsb-0-0"
                           >
                             <br
                               data-text="true"
