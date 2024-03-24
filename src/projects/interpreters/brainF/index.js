@@ -50,7 +50,7 @@ function BrainF() {
   const [comments, setComments] = useState([]);
   const [isPlainText, setIsPlainText] = useState(false);
 
-  let { user } = useContext(AuthContext);
+  const { user, profile } = useContext(AuthContext);
 
   /**
    * Event handler when visualize option is toggled
@@ -85,7 +85,7 @@ function BrainF() {
         }
       },
       id,
-      user.username,
+      user?.username || profile?.name || "Guest",
       user.email,
       editorRef.current.getRootComment(),
       isPlainText

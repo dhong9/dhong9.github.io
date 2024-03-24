@@ -35,7 +35,7 @@ function Connect4() {
   const [comments, setComments] = useState([]);
   const [isPlainText, setIsPlainText] = useState(false);
 
-  let { user } = useContext(AuthContext);
+  const { user, profile } = useContext(AuthContext);
 
   const handleChange = (event) => {
     const checked = event.target.checked;
@@ -54,7 +54,7 @@ function Connect4() {
         }
       },
       id,
-      user.username,
+      user?.username || profile?.name || "Guest",
       user.email,
       editorRef.current.getRootComment(),
       isPlainText

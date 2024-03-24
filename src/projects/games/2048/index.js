@@ -182,7 +182,7 @@ function Twenty48() {
           <div></div>
         )}
         <DHEditor ref={editorRef} />
-        {user || profile ? (
+        {user ? (
           <FormGroup>
             <FormControlLabel
               control={<Checkbox checked={isPlainText} onChange={handleChange} />}

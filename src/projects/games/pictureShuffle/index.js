@@ -37,7 +37,7 @@ function PictureShuffle() {
   const [comments, setComments] = useState([]);
   const [isPlainText, setIsPlainText] = useState(false);
 
-  let { user } = useContext(AuthContext);
+  const { user, profile } = useContext(AuthContext);
 
   const handleChange = (event) => {
     const checked = event.target.checked;
@@ -56,7 +56,7 @@ function PictureShuffle() {
         }
       },
       id,
-      user.username,
+      user?.username || profile?.name || "Guest",
       user.email,
       editorRef.current.getRootComment(),
       isPlainText
