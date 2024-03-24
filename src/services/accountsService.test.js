@@ -21,6 +21,7 @@ import {
   loginAccount,
   updateAccount,
   deleteAccount,
+  refreshAccount,
 } from "services/accountsService";
 
 const mock = new MockAdapter(axios);
@@ -148,4 +149,22 @@ describe("AccountsService", () => {
       { headers: { Authorization: `Bearer ${token}` } }
     );
   });
+});
+
+it("refreshes an account", () => {
+  // Create success and error spy functions
+  const success = jest.fn();
+
+  // Fake user
+  const token = "MOCK_REFRESH";
+
+  // Refresh user
+  refreshAccount(token, success);
+
+  expect(postRequest).toHaveBeenCalledWith(
+    "accounts/token/refresh/",
+    { refresh: token },
+    success,
+    console.error
+  );
 });

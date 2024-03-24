@@ -4,8 +4,14 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 // Services
-import { postRequest, deleteRequest } from "services/baseService";
-import { addAccount, loginAccount, updateAccount, deleteAccount } from "services/accountsService";
+import { postRequest } from "services/baseService";
+import {
+  addAccount,
+  loginAccount,
+  updateAccount,
+  deleteAccount,
+  refreshAccount,
+} from "services/accountsService";
 import { getGoogleUser } from "services/googleService";
 
 // prop-types is a library for typechecking of props
@@ -130,32 +136,25 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateToken = () => {
-    postRequest(
-      "accounts/token/refresh/",
-      {
-        refresh: authTokens?.refresh,
-      },
-      (response) => {
-        if (response.status === 200) {
-          // data has access and refresh tokens
-          const data = response.data;
-          setAuthTokens(data);
-          setUser(jwt_decode(data.access));
-          if (rememberMe) {
-            localStorage.setItem("authTokens", JSON.stringify(data));
-          } else {
-            sessionStorage.setItem("authTokens", JSON.stringify(data));
-          }
+    refreshAccount(authTokens?.refresh, (response) => {
+      if (response.status === 200) {
+        // data has access and refresh tokens
+        const data = response.data;
+        setAuthTokens(data);
+        setUser(jwt_decode(data.access));
+        if (rememberMe) {
+          localStorage.setItem("authTokens", JSON.stringify(data));
         } else {
-          logoutUser();
+          sessionStorage.setItem("authTokens", JSON.stringify(data));
         }
+      } else {
+        logoutUser();
+      }
 
-        if (loading) {
-          setLoading(false);
-        }
-      },
-      console.error
-    );
+      if (loading) {
+        setLoading(false);
+      }
+    });
   };
 
   useEffect(() => {

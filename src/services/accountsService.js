@@ -90,3 +90,12 @@ export const deleteAccount = (id, token, success, error) => {
     { headers: { Authorization: `Bearer ${token}` } }
   );
 };
+
+/**
+ * Refreshes user account
+ * @param {*} refresh refresh token
+ * @param {*} success success callback
+ */
+export const refreshAccount = (refresh, success) => {
+  postRequest("accounts/token/refresh/", { refresh }, success, console.error);
+};
