@@ -1,6 +1,6 @@
 // Unit test libraries
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -17,6 +17,9 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 // Axios
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
+
+// Service
+import { deleteAccount } from "services/accountsService";
 
 // Google Client ID
 const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
@@ -37,6 +40,10 @@ jest.mock("services/baseService", () => ({
 
 jest.mock("services/googleService", () => ({
   getGoogleUser: jest.fn(),
+}));
+jest.mock("services/accountsService", () => ({
+  deleteAccount: jest.fn(),
+  refreshAccount: jest.fn(),
 }));
 
 mock.onDelete("/delete\\/\\d+/").reply(200, {});
@@ -63,10 +70,8 @@ describe("DeleteAccount", () => {
 
     // Set a mock payload for the decoded token
     const mockPayload = {
-      user: {
-        username: "giri",
-        user_id: 100,
-      },
+      username: "giri",
+      user_id: 100,
       exp: 1893456000,
     };
     jwtDecode.mockReturnValue(mockPayload);
@@ -75,7 +80,7 @@ describe("DeleteAccount", () => {
       loginUser: jest.fn(),
     };
 
-    const { container, getByText } = render(
+    const { container, getByText, getByLabelText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthContext.Provider value={contextData}>
           <AuthProvider>
@@ -91,6 +96,20 @@ describe("DeleteAccount", () => {
     const deleteButton = getByText("delete account");
     expect(deleteButton).toHaveProperty("disabled", true);
 
-    expect(container).toMatchSnapshot();
+    // Confirm username to delete
+    const usernameInput = getByLabelText("Username");
+    fireEvent.change(usernameInput, { target: { value: "giri" } });
+
+    // Matching username should enable delete button
+    expect(deleteButton).toHaveProperty("disabled", false);
+
+    // Delete user
+    fireEvent.click(deleteButton);
+    expect(deleteAccount).toHaveBeenCalledWith(
+      100,
+      expect.any(Function),
+      expect.any(Function),
+      mockToken
+    );
   });
 });
