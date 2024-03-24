@@ -14,8 +14,14 @@ Coded by www.danyo.tech
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { getRequest, postRequest, putRequest } from "services/baseService";
-import { getUserProfile, addAccount, loginAccount, updateAccount } from "services/accountsService";
+import { getRequest, postRequest, putRequest, deleteRequest } from "services/baseService";
+import {
+  getUserProfile,
+  addAccount,
+  loginAccount,
+  updateAccount,
+  deleteAccount,
+} from "services/accountsService";
 
 const mock = new MockAdapter(axios);
 
@@ -25,6 +31,7 @@ jest.mock("services/baseService", () => ({
   getRequest: jest.fn(),
   postRequest: jest.fn(),
   putRequest: jest.fn(),
+  deleteRequest: jest.fn(),
 }));
 
 mock.onGet("/accounts/profiles/1").reply(200, userData);
@@ -118,6 +125,27 @@ describe("AccountsService", () => {
       {
         Authorization: `Bearer ${token}`,
       }
+    );
+  });
+
+  it("deletes an account", () => {
+    // Create success and error spy functions
+    const success = jest.fn();
+    const error = jest.fn();
+
+    // Fake user
+    const token = "NEIKLOT";
+    const id = 18;
+
+    // Delete user
+    deleteAccount(id, token, success, error);
+
+    // Verify that deleteRequest was called corectly
+    expect(deleteRequest).toHaveBeenCalledWith(
+      "accounts/delete/" + id + "/",
+      success,
+      expect.any(Function),
+      { headers: { Authorization: `Bearer ${token}` } }
     );
   });
 });

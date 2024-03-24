@@ -12,7 +12,7 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { getRequest, postRequest, putRequest } from "services/baseService";
+import { getRequest, postRequest, putRequest, deleteRequest } from "services/baseService";
 
 /**
  * Gets user profile by ID
@@ -69,5 +69,24 @@ export const updateAccount = (id, user, token, success, error) => {
     {
       Authorization: `Bearer ${token}`,
     }
+  );
+};
+
+/**
+ * Deletes user account
+ * @param {number} id user ID
+ * @param {*} token access token
+ * @param {*} success success callback
+ * @param {*} error error callback
+ */
+export const deleteAccount = (id, token, success, error) => {
+  deleteRequest(
+    "accounts/delete/" + id + "/",
+    success,
+    (err) => {
+      console.log(err);
+      error(err);
+    },
+    { headers: { Authorization: `Bearer ${token}` } }
   );
 };

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 // Services
 import { postRequest, deleteRequest } from "services/baseService";
-import { addAccount, loginAccount, updateAccount } from "services/accountsService";
+import { addAccount, loginAccount, updateAccount, deleteAccount } from "services/accountsService";
 import { getGoogleUser } from "services/googleService";
 
 // prop-types is a library for typechecking of props
@@ -98,15 +98,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const deleteUser = (id, success, error) => {
-    deleteRequest(
-      "accounts/delete/" + id + "/",
-      success,
-      (err) => {
-        console.error(err);
-        error(err);
-      },
-      { headers: { Authorization: `Bearer ${authTokens.access}` } }
-    );
+    deleteAccount(id, success, error, authTokens.access);
   };
 
   // Google login functions
