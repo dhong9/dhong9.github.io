@@ -24,7 +24,12 @@ jest.mock("services/baseService", () => ({
 
 // Setup axios mock
 const mock = new MockAdapter(axios);
-mock.onPost("accounts/token/").reply(200, {});
+mock.onPost("accounts/token/").reply(200, {
+  status: 200,
+  data: {
+    access: "mock_access",
+  },
+});
 
 // Google Client ID
 const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
