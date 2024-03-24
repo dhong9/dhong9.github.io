@@ -80,7 +80,7 @@ describe("DeleteAccount", () => {
       loginUser: jest.fn(),
     };
 
-    const { container, getByText, getByLabelText } = render(
+    const { getByText, getByLabelText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthContext.Provider value={contextData}>
           <AuthProvider>
