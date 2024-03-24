@@ -30,7 +30,10 @@ export const getUserProfile = (id, success) => {
  * @param {Function} error error callback
  */
 export const addAccount = (user, success, error) => {
-  postRequest("accounts/register/", user, success, error);
+  postRequest("accounts/register/", user, success, (err) => {
+    console.error(err);
+    error(err);
+  });
 };
 
 /**
@@ -40,5 +43,8 @@ export const addAccount = (user, success, error) => {
  * @param {*} error error callback
  */
 export const loginAccount = (user, success, error) => {
-  postRequest("accounts/token/", user, success, error);
+  postRequest("accounts/token/", user, success, (err) => {
+    console.error(err);
+    error(err);
+  });
 };

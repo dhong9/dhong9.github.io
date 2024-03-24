@@ -27,6 +27,8 @@ jest.mock("services/baseService", () => ({
 }));
 
 mock.onGet("/accounts/profiles/1").reply(200, userData);
+mock.onPost("accounts/register/").reply(200, userData);
+mock.onPost("accounts/token/").reply(200, userData);
 
 describe("AccountsService", () => {
   it("gets a user", () => {
@@ -57,7 +59,12 @@ describe("AccountsService", () => {
     addAccount(user, success, error);
 
     // Verify that postRequest was called correctly
-    expect(postRequest).toHaveBeenCalledWith("accounts/register/", user, success, error);
+    expect(postRequest).toHaveBeenCalledWith(
+      "accounts/register/",
+      user,
+      success,
+      expect.any(Function)
+    );
   });
 
   it("logs in an account", () => {
@@ -73,5 +80,13 @@ describe("AccountsService", () => {
 
     // Log in user
     loginAccount(user, success, error);
+
+    // Verify that postRequest was called correctly
+    expect(postRequest).toHaveBeenCalledWith(
+      "accounts/token/",
+      user,
+      success,
+      expect.any(Function)
+    );
   });
 });

@@ -52,10 +52,7 @@ export const AuthProvider = ({ children }) => {
           success();
         }
       },
-      (err) => {
-        console.error(err);
-        error(err);
-      }
+      error
     );
   };
 
@@ -71,10 +68,7 @@ export const AuthProvider = ({ children }) => {
         history("/pages/authentication/sign-in");
         success();
       },
-      (err) => {
-        console.error(err);
-        error(err);
-      }
+      error
     );
   };
 
