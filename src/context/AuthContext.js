@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 // Services
-import { postRequest } from "services/baseService";
 import {
   addAccount,
   loginAccount,
