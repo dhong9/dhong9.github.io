@@ -14,8 +14,8 @@ Coded by www.danyo.tech
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { getRequest, postRequest } from "services/baseService";
-import { getUserProfile, addAccount, loginAccount } from "services/accountsService";
+import { getRequest, postRequest, putRequest } from "services/baseService";
+import { getUserProfile, addAccount, loginAccount, updateAccount } from "services/accountsService";
 
 const mock = new MockAdapter(axios);
 
@@ -24,6 +24,7 @@ const userData = {};
 jest.mock("services/baseService", () => ({
   getRequest: jest.fn(),
   postRequest: jest.fn(),
+  putRequest: jest.fn(),
 }));
 
 mock.onGet("/accounts/profiles/1").reply(200, userData);
@@ -87,6 +88,36 @@ describe("AccountsService", () => {
       user,
       success,
       expect.any(Function)
+    );
+  });
+
+  it("updates an account", () => {
+    // Create success and error spy functions
+    const success = jest.fn();
+    const error = jest.fn();
+
+    // Fake user
+    const user = {
+      email: "eatMe@moreFood.net",
+      username: "evenNeater",
+      password: "def",
+      password2: "def",
+    };
+    const token = "TOLKIEN";
+    const id = 10;
+
+    // Update user
+    updateAccount(id, user, token, success, error);
+
+    // Verify that putRequest was called correctly
+    expect(putRequest).toHaveBeenCalledWith(
+      "accounts/update/" + id + "/",
+      user,
+      success,
+      expect.any(Function),
+      {
+        Authorization: `Bearer ${token}`,
+      }
     );
   });
 });

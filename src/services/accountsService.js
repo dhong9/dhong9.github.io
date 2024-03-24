@@ -12,7 +12,7 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { getRequest, postRequest } from "services/baseService";
+import { getRequest, postRequest, putRequest } from "services/baseService";
 
 /**
  * Gets user profile by ID
@@ -47,4 +47,27 @@ export const loginAccount = (user, success, error) => {
     console.error(err);
     error(err);
   });
+};
+
+/**
+ * Updates user account
+ * @param {number} id user ID
+ * @param {object} user user updated details
+ * @param {string} token access token
+ * @param {Function} success success callback
+ * @param {Function} error error callback
+ */
+export const updateAccount = (id, user, token, success, error) => {
+  putRequest(
+    "accounts/update/" + id + "/",
+    user,
+    success,
+    (err) => {
+      console.error(err);
+      error(err);
+    },
+    {
+      Authorization: `Bearer ${token}`,
+    }
+  );
 };

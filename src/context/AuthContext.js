@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 // Services
 import { postRequest, putRequest, deleteRequest } from "services/baseService";
-import { addAccount, loginAccount } from "services/accountsService";
+import { addAccount, loginAccount, updateAccount } from "services/accountsService";
 import { getGoogleUser } from "services/googleService";
 
 // prop-types is a library for typechecking of props
@@ -73,20 +73,17 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateUser = (id, email, username, password, password2, success, error) => {
-    putRequest(
-      "accounts/update/" + id + "/",
+    updateAccount(
+      id,
       {
         email,
         username,
         password,
         password2,
       },
+      authTokens.access,
       success,
-      (err) => {
-        console.error(err);
-        error(err);
-      },
-      { Authorization: `Bearer ${authTokens.access}` }
+      error
     );
   };
 
