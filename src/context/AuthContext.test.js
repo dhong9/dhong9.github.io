@@ -2,7 +2,9 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-// JWT
+// Authentication
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
 import jwtDecode from "jwt-decode";
 
 // Component to test
@@ -27,6 +29,13 @@ jest.mock("services/googleService", () => ({
 }));
 
 jest.mock("jwt-decode");
+
+const mock = new MockAdapter(axios);
+mock.onPost("accounts/token/").reply(200, {
+  data: {
+    access: "abcdefghijklmnop",
+  },
+});
 
 // Mock JWT components
 const mockToken = "mocked_jwt_value";
