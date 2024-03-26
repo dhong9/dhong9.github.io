@@ -30,8 +30,8 @@ jest.mock("services/baseService", () => ({
 // Setup axios mock
 const mock = new MockAdapter(axios);
 
-mock.onPost("accounts/update/").reply(200, {});
-mock.onGet("accounts/profiles/undefined").reply(200, { data: { image: "myProfile.jpg" } });
+mock.onPost("accounts/update/").reply(200, { data: { image: "myProfile.jpg" } });
+mock.onGet("accounts/profiles/\\d+").reply(200, { data: { image: "myProfile.jpg" } });
 
 // Define Mocks
 jest.mock("jwt-decode");
@@ -84,14 +84,11 @@ describe("Profile", () => {
     );
 
     // Set a mock payload for the decoded token
-    const mockPayload = { user: "John Doe", exp: 1893456000 };
+    const mockPayload = { username: "John_Doe", user_id: 21, exp: 1893456000 };
     jwtDecode.mockReturnValue(mockPayload);
 
     const contextData = {
       loginUser: jest.fn(),
-      user: {
-        username: "giri",
-      },
     };
     const { getByLabelText, getByText, queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>

@@ -9,7 +9,7 @@ exports[`ContactUs handles form errors 1`] = `
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-6 css-1442ydi-MuiGrid-root"
     >
       <div
-        class="MuiBox-root css-oqhpx7"
+        class="MuiBox-root css-egx4l6"
       />
     </div>
     <div
@@ -196,7 +196,7 @@ exports[`ContactUs renders 1`] = `
     className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-6 css-1442ydi-MuiGrid-root"
   >
     <div
-      className="MuiBox-root css-oqhpx7"
+      className="MuiBox-root css-egx4l6"
     />
   </div>
   <div

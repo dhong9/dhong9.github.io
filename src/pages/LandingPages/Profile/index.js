@@ -75,7 +75,7 @@ function Profile() {
     else if (!profile) {
       history("/pages/authentication/sign-in");
     }
-  });
+  }, []);
 
   const openModal = () => {
     setModalIsOpen(true);
