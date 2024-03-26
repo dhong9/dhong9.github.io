@@ -51,7 +51,7 @@ function Profile() {
   const { user, profile, updateUser } = useContext(AuthContext);
 
   const [username, setUsername] = useState(user?.username || profile?.name || "Guest");
-  const [email, setEmail] = useState(user?.email || profile?.email);
+  const [email, setEmail] = useState(user?.email || profile?.email || "");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
