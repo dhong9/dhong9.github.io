@@ -75,7 +75,9 @@ describe("SignUp", () => {
     const signUpButton = getByText("sign up");
 
     // Sign up with no form input
-    fireEvent.click(signUpButton);
+    act(() => {
+      fireEvent.click(signUpButton);
+    });
 
     // Check that errors are shown
     expect(queryByText("Username is required.")).toBeInTheDocument();
