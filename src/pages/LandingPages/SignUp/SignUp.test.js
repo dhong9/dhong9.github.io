@@ -1,5 +1,6 @@
 // React testing libraries
 import { render, fireEvent } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
@@ -129,14 +130,16 @@ describe("SignUp", () => {
     const password2Input = getByLabelText("Confirm Password");
     const signUpButton = getByText("sign up");
 
-    // Put data into the form
-    fireEvent.change(usernameInput, { target: { value: "expertTester" } });
-    fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
-    fireEvent.change(passwordInput, { target: { value: "validPassword" } });
-    fireEvent.change(password2Input, { target: { value: "validPassword" } });
+    act(() => {
+      // Put data into the form
+      fireEvent.change(usernameInput, { target: { value: "expertTester" } });
+      fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
+      fireEvent.change(passwordInput, { target: { value: "validPassword" } });
+      fireEvent.change(password2Input, { target: { value: "validPassword" } });
 
-    // Resubmit data
-    fireEvent.click(signUpButton);
+      // Resubmit data
+      fireEvent.click(signUpButton);
+    });
 
     // Errors should clear
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
@@ -178,13 +181,15 @@ describe("SignUp", () => {
     const signUpButton = getByText("sign up");
 
     // Put data into the form
-    fireEvent.change(usernameInput, { target: { value: "expertTester" } });
-    fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
-    fireEvent.change(passwordInput, { target: { value: "validPassword" } });
-    fireEvent.change(password2Input, { target: { value: "validPassword" } });
+    act(() => {
+      fireEvent.change(usernameInput, { target: { value: "expertTester" } });
+      fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
+      fireEvent.change(passwordInput, { target: { value: "validPassword" } });
+      fireEvent.change(password2Input, { target: { value: "validPassword" } });
 
-    // Resubmit data
-    fireEvent.click(signUpButton);
+      // Resubmit data
+      fireEvent.click(signUpButton);
+    });
 
     // Errors should clear
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
