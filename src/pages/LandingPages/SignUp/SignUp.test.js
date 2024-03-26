@@ -1,6 +1,5 @@
 // React testing libraries
 import { render, fireEvent } from "@testing-library/react";
-import { act } from "react-dom/test-utils";
 import "@testing-library/jest-dom";
 
 // Material Kit 2 React themes
@@ -75,9 +74,7 @@ describe("SignUp", () => {
     const signUpButton = getByText("sign up");
 
     // Sign up with no form input
-    act(() => {
-      fireEvent.click(signUpButton);
-    });
+    fireEvent.click(signUpButton);
 
     // Check that errors are shown
     expect(queryByText("Username is required.")).toBeInTheDocument();
@@ -85,15 +82,13 @@ describe("SignUp", () => {
     expect(queryByText("Password confirmation is required.")).toBeInTheDocument();
 
     // Put data into the form
-    act(() => {
-      fireEvent.change(usernameInput, { target: { value: "expertTester" } });
-      fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
-      fireEvent.change(passwordInput, { target: { value: "validPassword" } });
-      fireEvent.change(password2Input, { target: { value: "validPassword" } });
+    fireEvent.change(usernameInput, { target: { value: "expertTester" } });
+    fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
+    fireEvent.change(passwordInput, { target: { value: "validPassword" } });
+    fireEvent.change(password2Input, { target: { value: "validPassword" } });
 
-      // Resubmit data
-      fireEvent.click(signUpButton);
-    });
+    // Resubmit data
+    fireEvent.click(signUpButton);
 
     // Errors should clear
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
@@ -134,16 +129,14 @@ describe("SignUp", () => {
     const password2Input = getByLabelText("Confirm Password");
     const signUpButton = getByText("sign up");
 
-    act(() => {
-      // Put data into the form
-      fireEvent.change(usernameInput, { target: { value: "expertTester" } });
-      fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
-      fireEvent.change(passwordInput, { target: { value: "validPassword" } });
-      fireEvent.change(password2Input, { target: { value: "validPassword" } });
+    // Put data into the form
+    fireEvent.change(usernameInput, { target: { value: "expertTester" } });
+    fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
+    fireEvent.change(passwordInput, { target: { value: "validPassword" } });
+    fireEvent.change(password2Input, { target: { value: "validPassword" } });
 
-      // Resubmit data
-      fireEvent.click(signUpButton);
-    });
+    // Resubmit data
+    fireEvent.click(signUpButton);
 
     // Errors should clear
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
@@ -185,15 +178,13 @@ describe("SignUp", () => {
     const signUpButton = getByText("sign up");
 
     // Put data into the form
-    act(() => {
-      fireEvent.change(usernameInput, { target: { value: "expertTester" } });
-      fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
-      fireEvent.change(passwordInput, { target: { value: "validPassword" } });
-      fireEvent.change(password2Input, { target: { value: "validPassword" } });
+    fireEvent.change(usernameInput, { target: { value: "expertTester" } });
+    fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
+    fireEvent.change(passwordInput, { target: { value: "validPassword" } });
+    fireEvent.change(password2Input, { target: { value: "validPassword" } });
 
-      // Resubmit data
-      fireEvent.click(signUpButton);
-    });
+    // Resubmit data
+    fireEvent.click(signUpButton);
 
     // Errors should clear
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
