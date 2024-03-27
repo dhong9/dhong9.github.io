@@ -24,9 +24,6 @@ import { deleteAccount } from "services/accountsService";
 // Google Client ID
 const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
-// Setup axios mock
-const mock = new MockAdapter(axios);
-
 // Mocks
 jest.mock("jwt-decode");
 jest.mock("react-router-dom", () => ({
@@ -46,6 +43,18 @@ jest.mock("services/accountsService", () => ({
   refreshAccount: jest.fn(),
 }));
 
+// Setup axios mock
+const mock = new MockAdapter(axios);
+mock.onPost("accounts/token/").reply(200, {
+  data: {
+    access: "abcdefghijklmnop",
+  },
+});
+mock.onPost("accounts/token/refresh/").reply(200, {
+  data: {
+    refresh: "rstuvwxyz",
+  },
+});
 mock.onDelete("/delete\\/\\d+/").reply(200, {});
 
 describe("DeleteAccount", () => {

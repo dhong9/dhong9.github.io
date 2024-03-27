@@ -8,8 +8,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
 // Authentication
-import AuthContext, { AuthProvider } from "context/AuthContext";
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
 import jwtDecode from "jwt-decode";
+import AuthContext, { AuthProvider } from "context/AuthContext";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Component to test
@@ -40,6 +42,18 @@ jest.mock("react-router-dom", () => ({
 jest.mock("services/googleService", () => ({
   getGoogleUser: jest.fn(),
 }));
+
+const mock = new MockAdapter(axios);
+mock.onPost("accounts/token/").reply(200, {
+  data: {
+    access: "abcdefghijklmnop",
+  },
+});
+mock.onPost("accounts/token/refresh/").reply(200, {
+  data: {
+    refresh: "rstuvwxyz",
+  },
+});
 
 describe("BaseLayout", () => {
   beforeEach(() => {

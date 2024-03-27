@@ -36,6 +36,11 @@ mock.onPost("accounts/token/").reply(200, {
     access: "abcdefghijklmnop",
   },
 });
+mock.onPost("accounts/token/refresh/").reply(200, {
+  data: {
+    refresh: "rstuvwxyz",
+  },
+});
 
 // Mock JWT components
 const mockToken = "mocked_jwt_value";
