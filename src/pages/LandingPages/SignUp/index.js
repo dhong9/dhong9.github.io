@@ -45,6 +45,7 @@ import routes from "routes";
 
 // Authentication
 import AuthContext from "context/AuthContext";
+import LoginGithub from "react-login-github";
 
 // Images
 import bgImage from "assets/images/neons_medium.png";
@@ -168,9 +169,11 @@ function SignUpBasic() {
                     </MKTypography>
                   </Grid>
                   <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GitHubIcon color="inherit" />
-                    </MKTypography>
+                    <LoginGithub
+                      clientId="fad22315b080996a7aaa"
+                      onSuccess={console.log}
+                      onFailure={console.error}
+                    />
                   </Grid>
                   <Grid item xs={2}>
                     <MKTypography
