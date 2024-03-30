@@ -198,7 +198,7 @@ function SignUpBasic() {
                     onFailure={console.error}
                     buttonText={
                       <>
-                        <GitHubIcon color="inherit" /> Sign in with GitHub
+                        <GitHubIcon color="inherit" /> <span>Sign in with GitHub</span>
                       </>
                     }
                     className="GithubLogin"
