@@ -19,11 +19,13 @@ import { Link } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import MuiLink from "@mui/material/Link";
 
 // @mui icons
 import FacebookIcon from "@mui/icons-material/Facebook";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 
 // Material Kit 2 React components
@@ -168,11 +170,9 @@ function SignUpBasic() {
                     </MKTypography>
                   </Grid>
                   <Grid item xs={2}>
-                    <LoginGithub
-                      clientId="fad22315b080996a7aaa"
-                      onSuccess={console.log}
-                      onFailure={console.error}
-                    />
+                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
+                      <GitHubIcon color="inherit" />
+                    </MKTypography>
                   </Grid>
                   <Grid item xs={2}>
                     <MKTypography
@@ -189,6 +189,16 @@ function SignUpBasic() {
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
+                  <LoginGithub
+                    clientId="fad22315b080996a7aaa"
+                    onSuccess={console.log}
+                    onFailure={console.error}
+                  />
+                  <Divider>
+                    <MKTypography variant="h6" fontWeight="medium">
+                      OR
+                    </MKTypography>
+                  </Divider>
                   <MKBox mb={2}>
                     <MKInput
                       type="text"
