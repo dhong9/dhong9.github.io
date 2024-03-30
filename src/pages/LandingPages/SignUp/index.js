@@ -196,7 +196,7 @@ function SignUpBasic() {
                     clientId="fad22315b080996a7aaa"
                     onSuccess={console.log}
                     onFailure={console.error}
-                    buttonText="Sign in with GitHub"
+                    buttonText="<GitHubIcon color='inherit' /> Sign in with GitHub"
                     className="GithubLogin"
                   />
                   <Divider>
