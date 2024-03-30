@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import MuiLink from "@mui/material/Link";
 
@@ -49,6 +50,9 @@ import LoginGithub from "react-login-github";
 
 // Images
 import bgImage from "assets/images/neons_medium.png";
+
+// CSS
+import "./SignUp.css";
 
 function SignUpBasic() {
   const { registerUser, googleLogin } = useContext(AuthContext);
@@ -170,12 +174,7 @@ function SignUpBasic() {
                   </Grid>
                   <Grid item xs={2}>
                     <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <LoginGithub
-                        clientId="fad22315b080996a7aaa"
-                        onSuccess={console.log}
-                        onFailure={console.error}
-                        buttonText={<GitHubIcon color="inherit" />}
-                      />
+                      <GitHubIcon color="inherit" />
                     </MKTypography>
                   </Grid>
                   <Grid item xs={2}>
@@ -193,6 +192,18 @@ function SignUpBasic() {
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
+                  <LoginGithub
+                    clientId="fad22315b080996a7aaa"
+                    onSuccess={console.log}
+                    onFailure={console.error}
+                    buttonText="Sign in with GitHub"
+                    className="GithubLogin"
+                  />
+                  <Divider>
+                    <MKTypography variant="h6" fontWeight="medium">
+                      OR
+                    </MKTypography>
+                  </Divider>
                   <MKBox mb={2}>
                     <MKInput
                       type="text"

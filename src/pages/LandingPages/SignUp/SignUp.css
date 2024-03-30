@@ -11,3 +11,19 @@ Coded by www.danyo.tech
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
+
+.GithubLogin {
+    background-color: #0148a4 !important;
+    width: 20vw;
+    margin-bottom: 10px;
+    height: 4.5vh;
+    margin-bottom: 10px;
+    color: #eaebed;
+  
+    /* font-family:Verdana !important; */
+    font-weight: 600 !important;
+    border-color: #0148a4 !important;
+    border-radius: 25px !important;
+    border: 0px !important;
+    font-size: 0.9vw !important;
+  }
