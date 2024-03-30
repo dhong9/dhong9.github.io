@@ -193,6 +193,7 @@ function SignUpBasic() {
                     clientId="fad22315b080996a7aaa"
                     onSuccess={console.log}
                     onFailure={console.error}
+                    buttonText={<GitHubIcon color="inherit" />}
                   />
                   <Divider>
                     <MKTypography variant="h6" fontWeight="medium">
