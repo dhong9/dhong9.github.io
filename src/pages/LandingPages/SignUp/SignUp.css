@@ -19,11 +19,21 @@ Coded by www.danyo.tech
     height: 4.5vh;
     margin-bottom: 10px;
     color: #eaebed;
-  
+
     /* font-family:Verdana !important; */
     font-weight: 600 !important;
     border-color: #0148a4 !important;
     border-radius: 25px !important;
     border: 0px !important;
     font-size: 0.9vw !important;
-  }
+}
+
+.GOOGLE {
+    background-color: #f94033 !important;
+    width: 20vw;
+    margin-bottom: 10px;
+    height: 4.5vh;
+    text-align: center !important;
+    border-radius: 25px !important;
+    border: 0 !important;
+}
