@@ -15,12 +15,11 @@ Coded by www.danyo.tech
 .socialAuthButton {
     /* Button background */
     background-color: #eff3ff !important;
-    width: 20vw !important;
-    margin-bottom: 10px !important;
-    height: 4.5vh !important;
-    margin-bottom: 10px !important;
-    color: #2b3b52 !important;
-    position: relative !important;
+    width: 20vw;
+    margin-bottom: 10px;
+    height: 4.5vh;
+    margin-bottom: 10px;
+    color: #2b3b52;
     border-radius: 5px !important;
 
     /* Button text */
@@ -28,10 +27,4 @@ Coded by www.danyo.tech
     border-color: #2b3b52 !important;
     border: 0px !important;
     font-size: 0.9vw !important;
-}
-
-.authIcon {
-    position: absolute !important;
-    left: 12px !important;
-    font-weight: bold !important;
 }
