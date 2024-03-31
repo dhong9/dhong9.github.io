@@ -30,6 +30,6 @@ Coded by www.danyo.tech
 }
 
 .authIcon {
-    position: absolute;
-    left: 12px;
+    position: absolute !important;
+    left: 12px !important;
 }
