@@ -174,7 +174,7 @@ function SignUpBasic() {
                     onFailure={console.error}
                     buttonText={
                       <MKTypography component={MuiLink} href="#" variant="body1">
-                        <GitHubIcon color="inherit" />
+                        <GitHubIcon className="authIcon" color="inherit" />
                         <span>Sign in with GitHub</span>
                       </MKTypography>
                     }
