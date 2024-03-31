@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.e301abc9.css",
-    "main.js": "/static/js/main.12be9225.js",
+    "main.js": "/static/js/main.0b35195f.js",
     "static/media/neons_medium.png": "/static/media/neons_medium.7b2adcfbbbd9344cb715.png",
     "static/media/SF_Hologram.png": "/static/media/SF_Hologram.9efb55391358631b14b7.png",
     "static/media/Pacific_selfie_bubbles.jpg": "/static/media/Pacific_selfie_bubbles.3e4fb8d2d813b8a238da.jpg",
@@ -11,10 +11,10 @@
     "static/media/default_profile.jpg": "/static/media/default_profile.c3714776f86c7185f90d.jpg",
     "index.html": "/index.html",
     "main.e301abc9.css.map": "/static/css/main.e301abc9.css.map",
-    "main.12be9225.js.map": "/static/js/main.12be9225.js.map"
+    "main.0b35195f.js.map": "/static/js/main.0b35195f.js.map"
   },
   "entrypoints": [
     "static/css/main.e301abc9.css",
-    "static/js/main.12be9225.js"
+    "static/js/main.0b35195f.js"
   ]
 }
