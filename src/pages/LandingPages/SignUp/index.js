@@ -204,7 +204,7 @@ function SignUpBasic() {
                     }
                     className="GithubLogin"
                   />
-                  <GoogleLogin onSuccess={console.log} onError={console.error} />;
+                  <GoogleLogin onSuccess={console.log} onError={console.error} className="GOOGLE" />
                   <Divider>
                     <MKTypography variant="h6" fontWeight="medium">
                       OR
