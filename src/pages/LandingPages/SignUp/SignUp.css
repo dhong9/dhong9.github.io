@@ -15,13 +15,13 @@ Coded by www.danyo.tech
 .socialAuthButton {
     /* Button background */
     background-color: #eff3ff !important;
-    width: 20vw;
-    margin-bottom: 10px;
-    height: 4.5vh;
-    margin-bottom: 10px;
-    color: #2b3b52;
-    position: relative;
-    border-radius: 5px;
+    width: 20vw !important;
+    margin-bottom: 10px !important;
+    height: 4.5vh !important;
+    margin-bottom: 10px !important;
+    color: #2b3b52 !important;
+    position: relative !important;
+    border-radius: 5px !important;
 
     /* Button text */
     font-weight: 600 !important;
@@ -33,5 +33,5 @@ Coded by www.danyo.tech
 .authIcon {
     position: absolute !important;
     left: 12px !important;
-    font-weight: bold;
+    font-weight: bold !important;
 }
