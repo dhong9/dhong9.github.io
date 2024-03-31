@@ -197,15 +197,18 @@ function SignUpBasic() {
                     onSuccess={console.log}
                     onFailure={console.error}
                     buttonText={
-                      <>
-                        <GitHubIcon color="inherit" /> <span>Sign in with GitHub</span>
-                      </>
+                      <MKTypography component={MuiLink} href="#" variant="body1" color="white">
+                        <GitHubIcon color="inherit" />
+                        <span>Sign in with GitHub</span>
+                      </MKTypography>
                     }
                     className="GithubLogin"
                   />
                   <MKButton className="GOOGLE" onClick={googleLogin}>
-                    <GitHubIcon color="inherit" />
-                    <span>Sign in with Google</span>
+                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
+                      <GoogleIcon color="inherit" />
+                      <span>Sign in with GitHub</span>
+                    </MKTypography>
                   </MKButton>
                   <Divider>
                     <MKTypography variant="h6" fontWeight="medium">
