@@ -174,7 +174,7 @@ function SignUpBasic() {
                     onFailure={console.error}
                     buttonText={
                       <MKTypography component={MuiLink} href="#" variant="body1">
-                        <GitHubIcon color="inherit" className="authIcon" />
+                        <GitHubIcon color="inherit" />
                         <span>Sign in with GitHub</span>
                       </MKTypography>
                     }
@@ -182,7 +182,7 @@ function SignUpBasic() {
                   />
                   <MKButton className="socialAuthButton" onClick={googleLogin}>
                     <MKTypography component={MuiLink} href="#" variant="body1">
-                      <GoogleIcon color="inherit" className="authIcon" />
+                      <GoogleIcon color="inherit" />
                       <span>Sign in with Google</span>
                     </MKTypography>
                   </MKButton>
