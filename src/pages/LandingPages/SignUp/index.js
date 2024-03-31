@@ -47,7 +47,6 @@ import routes from "routes";
 // Authentication
 import AuthContext from "context/AuthContext";
 import LoginGithub from "react-login-github";
-import { GoogleLogin } from "@react-oauth/google";
 
 // Images
 import bgImage from "assets/images/neons_medium.png";
