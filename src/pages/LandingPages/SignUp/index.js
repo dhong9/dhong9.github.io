@@ -24,7 +24,6 @@ import Grid from "@mui/material/Grid";
 import MuiLink from "@mui/material/Link";
 
 // @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 
@@ -166,29 +165,6 @@ function SignUpBasic() {
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
                   Sign up
                 </MKTypography>
-                <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <FacebookIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GitHubIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography
-                      onClick={googleLogin}
-                      component={MuiLink}
-                      href="#"
-                      variant="body1"
-                      color="white"
-                    >
-                      <GoogleIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                </Grid>
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
@@ -207,10 +183,10 @@ function SignUpBasic() {
                   <MKButton className="GOOGLE" onClick={googleLogin}>
                     <MKTypography component={MuiLink} href="#" variant="body1" color="white">
                       <GoogleIcon color="inherit" />
-                      <span>Sign in with GitHub</span>
+                      <span>Sign in with Google</span>
                     </MKTypography>
                   </MKButton>
-                  <Divider>
+                  <Divider variant="middle">
                     <MKTypography variant="h6" fontWeight="medium">
                       OR
                     </MKTypography>
