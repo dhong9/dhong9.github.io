@@ -181,7 +181,7 @@ function SignUpBasic() {
                     className="socialAuthButton"
                   />
                   <MKButton className="socialAuthButton" onClick={googleLogin}>
-                    <MKTypography className="authIcon" component={MuiLink} href="#" variant="body1">
+                    <MKTypography component={MuiLink} href="#" variant="body1">
                       <GoogleIcon className="authIcon" color="inherit" />
                       <span>Sign in with Google</span>
                     </MKTypography>
