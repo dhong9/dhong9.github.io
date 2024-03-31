@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.a772a1fe.css",
+    "main.css": "/static/css/main.a005bab3.css",
     "main.js": "/static/js/main.ede80193.js",
     "static/media/neons_medium.png": "/static/media/neons_medium.7b2adcfbbbd9344cb715.png",
     "static/media/SF_Hologram.png": "/static/media/SF_Hologram.9efb55391358631b14b7.png",
@@ -10,11 +10,11 @@
     "static/media/leatherText.png": "/static/media/leatherText.bba55844723b8559d8fe.png",
     "static/media/default_profile.jpg": "/static/media/default_profile.c3714776f86c7185f90d.jpg",
     "index.html": "/index.html",
-    "main.a772a1fe.css.map": "/static/css/main.a772a1fe.css.map",
+    "main.a005bab3.css.map": "/static/css/main.a005bab3.css.map",
     "main.ede80193.js.map": "/static/js/main.ede80193.js.map"
   },
   "entrypoints": [
-    "static/css/main.a772a1fe.css",
+    "static/css/main.a005bab3.css",
     "static/js/main.ede80193.js"
   ]
 }
