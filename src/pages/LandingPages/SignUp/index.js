@@ -204,7 +204,10 @@ function SignUpBasic() {
                     }
                     className="GithubLogin"
                   />
-                  <GoogleLogin onSuccess={console.log} onError={console.error} className="GOOGLE" />
+                  <MKButton className="GOOGLE" onClick={googleLogin}>
+                    <GitHubIcon color="inherit" />
+                    <span>Sign in with Google</span>
+                  </MKButton>
                   <Divider>
                     <MKTypography variant="h6" fontWeight="medium">
                       OR
