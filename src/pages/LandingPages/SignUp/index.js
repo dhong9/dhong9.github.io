@@ -175,7 +175,7 @@ function SignUpBasic() {
                     buttonText={
                       <MKTypography component={MuiLink} href="#" variant="body1">
                         <GitHubIcon color="inherit" />
-                        <span>Sign in with GitHub</span>
+                        <span>Sign up with GitHub</span>
                       </MKTypography>
                     }
                     className="socialAuthButton"
@@ -183,7 +183,7 @@ function SignUpBasic() {
                   <MKButton className="socialAuthButton" onClick={googleLogin}>
                     <MKTypography component={MuiLink} href="#" variant="body1">
                       <GoogleIcon color="inherit" />
-                      <span>Sign in with Google</span>
+                      <span>Sign up with Google</span>
                     </MKTypography>
                   </MKButton>
                   <Divider variant="middle">

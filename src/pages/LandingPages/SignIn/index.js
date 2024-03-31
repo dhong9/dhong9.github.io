@@ -20,12 +20,12 @@ import { Link } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
 import Switch from "@mui/material/Switch";
 import Grid from "@mui/material/Grid";
 import MuiLink from "@mui/material/Link";
 
 // @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 
@@ -47,12 +47,16 @@ import routes from "routes";
 
 // Authentication
 import AuthContext from "context/AuthContext";
+import LoginGithub from "react-login-github";
 
 // Images
 import bgImage from "assets/images/neons_medium.png";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
+
+// CSS
+import "./SignIn.css";
 
 function SignInBasic({ onsuccess }) {
   const { loginUser, googleLogin } = useContext(AuthContext);
@@ -140,31 +144,31 @@ function SignInBasic({ onsuccess }) {
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
                   Sign in
                 </MKTypography>
-                <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <FacebookIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GitHubIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography
-                      onClick={googleLogin}
-                      component={MuiLink}
-                      href="#"
-                      variant="body1"
-                      color="white"
-                    >
-                      <GoogleIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                </Grid>
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
+                <LoginGithub
+                  clientId="fad22315b080996a7aaa"
+                  onSuccess={console.log}
+                  onFailure={console.error}
+                  buttonText={
+                    <MKTypography component={MuiLink} href="#" variant="body1">
+                      <GitHubIcon color="inherit" />
+                      <span>Sign in with GitHub</span>
+                    </MKTypography>
+                  }
+                  className="socialAuthButton"
+                />
+                <MKButton className="socialAuthButton" onClick={googleLogin}>
+                  <MKTypography component={MuiLink} href="#" variant="body1">
+                    <GoogleIcon color="inherit" />
+                    <span>Sign in with Google</span>
+                  </MKTypography>
+                </MKButton>
+                <Divider variant="middle">
+                  <MKTypography variant="h6" fontWeight="medium">
+                    OR
+                  </MKTypography>
+                </Divider>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
                     <MKInput
