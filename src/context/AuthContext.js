@@ -135,25 +135,27 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateToken = () => {
-    refreshAccount(authTokens?.refresh, (response) => {
-      if (response.status === 200) {
-        // data has access and refresh tokens
-        const data = response.data;
-        setAuthTokens(data);
-        setUser(jwt_decode(data.access));
-        if (rememberMe) {
-          localStorage.setItem("authTokens", JSON.stringify(data));
+    if (authTokens?.refresh) {
+      refreshAccount(authTokens.refresh, (response) => {
+        if (response.status === 200) {
+          // data has access and refresh tokens
+          const data = response.data;
+          setAuthTokens(data);
+          setUser(jwt_decode(data.access));
+          if (rememberMe) {
+            localStorage.setItem("authTokens", JSON.stringify(data));
+          } else {
+            sessionStorage.setItem("authTokens", JSON.stringify(data));
+          }
         } else {
-          sessionStorage.setItem("authTokens", JSON.stringify(data));
+          logoutUser();
         }
-      } else {
-        logoutUser();
-      }
 
-      if (loading) {
-        setLoading(false);
-      }
-    });
+        if (loading) {
+          setLoading(false);
+        }
+      });
+    }
   };
 
   useEffect(() => {
