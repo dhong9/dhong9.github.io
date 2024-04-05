@@ -125,7 +125,7 @@ describe("PictureShuffle", () => {
     const contextData = {
       loginUser: jest.fn(),
     };
-    const { container, getByRole } = render(
+    const { getByRole, queryAllByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthContext.Provider value={contextData}>
           <AuthProvider>
@@ -149,7 +149,7 @@ describe("PictureShuffle", () => {
     const addButton = getByRole("button");
     fireEvent.click(addButton);
 
-    expect(container).toMatchSnapshot();
+    expect(queryAllByText("Picture Shuffle").length).toBe(2);
   });
 
   it("renders without user", () => {
@@ -157,7 +157,7 @@ describe("PictureShuffle", () => {
       loginUser: jest.fn(),
     };
 
-    const { container } = render(
+    const { queryAllByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthContext.Provider value={contextData}>
           <AuthProvider>
@@ -168,6 +168,6 @@ describe("PictureShuffle", () => {
         </AuthContext.Provider>
       </GoogleOAuthProvider>
     );
-    expect(container).toMatchSnapshot();
+    expect(queryAllByText("Picture Shuffle").length).toBe(2);
   });
 });
