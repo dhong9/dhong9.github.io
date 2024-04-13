@@ -21,6 +21,11 @@ const DHEditor = forwardRef((_, ref) => {
   const [convertedContent, setConvertedContent] = useState(null);
   const [rootComment, setRootComment] = useState("");
 
+  useEffect(() => {
+    const html = convertToHTML(editorState.getCurrentContent());
+    setConvertedContent(html);
+  }, [editorState]);
+
   useImperativeHandle(ref, () => ({
     handleSetPlainText(plainTextState) {
       setIsPlainText(plainTextState);
@@ -43,11 +48,6 @@ const DHEditor = forwardRef((_, ref) => {
       return isPlainText ? rootComment : convertToHTML(editorState.getCurrentContent());
     },
   }));
-
-  useEffect(() => {
-    const html = convertToHTML(editorState.getCurrentContent());
-    setConvertedContent(html);
-  }, [editorState]);
 
   // Sanitizes HTML in editor
   const createMarkup = (html) => ({
