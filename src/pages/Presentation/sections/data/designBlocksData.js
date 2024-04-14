@@ -45,6 +45,12 @@ export default [
         count: 1,
         route: "/sections/games/othello",
       },
+      {
+        image: `${gamesPrefix}/074/821/045/large/daniel-hong-minesweeper.jpg`,
+        name: "Minesweeper",
+        count: 1,
+        route: "/section/games/minesweeper",
+      },
     ],
   },
   {

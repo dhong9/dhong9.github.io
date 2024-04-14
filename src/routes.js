@@ -48,6 +48,7 @@ import Connect4 from "projects/games/connect4";
 import Twenty48 from "projects/games/2048";
 import PictureShuffle from "projects/games/pictureShuffle";
 import Othello from "projects/games/othello";
+import Minesweeper from "projects/games/minesweeper";
 
 // Interpreters
 import BrainF from "projects/interpreters/brainF";
@@ -89,6 +90,11 @@ const routes = [
             name: "Othello",
             route: "/sections/games/othello",
             component: <Othello />,
+          },
+          {
+            name: "Minesweeper",
+            route: "/sections/games/minesweeper",
+            component: <Minesweeper />,
           },
         ],
       },
