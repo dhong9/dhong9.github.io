@@ -19,7 +19,27 @@ import View from "layouts/sections/components/View";
 // Minesweeper code
 import minesweeperCode from "projects/games/minesweeper/code";
 
+// Minesweeper board utilities
+import flag from "assets/images/flag.png";
+import mine from "assets/images/mine.png";
+import smile from "assets/images/smile.png";
+
 function Minesweeper() {
+  let flagImg, mineImg, smileImg;
+
+  const preload = (p5) => {
+    flagImg = p5.loadImage(flag);
+    mineImg = p5.loadImage(mine);
+    smileImg = p5.loadImage(smile);
+  };
+
+  const setup = (p5, canvasParentRef) => {
+    // use parent to render the canvas in this ref
+    // (without that p5 will render the canvas outside of your component)
+    const minesweeper = document.querySelector(".codeOutput");
+    p5.createCanvas(minesweeper.clientWidth, minesweeper.clientHeight).parent(canvasParentRef);
+  };
+
   return (
     <BaseLayout
       title="Games"
