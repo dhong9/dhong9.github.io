@@ -59,7 +59,7 @@ class Tile {
       // If there are no mines, don't show the count
       if (this.mineCount) {
         p5.fill(0);
-        p5.textAlign(CENTER, CENTER);
+        p5.textAlign(p5.CENTER, p5.CENTER);
         p5.text(this.mineCount, this.x + this.width / 2, this.y + this.height / 2);
       }
     } else {
