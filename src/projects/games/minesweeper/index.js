@@ -19,6 +19,9 @@ import View from "layouts/sections/components/View";
 // Minesweeper code
 import minesweeperCode from "projects/games/minesweeper/code";
 
+// p5
+import Sketch from "react-p5";
+
 // Minesweeper board utilities
 import flag from "assets/images/flag.png";
 import mine from "assets/images/mine.png";
@@ -40,6 +43,10 @@ function Minesweeper() {
     p5.createCanvas(minesweeper.clientWidth, minesweeper.clientHeight).parent(canvasParentRef);
   };
 
+  const draw = (p5) => {
+    p5.background(0);
+  };
+
   return (
     <BaseLayout
       title="Games"
@@ -48,7 +55,9 @@ function Minesweeper() {
         { label: "Minesweeper" },
       ]}
     >
-      <View title="Minesweeper" code={minesweeperCode} height="40rem"></View>
+      <View title="Minesweeper" code={minesweeperCode} height="40rem">
+        <Sketch setup={setup} draw={draw} preload={preload} />
+      </View>
     </BaseLayout>
   );
 }
