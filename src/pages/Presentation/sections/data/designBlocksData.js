@@ -49,7 +49,7 @@ export default [
         image: `${gamesPrefix}/074/821/045/large/daniel-hong-minesweeper.jpg`,
         name: "Minesweeper",
         count: 1,
-        route: "/section/games/minesweeper",
+        route: "/sections/games/minesweeper",
       },
     ],
   },
