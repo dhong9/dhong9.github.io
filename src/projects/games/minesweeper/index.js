@@ -16,7 +16,7 @@ Coded by www.danyo.tech
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 
-// Picture shuffle code
+// Minesweeper code
 import minesweeperCode from "projects/games/minesweeper/code";
 
 function Minesweeper() {
@@ -28,7 +28,7 @@ function Minesweeper() {
         { label: "Minesweeper" },
       ]}
     >
-      <View title="Picture Shuffle" code={minesweeperCode} height="40rem"></View>
+      <View title="Minesweeper" code={minesweeperCode} height="40rem"></View>
     </BaseLayout>
   );
 }
