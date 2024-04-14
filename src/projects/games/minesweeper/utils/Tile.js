@@ -93,6 +93,20 @@ class Tile {
       );
     }
   }
+
+  /**
+   * Checks if mouse is inside the tile
+   * @param {p5Object} p5 p5 object
+   * @returns true if mouse is inside the tile
+   */
+  isMouseInside(p5) {
+    return (
+      p5.mouseX > this.x &&
+      p5.mouseX < this.x + this.width &&
+      p5.mouseY > this.y &&
+      p5.mouseY < this.y + this.height
+    );
+  }
 }
 
 export default Tile;
