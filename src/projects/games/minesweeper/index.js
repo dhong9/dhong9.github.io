@@ -23,6 +23,7 @@ import minesweeperCode from "projects/games/minesweeper/code";
 import Sketch from "react-p5";
 
 // Minesweeper board utilities
+import Tile from "./utils/Tile";
 import flag from "assets/images/flag.png";
 import mine from "assets/images/mine.png";
 import smile from "assets/images/smile.png";
@@ -43,11 +44,14 @@ function Minesweeper() {
     p5.createCanvas(minesweeper.clientWidth, minesweeper.clientHeight).parent(canvasParentRef);
   };
 
+  const tile = new Tile(100, 100, 100, 100, mineImg, flagImg, smileImg);
+
   const draw = (p5) => {
     p5.background(0);
     p5.image(flagImg, 0, 0, 100, 100);
     p5.image(mineImg, 100, 0, 100, 100);
     p5.image(smileImg, 0, 100, 100, 100);
+    tile.draw();
   };
 
   return (
