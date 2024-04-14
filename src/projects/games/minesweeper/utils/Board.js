@@ -96,6 +96,26 @@ class Board {
       }
     }
   }
+
+  /**
+   * Count number of mines surrounding a tile
+   * @param {number} row board row
+   * @param {number} col board column
+   * @returns number of mines in vicinity
+   */
+  countMines(row, col) {
+    let count = 0;
+    for (let r = row - 1; r <= row + 1; r++) {
+      for (let c = col - 1; c <= col + 1; c++) {
+        // If the coordinate is within bounds,
+        // then add mine tally
+        if (this.boardr[r]?.[c]) {
+          count += this.board[r][c].hasMine;
+        }
+      }
+    }
+    return count;
+  }
 }
 
 export default Board;
