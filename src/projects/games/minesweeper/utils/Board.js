@@ -116,6 +116,75 @@ class Board {
     }
     return count;
   }
+
+  /**
+   * Reveal mine count at given tile
+   * @param {number} row board row
+   * @param {number} col board column
+   */
+  revealMines(row, col) {
+    // Reveal current tile
+    let tile = this.board[row][col];
+    let mines = this.countMines(row, col);
+    tile.mineCount = mines;
+    tile.showCount = true;
+    tile.hasFlag = false;
+    this.tilesRemaining--;
+
+    // If all tiles left are mines,
+    // then player has won
+    if (this.tilesRemaining === this.mines) {
+      this.win = true;
+      for (const row of this.board) {
+        for (const tile of row) {
+          tile.hasFlag = false;
+          tile.isLoserTile = false;
+        }
+      }
+    }
+
+    // If there are no mines in given cell
+    // reveal more tiles
+    if (!mines) {
+      for (var r = row - 1; r <= row + 1; r++) {
+        for (var c = col - 1; c <= col + 1; c++) {
+          if (!(row === r && col === c) && this.board[r]?.[c] && !this.board[r][c].showCount) {
+            this.revealMines(r, c);
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Mouse click event handler for the game board
+   * @param {p5Object} p5 p5 object
+   */
+  mouseClicked(p5) {
+    // If the game is not over,
+    // then let user play on
+    if (!this.win && !this.lose) {
+      for (const r in this.board) {
+        for (const c in this.board[r]) {
+          const tile = this.board[r][c];
+          if (tile.isMouseInside(p5)) {
+            // Reveal the tile
+            tile.hasFlag = false;
+            // If thie tile is a mine,
+            // player loses
+            if (tile.hasMine) {
+              this.lose = true;
+            }
+            // If the tile is not a mine,
+            // get mine count for that tile
+            else {
+              this.revealMines(+r, +c);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 export default Board;
