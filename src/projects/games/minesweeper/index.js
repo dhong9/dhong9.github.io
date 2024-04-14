@@ -45,6 +45,9 @@ function Minesweeper() {
 
   const draw = (p5) => {
     p5.background(0);
+    p5.image(flagImg, 0, 0, 100, 100);
+    p5.image(mineImg, 100, 0, 100, 100);
+    p5.image(smileImg, 0, 100, 100, 100);
   };
 
   return (
