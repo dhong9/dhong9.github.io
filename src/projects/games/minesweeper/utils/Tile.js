@@ -50,8 +50,48 @@ class Tile {
    * @param {p5Object} p5 p5 object
    */
   draw(p5) {
-    p5.fill(220);
-    p5.rect(this.x, this.y, this.width, this.height);
+    // Show mine count
+    if (this.showCount) {
+      p5.fill(220);
+      p5.rect(this.x, this.y, this.width, this.height);
+      p5.textSize(this.width / 2);
+
+      // If there are no mines, don't show the count
+      if (this.mineCount) {
+        p5.fill(0);
+        p5.textAlign(CENTER, CENTER);
+        p5.text(this.mineCount, this.x + this.width / 2, this.y + this.height / 2);
+      }
+    } else {
+      // Tile has not been checked
+      p5.noStroke();
+
+      // Outline
+      p5.fill(200);
+      p5.rect(this.x, this.y, this.width, this.height);
+
+      // Inside
+      p5.fill(220);
+      p5.rect(
+        this.x + 0.05 * this.width,
+        this.y + 0.05 * this.height,
+        0.9 * this.width,
+        0.9 * this.height
+      );
+    }
+
+    if (this.hasFlag) {
+      p5.image(this.flagImg, this.x, this.y, this.width, this.height);
+    }
+    if (this.hasMine && this.showCount) {
+      p5.image(
+        this.isLoserTile ? this.loserImg : this.smileImg,
+        this.x,
+        this.y,
+        this.width,
+        this.height
+      );
+    }
   }
 }
 
