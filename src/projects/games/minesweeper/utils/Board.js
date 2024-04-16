@@ -29,6 +29,16 @@ class Board {
    * @param {p5Image} smileImg
    */
   constructor(x, y, width, height, rows, cols, mines, mineImg, flagImg, smileImg) {
+    // Dimensions
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+
+    // Rows and columns
+    this.rows = rows;
+    this.cols = cols;
+
     // Images
     this.mineImg = mineImg;
     this.flagImg = flagImg;
@@ -73,6 +83,29 @@ class Board {
     this.tilesRemaining = rows * cols;
     this.win = false;
     this.lose = false;
+  }
+
+  /**
+   * Resizes board
+   * @param {number} x x coordinate
+   * @param {number} y y coordinate
+   * @param {number} width board width
+   */
+  resizeBoard(x, y, width) {
+    // Compute new tile dimensions
+    const tileWidth = width / this.cols,
+      tileHeight = width / this.rows;
+
+    // Reposition all tiles
+    for (let r = 0; r < this.rows; r++) {
+      for (let c = 0; c < this.cols; c++) {
+        const tile = this.board[r][c];
+        tile.x = x + c * tileWidth;
+        tile.y = y + r * tileHeight;
+        tile.width = tileWidth;
+        tile.height = tileHeight;
+      }
+    }
   }
 
   /**
