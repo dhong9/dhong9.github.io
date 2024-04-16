@@ -69,10 +69,6 @@ function Minesweeper() {
     board?.draw(p5);
   };
 
-  const mouseClicked = (p5) => {
-    board?.mouseClicked(p5);
-  };
-
   return (
     <BaseLayout
       title="Games"
@@ -82,7 +78,13 @@ function Minesweeper() {
       ]}
     >
       <View title="Minesweeper" code={minesweeperCode} height="40rem">
-        <Sketch setup={setup} draw={draw} preload={preload} mouseClicked={mouseClicked} />
+        <Sketch
+          setup={setup}
+          draw={draw}
+          preload={preload}
+          mouseClicked={board?.mouseClicked}
+          keyTyped={board?.keyTyped}
+        />
       </View>
     </BaseLayout>
   );
