@@ -218,6 +218,24 @@ class Board {
       }
     }
   }
+
+  /**
+   * Key typed event handler
+   * @param {p5Object} p5 p5 object
+   */
+  keyTyped(p5) {
+    if (p5.key === "q") {
+      // If the player presses Q,
+      // then flag a tile
+      for (const row of this.board) {
+        for (const tile of row) {
+          if (tile.isMouseInside()) {
+            tile.hasFlag = !tile.hasFlag;
+          }
+        }
+      }
+    }
+  }
 }
 
 export default Board;
