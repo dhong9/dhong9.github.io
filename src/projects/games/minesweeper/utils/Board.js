@@ -229,7 +229,7 @@ class Board {
       // then flag a tile
       for (const row of this.board) {
         for (const tile of row) {
-          if (tile.isMouseInside()) {
+          if (tile.isMouseInside(p5)) {
             tile.hasFlag = !tile.hasFlag;
           }
         }
