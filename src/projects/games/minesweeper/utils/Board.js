@@ -142,7 +142,7 @@ class Board {
       for (let c = col - 1; c <= col + 1; c++) {
         // If the coordinate is within bounds,
         // then add mine tally
-        if (this.boardr[r]?.[c]) {
+        if (this.board[r]?.[c]) {
           count += this.board[r][c].hasMine;
         }
       }
