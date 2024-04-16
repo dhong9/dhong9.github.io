@@ -69,6 +69,14 @@ function Minesweeper() {
     board?.draw(p5);
   };
 
+  const mouseClicked = (p5) => {
+    board?.mouseClicked(p5);
+  };
+
+  const keyTyped = (p5) => {
+    board?.keyTyped(p5);
+  };
+
   const windowResized = (p5) => {
     p5.resizeCanvas(window.innerWidth, window.innerHeight);
 
@@ -92,8 +100,8 @@ function Minesweeper() {
           setup={setup}
           draw={draw}
           preload={preload}
-          mouseClicked={board?.mouseClicked}
-          keyTyped={board?.keyTyped}
+          mouseClicked={mouseClicked}
+          keyTyped={keyTyped}
           windowResized={windowResized}
         />
       </View>
