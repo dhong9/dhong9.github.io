@@ -30,6 +30,8 @@ import smile from "assets/images/smile.png";
 
 function Minesweeper() {
   let flagImg, mineImg, smileImg;
+  let board;
+  let xOffset, yOffset, boardWidth;
 
   const preload = (p5) => {
     flagImg = p5.loadImage(flag);
@@ -42,16 +44,36 @@ function Minesweeper() {
     // (without that p5 will render the canvas outside of your component)
     const minesweeper = document.querySelector(".codeOutput");
     p5.createCanvas(minesweeper.clientWidth, minesweeper.clientHeight).parent(canvasParentRef);
-  };
 
-  const board = new Board(0, 0, 400, 400, 8, 8, 10, mineImg, flagImg, smileImg);
+    // Define board dimensions based on current window width and height
+    xOffset = p5.width > p5.height ? p5.width / 2 - p5.height / 2 : 0;
+    yOffset = p5.height > p5.width ? p5.height / 2 - p5.width / 2 : 0;
+    boardWidth = p5.width > p5.height ? p5.height : p5.width;
+
+    board = new Board(
+      xOffset,
+      yOffset,
+      boardWidth,
+      boardWidth,
+      8,
+      8,
+      10,
+      mineImg,
+      flagImg,
+      smileImg
+    );
+  };
 
   const draw = (p5) => {
     p5.background(0);
     p5.image(flagImg, 0, 0, 100, 100);
     p5.image(mineImg, 100, 0, 100, 100);
     p5.image(smileImg, 0, 100, 100, 100);
-    board.draw(p5);
+    board?.draw(p5);
+  };
+
+  const mouseClicked = (p5) => {
+    board?.mouseClicked(p5);
   };
 
   return (
@@ -63,7 +85,7 @@ function Minesweeper() {
       ]}
     >
       <View title="Minesweeper" code={minesweeperCode} height="40rem">
-        <Sketch setup={setup} draw={draw} preload={preload} />
+        <Sketch setup={setup} draw={draw} preload={preload} mouseClicked={mouseClicked} />
       </View>
     </BaseLayout>
   );
