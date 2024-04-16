@@ -15,12 +15,30 @@ Coded by www.danyo.tech
 // Sections components
 import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
+import MKBox from "components/MKBox";
+import MKButton from "components/MKButton";
+import DHComments from "components/DHComments";
+import DHEditor from "components/DHEditor";
+
+// Form
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 // Minesweeper code
 import minesweeperCode from "projects/games/minesweeper/code";
 
 // p5
 import Sketch from "react-p5";
+
+// React
+import { useContext, useEffect, useState, useRef } from "react";
+
+// Service
+import { getComments, addComment, sortComments } from "services/commentsService";
+
+// Authentication
+import AuthContext from "context/AuthContext";
 
 // Minesweeper board utilities
 import Board from "./utils/Board";
@@ -29,6 +47,44 @@ import mine from "assets/images/mine.png";
 import smile from "assets/images/smile.png";
 
 function Minesweeper() {
+  const editorRef = useRef();
+  const id = 4;
+
+  const [comments, setComments] = useState([]);
+  const [isPlainText, setIsPlainText] = useState(false);
+
+  const { user, profile } = useContext(AuthContext);
+
+  const handleChange = (event) => {
+    const checked = event.target.checked;
+    setIsPlainText(checked);
+    editorRef.current.handleSetPlainText(checked);
+  };
+
+  const onAdd = () => {
+    addComment(
+      ({ status }) => {
+        if (status === 201) {
+          // Successfully added comment
+          getComments(({ data: { results } }) => {
+            setComments(results.filter(({ project }) => project === id));
+          });
+        }
+      },
+      id,
+      user?.username || profile?.name || "Guest",
+      user.email,
+      editorRef.current.getRootComment(),
+      isPlainText
+    );
+  };
+
+  useEffect(() => {
+    getComments(({ data: { results } }) => {
+      setComments(results.filter(({ project }) => project === id));
+    });
+  }, []);
+
   let flagImg, mineImg, smileImg;
   let board;
   let xOffset, yOffset, boardWidth;
@@ -105,6 +161,35 @@ function Minesweeper() {
           windowResized={windowResized}
         />
       </View>
+
+      <div className="comments-container">
+        {comments.length ? (
+          <DHComments
+            comments={sortComments(comments)}
+            pageName={id}
+            isPlainText={isPlainText}
+            user={user}
+          />
+        ) : (
+          <div></div>
+        )}
+        <DHEditor ref={editorRef} />
+        {user ? (
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={isPlainText} onChange={handleChange} />}
+              label="Plain Text"
+            />
+            <MKButton onClick={onAdd} type="submit" variant="gradient" color="info">
+              Add
+            </MKButton>
+          </FormGroup>
+        ) : (
+          <MKBox>
+            <i>You must be logged into comment</i>
+          </MKBox>
+        )}
+      </div>
     </BaseLayout>
   );
 }
