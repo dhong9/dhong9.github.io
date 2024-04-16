@@ -69,6 +69,16 @@ function Minesweeper() {
     board?.draw(p5);
   };
 
+  const windowResized = (p5) => {
+    p5.resizeCanvas(window.innerWidth, window.innerHeight);
+
+    // Resize board
+    xOffset = p5.width > p5.height ? p5.width / 2 - p5.height / 2 : 0;
+    yOffset = p5.height > p5.width ? p5.height / 2 - p5.width / 2 : 0;
+    boardWidth = p5.width > p5.height ? p5.height : p5.width;
+    board.resizeBoard(xOffset, yOffset, boardWidth);
+  };
+
   return (
     <BaseLayout
       title="Games"
@@ -84,6 +94,7 @@ function Minesweeper() {
           preload={preload}
           mouseClicked={board?.mouseClicked}
           keyTyped={board?.keyTyped}
+          windowResized={windowResized}
         />
       </View>
     </BaseLayout>
