@@ -139,7 +139,6 @@ function Profile() {
     // Otherwise, use the picture tied to the site's account
     icon: (
       <MKAvatar
-        className="profileAvatar"
         src={user && profile?.picture ? profile.picture : profileImage}
         alt="Profile picture"
         size="xs"
@@ -229,6 +228,7 @@ function Profile() {
                     {/* If the user has a profile picture from Google, use that image*/}
                     {/* Otherwise, use the picture tied to the site's account */}
                     <MKAvatar
+                      className="profileAvatar"
                       src={user && profile?.picture ? profile.picture : profileImage}
                       alt="Profile picture"
                       size="xxl"
