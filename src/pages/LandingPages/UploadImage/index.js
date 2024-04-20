@@ -58,6 +58,7 @@ function UploadImage() {
                 onChange={handleImageUpload}
                 fullWidth
                 multiple
+                hidden
               />
             </MKButton>
           </MKBox>
