@@ -167,30 +167,30 @@ function SignUpBasic() {
                 </MKTypography>
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
-                <MKBox component="form" role="form">
-                  <LoginGithub
-                    clientId="fad22315b080996a7aaa"
-                    onSuccess={console.log}
-                    onFailure={console.error}
-                    buttonText={
-                      <MKTypography component={MuiLink} href="#" variant="body1">
-                        <GitHubIcon color="inherit" />
-                        <span>Sign up with GitHub</span>
-                      </MKTypography>
-                    }
-                    className="socialAuthButton"
-                  />
-                  <MKButton className="socialAuthButton" onClick={googleLogin}>
+                <LoginGithub
+                  clientId="fad22315b080996a7aaa"
+                  onSuccess={console.log}
+                  onFailure={console.error}
+                  buttonText={
                     <MKTypography component={MuiLink} href="#" variant="body1">
-                      <GoogleIcon color="inherit" />
-                      <span>Sign up with Google</span>
+                      <GitHubIcon color="inherit" />
+                      <span>Sign up with GitHub</span>
                     </MKTypography>
-                  </MKButton>
-                  <Divider variant="middle">
-                    <MKTypography variant="h6" fontWeight="medium">
-                      OR
-                    </MKTypography>
-                  </Divider>
+                  }
+                  className="socialAuthButton"
+                />
+                <MKButton className="socialAuthButton" onClick={googleLogin}>
+                  <MKTypography component={MuiLink} href="#" variant="body1">
+                    <GoogleIcon color="inherit" />
+                    <span>Sign up with Google</span>
+                  </MKTypography>
+                </MKButton>
+                <Divider variant="middle">
+                  <MKTypography variant="h6" fontWeight="medium">
+                    OR
+                  </MKTypography>
+                </Divider>
+                <MKBox component="form" role="form">
                   <MKBox mb={2}>
                     <MKInput
                       type="text"
