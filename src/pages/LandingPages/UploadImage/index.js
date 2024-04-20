@@ -48,7 +48,7 @@ function UploadImage() {
       <MKBox pt={4} pb={3} px={3}>
         <MKBox component="form" role="form">
           <MKBox mb={2}>
-            <MKInput type="text" label="Image" onChange={handleImageUpload} fullWidth />
+            <MKInput type="file" label="Image" onChange={handleImageUpload} fullWidth />
           </MKBox>
         </MKBox>
       </MKBox>
