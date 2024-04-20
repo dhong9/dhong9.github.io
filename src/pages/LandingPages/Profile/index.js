@@ -231,7 +231,7 @@ function Profile() {
                     <MKBadge
                       overlap="circular"
                       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                      badgeContent={<EditIcon color="action" />}
+                      badgeContent={<EditIcon color="action" href="#" />}
                       invisible={!user}
                     >
                       <MKAvatar
