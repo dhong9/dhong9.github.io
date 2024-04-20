@@ -232,6 +232,7 @@ function Profile() {
                       overlap="circular"
                       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                       badgeContent={<EditIcon color="action" />}
+                      invisible={!user}
                     >
                       <MKAvatar
                         src={user && profile?.picture ? profile.picture : profileImage}
