@@ -265,7 +265,7 @@ function Profile() {
                           <EditIcon color="action" />
                         </MKSocialButton>
                       }
-                      invisible={!user}
+                      invisible={!!profile}
                     >
                       <MKAvatar
                         src={user && profile?.picture ? profile.picture : profileImage}
