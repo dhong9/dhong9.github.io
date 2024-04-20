@@ -253,6 +253,7 @@ function Profile() {
                       overlap="circular"
                       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                       variant="contained"
+                      color="light"
                       badgeContent={
                         <MKSocialButton
                           size="small"
