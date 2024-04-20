@@ -231,7 +231,7 @@ function Profile() {
                     <MKBadge
                       overlap="circular"
                       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                      badgeContent={<EditIcon />}
+                      badgeContent={<EditIcon color="action" />}
                     >
                       <MKAvatar
                         src={user && profile?.picture ? profile.picture : profileImage}
