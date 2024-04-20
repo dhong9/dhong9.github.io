@@ -24,10 +24,14 @@ import Modal from "@mui/material/Modal";
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import MKAvatar from "components/MKAvatar";
+import MKBadge from "components/MKBadge";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
+
+// @mui icons
+import EditIcon from "@mui/icons-material/Edit";
 
 // DH React components
 import DHSnackbar from "components/DHSnackbar";
@@ -224,11 +228,19 @@ function Profile() {
                   <MKBox mb={2} justifyContent="center" display="flex">
                     {/* If the user has a profile picture from Google, use that image*/}
                     {/* Otherwise, use the picture tied to the site's account */}
-                    <MKAvatar
-                      src={user && profile?.picture ? profile.picture : profileImage}
-                      alt="Profile picture"
-                      size="xxl"
-                    />
+                    <MKBadge
+                      overlap="circular"
+                      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                      badgeContent={
+                        <MKAvatar
+                          src={user && profile?.picture ? profile.picture : profileImage}
+                          alt="Profile picture"
+                          size="xxl"
+                        />
+                      }
+                    >
+                      <EditIcon />
+                    </MKBadge>
                   </MKBox>
                   <MKBox mb={2}>
                     {/* If login is NOT through Django, then make the fields readonly */}
