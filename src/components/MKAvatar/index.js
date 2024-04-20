@@ -22,7 +22,7 @@ import PropTypes from "prop-types";
 import MKAvatarRoot from "components/MKAvatar/MKAvatarRoot";
 
 const MKAvatar = forwardRef(({ bgColor, size, shadow, ...rest }, ref) => (
-  <MKAvatarRoot ref={ref} ownerState={{ shadow, bgColor, size }} {...rest} />
+  <MKAvatarRoot className="overlay" ref={ref} ownerState={{ shadow, bgColor, size }} {...rest} />
 ));
 
 // Setting default values for the props of MKAvatar
