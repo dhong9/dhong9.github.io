@@ -12,11 +12,29 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+// Material Kit 2 React components
+import MKBox from "components/MKBox";
+import MKTypography from "components/MKTypography";
+
 function UploadImage() {
   return (
-    <div>
-      <h1>Upload Image</h1>
-    </div>
+    <>
+      <MKBox
+        variant="gradient"
+        bgColor="info"
+        borderRadius="lg"
+        coloredShadow="info"
+        mx={2}
+        mt={-3}
+        p={2}
+        mb={1}
+        textAlign="center"
+      >
+        <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+          Upload Image
+        </MKTypography>
+      </MKBox>
+    </>
   );
 }
 
