@@ -36,6 +36,7 @@ import EditIcon from "@mui/icons-material/Edit";
 // DH React components
 import DHSnackbar from "components/DHSnackbar";
 import DeleteAccount from "pages/LandingPages/DeleteAccount";
+import UploadImage from "pages/LandingPages/UploadImage";
 
 // Routes
 import routes from "routes";
@@ -62,7 +63,8 @@ function Profile() {
   const [profileSeverity, setProfileSeverity] = useState("info");
   const [profileMessage, setProfileMessage] = useState("");
   const [formErrors, setFormErrors] = useState([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const [profileImage, setProfileImage] = useState(defaultProfileImage);
 
   const history = useNavigate();
@@ -81,12 +83,20 @@ function Profile() {
     }
   }, []);
 
-  const openModal = () => {
-    setModalIsOpen(true);
+  const openDeleteModal = () => {
+    setDeleteModalIsOpen(true);
   };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
+  const closeDeleteModal = () => {
+    setDeleteModalIsOpen(false);
+  };
+
+  const openEditModal = () => {
+    setEditModalIsOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setEditModalIsOpen(false);
   };
 
   const handleSubmit = (e) => {
@@ -129,7 +139,12 @@ function Profile() {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    openModal();
+    openDeleteModal();
+  };
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    openEditModal();
   };
 
   const accountObj = {
@@ -181,9 +196,14 @@ function Profile() {
         severity={profileSeverity}
         message={profileMessage}
       />
-      <Modal open={modalIsOpen} onClose={closeModal}>
+      <Modal open={deleteModalIsOpen} onClose={closeDeleteModal}>
         <MKBox sx={style}>
           <DeleteAccount />
+        </MKBox>
+      </Modal>
+      <Modal open={editModalIsOpen} onClose={closeEditModal}>
+        <MKBox sx={style}>
+          <UploadImage />
         </MKBox>
       </Modal>
       <MKBox
@@ -231,7 +251,7 @@ function Profile() {
                     <MKBadge
                       overlap="circular"
                       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                      badgeContent={<EditIcon color="action" href="#" />}
+                      badgeContent={<EditIcon color="action" href="#" onClick={handleEdit} />}
                       invisible={!user}
                     >
                       <MKAvatar
