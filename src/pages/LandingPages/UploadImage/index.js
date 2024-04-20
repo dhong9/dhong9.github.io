@@ -17,6 +17,7 @@ import { useState } from "react";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
@@ -48,7 +49,17 @@ function UploadImage() {
       <MKBox pt={4} pb={3} px={3}>
         <MKBox component="form" role="form">
           <MKBox mb={2}>
-            <MKInput type="file" label="Image" onChange={handleImageUpload} fullWidth />
+            <MKButton variant="contained" component="span">
+              Select Image
+              <MKInput
+                type="file"
+                accept="image/*"
+                label="Image"
+                onChange={handleImageUpload}
+                fullWidth
+                multiple
+              />
+            </MKButton>
           </MKBox>
         </MKBox>
       </MKBox>
