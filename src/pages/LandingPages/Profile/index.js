@@ -252,10 +252,11 @@ function Profile() {
                     <MKBadge
                       overlap="circular"
                       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                      variant="contained"
                       badgeContent={
                         <MKSocialButton
                           size="small"
-                          color="github"
+                          color="facebook"
                           iconOnly={true}
                           circular={true}
                           onClick={handleEdit}
