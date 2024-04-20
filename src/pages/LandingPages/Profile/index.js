@@ -27,6 +27,7 @@ import MKAvatar from "components/MKAvatar";
 import MKBadge from "components/MKBadge";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
+import MKSocialButton from "components/MKSocialButton";
 import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
@@ -251,7 +252,17 @@ function Profile() {
                     <MKBadge
                       overlap="circular"
                       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                      badgeContent={<EditIcon color="action" href="#" onClick={handleEdit} />}
+                      badgeContent={
+                        <MKSocialButton
+                          size="small"
+                          color="github"
+                          iconOnly={true}
+                          circular={true}
+                          onClick={handleEdit}
+                        >
+                          <EditIcon color="action" />
+                        </MKSocialButton>
+                      }
                       invisible={!user}
                     >
                       <MKAvatar
