@@ -20,20 +20,27 @@ import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
+// Material Kit 2 React examples
+import MKAvatar from "components/MKAvatar";
+
+// Image
+import defaultProfileImage from "assets/images/default_profile.jpg";
+
 function UploadImage() {
-  const [selectedFile, setSelectedFile] = useState("");
+  // User could not have gotten to this component without a regular login
+
+  const [selectedFile, setSelectedFile] = useState(defaultProfileImage);
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
     const reader = new FileReader();
-    const url = reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
 
     reader.onloadend = (e) => {
       console.log("Event: ");
       console.log(e);
       setSelectedFile(reader.result);
     };
-    console.log(url);
     console.log(selectedFile);
   };
 
@@ -56,6 +63,9 @@ function UploadImage() {
       </MKBox>
       <MKBox pt={4} pb={3} px={3}>
         <MKBox component="form" role="form">
+          <MKBox mb={2} justifyContent="center" display="flex">
+            <MKAvatar src={defaultProfileImage} alt="Profile picture" size="xxl" />
+          </MKBox>
           <MKBox mb={2}>
             <MKButton variant="contained" component="label">
               Select Image

@@ -19,58 +19,44 @@ exports[`UploadImage renders 1`] = `
       role="form"
     >
       <div
+        class="MuiBox-root css-39cjii"
+      >
+        <div
+          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1f26n07-MuiAvatar-root"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit MuiAvatar-fallback css-1j1ftla-MuiSvgIcon-root-MuiAvatar-fallback"
+            data-testid="PersonIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
         class="MuiBox-root css-16pyyvj"
       >
-        <span
+        <label
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1kav12i-MuiButtonBase-root-MuiButton-root"
           role="button"
           tabindex="0"
         >
           Select Image
+          <input
+            accept="image/*"
+            hidden=""
+            id="contained-button-file"
+            multiple=""
+            type="file"
+          />
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
-        </span>
-      </div>
-      <div
-        class="MuiBox-root css-16pyyvj"
-      >
-        <div
-          accept="image/*"
-          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1c3j9he-MuiFormControl-root-MuiTextField-root"
-        >
-          <label
-            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-uk4jy3-MuiFormLabel-root-MuiInputLabel-root"
-            data-shrink="false"
-            for=":r0:"
-            id=":r0:-label"
-          >
-            Image
-          </label>
-          <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-12n1zae-MuiInputBase-root-MuiOutlinedInput-root"
-          >
-            <input
-              aria-invalid="false"
-              class="MuiInputBase-input MuiOutlinedInput-input css-5mmmz-MuiInputBase-input-MuiOutlinedInput-input"
-              id=":r0:"
-              type="file"
-              value=""
-            />
-            <fieldset
-              aria-hidden="true"
-              class="MuiOutlinedInput-notchedOutline css-135f4hd-MuiOutlinedInput-notchedOutline"
-            >
-              <legend
-                class="css-yjsfm1"
-              >
-                <span>
-                  Image
-                </span>
-              </legend>
-            </fieldset>
-          </div>
-        </div>
+        </label>
       </div>
     </form>
   </div>
