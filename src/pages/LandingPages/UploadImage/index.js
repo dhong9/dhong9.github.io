@@ -28,10 +28,13 @@ function UploadImage() {
     const reader = new FileReader();
     const url = reader.readAsDataURL(file);
 
-    reader.onloadend = (_) => {
+    reader.onloadend = (e) => {
+      console.log("Event: ");
+      console.log(e);
       setSelectedFile(reader.result);
     };
     console.log(url);
+    console.log(selectedFile);
   };
 
   return (
