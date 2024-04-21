@@ -20,6 +20,9 @@ import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
+// CSS
+import "./UploadImage.css";
+
 function UploadImage() {
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
@@ -51,13 +54,13 @@ function UploadImage() {
             <MKButton variant="contained" component="span">
               Select Image
               <MKInput
+                className="fileUpload"
                 type="file"
                 accept="image/*"
                 label="Image"
                 onChange={handleImageUpload}
                 fullWidth
                 multiple
-                hidden
               />
             </MKButton>
           </MKBox>
