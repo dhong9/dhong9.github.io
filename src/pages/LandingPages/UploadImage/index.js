@@ -25,7 +25,8 @@ function UploadImage() {
   const [imagePath, setImagePath] = useState("");
 
   const handleImageUpload = (e) => {
-    setImagePath(e.target.value);
+    const [file] = e.target.files;
+    setImagePath(file);
     console.log(imagePath);
   };
 
