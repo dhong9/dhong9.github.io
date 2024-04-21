@@ -17,7 +17,6 @@ Coded by www.danyo.tech
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
-import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
 function UploadImage() {
@@ -48,19 +47,10 @@ function UploadImage() {
       <MKBox pt={4} pb={3} px={3}>
         <MKBox component="form" role="form">
           <MKBox mb={2}>
-            <MKButton variant="contained" component="span">
+            <MKButton variant="contained" component="label">
               Select Image
+              <input type="file" accept="image/*" onChange={handleImageUpload} multiple hidden />
             </MKButton>
-          </MKBox>
-          <MKBox mb={2}>
-            <MKInput
-              type="file"
-              accept="image/*"
-              label="Image"
-              onChange={handleImageUpload}
-              fullWidth
-              multiple
-            />
           </MKBox>
         </MKBox>
       </MKBox>
