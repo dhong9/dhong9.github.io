@@ -13,7 +13,6 @@ Coded by www.danyo.tech
 */
 
 // react-router-dom components
-import { useState } from "react";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -22,12 +21,11 @@ import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
 function UploadImage() {
-  const [imagePath, setImagePath] = useState("");
-
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
-    setImagePath(file);
-    console.log(imagePath);
+    const reader = new FileReader();
+    const url = reader.readAsDataURL(file);
+    console.log(url);
   };
 
   return (
