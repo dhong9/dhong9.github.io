@@ -49,7 +49,14 @@ function UploadImage() {
           <MKBox mb={2}>
             <MKButton variant="contained" component="label">
               Select Image
-              <input type="file" accept="image/*" onChange={handleImageUpload} multiple hidden />
+              <input
+                id="contained-button-file"
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                multiple
+                hidden
+              />
             </MKButton>
           </MKBox>
         </MKBox>
