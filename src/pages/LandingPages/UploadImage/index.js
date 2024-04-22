@@ -64,7 +64,7 @@ function UploadImage() {
       <MKBox pt={4} pb={3} px={3}>
         <MKBox component="form" role="form">
           <MKBox mb={2} justifyContent="center" display="flex">
-            <MKAvatar src={defaultProfileImage} alt="Profile picture" size="xxl" />
+            <MKAvatar src={selectedFile} alt="Profile picture" size="xxl" />
           </MKBox>
           <MKBox mb={2}>
             <MKButton variant="contained" component="label">
