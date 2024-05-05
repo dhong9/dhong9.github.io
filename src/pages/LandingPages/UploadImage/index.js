@@ -33,6 +33,11 @@ function UploadImage() {
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
+
+    // Check file size limit
+    const fileSize = file.size;
+    console.log(fileSize);
+
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
