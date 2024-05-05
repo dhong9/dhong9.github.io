@@ -114,11 +114,11 @@ function UploadImage() {
             </MKButton>
           </MKBox>
         </MKBox>
-        (formError &&
-        <MKBox display="flex" alignItems="center" ml={-1}>
-          <span style={{ color: "red", fontSize: "10pt" }}>{formError}</span>
-        </MKBox>
-        )
+        {formError && (
+          <MKBox display="flex" alignItems="center" ml={-1}>
+            <span style={{ color: "red", fontSize: "10pt" }}>{formError}</span>
+          </MKBox>
+        )}
       </MKBox>
     </>
   );
