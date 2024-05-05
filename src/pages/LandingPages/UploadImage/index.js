@@ -23,20 +23,33 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React examples
 import MKAvatar from "components/MKAvatar";
 
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
+
 // Image
 import defaultProfileImage from "assets/images/default_profile.jpg";
 
 function UploadImage() {
   // User could not have gotten to this component without a regular login
 
+  const SIZE_LIMIT = 4 * 1024 * 1024;
   const [selectedFile, setSelectedFile] = useState(defaultProfileImage);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [uploadSeverity, setUploadSeverity] = useState("info");
+  const [uploadMessage, setUploadMessage] = useState("");
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
 
     // Check file size limit
     const fileSize = file.size;
-    console.log(fileSize);
+    if (fileSize > SIZE_LIMIT) {
+      // Size limit exceeded
+      setUploadSeverity("error");
+      setUploadMessage("Image file too large ( > 4MB )");
+      setSnackbarOpen(true);
+      return;
+    }
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -49,8 +62,20 @@ function UploadImage() {
     console.log(selectedFile);
   };
 
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
+  };
+
   return (
     <>
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity={uploadSeverity}
+        message={uploadMessage}
+      />
       <MKBox
         variant="gradient"
         bgColor="info"
