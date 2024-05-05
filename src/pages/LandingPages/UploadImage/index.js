@@ -53,6 +53,8 @@ function UploadImage() {
       return;
     }
 
+    setFormError("");
+
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
