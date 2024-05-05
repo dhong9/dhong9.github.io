@@ -37,6 +37,7 @@ function UploadImage() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [uploadSeverity, setUploadSeverity] = useState("info");
   const [uploadMessage, setUploadMessage] = useState("");
+  const [formError, setFormError] = useState("");
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
@@ -48,6 +49,7 @@ function UploadImage() {
       setUploadSeverity("error");
       setUploadMessage("Image file too large ( > 4MB )");
       setSnackbarOpen(true);
+      setFormError("Image file too large ( > 4MB )");
       return;
     }
 
@@ -110,6 +112,11 @@ function UploadImage() {
             </MKButton>
           </MKBox>
         </MKBox>
+        (formError &&
+        <MKBox display="flex" alignItems="center" ml={-1}>
+          <span style={{ color: "red", fontSize: "10pt" }}>{formError}</span>
+        </MKBox>
+        )
       </MKBox>
     </>
   );
