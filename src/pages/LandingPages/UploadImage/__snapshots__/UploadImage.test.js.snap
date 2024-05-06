@@ -59,6 +59,20 @@ exports[`UploadImage renders 1`] = `
         </label>
       </div>
     </form>
+    <div
+      class="MuiBox-root css-1id64jh"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-1vl7gcm-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        submit
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
   </div>
 </div>
 `;

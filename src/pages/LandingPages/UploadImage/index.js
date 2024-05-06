@@ -29,7 +29,7 @@ import DHSnackbar from "components/DHSnackbar";
 // Image
 import defaultProfileImage from "assets/images/default_profile.jpg";
 
-function UploadImage() {
+function UploadImage({ user, updateUser }) {
   // User could not have gotten to this component without a regular login
 
   const SIZE_LIMIT = 4 * 1024 * 1024;
@@ -70,6 +70,12 @@ function UploadImage() {
     if (reason !== "clickaway") {
       setSnackbarOpen(false);
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("User: ", user);
+    console.log(!!updateUser);
   };
 
   return (
@@ -119,6 +125,11 @@ function UploadImage() {
             <span style={{ color: "red", fontSize: "10pt" }}>{formError}</span>
           </MKBox>
         )}
+        <MKBox mt={4} mb={1}>
+          <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
+            submit
+          </MKButton>
+        </MKBox>
       </MKBox>
     </>
   );
