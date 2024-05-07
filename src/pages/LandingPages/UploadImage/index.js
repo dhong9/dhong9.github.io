@@ -26,6 +26,9 @@ import MKAvatar from "components/MKAvatar";
 // DH React components
 import DHSnackbar from "components/DHSnackbar";
 
+// prop-types is a library for typechecking of props
+import PropTypes from "prop-types";
+
 // Image
 import defaultProfileImage from "assets/images/default_profile.jpg";
 
@@ -134,5 +137,16 @@ function UploadImage({ user, updateUser }) {
     </>
   );
 }
+
+// Typechecking props of UploadImage
+UploadImage.propTypes = {
+  updateUser: PropTypes.func,
+  user: PropTypes.object,
+};
+
+UploadImage.defaultProps = {
+  updateUser: null,
+  user: null,
+};
 
 export default UploadImage;
