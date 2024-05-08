@@ -12,7 +12,13 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { getRequest, postRequest, putRequest, deleteRequest } from "services/baseService";
+import {
+  getRequest,
+  postRequest,
+  putRequest,
+  patchRequest,
+  deleteRequest,
+} from "services/baseService";
 
 /**
  * Gets user profile by ID
@@ -67,6 +73,20 @@ export const updateAccount = (id, user, token, success, error) => {
       Authorization: `Bearer ${token}`,
     }
   );
+};
+
+/**
+ * Updates user profile picture
+ * @param {number} id user ID
+ * @param {string} image image path
+ * @param {Function} success success callback
+ * @param {Function} error error callback
+ */
+export const updateProfileImage = (id, image, success, error) => {
+  patchRequest("accounts/profiles/" + id + "/", { image }, success, (err) => {
+    console.error(error);
+    error(err);
+  });
 };
 
 /**
