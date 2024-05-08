@@ -83,7 +83,7 @@ export const updateAccount = (id, user, token, success, error) => {
  * @param {Function} error error callback
  */
 export const updateProfileImage = (id, image, success, error) => {
-  patchRequest("accounts/profiles/" + id + "/", { image }, success, (err) => {
+  patchRequest("accounts/profiles/" + id, { image }, success, (err) => {
     console.error(error);
     error(err);
   });
