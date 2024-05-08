@@ -26,13 +26,16 @@ import MKAvatar from "components/MKAvatar";
 // DH React components
 import DHSnackbar from "components/DHSnackbar";
 
+// Services
+import { updateProfileImage } from "services/baseService";
+
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
 // Image
 import defaultProfileImage from "assets/images/default_profile.jpg";
 
-function UploadImage({ user, updateUser }) {
+function UploadImage({ userId }) {
   // User could not have gotten to this component without a regular login
 
   const SIZE_LIMIT = 4 * 1024 * 1024;
@@ -77,8 +80,13 @@ function UploadImage({ user, updateUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("User: ", user);
-    console.log(!!updateUser);
+    if (selectedFile) {
+      setFormError("");
+      updateProfileImage(userId, selectedFile, console.log, console.error);
+    } else {
+      // User did not select an image
+      setFormError("Please select an image");
+    }
   };
 
   return (
@@ -140,13 +148,7 @@ function UploadImage({ user, updateUser }) {
 
 // Typechecking props of UploadImage
 UploadImage.propTypes = {
-  updateUser: PropTypes.func,
-  user: PropTypes.object,
-};
-
-UploadImage.defaultProps = {
-  updateUser: null,
-  user: null,
+  userId: PropTypes.number.isRequired,
 };
 
 export default UploadImage;

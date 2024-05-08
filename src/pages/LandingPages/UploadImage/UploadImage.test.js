@@ -27,7 +27,7 @@ describe("UploadImage", () => {
   it("renders", () => {
     const { container } = render(
       <ThemeProvider theme={theme}>
-        <UploadImage user={null} updateUser={jest.fn} />
+        <UploadImage userId={1} />
       </ThemeProvider>
     );
 
