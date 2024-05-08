@@ -27,7 +27,7 @@ import MKAvatar from "components/MKAvatar";
 import DHSnackbar from "components/DHSnackbar";
 
 // Services
-import { updateProfileImage } from "services/baseService";
+import { updateProfileImage } from "services/accountsService";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
