@@ -1,5 +1,12 @@
 import axios from "axios";
-import { createRequest, getRequest, postRequest, putRequest, deleteRequest } from "services/baseService";
+import {
+  createRequest,
+  getRequest,
+  postRequest,
+  putRequest,
+  patchRequest,
+  deleteRequest,
+} from "services/baseService";
 
 jest.mock("axios");
 
@@ -14,6 +21,7 @@ describe("BaseService", () => {
     axios.post.mockResolvedValue({ data: [{ name: "Bob" }] });
     axios.create.mockResolvedValue({ data: [{ name: "Bob" }] });
     axios.put.mockResolvedValue({ data: [{ name: "Bob" }] });
+    axios.patch.mockResolvedValue({ data: [{ name: "Bob" }] });
     axios.delete.mockResolvedValue({ data: [{ name: "Bob" }] });
   });
 
@@ -63,6 +71,18 @@ describe("BaseService", () => {
 
     // Verify that getRequest was called correctly
     expect(axios.put).toHaveBeenCalledWith(baseURL + "users", user, { maxRedirects: 0 });
+  });
+
+  it("patches a user", () => {
+    // Patch user
+    const user = {
+      id: 3,
+      name: "Cream Cheese",
+    };
+    patchRequest("users", user, success, error);
+
+    // Verify that patchRequest was called correctly
+    expect(axios.patch).toHaveBeenCalledWith(baseURL + "users", user, { maxRedirects: 0 });
   });
 
   it("deletes a user", () => {
