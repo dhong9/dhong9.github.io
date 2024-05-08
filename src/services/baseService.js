@@ -47,6 +47,12 @@ export const putRequest = (endpoint, payload, success, error, config = {}) =>
     .then(success)
     .catch(error);
 
+export const patchRequest = (endpoint, payload, success, error, config = {}) =>
+  axios
+    .patch(baseURL + endpoint, payload, { maxRedirects: 0, ...config })
+    .then(success)
+    .catch(error);
+
 export const deleteRequest = (endpoint, success, error, config = {}) =>
   axios
     .delete(baseURL + endpoint, { maxRedirects: 0, ...config })
