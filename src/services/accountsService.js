@@ -76,6 +76,21 @@ export const updateAccount = (id, user, token, success, error) => {
 };
 
 /**
+ * Updates user password
+ * @param {*} id user ID
+ * @param {*} password input password
+ * @param {*} password2 confirm password
+ * @param {*} success success callback
+ * @param {*} error error callback
+ */
+export const updatePassword = (id, password, password2, success, error) => {
+  patchRequest("accounts/update/" + id + "/", { password, password2 }, success, (err) => {
+    console.error(err);
+    error;
+  });
+};
+
+/**
  * Updates user profile picture
  * @param {number} id user ID
  * @param {string} image image path

@@ -14,12 +14,19 @@ Coded by www.danyo.tech
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { getRequest, postRequest, putRequest, deleteRequest } from "services/baseService";
+import {
+  getRequest,
+  postRequest,
+  patchRequest,
+  putRequest,
+  deleteRequest,
+} from "services/baseService";
 import {
   getUserProfile,
   addAccount,
   loginAccount,
   updateAccount,
+  updatePassword,
   deleteAccount,
   refreshAccount,
 } from "services/accountsService";
@@ -32,12 +39,15 @@ jest.mock("services/baseService", () => ({
   getRequest: jest.fn(),
   postRequest: jest.fn(),
   putRequest: jest.fn(),
+  patchRequest: jest.fn(),
   deleteRequest: jest.fn(),
 }));
 
 mock.onGet("/accounts/profiles/1").reply(200, userData);
 mock.onPost("accounts/register/").reply(200, userData);
 mock.onPost("accounts/token/").reply(200, userData);
+mock.onPut("accounts/update/10/").reply(200, userData);
+mock.onPatch("accounts/update/20/").reply(200, userData);
 
 describe("AccountsService", () => {
   it("gets a user", () => {
@@ -126,6 +136,30 @@ describe("AccountsService", () => {
       {
         Authorization: `Bearer ${token}`,
       }
+    );
+  });
+
+  it("updates user password", () => {
+    // Create success and error spy functions
+    const success = jest.fn();
+    const error = jest.fn();
+
+    // Fake user
+    const id = 20;
+    const data = {
+      password: "!@qwiI",
+      password2: "!@qwiI",
+    };
+
+    // Update password
+    updatePassword(id, "!@qwiI", "!@qwiI", success, error);
+
+    // Verify that updatePassword was called correctly
+    expect(patchRequest).toHaveBeenCalledWith(
+      "accounts/update/20/",
+      data,
+      success,
+      expect.any(Function)
     );
   });
 
