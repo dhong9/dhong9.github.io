@@ -12,11 +12,17 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+// Material Kit 2 React example components
+import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+
+// Material Kit 2 React page layout routes
+import routes from "routes";
+
 function ForgotPassword() {
   return (
-    <div>
-      <h1>Forgot Password</h1>
-    </div>
+    <>
+      <DefaultNavbar routes={routes} transparent light />
+    </>
   );
 }
 
