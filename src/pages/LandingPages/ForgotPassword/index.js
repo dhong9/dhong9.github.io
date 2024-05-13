@@ -12,6 +12,9 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+// react-router-dom components
+import { useState } from "react";
+
 // @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
@@ -22,6 +25,8 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
+import MKInput from "components/MKInput";
+import MKButton from "components/MKButton";
 
 // Material Kit 2 React page layout routes
 import routes from "routes";
@@ -30,6 +35,14 @@ import routes from "routes";
 import bgImage from "assets/images/dominos.png";
 
 function ForgotPassword() {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(email);
+  };
+
   return (
     <>
       <DefaultNavbar routes={routes} transparent light />
@@ -69,6 +82,23 @@ function ForgotPassword() {
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
                   Forgot password
                 </MKTypography>
+              </MKBox>
+              <MKBox pt={4} pb={3} px={3}>
+                <MKBox component="form" role="form">
+                  <MKBox mb={2}>
+                    <MKInput
+                      type="email"
+                      label="Email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      fullWidth
+                    />
+                  </MKBox>
+                  <MKBox mt={4} mb={1}>
+                    <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
+                      reset password
+                    </MKButton>
+                  </MKBox>
+                </MKBox>
               </MKBox>
             </Card>
           </Grid>
