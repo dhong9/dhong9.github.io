@@ -230,6 +230,12 @@ function SignInBasic({ onsuccess }) {
                       </MKTypography>
                     </MKTypography>
                   </MKBox>
+                  <Divider variant="middle" />
+                  <MKBox mt={3} mb={1} textAlign="center">
+                    <MKTypography variant="button" color="primary">
+                      Forgot password?
+                    </MKTypography>
+                  </MKBox>
                 </MKBox>
               </MKBox>
             </Card>
