@@ -34,6 +34,7 @@ import routes from "routes";
 
 // Authentication
 import { AuthProvider } from "context/AuthContext";
+import ForgotPasswordPage from "layouts/pages/authentication/forgot-password";
 import SignInPage from "layouts/pages/authentication/sign-in";
 import SignUpPage from "layouts/pages/authentication/sign-up";
 import SignOutPage from "layouts/pages/authentication/sign-out";
@@ -130,6 +131,7 @@ export default function App() {
           <Route path="/doughnutRider/posts/:id" element={<ForumsPost />} />
           <Route path="/doughnutRider/categories/:id" element={<ForumsCategories />} />
           <Route path="/verify-email/:key" element={<VerifyEmailPage />} />
+          <Route path="/pages/authentication/forgot" element={<ForgotPasswordPage />} />
         </Routes>
       </AuthProvider>
     </ThemeProvider>
