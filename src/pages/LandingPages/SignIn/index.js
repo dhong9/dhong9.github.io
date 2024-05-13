@@ -232,7 +232,14 @@ function SignInBasic({ onsuccess }) {
                   </MKBox>
                   <Divider variant="middle" />
                   <MKBox mt={3} mb={1} textAlign="center">
-                    <MKTypography variant="button" color="primary">
+                    <MKTypography
+                      component={Link}
+                      to="/pages/authentication/forgot"
+                      variant="button"
+                      color="primary"
+                      fontWeight="medium"
+                      textGradient
+                    >
                       Forgot password?
                     </MKTypography>
                   </MKBox>
