@@ -12,11 +12,16 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+// @mui material components
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+
 // Material Kit 2 React example components
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React page layout routes
 import routes from "routes";
@@ -46,6 +51,29 @@ function ForgotPassword() {
           backgroundRepeat: "no-repeat",
         }}
       />
+      <MKBox px={1} width="100%" height="100vh" mx="auto" position="relative" zIndex={2}>
+        <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
+          <Grid item xs={11} sm={9} md={5} lg={4} xl={3}>
+            <Card>
+              <MKBox
+                variant="gradient"
+                bgColor="info"
+                borderRadius="lg"
+                coloredShadow="info"
+                mx={2}
+                mt={-3}
+                p={2}
+                mb={1}
+                textAlign="center"
+              >
+                <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                  Forgot password
+                </MKTypography>
+              </MKBox>
+            </Card>
+          </Grid>
+        </Grid>
+      </MKBox>
     </>
   );
 }
