@@ -45,7 +45,7 @@ function ForgotPassword() {
     setFormError(
       !val
         ? "Email address is required." // Field is empty
-        : !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val) // Field does not match email address pattern
+        : !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val) // Field does not match email address pattern
         ? "Please enter a valid email address."
         : ""
     );
