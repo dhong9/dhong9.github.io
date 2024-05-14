@@ -36,9 +36,19 @@ import bgImage from "assets/images/dominos.png";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
+  const [formError, setFormError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const val = email.trim();
+    setFormError(
+      !val
+        ? "Email address is required." // Field is empty
+        : !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val) // Field does not match email address pattern
+        ? "Please enter a valid email address."
+        : ""
+    );
 
     console.log(email);
   };
@@ -89,10 +99,16 @@ function ForgotPassword() {
                     <MKInput
                       type="email"
                       label="Email"
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => setEmail(e.target.value.trim)}
                       fullWidth
                     />
                   </MKBox>
+                  {/* Show any form errors */}
+                  {formError && (
+                    <MKBox display="flex" alignItems="center" ml={-1}>
+                      <span style={{ color: "red", fontSize: "10pt" }}>{formError}</span>
+                    </MKBox>
+                  )}
                   <MKBox mt={4} mb={1}>
                     <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
                       reset password
