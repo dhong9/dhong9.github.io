@@ -99,7 +99,7 @@ function ForgotPassword() {
                     <MKInput
                       type="email"
                       label="Email"
-                      onChange={(e) => setEmail(e.target.value.trim)}
+                      onChange={(e) => setEmail(e.target.value)}
                       fullWidth
                     />
                   </MKBox>
