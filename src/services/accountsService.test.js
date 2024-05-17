@@ -29,6 +29,7 @@ import {
   updatePassword,
   deleteAccount,
   refreshAccount,
+  sendPasswordResetEmail,
 } from "services/accountsService";
 
 const mock = new MockAdapter(axios);
@@ -46,6 +47,7 @@ jest.mock("services/baseService", () => ({
 mock.onGet("/accounts/profiles/1").reply(200, userData);
 mock.onPost("accounts/register/").reply(200, userData);
 mock.onPost("accounts/token/").reply(200, userData);
+mock.onPost("password_reset/").reply(200, userData);
 mock.onPut("accounts/update/10/").reply(200, userData);
 mock.onPatch("accounts/update/20/").reply(200, userData);
 
@@ -201,4 +203,19 @@ it("refreshes an account", () => {
     success,
     console.error
   );
+});
+
+it("sends password reset email", () => {
+  // Create success and error spy functions
+  const success = jest.fn(),
+    error = jest.fn();
+
+  // Fake user
+  const email = "shortTermMemory@aol.com";
+
+  // Send password reset email
+  sendPasswordResetEmail(email, success, error);
+
+  // Verify that password reset was called correctly
+  expect(postRequest).toHaveBeenCalledWith("password_reset/", { email }, success, error);
 });
