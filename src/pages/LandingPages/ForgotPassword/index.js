@@ -31,6 +31,9 @@ import MKButton from "components/MKButton";
 // Material Kit 2 React page layout routes
 import routes from "routes";
 
+// Services
+import { sendPasswordResetEmail } from "services/accountsService";
+
 // Images
 import bgImage from "assets/images/dominos.png";
 
@@ -50,7 +53,7 @@ function ForgotPassword() {
         : ""
     );
 
-    console.log(email);
+    sendPasswordResetEmail(email);
   };
 
   return (
