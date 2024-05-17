@@ -131,3 +131,13 @@ export const deleteAccount = (id, token, success, error) => {
 export const refreshAccount = (refresh, success) => {
   postRequest("accounts/token/refresh/", { refresh }, success, console.error);
 };
+
+/**
+ * Sends password reset email
+ * @param {*} email user email
+ * @param {*} success success callback
+ * @param {*} error error callback
+ */
+export const sendPasswordResetEmail = (email, success, error) => {
+  postRequest("accounts/password_reset/", { email }, success, error);
+};
