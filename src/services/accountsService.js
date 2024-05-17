@@ -139,5 +139,5 @@ export const refreshAccount = (refresh, success) => {
  * @param {*} error error callback
  */
 export const sendPasswordResetEmail = (email, success, error) => {
-  postRequest("accounts/password_reset/", { email }, success, error);
+  postRequest("password_reset/", { email }, success, error);
 };
