@@ -53,7 +53,7 @@ function ForgotPassword() {
         : ""
     );
 
-    sendPasswordResetEmail(email);
+    sendPasswordResetEmail(email, console.log, console.error);
   };
 
   return (
