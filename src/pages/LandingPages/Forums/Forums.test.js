@@ -15,6 +15,7 @@ beforeEach(() => {
 // Cleanup mock
 afterEach(() => {
   React.useContext = realUseContext;
+  jest.clearAllMocks();
 });
 
 // Mocks
@@ -26,13 +27,13 @@ jest.mock("react-monaco-editor", () => {
   };
 });
 jest.mock("components/MKBox", () => {
-    const { forwardRef } = jest.requireActual("react");
-    return {
-        __esModule: true,
-        default: forwardRef(() => <div>Mock Box</div>)
-    };
+  const { forwardRef } = jest.requireActual("react");
+  return {
+    __esModule: true,
+    default: forwardRef(() => <div>Mock Box</div>),
+  };
 });
-jest.mock('draft-convert', () => {
+jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
     convertToRaw: jest.fn(),
