@@ -112,11 +112,11 @@ function ForgotPassword() {
           setSnackbarOpen(true);
         },
         ({ response: { request } }) => {
-          setForgotSeverity("success");
-          console.error(request.response);
-          const data = JSON.parse(request.response);
+          setForgotSeverity("error");
+          const data = request.response;
+          console.log(data);
           if (email in data) {
-            setForgotMessage(data.email);
+            setForgotMessage(data.email[0]);
           } else {
             setForgotMessage("An unexpected error occurred.");
           }
