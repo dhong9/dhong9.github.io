@@ -111,9 +111,10 @@ function ForgotPassword() {
           setForgotMessage("Reset email sent!");
           setSnackbarOpen(true);
         },
-        ({ response: { request: response } }) => {
+        ({ response: { request } }) => {
           setForgotSeverity("success");
-          const data = JSON.parse(response);
+          console.error(request.response);
+          const data = JSON.parse(request.response);
           if (email in data) {
             setForgotMessage(data.email);
           } else {
