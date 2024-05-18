@@ -78,4 +78,23 @@ describe("ResetPassword", () => {
     expect(queryByText("Password is required.")).toBeInTheDocument();
     expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
   });
+
+  it("requires passwords to match", () => {
+    const { getByText, getByLabelText, queryByText } = render(
+      <ThemeProvider theme={theme}>
+        <ResetPassword />
+      </ThemeProvider>
+    );
+
+    // Get form elements
+    const passwordInput = getByLabelText("Password");
+    const confirmPasswordInput = getByLabelText("Confirm Password");
+    const resetButton = getByText("reset password");
+
+    // Provide input for just the first password
+    fireEvent.change(passwordInput, { target: { value: "catsdogsmice" } });
+    fireEvent.change(confirmPasswordInput, { target: { value: "pigssheeplamb" } });
+    fireEvent.click(resetButton);
+    expect(queryByText("Passwords don't match.")).toBeInTheDocument();
+  });
 });
