@@ -111,7 +111,16 @@ function ForgotPassword() {
           setForgotMessage("Reset email sent!");
           setSnackbarOpen(true);
         },
-        console.error
+        ({ response: { request: response } }) => {
+          setForgotSeverity("success");
+          const data = JSON.parse(response);
+          if (email in data) {
+            setForgotMessage(data.email);
+          } else {
+            setForgotMessage("An unexpected error occurred.");
+          }
+          setSnackbarOpen(true);
+        }
       );
     }
   };
