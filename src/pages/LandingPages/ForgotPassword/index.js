@@ -13,7 +13,7 @@ Coded by www.danyo.tech
 */
 
 // react-router-dom components
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -41,6 +41,11 @@ import { sendPasswordResetEmail } from "services/accountsService";
 import bgImage from "assets/images/dominos.png";
 
 function ForgotPassword() {
+  // We need ref in this, because we are dealing
+  // with JS setInterval to kep track of it and
+  // stop it when needed
+  const Ref = useRef(null);
+
   const [email, setEmail] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [forgotSeverity, setForgotSeverity] = useState("info");
@@ -51,10 +56,20 @@ function ForgotPassword() {
   const [secondsRemaining, setSecondsRemaining] = useState(30);
 
   const startTimer = () => {
+    setSecondsRemaining(30);
+
+    // If you try to remove this line the
+    // updating of timer variable will be
+    // after 1000ms or 1sec
+    if (Ref.current) {
+      clearInterval(Ref.current);
+    }
+
     if (secondsRemaining) {
-      setInterval(() => {
+      const id = setInterval(() => {
         setSecondsRemaining(secondsRemaining - 1);
       }, 1000);
+      Ref.current = id;
     }
   };
 
