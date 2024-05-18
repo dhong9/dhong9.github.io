@@ -80,7 +80,7 @@ describe("ForgotPasword", () => {
     const emailInput = getByLabelText("Email");
     const sendButton = getByText("reset password");
 
-    // Adding some spaces also counts as no input
+    // Add a bogus email address
     fireEvent.change(emailInput, { target: { value: "hello" } });
     fireEvent.click(sendButton);
     expect(queryByText("Please enter a valid email address.")).toBeInTheDocument();
