@@ -107,9 +107,9 @@ export const updateProfileImage = (id, image, success, error) => {
 /**
  * Deletes user account
  * @param {number} id user ID
- * @param {*} token access token
- * @param {*} success success callback
- * @param {*} error error callback
+ * @param {string} token access token
+ * @param {Function} success success callback
+ * @param {Function} error error callback
  */
 export const deleteAccount = (id, token, success, error) => {
   deleteRequest(
@@ -125,8 +125,8 @@ export const deleteAccount = (id, token, success, error) => {
 
 /**
  * Refreshes user account
- * @param {*} refresh refresh token
- * @param {*} success success callback
+ * @param {string} refresh refresh token
+ * @param {Function} success success callback
  */
 export const refreshAccount = (refresh, success) => {
   postRequest("accounts/token/refresh/", { refresh }, success, console.error);
@@ -134,10 +134,21 @@ export const refreshAccount = (refresh, success) => {
 
 /**
  * Sends password reset email
- * @param {*} email user email
- * @param {*} success success callback
- * @param {*} error error callback
+ * @param {string} email user email
+ * @param {Function} success success callback
+ * @param {Function} error error callback
  */
 export const sendPasswordResetEmail = (email, success, error) => {
   postRequest("password_reset/", { email }, success, error);
+};
+
+/**
+ * Confirms password reset
+ * @param {string} token password reset token
+ * @param {string} password new password
+ * @param {Function} success success callback
+ * @param {Function} error error callback
+ */
+export const confirmPasswordReset = (token, password, success, error) => {
+  postRequest("password_reset/confirm/", { token, password }, success, error);
 };

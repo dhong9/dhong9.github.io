@@ -30,6 +30,7 @@ import {
   deleteAccount,
   refreshAccount,
   sendPasswordResetEmail,
+  confirmPasswordReset,
 } from "services/accountsService";
 
 const mock = new MockAdapter(axios);
@@ -48,6 +49,7 @@ mock.onGet("/accounts/profiles/1").reply(200, userData);
 mock.onPost("accounts/register/").reply(200, userData);
 mock.onPost("accounts/token/").reply(200, userData);
 mock.onPost("password_reset/").reply(200, userData);
+mock.onPost("password_reset/confirm/").reply(200, userData);
 mock.onPut("accounts/update/10/").reply(200, userData);
 mock.onPatch("accounts/update/20/").reply(200, userData);
 
@@ -218,4 +220,24 @@ it("sends password reset email", () => {
 
   // Verify that password reset was called correctly
   expect(postRequest).toHaveBeenCalledWith("password_reset/", { email }, success, error);
+});
+
+it("confirms password reset", () => {
+  const success = jest.fn(),
+    error = jest.fn();
+
+  // Fake user
+  const token = "FAKE_TOKEN",
+    password = "brand$pankinN3w";
+
+  // Confirm password reset
+  confirmPasswordReset(token, password, success, error);
+
+  // Verify that confirm password reset was called correctly
+  expect(postRequest).toHaveBeenCalledWith(
+    "password_reset/confirm/",
+    { token, password },
+    success,
+    error
+  );
 });
