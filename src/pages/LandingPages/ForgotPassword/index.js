@@ -68,6 +68,8 @@ function ForgotPassword() {
         setSecondsRemaining(secondsRemaining - 1);
       }, 1000);
       Ref.current = id;
+    } else {
+      setButtonDisabled(true);
     }
   };
 
