@@ -13,7 +13,7 @@ Coded by www.danyo.tech
 */
 
 // react-router-dom components
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -56,8 +56,6 @@ function ForgotPassword() {
   const [secondsRemaining, setSecondsRemaining] = useState(30);
 
   const startTimer = () => {
-    setSecondsRemaining(30);
-
     // If you try to remove this line the
     // updating of timer variable will be
     // after 1000ms or 1sec
@@ -72,6 +70,14 @@ function ForgotPassword() {
       Ref.current = id;
     }
   };
+
+  useEffect(() => {
+    if (buttonDisabled) {
+      startTimer();
+    } else {
+      setSecondsRemaining(30);
+    }
+  }, [secondsRemaining]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
