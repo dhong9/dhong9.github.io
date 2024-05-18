@@ -65,6 +65,24 @@ describe("ForgotPasword", () => {
 
     // Adding some spaces also counts as no input
     fireEvent.change(emailInput, { target: { value: "     " } });
+    fireEvent.click(sendButton);
     expect(queryByText("Email address is required.")).toBeInTheDocument();
+  });
+
+  it("validates email address", () => {
+    const { getByText, getByLabelText, queryByText } = render(
+      <ThemeProvider theme={theme}>
+        <ForgotPassword />
+      </ThemeProvider>
+    );
+
+    // Get form fields
+    const emailInput = getByLabelText("Email");
+    const sendButton = getByText("reset password");
+
+    // Adding some spaces also counts as no input
+    fireEvent.change(emailInput, { target: { value: "hello" } });
+    fireEvent.click(sendButton);
+    expect(queryByText("Please enter a valid email address.")).toBeInTheDocument();
   });
 });
