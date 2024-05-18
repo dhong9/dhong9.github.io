@@ -48,6 +48,15 @@ function ForgotPassword() {
   const [formError, setFormError] = useState("");
   const [resetMessage, setResetMessage] = useState("reset password");
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [secondsRemaining, setSecondsRemaining] = useState(30);
+
+  const startTimer = () => {
+    if (secondsRemaining) {
+      setInterval(() => {
+        setSecondsRemaining(secondsRemaining - 1);
+      }, 1000);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,8 +75,15 @@ function ForgotPassword() {
       sendPasswordResetEmail(
         email,
         () => {
+          // Swap button message to resend
+          // It remains disabled for a period of time to allow user to receive email
           setResetMessage("resend reset email");
           setButtonDisabled(true);
+
+          // Start button disabled timer
+          startTimer();
+
+          // Inform user of success
           setForgotSeverity("success");
           setForgotMessage("Reset email sent!");
           setSnackbarOpen(true);
@@ -143,6 +159,15 @@ function ForgotPassword() {
                   {formError && (
                     <MKBox display="flex" alignItems="center" ml={-1}>
                       <span style={{ color: "red", fontSize: "10pt" }}>{formError}</span>
+                    </MKBox>
+                  )}
+                  {/* Inform user how long they have before they can request new reset token */}
+                  {buttonDisabled && (
+                    <MKBox display="flex" alignItems="center" ml={-1}>
+                      <span style={{ fontSize: "10pt" }}>
+                        Resend available in{" "}
+                        {secondsRemaining > 1 ? `${secondsRemaining} seconds` : "1 second"}
+                      </span>
                     </MKBox>
                   )}
                   <MKBox mt={4} mb={1}>
