@@ -47,6 +47,7 @@ function ForgotPassword() {
   const [forgotMessage, setForgotMessage] = useState("");
   const [formError, setFormError] = useState("");
   const [resetMessage, setResetMessage] = useState("reset password");
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,6 +67,7 @@ function ForgotPassword() {
         email,
         () => {
           setResetMessage("resend reset email");
+          setButtonDisabled(true);
           setForgotSeverity("success");
           setForgotMessage("Reset email sent!");
           setSnackbarOpen(true);
@@ -144,7 +146,13 @@ function ForgotPassword() {
                     </MKBox>
                   )}
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
+                    <MKButton
+                      variant="gradient"
+                      color="info"
+                      onClick={handleSubmit}
+                      disabled={buttonDisabled}
+                      fullWidth
+                    >
                       {resetMessage}
                     </MKButton>
                   </MKBox>
