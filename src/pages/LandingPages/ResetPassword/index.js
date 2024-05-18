@@ -51,6 +51,9 @@ function ResetPassword() {
     if (!confirmPassword.trim()) {
       errors.push("Password confirmation is required.");
     }
+    if (password && confirmPassword && password !== confirmPassword) {
+      errors.push("Passwords don't match.");
+    }
     setFormErrors(errors);
 
     if (!formErrors[0]) {
