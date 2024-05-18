@@ -41,6 +41,9 @@ jest.mock("react-monaco-editor", () => {
 jest.mock("react-router-dom", () => ({
   Link: jest.fn(({ to, children }) => <a href={to}>{children}</a>),
   useNavigate: jest.fn,
+  useParams: () => ({
+    token: "Unit_tests",
+  }),
 }));
 
 describe("ResetPassword", () => {

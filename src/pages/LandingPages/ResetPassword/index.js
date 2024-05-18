@@ -14,6 +14,7 @@ Coded by www.danyo.tech
 
 // react-router-dom components
 import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -28,17 +29,40 @@ import MKTypography from "components/MKTypography";
 import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
+
 // Material Kit 2 React page layout routes
 import routes from "routes";
+
+// Services
+import { confirmPasswordReset } from "services/accountsService";
 
 // Images
 import bgImage from "assets/images/gems.png";
 
 function ResetPassword() {
+  // Get password reset token
+  const { token } = useParams();
+
+  // Allow page navigation
+  const history = useNavigate();
+
   // Form fields
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [formErrors, setFormErrors] = useState([]);
+
+  // Snackbar properties
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [resetSeverity, setResetSeverity] = useState("info");
+  const [resetMessage, setResetMessage] = useState("");
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,14 +82,32 @@ function ResetPassword() {
 
     if (!formErrors[0]) {
       // Reset user password
-      console.log(password);
-      console.log(confirmPassword);
+      confirmPasswordReset(
+        token,
+        password,
+        () => {
+          // Navigate to login
+          history("/pages/authentication/sign-in");
+        },
+        (err) => {
+          setResetSeverity("error");
+          setResetMessage("An error has occurred");
+          setSnackbarOpen(true);
+          console.error(err);
+        }
+      );
     }
   };
 
   return (
     <>
       <DefaultNavbar routes={routes} transparent light />
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity={resetSeverity}
+        message={resetMessage}
+      />
       <MKBox
         position="absolute"
         top={0}
