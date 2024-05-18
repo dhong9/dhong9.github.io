@@ -114,7 +114,6 @@ function ForgotPassword() {
         ({ response: { request } }) => {
           setForgotSeverity("error");
           const data = JSON.parse(request.response);
-          console.log(data);
           if (data["email"]) {
             setForgotMessage(data["email"][0]);
           } else {
