@@ -38,12 +38,26 @@ function ResetPassword() {
   // Form fields
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [formErrors, setFormErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(password);
-    console.log(confirmPassword);
+    // Check form data
+    const errors = [];
+    if (!password.trim()) {
+      errors.push("Password is required.");
+    }
+    if (!confirmPassword.trim()) {
+      errors.push("Password confirmation is required.");
+    }
+    setFormErrors(errors);
+
+    if (!formErrors[0]) {
+      // Reset user password
+      console.log(password);
+      console.log(confirmPassword);
+    }
   };
 
   return (
@@ -104,6 +118,18 @@ function ResetPassword() {
                       fullWidth
                     />
                   </MKBox>
+                  {/* Show any form errors */}
+                  {formErrors[0] ? (
+                    <MKBox display="flex" alignItems="center" ml={-1}>
+                      <ul style={{ color: "red", fontSize: "10pt" }}>
+                        {formErrors.map((error, i) => (
+                          <li key={i}>{error}</li>
+                        ))}
+                      </ul>
+                    </MKBox>
+                  ) : (
+                    <div></div>
+                  )}
                   <MKBox mt={4} mb={1}>
                     <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
                       reset password
