@@ -28,6 +28,9 @@ import MKTypography from "components/MKTypography";
 import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
+
 // Material Kit 2 React page layout routes
 import routes from "routes";
 
@@ -39,6 +42,9 @@ import bgImage from "assets/images/dominos.png";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [forgotSeverity, setForgotSeverity] = useState("info");
+  const [forgotMessage, setForgotMessage] = useState("");
   const [formError, setFormError] = useState("");
 
   const handleSubmit = (e) => {
@@ -53,12 +59,35 @@ function ForgotPassword() {
         : ""
     );
 
-    sendPasswordResetEmail(email, console.log, console.error);
+    if (!formError) {
+      // A valid email has been entered
+      sendPasswordResetEmail(
+        email,
+        () => {
+          setForgotSeverity("success");
+          setForgotMessage("Reset email sent!");
+          setSnackbarOpen(true);
+        },
+        console.error
+      );
+    }
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
   };
 
   return (
     <>
       <DefaultNavbar routes={routes} transparent light />
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity={forgotSeverity}
+        message={forgotMessage}
+      />
       <MKBox
         position="absolute"
         top={0}

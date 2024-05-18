@@ -33,7 +33,7 @@ export default function DHSnackbar({ onClose, open, severity, message }) {
 DHSnackbar.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
-  severity: PropTypes.string,
+  severity: PropTypes.oneOf(["info", "success", "warning", "error"]),
   message: PropTypes.string,
 };
 
