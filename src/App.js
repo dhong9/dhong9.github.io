@@ -51,6 +51,9 @@ export default function App() {
   const [signoutSnackbarOpen, setSignoutSnackbarOpen] = useState(false);
   const [signoutSeverity, setSignoutSeverity] = useState("info");
   const [signoutMessage, setSignoutMessage] = useState("");
+  const [resetpasswordSnackbarOpen, setResetpasswordSnackbarOpen] = useState(false);
+  const [resetpasswordSeverity, setResetpasswordSeverity] = useState("info");
+  const [resetpasswordMessage, setResetpasswordMessage] = useState("");
   const [signinSnackbarOpen, setSigninSnackbarOpen] = useState(false);
   const [signinSeverity, setSigninSeverity] = useState("info");
   const [signinMessage, setSigninMessage] = useState("");
@@ -88,6 +91,12 @@ export default function App() {
     setSigninSnackbarOpen(true);
   };
 
+  const resetpasswordSuccess = () => {
+    setResetpasswordSeverity("success");
+    setResetpasswordMessage("Successfully reset password!");
+    setResetpasswordSnackbarOpen(true);
+  };
+
   const handleSignoutSnackbarClose = (event, reason) => {
     if (reason !== "clickaway") {
       setSignoutSnackbarOpen(false);
@@ -97,6 +106,12 @@ export default function App() {
   const handleSigninSnackbarClose = (event, reason) => {
     if (reason !== "clickaway") {
       setSigninSnackbarOpen(false);
+    }
+  };
+
+  const handleResetpasswordSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setResetpasswordSnackbarOpen(false);
     }
   };
 
@@ -114,6 +129,12 @@ export default function App() {
         onClose={handleSigninSnackbarClose}
         severity={signinSeverity}
         message={signinMessage}
+      />
+      <DHSnackbar
+        open={resetpasswordSnackbarOpen}
+        onClose={handleResetpasswordSnackbarClose}
+        severity={resetpasswordSeverity}
+        message={resetpasswordMessage}
       />
       <AuthProvider>
         <Routes>
@@ -135,7 +156,7 @@ export default function App() {
           <Route path="/pages/authentication/forgot" element={<ForgotPasswordPage />} />
           <Route
             path="/pages/authentication/reset-password/:token"
-            element={<ResetPasswordPage />}
+            element={<ResetPasswordPage onsuccess={resetpasswordSuccess} />}
           />
         </Routes>
       </AuthProvider>
