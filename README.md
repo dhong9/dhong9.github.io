@@ -78,7 +78,10 @@ The documentation for the Material Dashboard is hosted at our [website](https://
 Within the download you'll find the following directories and files:
 
 ```
-material-kit-2-react
+dhong9.github.io
+    ├── __mocks__
+    |   ├── fileMock.js
+    |   ├── styleMock.js
     ├── public
     │   ├── apple-icon.png
     │   ├── favicon.png
