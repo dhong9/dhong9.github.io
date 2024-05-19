@@ -32,4 +32,14 @@ describe("MKBox", () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it("renders primary Box", () => {
+    const { container } = render(
+      <ThemeProvider theme={theme}>
+        <MKBox color="primary" />
+      </ThemeProvider>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });
