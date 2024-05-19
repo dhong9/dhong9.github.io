@@ -53,23 +53,11 @@ export const loginAccount = (user, success, error) => {
  * Updates user account
  * @param {number} id user ID
  * @param {object} user user updated details
- * @param {string} token access token
  * @param {Function} success success callback
  * @param {Function} error error callback
  */
-export const updateAccount = (id, user, token, success, error) => {
-  putRequest(
-    "accounts/update/" + id + "/",
-    user,
-    success,
-    (err) => {
-      console.error(err);
-      error(err);
-    },
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+export const updateAccount = (id, user, success, error) => {
+  putRequest("accounts/update/" + id + "/", user, success, error);
 };
 
 /**

@@ -120,22 +120,13 @@ describe("AccountsService", () => {
       password: "def",
       password2: "def",
     };
-    const token = "TOLKIEN";
     const id = 10;
 
     // Update user
-    updateAccount(id, user, token, success, error);
+    updateAccount(id, user, success, error);
 
     // Verify that putRequest was called correctly
-    expect(putRequest).toHaveBeenCalledWith(
-      "accounts/update/" + id + "/",
-      user,
-      success,
-      expect.any(Function),
-      {
-        Authorization: `Bearer ${token}`,
-      }
-    );
+    expect(putRequest).toHaveBeenCalledWith("accounts/update/" + id + "/", user, success, error);
   });
 
   it("updates user password", () => {

@@ -86,7 +86,6 @@ export const AuthProvider = ({ children }) => {
         password,
         password2,
       },
-      authTokens.access,
       success,
       error
     );
