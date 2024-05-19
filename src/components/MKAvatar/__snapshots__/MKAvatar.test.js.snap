@@ -3,11 +3,11 @@
 exports[`MKAvatar renders default success avatars 1`] = `
 <div>
   <div
-    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-i2cqlx-MuiAvatar-root"
+    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1b3h4cq-MuiAvatar-root"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit MuiAvatar-fallback css-1j1ftla-MuiSvgIcon-root-MuiAvatar-fallback"
       data-testid="PersonIcon"
       focusable="false"
       viewBox="0 0 24 24"
@@ -23,11 +23,11 @@ exports[`MKAvatar renders default success avatars 1`] = `
 exports[`MKAvatar renders extra large info avatars 1`] = `
 <div>
   <div
-    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-2ttp3q-MuiAvatar-root"
+    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-jbkl7d-MuiAvatar-root"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit MuiAvatar-fallback css-1j1ftla-MuiSvgIcon-root-MuiAvatar-fallback"
       data-testid="PersonIcon"
       focusable="false"
       viewBox="0 0 24 24"
@@ -43,11 +43,11 @@ exports[`MKAvatar renders extra large info avatars 1`] = `
 exports[`MKAvatar renders extra small transparent avatars 1`] = `
 <div>
   <div
-    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-16u0vg-MuiAvatar-root"
+    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1qwm04v-MuiAvatar-root"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit MuiAvatar-fallback css-1j1ftla-MuiSvgIcon-root-MuiAvatar-fallback"
       data-testid="PersonIcon"
       focusable="false"
       viewBox="0 0 24 24"
@@ -63,11 +63,11 @@ exports[`MKAvatar renders extra small transparent avatars 1`] = `
 exports[`MKAvatar renders large secondary avatars 1`] = `
 <div>
   <div
-    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1h6jf0p-MuiAvatar-root"
+    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-kyvz8v-MuiAvatar-root"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit MuiAvatar-fallback css-1j1ftla-MuiSvgIcon-root-MuiAvatar-fallback"
       data-testid="PersonIcon"
       focusable="false"
       viewBox="0 0 24 24"
@@ -83,11 +83,11 @@ exports[`MKAvatar renders large secondary avatars 1`] = `
 exports[`MKAvatar renders small primary avatars 1`] = `
 <div>
   <div
-    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-c8x9hf-MuiAvatar-root"
+    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-9c9o2o-MuiAvatar-root"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit MuiAvatar-fallback css-1j1ftla-MuiSvgIcon-root-MuiAvatar-fallback"
       data-testid="PersonIcon"
       focusable="false"
       viewBox="0 0 24 24"
