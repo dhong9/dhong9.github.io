@@ -42,4 +42,14 @@ describe("MKBadge", () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it("renders large info badges", () => {
+    const { container } = render(
+      <ThemeProvider theme={theme}>
+        <MKBadge color="info" size="large"></MKBadge>
+      </ThemeProvider>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });
