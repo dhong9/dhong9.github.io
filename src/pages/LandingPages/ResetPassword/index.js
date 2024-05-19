@@ -41,7 +41,10 @@ import { confirmPasswordReset } from "services/accountsService";
 // Images
 import bgImage from "assets/images/gems.png";
 
-function ResetPassword() {
+// prop-types is a library for typechecking of props
+import PropTypes from "prop-types";
+
+function ResetPassword({ onsuccess }) {
   // Get password reset token
   const { token } = useParams();
 
@@ -88,12 +91,16 @@ function ResetPassword() {
         () => {
           // Navigate to login
           history("/pages/authentication/sign-in");
+
+          // Call parent's success callback
+          onsuccess();
         },
         ({
           response: {
             data: { detail },
           },
         }) => {
+          // Display error message on Snackbar
           setResetSeverity("error");
           setResetMessage(detail);
           setSnackbarOpen(true);
@@ -194,3 +201,12 @@ function ResetPassword() {
 }
 
 export default ResetPassword;
+
+// Typechecking props of ResetPassword
+ResetPassword.propTypes = {
+  onsuccess: PropTypes.func,
+};
+
+ResetPassword.defaultProps = {
+  onsuccess: null,
+};
