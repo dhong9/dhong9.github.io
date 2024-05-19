@@ -69,10 +69,7 @@ export const updateAccount = (id, user, success, error) => {
  * @param {*} error error callback
  */
 export const updatePassword = (id, password, password2, success, error) => {
-  patchRequest("accounts/update/" + id + "/", { password, password2 }, success, (err) => {
-    console.error(err);
-    error;
-  });
+  patchRequest("accounts/update/" + id + "/", { password, password2 }, success, error);
 };
 
 /**
@@ -83,10 +80,7 @@ export const updatePassword = (id, password, password2, success, error) => {
  * @param {Function} error error callback
  */
 export const updateProfileImage = (id, image, success, error) => {
-  patchRequest("accounts/profiles/" + id, { image }, success, (err) => {
-    console.error(error);
-    error(err);
-  });
+  patchRequest("accounts/profiles/" + id, { image }, success, error);
 };
 
 /**

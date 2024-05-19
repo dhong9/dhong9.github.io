@@ -27,6 +27,7 @@ import {
   loginAccount,
   updateAccount,
   updatePassword,
+  updateProfileImage,
   deleteAccount,
   refreshAccount,
   sendPasswordResetEmail,
@@ -52,8 +53,13 @@ mock.onPost("password_reset/").reply(200, userData);
 mock.onPost("password_reset/confirm/").reply(200, userData);
 mock.onPut("accounts/update/10/").reply(200, userData);
 mock.onPatch("accounts/update/20/").reply(200, userData);
+mock.onPatch("accounts/profiles/20/").reply(200, userData);
 
 describe("AccountsService", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("gets a user", () => {
     // Create success and error spy functions
     const success = jest.fn();
@@ -67,8 +73,8 @@ describe("AccountsService", () => {
 
   it("adds an account", () => {
     // Create success and error spy functions
-    const success = jest.fn();
-    const error = jest.fn();
+    const success = jest.fn(),
+      error = jest.fn();
 
     // Fake user
     const user = {
@@ -82,18 +88,13 @@ describe("AccountsService", () => {
     addAccount(user, success, error);
 
     // Verify that postRequest was called correctly
-    expect(postRequest).toHaveBeenCalledWith(
-      "accounts/register/",
-      user,
-      success,
-      expect.any(Function)
-    );
+    expect(postRequest).toHaveBeenCalledWith("accounts/register/", user, success, error);
   });
 
   it("logs in an account", () => {
     // Create success and error spy functions
-    const success = jest.fn();
-    const error = jest.fn();
+    const success = jest.fn(),
+      error = jest.fn();
 
     // Fake user
     const user = {
@@ -110,8 +111,8 @@ describe("AccountsService", () => {
 
   it("updates an account", () => {
     // Create success and error spy functions
-    const success = jest.fn();
-    const error = jest.fn();
+    const success = jest.fn(),
+      error = jest.fn();
 
     // Fake user
     const user = {
@@ -131,8 +132,8 @@ describe("AccountsService", () => {
 
   it("updates user password", () => {
     // Create success and error spy functions
-    const success = jest.fn();
-    const error = jest.fn();
+    const success = jest.fn(),
+      error = jest.fn();
 
     // Fake user
     const id = 20;
@@ -145,18 +146,29 @@ describe("AccountsService", () => {
     updatePassword(id, "!@qwiI", "!@qwiI", success, error);
 
     // Verify that updatePassword was called correctly
-    expect(patchRequest).toHaveBeenCalledWith(
-      "accounts/update/20/",
-      data,
-      success,
-      expect.any(Function)
-    );
+    expect(patchRequest).toHaveBeenCalledWith("accounts/update/20/", data, success, error);
+  });
+
+  it("updates user profile image", () => {
+    // Create success and error spy functions
+    const success = jest.fn(),
+      error = jest.fn();
+
+    // Fake user
+    const id = 20;
+    const image = "doughnut.png";
+
+    // Update image
+    updateProfileImage(id, image, success, error);
+
+    // Verify that updateProfileImage was called correctly
+    expect(patchRequest).toHaveBeenCalledWith("accounts/profiles/20", { image }, success, error);
   });
 
   it("deletes an account", () => {
     // Create success and error spy functions
-    const success = jest.fn();
-    const error = jest.fn();
+    const success = jest.fn(),
+      error = jest.fn();
 
     // Fake user
     const token = "NEIKLOT";
