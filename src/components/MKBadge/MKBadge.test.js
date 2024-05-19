@@ -32,4 +32,14 @@ describe("MKBadge", () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it("renders medium white badges", () => {
+    const { container } = render(
+      <ThemeProvider theme={theme}>
+        <MKBadge color="white" size="medium"></MKBadge>
+      </ThemeProvider>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });

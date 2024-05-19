@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MKBadge renders medium white badges 1`] = `
+<div>
+  <span
+    class="MuiBadge-root css-8u7g6p-MuiBadge-root"
+  >
+    <span
+      class="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular css-14zn51v-MuiBadge-badge"
+    />
+  </span>
+</div>
+`;
+
 exports[`MKBadge renders small light badges 1`] = `
 <div>
   <span
