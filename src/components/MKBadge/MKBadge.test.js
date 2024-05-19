@@ -26,7 +26,7 @@ describe("MKBadge", () => {
   it("renders small light badges", () => {
     const { container } = render(
       <ThemeProvider theme={theme}>
-        <MKBadge color="light" size="small"></MKBadge>
+        <MKBadge indicator={true} color="light" size="small"></MKBadge>
       </ThemeProvider>
     );
 
@@ -36,7 +36,7 @@ describe("MKBadge", () => {
   it("renders medium white badges", () => {
     const { container } = render(
       <ThemeProvider theme={theme}>
-        <MKBadge color="white" size="medium"></MKBadge>
+        <MKBadge indicator={true} color="white" size="medium"></MKBadge>
       </ThemeProvider>
     );
 
@@ -46,7 +46,7 @@ describe("MKBadge", () => {
   it("renders large info badges", () => {
     const { container } = render(
       <ThemeProvider theme={theme}>
-        <MKBadge color="info" size="large"></MKBadge>
+        <MKBadge indicator={true} color="info" size="large"></MKBadge>
       </ThemeProvider>
     );
 
