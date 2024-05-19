@@ -52,4 +52,24 @@ describe("MKBadge", () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it("renders medium white contained badges", () => {
+    const { container } = render(
+      <ThemeProvider theme={theme}>
+        <MKBadge variant="contained" indicator={true} color="white" size="medium"></MKBadge>
+      </ThemeProvider>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it("renders large info contained badges", () => {
+    const { container } = render(
+      <ThemeProvider theme={theme}>
+        <MKBadge variant="contained" indicator={true} color="info" size="large"></MKBadge>
+      </ThemeProvider>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });
