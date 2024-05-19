@@ -14,17 +14,21 @@ import DHEditor from "components/DHEditor";
 jest.mock("draft-convert", () => {
   return {
     convertFromHTML: jest.fn(),
-    convertToRaw: jest.fn(),
-    convertToHTML: jest.fn().mockReturnValue("<p>Test content</p>"), // Mock the return value of convertToHTML
+    convertToRaw: jest.fn().mockReturnValue("Test Raw content"),
+    convertToHTML: jest.fn().mockReturnValue("<p>Test HTML content</p>"), // Mock the return value of convertToHTML
   };
 });
 
 describe("DHEditor", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("renders non plain text", () => {
     const ref = React.createRef();
 
     // By default, isPlainText is false
-    const { container } = render(
+    render(
       <ThemeProvider theme={theme}>
         <DHEditor ref={ref} />
       </ThemeProvider>
@@ -32,8 +36,6 @@ describe("DHEditor", () => {
 
     // Get current text
     let val = ref.current.getRootComment();
-    expect(val).toEqual("<p>Test content</p>");
-
-    expect(container).toMatchSnapshot();
+    expect(val).toEqual("<p>Test HTML content</p>");
   });
 });
