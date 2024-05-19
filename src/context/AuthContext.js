@@ -102,7 +102,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const deleteUser = (id, success, error) => {
-    deleteAccount(id, success, error, authTokens.access);
+    deleteAccount(id, success, error);
   };
 
   // Google login functions

@@ -171,19 +171,13 @@ describe("AccountsService", () => {
       error = jest.fn();
 
     // Fake user
-    const token = "NEIKLOT";
     const id = 18;
 
     // Delete user
-    deleteAccount(id, token, success, error);
+    deleteAccount(id, success, error);
 
     // Verify that deleteRequest was called corectly
-    expect(deleteRequest).toHaveBeenCalledWith(
-      "accounts/delete/" + id + "/",
-      success,
-      expect.any(Function),
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+    expect(deleteRequest).toHaveBeenCalledWith("accounts/delete/" + id + "/", success, error);
   });
 });
 

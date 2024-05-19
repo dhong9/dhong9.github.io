@@ -128,11 +128,6 @@ describe("DeleteAccount", () => {
 
     // Delete user
     fireEvent.click(deleteButton);
-    expect(deleteAccount).toHaveBeenCalledWith(
-      100,
-      expect.any(Function),
-      expect.any(Function),
-      mockToken
-    );
+    expect(deleteAccount).toHaveBeenCalledWith(100, expect.any(Function), expect.any(Function));
   });
 });

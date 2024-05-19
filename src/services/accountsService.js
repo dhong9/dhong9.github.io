@@ -86,20 +86,11 @@ export const updateProfileImage = (id, image, success, error) => {
 /**
  * Deletes user account
  * @param {number} id user ID
- * @param {string} token access token
  * @param {Function} success success callback
  * @param {Function} error error callback
  */
-export const deleteAccount = (id, token, success, error) => {
-  deleteRequest(
-    "accounts/delete/" + id + "/",
-    success,
-    (err) => {
-      console.log(err);
-      error(err);
-    },
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
+export const deleteAccount = (id, success, error) => {
+  deleteRequest("accounts/delete/" + id + "/", success, error);
 };
 
 /**
