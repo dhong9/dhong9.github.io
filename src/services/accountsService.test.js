@@ -105,12 +105,7 @@ describe("AccountsService", () => {
     loginAccount(user, success, error);
 
     // Verify that postRequest was called correctly
-    expect(postRequest).toHaveBeenCalledWith(
-      "accounts/token/",
-      user,
-      success,
-      expect.any(Function)
-    );
+    expect(postRequest).toHaveBeenCalledWith("accounts/token/", user, success, error);
   });
 
   it("updates an account", () => {

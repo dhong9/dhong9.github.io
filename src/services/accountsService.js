@@ -42,14 +42,11 @@ export const addAccount = (user, success, error) => {
 /**
  * Logs in a user
  * @param {object} user user login details
- * @param {*} success success callback
- * @param {*} error error callback
+ * @param {Function} success success callback
+ * @param {Function} error error callback
  */
 export const loginAccount = (user, success, error) => {
-  postRequest("accounts/token/", user, success, (err) => {
-    console.error(err);
-    error(err);
-  });
+  postRequest("accounts/token/", user, success, error);
 };
 
 /**
