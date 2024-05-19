@@ -89,11 +89,14 @@ function ResetPassword() {
           // Navigate to login
           history("/pages/authentication/sign-in");
         },
-        (err) => {
+        ({
+          response: {
+            data: { detail },
+          },
+        }) => {
           setResetSeverity("error");
-          setResetMessage("An error has occurred");
+          setResetMessage(detail);
           setSnackbarOpen(true);
-          console.error(err);
         }
       );
     }
