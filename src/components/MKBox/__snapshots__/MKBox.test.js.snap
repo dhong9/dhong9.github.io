@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MKBox renders gradient white Box 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-do2pae"
+  />
+</div>
+`;
