@@ -17,20 +17,20 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 // Component to test
-import SignInPage from "layouts/pages/authentication/sign-in";
+import ResetPassword from "layouts/pages/authentication/reset-password";
 
 // Mocks
-jest.mock("pages/LandingPages/SignIn", () => {
+jest.mock("pages/LandingPages/ResetPassword", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
     __esModule: true,
-    default: forwardRef(() => <div>SignIn</div>),
+    default: forwardRef(() => <div>ResetPassword</div>),
   };
 });
 
-describe("SignInPage", () => {
+describe("ResetPasswordPage", () => {
   it("renders", () => {
-    const { queryByText } = render(<SignInPage onsuccess={jest.fn} />);
-    expect(queryByText("SignIn")).toBeInTheDocument();
+    const { queryByText } = render(<ResetPassword onsuccess={jest.fn} />);
+    expect(queryByText("ResetPassword")).toBeInTheDocument();
   });
 });
