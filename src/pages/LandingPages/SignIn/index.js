@@ -87,6 +87,8 @@ function SignInBasic({ onsuccess }) {
     if (!formErrors[0]) {
       loginUser(username, password, rememberMe, onsuccess, (error) => {
         setLoginSeverity("error");
+        console.log("Login error:");
+        console.error(error);
 
         // Error reporting priorites:
         // 1. Username
