@@ -83,8 +83,13 @@ dhong9.github.io
     |   ├── fileMock.js
     |   ├── styleMock.js
     ├── public
-    │   ├── apple-icon.png
-    │   ├── favicon.png
+    |   ├── 404.html
+    │   ├── android-chrome-192x192.png
+    │   ├── android-chrome-512x512.png
+    |   ├── apple-touch-icon.png
+    │   ├── favicon-16x16.png
+    |   ├── favicon-32x32.png
+    |   ├── favicon.ico
     │   ├── index.html
     │   ├── manifest.json
     │   └── robots.txt
