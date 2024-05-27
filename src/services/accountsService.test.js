@@ -24,6 +24,7 @@ import {
 import {
   getUserProfile,
   addAccount,
+  activateAccount,
   loginAccount,
   updateAccount,
   updatePassword,
@@ -48,6 +49,7 @@ jest.mock("services/baseService", () => ({
 
 mock.onGet("/accounts/profiles/1").reply(200, userData);
 mock.onPost("accounts/users/").reply(200, userData);
+mock.onPost("accounts/users/activation/").reply(200, userData);
 mock.onPost("accounts/token/").reply(200, userData);
 mock.onPost("password_reset/").reply(200, userData);
 mock.onPost("password_reset/confirm/").reply(200, userData);
@@ -88,6 +90,27 @@ describe("AccountsService", () => {
 
     // Verify that postRequest was called correctly
     expect(postRequest).toHaveBeenCalledWith("accounts/users/", user, success, error);
+  });
+
+  it("activates an account", () => {
+    // Create success and error spy functions
+    const success = jest.fn(),
+      error = jest.fn();
+
+    // Fake user
+    const uid = "Ng",
+      token = "B737";
+
+    // Activate account
+    activateAccount(uid, token, success, error);
+
+    // Verify that postRequest was called correctly
+    expect(postRequest).toHaveBeenCalledWith(
+      "accounts/users/activation/",
+      { uid, token },
+      success,
+      error
+    );
   });
 
   it("logs in an account", () => {

@@ -31,6 +31,17 @@ export const addAccount = (user, success, error) => {
 };
 
 /**
+ * Activates a user account
+ * @param {string} uid
+ * @param {string} token
+ * @param {Function} success
+ * @param {Function} error
+ */
+export const activateAccount = (uid, token, success, error) => {
+  postRequest("accounts/users/activation/", { uid, token }, success, error);
+};
+
+/**
  * Gets user profile by ID
  * @param {number} id user ID
  * @param {Function} success success callback
@@ -62,11 +73,11 @@ export const updateAccount = (id, user, success, error) => {
 
 /**
  * Updates user password
- * @param {*} id user ID
- * @param {*} password input password
- * @param {*} password2 confirm password
- * @param {*} success success callback
- * @param {*} error error callback
+ * @param {number} id user ID
+ * @param {string} password input password
+ * @param {string} password2 confirm password
+ * @param {Function} success success callback
+ * @param {Function} error error callback
  */
 export const updatePassword = (id, password, password2, success, error) => {
   patchRequest("accounts/update/" + id + "/", { password, password2 }, success, error);
