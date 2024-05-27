@@ -87,8 +87,6 @@ function SignInBasic({ onsuccess }) {
     if (!errors[0]) {
       loginUser(username, password, rememberMe, onsuccess, (error) => {
         setLoginSeverity("error");
-        console.log("Login error:");
-        console.error(error);
 
         if (error.response?.data) {
           for (const field in error.response.data) {
