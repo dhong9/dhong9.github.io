@@ -47,15 +47,14 @@ jest.mock("services/baseService", () => ({
   deleteRequest: jest.fn(),
 }));
 
-mock.onGet("/accounts/profiles/1").reply(200, userData);
+mock.onGet("accounts/token/login/").reply(200, userData);
+mock.onGet("accounts/users/me/").reply(200, userData);
 mock.onPost("accounts/users/").reply(200, userData);
 mock.onPost("accounts/users/activation/").reply(200, userData);
-mock.onPost("accounts/token/").reply(200, userData);
 mock.onPost("password_reset/").reply(200, userData);
 mock.onPost("password_reset/confirm/").reply(200, userData);
 mock.onPut("accounts/update/10/").reply(200, userData);
 mock.onPatch("accounts/update/20/").reply(200, userData);
-mock.onPatch("accounts/profiles/20/").reply(200, userData);
 
 describe("AccountsService", () => {
   afterEach(() => {
@@ -64,13 +63,14 @@ describe("AccountsService", () => {
 
   it("gets a user", () => {
     // Create success and error spy functions
-    const success = jest.fn();
+    const success = jest.fn(),
+      error = jest.fn();
 
     // Get user
-    getUserProfile(1, success);
+    getUserProfile(success, error);
 
     // Verify that getRequest was called correctly
-    expect(getRequest).toHaveBeenCalledWith("accounts/profiles/1", success, console.error);
+    expect(getRequest).toHaveBeenCalledWith("accounts/users/me/", success, error);
   });
 
   it("adds an account", () => {
@@ -128,7 +128,7 @@ describe("AccountsService", () => {
     loginAccount(user, success, error);
 
     // Verify that postRequest was called correctly
-    expect(postRequest).toHaveBeenCalledWith("accounts/token/", user, success, error);
+    expect(postRequest).toHaveBeenCalledWith("accounts/token/login/", user, success, error);
   });
 
   it("updates an account", () => {

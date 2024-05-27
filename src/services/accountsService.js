@@ -42,22 +42,22 @@ export const activateAccount = (uid, token, success, error) => {
 };
 
 /**
- * Gets user profile by ID
- * @param {number} id user ID
- * @param {Function} success success callback
- */
-export const getUserProfile = (id, success) => {
-  getRequest("accounts/profiles/" + id, success, console.error);
-};
-
-/**
  * Logs in a user
  * @param {object} user user login details
  * @param {Function} success success callback
  * @param {Function} error error callback
  */
 export const loginAccount = (user, success, error) => {
-  postRequest("accounts/token/", user, success, error);
+  postRequest("accounts/token/login/", user, success, error);
+};
+
+/**
+ * Gets user profile by ID
+ * @param {number} id user ID
+ * @param {Function} success success callback
+ */
+export const getUserProfile = (success, error) => {
+  getRequest("accounts/users/me/", success, error);
 };
 
 /**
