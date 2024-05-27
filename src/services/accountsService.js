@@ -21,15 +21,6 @@ import {
 } from "services/baseService";
 
 /**
- * Gets user profile by ID
- * @param {number} id user ID
- * @param {Function} success success callback
- */
-export const getUserProfile = (id, success) => {
-  getRequest("accounts/profiles/" + id, success, console.error);
-};
-
-/**
  * Registers a user
  * @param {object} user user registration details
  * @param {Function} success success callback
@@ -37,6 +28,15 @@ export const getUserProfile = (id, success) => {
  */
 export const addAccount = (user, success, error) => {
   postRequest("users/", user, success, error);
+};
+
+/**
+ * Gets user profile by ID
+ * @param {number} id user ID
+ * @param {Function} success success callback
+ */
+export const getUserProfile = (id, success) => {
+  getRequest("accounts/profiles/" + id, success, console.error);
 };
 
 /**
