@@ -75,7 +75,7 @@ describe("SignIn", () => {
     );
 
     // Get form elements
-    const usernameInput = getByLabelText("Username");
+    const usernameInput = getByLabelText("Username or Email");
     const passwordInput = getByLabelText("Password");
     const signInButton = getByText("Sign In");
 
@@ -83,7 +83,7 @@ describe("SignIn", () => {
     fireEvent.click(signInButton);
 
     // Check that errors are shown
-    expect(queryByText("Username is required.")).toBeInTheDocument();
+    expect(queryByText("Username or email is required.")).toBeInTheDocument();
     expect(queryByText("Password is required.")).toBeInTheDocument();
 
     // Put data into the form
@@ -94,7 +94,7 @@ describe("SignIn", () => {
     fireEvent.click(signInButton);
 
     // Errors should clear
-    expect(queryByText("Username is required.")).not.toBeInTheDocument();
+    expect(queryByText("Username or email is required.")).not.toBeInTheDocument();
     expect(queryByText("Password is required.")).not.toBeInTheDocument();
   });
 });

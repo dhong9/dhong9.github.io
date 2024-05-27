@@ -75,7 +75,7 @@ function SignInBasic({ onsuccess }) {
     // Check form data
     const errors = [];
     if (!username.trim()) {
-      errors.push("Username is required.");
+      errors.push("Username or email is required.");
     }
     if (!password.trim()) {
       errors.push("Password is required.");
