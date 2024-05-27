@@ -87,8 +87,9 @@ function SignInBasic({ onsuccess }) {
     if (!formErrors[0]) {
       loginUser(username, password, rememberMe, onsuccess, (loginResponse) => {
         setLoginSeverity("error");
-        setLoginMessage(loginResponse.response.data.detail);
+        setLoginMessage("Cannot login");
         setSnackbarOpen(true);
+        console.error(loginResponse);
       });
     }
   };
