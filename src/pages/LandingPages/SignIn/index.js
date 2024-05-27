@@ -85,11 +85,28 @@ function SignInBasic({ onsuccess }) {
     // If form input requirements are met,
     // sign the user in
     if (!formErrors[0]) {
-      loginUser(username, password, rememberMe, onsuccess, (loginResponse) => {
+      loginUser(username, password, rememberMe, onsuccess, (error) => {
         setLoginSeverity("error");
-        setLoginMessage("Cannot login");
+
+        // Error reporting priorites:
+        // 1. Username
+        // 2. Email
+        // 3. Password
+        if (error.response) {
+          if (Object.prototype.hasOwnProperty.call(error.response.data, "username")) {
+            setLoginMessage(error.response.data["username"]);
+          } else if (Object.prototype.hasOwnProperty.call(error.response.data, "email")) {
+            setLoginMessage(error.response.data["email"]);
+          } else if (Object.prototype.hasOwnProperty.call(error.response.data, "password")) {
+            setLoginMessage(error.response.data["password"]);
+          } else if (Object.prototype.hasOwnProperty.call(error.response.data, "detail")) {
+            setLoginMessage(error.response.data["detail"]);
+          }
+        } else {
+          setLoginMessage("An unexpected error has occurred.");
+          console.error(error);
+        }
         setSnackbarOpen(true);
-        console.error(loginResponse);
       });
     }
   };
