@@ -84,7 +84,7 @@ function SignInBasic({ onsuccess }) {
 
     // If form input requirements are met,
     // sign the user in
-    if (!formErrors[0]) {
+    if (!errors[0]) {
       loginUser(username, password, rememberMe, onsuccess, (error) => {
         setLoginSeverity("error");
         console.log("Login error:");
