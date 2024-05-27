@@ -63,7 +63,7 @@ jest.mock("services/googleService", () => ({
 describe("SignUp", () => {
   it("signs up with success", () => {
     // Mock success endpoint
-    mock.onPost("https://dhong9.pythonanywhere.com/accounts/register/").reply(200, { data: {} });
+    mock.onPost("https://dhong9.pythonanywhere.com/users/").reply(200, { data: {} });
 
     const contextData = {
       loginUser: jest.fn(),
@@ -99,20 +99,27 @@ describe("SignUp", () => {
     fireEvent.change(usernameInput, { target: { value: "expertTester" } });
     fireEvent.change(emailInput, { target: { value: "expertTester@aol.com" } });
     fireEvent.change(passwordInput, { target: { value: "validPassword" } });
-    fireEvent.change(password2Input, { target: { value: "validPassword" } });
+    fireEvent.change(password2Input, { target: { value: "validPassword2" } });
 
     // Resubmit data
+    fireEvent.click(signUpButton);
+
+    // Flag user for passwords not matching
+    expect(queryByText("Password and confirmation values must match.")).toBeInTheDocument();
+
+    fireEvent.change(password2Input, { target: { value: "validPassword" } });
     fireEvent.click(signUpButton);
 
     // Errors should clear
     expect(queryByText("Username is required.")).not.toBeInTheDocument();
     expect(queryByText("Password is required.")).not.toBeInTheDocument();
     expect(queryByText("Password confirmation is required.")).not.toBeInTheDocument();
+    expect(queryByText("Password and confirmation values must match.")).not.toBeInTheDocument();
   });
 
   it("reports duplicate username", () => {
     // Force register endpoint to fail
-    mock.onPost("https://dhong9.pythonanywhere.com/accounts/register/").reply(400, {
+    mock.onPost("https://dhong9.pythonanywhere.com/users/").reply(400, {
       response: {
         data: {
           username: ["Username already in use"],
@@ -160,7 +167,7 @@ describe("SignUp", () => {
 
   it("reports duplicate email", () => {
     // Force register endpoint to fail
-    mock.onPost("https://dhong9.pythonanywhere.com/accounts/register/").reply(400, {
+    mock.onPost("https://dhong9.pythonanywhere.com/user/").reply(400, {
       response: {
         data: {
           email: ["Email already in use"],

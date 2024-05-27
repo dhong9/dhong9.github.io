@@ -78,35 +78,44 @@ function SignUpBasic() {
     if (!password2.trim()) {
       errors.push("Password confirmation is required.");
     }
+    if (password.trim() && password2.trim() && password !== password2) {
+      errors.push("Password and confirmation values must match.");
+    }
     setFormErrors(errors);
 
     // If form input requirements are met,
     // sign the user up
-    if (!formErrors[0]) {
+    if (!errors[0]) {
       registerUser(
         email,
         username,
         password,
-        password2,
         () => {
           // Show success message
           setSignupSeverity("success");
           setSignupMessage("Successfully signed up!");
           setSnackbarOpen(true);
         },
-        ({ response, message }) => {
+        (error) => {
           setSignupSeverity("error");
 
           // Error reporting priorites:
-          // 1. User exists
-          // 2. Email exists
-          // 3. Password does not meet requirements
-          if ("username" in response.data) {
-            setSignupMessage(response.data["username"][0]);
-          } else if ("email" in response.data) {
-            setSignupMessage(response.data["email"][0]);
+          // 1. Username
+          // 2. Email
+          // 3. Password
+          if (error.response) {
+            if (Object.prototype.hasOwnProperty.call(error.response.data, "username")) {
+              setSignupMessage(error.response.data["username"]);
+            } else if (Object.prototype.hasOwnProperty.call(error.response.data, "email")) {
+              setSignupMessage(error.response.data["email"]);
+            } else if (Object.prototype.hasOwnProperty.call(error.response.data, "password")) {
+              setSignupMessage(error.response.data["password"]);
+            } else if (Object.prototype.hasOwnProperty.call(error.response.data, "detail")) {
+              setSignupMessage(error.response.data["detail"]);
+            }
           } else {
-            setSignupMessage(message);
+            setSignupMessage("An unexpected error has occurred.");
+            console.error(error);
           }
           setSnackbarOpen(true);
         }

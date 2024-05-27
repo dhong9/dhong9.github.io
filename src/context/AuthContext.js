@@ -61,13 +61,12 @@ export const AuthProvider = ({ children }) => {
     );
   };
 
-  const registerUser = (email, username, password, password2, success, error) => {
+  const registerUser = (email, username, password, success, error) => {
     addAccount(
       {
         email,
         username,
         password,
-        password2,
       },
       () => {
         history("/pages/authentication/sign-in");
