@@ -63,9 +63,9 @@ function BaseLayout({ breadcrumb, title, children }) {
   useEffect(() => {
     // If there is a user, then get their profile info
     if (user) {
-      getUserProfile(user.user_id, ({ data: { image } }) => {
+      getUserProfile(({ data: { image } }) => {
         setProfileImage(image);
-      });
+      }, console.error);
     }
   });
 
