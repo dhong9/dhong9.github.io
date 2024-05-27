@@ -41,7 +41,9 @@ export const AuthProvider = ({ children }) => {
   const loginUser = (username, password, rememberMe, success, error) => {
     setRememberMe(rememberMe);
     loginAccount(
-      { username, password },
+      /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(username)
+        ? { email: username, password }
+        : { username, password },
       (response) => {
         if (response.status === 200) {
           // data has access and refresh tokens

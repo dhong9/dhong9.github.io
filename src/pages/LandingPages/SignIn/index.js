@@ -181,7 +181,7 @@ function SignInBasic({ onsuccess }) {
                   <MKBox mb={2}>
                     <MKInput
                       type="text"
-                      label="Username"
+                      label="Username or Email"
                       onChange={(e) => setUsername(e.target.value)}
                       fullWidth
                     />
