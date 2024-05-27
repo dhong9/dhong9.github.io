@@ -63,7 +63,7 @@ jest.mock("services/googleService", () => ({
 describe("SignUp", () => {
   it("signs up with success", () => {
     // Mock success endpoint
-    mock.onPost("https://dhong9.pythonanywhere.com/users/").reply(200, { data: {} });
+    mock.onPost("https://dhong9.pythonanywhere.com/accounts/users/").reply(200, { data: {} });
 
     const contextData = {
       loginUser: jest.fn(),
@@ -119,7 +119,7 @@ describe("SignUp", () => {
 
   it("reports duplicate username", () => {
     // Force register endpoint to fail
-    mock.onPost("https://dhong9.pythonanywhere.com/users/").reply(400, {
+    mock.onPost("https://dhong9.pythonanywhere.com/accounts/users/").reply(400, {
       response: {
         data: {
           username: ["Username already in use"],

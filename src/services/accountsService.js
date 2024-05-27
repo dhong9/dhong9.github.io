@@ -27,7 +27,7 @@ import {
  * @param {Function} error error callback
  */
 export const addAccount = (user, success, error) => {
-  postRequest("users/", user, success, error);
+  postRequest("accounts/users/", user, success, error);
 };
 
 /**

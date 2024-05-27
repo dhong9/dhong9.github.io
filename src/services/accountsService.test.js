@@ -47,7 +47,7 @@ jest.mock("services/baseService", () => ({
 }));
 
 mock.onGet("/accounts/profiles/1").reply(200, userData);
-mock.onPost("users/").reply(200, userData);
+mock.onPost("accounts/users/").reply(200, userData);
 mock.onPost("accounts/token/").reply(200, userData);
 mock.onPost("password_reset/").reply(200, userData);
 mock.onPost("password_reset/confirm/").reply(200, userData);
@@ -81,14 +81,13 @@ describe("AccountsService", () => {
       email: "eatMe@food.net",
       username: "neater",
       password: "abc123",
-      password2: "abc123",
     };
 
     // Add user
     addAccount(user, success, error);
 
     // Verify that postRequest was called correctly
-    expect(postRequest).toHaveBeenCalledWith("users/", user, success, error);
+    expect(postRequest).toHaveBeenCalledWith("accounts/users/", user, success, error);
   });
 
   it("logs in an account", () => {
