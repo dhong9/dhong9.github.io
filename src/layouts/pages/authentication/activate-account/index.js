@@ -12,17 +12,14 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useEffect, useContext } from "react";
+// React
+import { useParams } from "react-router-dom";
 
-// Authorization
-import AuthContext from "context/AuthContext";
+// Danyo pages
+import ActivateAccountBasic from "pages/LandingPages/ActivateAccount";
 
-function SignOutBasic() {
-  const { logoutUser } = useContext(AuthContext);
+export default function ActivateAccountPage() {
+  const { uid, token } = useParams();
 
-  useEffect(logoutUser, []);
-
-  return <div>Logging out...</div>;
+  return <ActivateAccountBasic uid={uid} token={token} />;
 }
-
-export default SignOutBasic;

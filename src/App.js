@@ -34,6 +34,7 @@ import routes from "routes";
 
 // Authentication
 import { AuthProvider } from "context/AuthContext";
+import ActivateAccountPage from "layouts/pages/authentication/activate-account";
 import ForgotPasswordPage from "layouts/pages/authentication/forgot-password";
 import ResetPasswordPage from "layouts/pages/authentication/reset-password";
 import SignInPage from "layouts/pages/authentication/sign-in";
@@ -157,6 +158,10 @@ export default function App() {
           <Route
             path="/pages/authentication/reset-password/:token"
             element={<ResetPasswordPage onsuccess={resetpasswordSuccess} />}
+          />
+          <Route
+            path="/pages/authentication/activate-account/:uid/:token"
+            element={<ActivateAccountPage onsuccess={resetpasswordSuccess} />}
           />
         </Routes>
       </AuthProvider>
