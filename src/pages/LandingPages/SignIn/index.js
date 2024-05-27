@@ -90,19 +90,9 @@ function SignInBasic({ onsuccess }) {
         console.log("Login error:");
         console.error(error);
 
-        // Error reporting priorites:
-        // 1. Username
-        // 2. Email
-        // 3. Password
-        if (error.response) {
-          if (Object.prototype.hasOwnProperty.call(error.response.data, "username")) {
-            setLoginMessage(error.response.data["username"]);
-          } else if (Object.prototype.hasOwnProperty.call(error.response.data, "email")) {
-            setLoginMessage(error.response.data["email"]);
-          } else if (Object.prototype.hasOwnProperty.call(error.response.data, "password")) {
-            setLoginMessage(error.response.data["password"]);
-          } else if (Object.prototype.hasOwnProperty.call(error.response.data, "detail")) {
-            setLoginMessage(error.response.data["detail"]);
+        if (error.response?.data) {
+          for (const field in error.response.data) {
+            setLoginMessage(error.response.data[field]);
           }
         } else {
           setLoginMessage("An unexpected error has occurred.");
