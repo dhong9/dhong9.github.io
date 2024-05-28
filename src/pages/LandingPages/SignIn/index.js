@@ -92,6 +92,8 @@ function SignInBasic({ onsuccess }) {
           for (const field in error.response.data) {
             setLoginMessage(error.response.data[field]);
           }
+        } else if (error.message) {
+          setLoginMessage(error.message);
         } else {
           setLoginMessage("An unexpected error has occurred.");
           console.error(error);
