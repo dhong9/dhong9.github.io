@@ -45,19 +45,17 @@ export const AuthProvider = ({ children }) => {
         ? { email: username, password }
         : { username, password },
       (response) => {
-        if (response.status === 200) {
-          // data has access and refresh tokens
-          const data = response.data;
-          setAuthTokens(data);
-          setUser(jwt_decode(data.access));
-          if (rememberMe) {
-            localStorage.setItem("authTokens", JSON.stringify(data));
-          } else {
-            sessionStorage.setItem("authTokens", JSON.stringify(data));
-          }
-          history("/");
-          success();
+        // data has access and refresh tokens
+        const data = response.data;
+        setAuthTokens(data);
+        setUser(jwt_decode(data.access));
+        if (rememberMe) {
+          localStorage.setItem("authTokens", JSON.stringify(data));
+        } else {
+          sessionStorage.setItem("authTokens", JSON.stringify(data));
         }
+        history("/");
+        success();
       },
       error
     );
