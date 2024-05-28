@@ -34,6 +34,14 @@ export const AuthProvider = ({ children }) => {
 
   const history = useNavigate();
 
+  /**
+   * Logs in a user
+   * @param {string} username username or email address
+   * @param {string} password password
+   * @param {boolean} rememberMe flag to remember user or not
+   * @param {Function} success success callback
+   * @param {Function} error error callback
+   */
   const loginUser = (username, password, rememberMe, success, error) => {
     setRememberMe(rememberMe);
     loginAccount(
@@ -41,12 +49,21 @@ export const AuthProvider = ({ children }) => {
         ? { email: username, password }
         : { username, password },
       (response) => {
+        // Unpack token data
         const { auth_token } = response.data;
+
+        // If user wants to be remembered,
+        // save their token in a local cache
         if (rememberMe) {
           localStorage.setItem("authTokens", auth_token);
-        } else {
+        }
+        // If not,
+        // just maintain their token until they close their session
+        else {
           sessionStorage.setItem("authTokens", auth_token);
         }
+
+        // Navigate to home page and show success status
         history("/");
         success();
       },
