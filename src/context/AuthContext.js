@@ -3,7 +3,13 @@ import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 
 // Services
-import { addAccount, loginAccount, updateAccount, deleteAccount } from "services/accountsService";
+import {
+  addAccount,
+  getUser,
+  loginAccount,
+  updateAccount,
+  deleteAccount,
+} from "services/accountsService";
 import { getGoogleUser } from "services/googleService";
 
 // prop-types is a library for typechecking of props
@@ -20,7 +26,7 @@ export const AuthProvider = ({ children }) => {
   const sessionToken = sessionStorage.getItem("authTokens");
   const localToken = localStorage.getItem("authTokens");
   const [authTokens, setAuthTokens] = useState(() => sessionToken || localToken || null);
-  const [user, setUser] = useState(() => sessionToken || localToken || null);
+  const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
 
   const history = useNavigate();
@@ -56,6 +62,9 @@ export const AuthProvider = ({ children }) => {
         // Navigate to home page and show success status
         history("/");
         success();
+
+        // Get user data
+        getUser(console.log, console.error);
       },
       error
     );
