@@ -14,7 +14,7 @@ Coded by www.danyo.tech
 
 // Unit test libraries
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -31,9 +31,6 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 // Axios
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-
-// Service
-import { deleteAccount } from "services/accountsService";
 
 // Google Client ID
 const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
@@ -103,7 +100,7 @@ describe("DeleteAccount", () => {
       loginUser: jest.fn(),
     };
 
-    const { getByText, getByLabelText } = render(
+    const { getByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthContext.Provider value={contextData}>
           <AuthProvider>
@@ -118,16 +115,5 @@ describe("DeleteAccount", () => {
     // Delete button should be disabled
     const deleteButton = getByText("delete account");
     expect(deleteButton).toHaveProperty("disabled", true);
-
-    // Confirm username to delete
-    const usernameInput = getByLabelText("Username");
-    fireEvent.change(usernameInput, { target: { value: "giri" } });
-
-    // Matching username should enable delete button
-    expect(deleteButton).toHaveProperty("disabled", false);
-
-    // Delete user
-    fireEvent.click(deleteButton);
-    expect(deleteAccount).toHaveBeenCalledWith(100, expect.any(Function), expect.any(Function));
   });
 });

@@ -1,16 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
-import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 // Services
-import {
-  addAccount,
-  loginAccount,
-  updateAccount,
-  deleteAccount,
-  refreshAccount,
-} from "services/accountsService";
+import { addAccount, loginAccount, updateAccount, deleteAccount } from "services/accountsService";
 import { getGoogleUser } from "services/googleService";
 
 // prop-types is a library for typechecking of props
@@ -28,9 +21,7 @@ export const AuthProvider = ({ children }) => {
   const localToken = localStorage.getItem("authTokens");
   const [authTokens, setAuthTokens] = useState(() => sessionToken || localToken || null);
   const [user, setUser] = useState(() => sessionToken || localToken || null);
-  const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState(null);
-  const [rememberMe, setRememberMe] = useState(false);
 
   const history = useNavigate();
 
@@ -43,7 +34,6 @@ export const AuthProvider = ({ children }) => {
    * @param {Function} error error callback
    */
   const loginUser = (username, password, rememberMe, success, error) => {
-    setRememberMe(rememberMe);
     loginAccount(
       /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(username)
         ? { email: username, password }
@@ -152,30 +142,6 @@ export const AuthProvider = ({ children }) => {
     googleLogin,
   };
 
-  const updateToken = () => {
-    if (authTokens?.refresh) {
-      refreshAccount(authTokens.refresh, (response) => {
-        if (response.status === 200) {
-          // data has access and refresh tokens
-          const data = response.data;
-          setAuthTokens(data);
-          setUser(jwt_decode(data.access));
-          if (rememberMe) {
-            localStorage.setItem("authTokens", JSON.stringify(data));
-          } else {
-            sessionStorage.setItem("authTokens", JSON.stringify(data));
-          }
-        } else {
-          logoutUser();
-        }
-
-        if (loading) {
-          setLoading(false);
-        }
-      });
-    }
-  };
-
   useEffect(() => {
     // Get Google user
     if (authTokens && authTokens.access_token) {
@@ -187,19 +153,7 @@ export const AuthProvider = ({ children }) => {
         console.error
       );
     }
-
-    if (!profile && loading) {
-      updateToken();
-    }
-
-    const REFRESH_INTERVAL = 1000 * 60 * 4; // 4 minutes
-    const interval = setInterval(() => {
-      if (!profile && authTokens) {
-        updateToken();
-      }
-    }, REFRESH_INTERVAL);
-    return () => clearInterval(interval);
-  }, [authTokens, loading]);
+  }, [authTokens]);
 
   return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>;
 };
