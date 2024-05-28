@@ -25,11 +25,6 @@ export const AuthProvider = ({ children }) => {
   // Getting auth token priority
   // 1. Session storage
   // 2. Local storage
-  axios.interceptors.request.use((config) => {
-    const token = sessionStorage.getItem("token") || localStorage.getItem("token");
-    config.headers.Authorization = token ? `Token ${token}` : null;
-    return config;
-  });
   const sessionToken = sessionStorage.getItem("authTokens");
   const localToken = localStorage.getItem("authTokens");
   const [authTokens, setAuthTokens] = useState(() =>
@@ -45,6 +40,11 @@ export const AuthProvider = ({ children }) => {
   const history = useNavigate();
 
   const loginUser = (username, password, rememberMe, success, error) => {
+    axios.interceptors.request.use((config) => {
+      const token = sessionStorage.getItem("token") || localStorage.getItem("token");
+      config.headers.Authorization = token ? `Token ${token}` : null;
+      return config;
+    });
     setRememberMe(rememberMe);
     loginAccount(
       /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(username)
