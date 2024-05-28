@@ -128,9 +128,7 @@ describe("AccountsService", () => {
     loginAccount(user, success, error);
 
     // Verify that postRequest was called correctly
-    expect(postRequest).toHaveBeenCalledWith("accounts/token/login/", user, success, error, {
-      Authorization: null,
-    });
+    expect(postRequest).toHaveBeenCalledWith("accounts/token/login/", user, success, error);
   });
 
   it("updates an account", () => {

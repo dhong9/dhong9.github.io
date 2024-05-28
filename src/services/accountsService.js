@@ -48,7 +48,7 @@ export const activateAccount = (uid, token, success, error) => {
  * @param {Function} error error callback
  */
 export const loginAccount = (user, success, error) => {
-  postRequest("accounts/token/login/", user, success, error, { Authorization: null });
+  postRequest("accounts/token/login/", user, success, error);
 };
 
 /**

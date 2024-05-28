@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 // Services
+import axios from "axios";
 import {
   addAccount,
   loginAccount,
@@ -24,6 +25,11 @@ export const AuthProvider = ({ children }) => {
   // Getting auth token priority
   // 1. Session storage
   // 2. Local storage
+  axios.interceptors.request.use((config) => {
+    const token = sessionStorage.getItem("token") || localStorage.getItem("token");
+    config.headers.Authorization = token ? `Token ${token}` : null;
+    return config;
+  });
   const sessionToken = sessionStorage.getItem("authTokens");
   const localToken = localStorage.getItem("authTokens");
   const [authTokens, setAuthTokens] = useState(() =>
