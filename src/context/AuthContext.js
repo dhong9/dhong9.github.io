@@ -26,12 +26,8 @@ export const AuthProvider = ({ children }) => {
   // 2. Local storage
   const sessionToken = sessionStorage.getItem("authTokens");
   const localToken = localStorage.getItem("authTokens");
-  const [authTokens, setAuthTokens] = useState(() =>
-    sessionToken ? JSON.parse(sessionToken) : localToken ? JSON.parse(localToken) : null
-  );
-  const [user, setUser] = useState(() =>
-    sessionToken ? jwt_decode(sessionToken) : localToken ? jwt_decode(localToken) : null
-  );
+  const [authTokens, setAuthTokens] = useState(() => sessionToken || localToken || null);
+  const [user, setUser] = useState(() => sessionToken || localToken || null);
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState(null);
   const [rememberMe, setRememberMe] = useState(false);
