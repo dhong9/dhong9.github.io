@@ -40,11 +40,6 @@ export const AuthProvider = ({ children }) => {
   const history = useNavigate();
 
   const loginUser = (username, password, rememberMe, success, error) => {
-    axios.interceptors.request.use((config) => {
-      const token = sessionStorage.getItem("token") || localStorage.getItem("token");
-      config.headers.Authorization = token ? `Token ${token}` : null;
-      return config;
-    });
     setRememberMe(rememberMe);
     loginAccount(
       /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(username)
