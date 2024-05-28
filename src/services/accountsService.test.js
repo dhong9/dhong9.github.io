@@ -22,6 +22,7 @@ import {
   deleteRequest,
 } from "services/baseService";
 import {
+  getUser,
   getUserProfile,
   addAccount,
   activateAccount,
@@ -47,6 +48,7 @@ jest.mock("services/baseService", () => ({
   deleteRequest: jest.fn(),
 }));
 
+mock.onGet("/accounts/profiles/1").reply(200, userData);
 mock.onGet("accounts/token/login/").reply(200, userData);
 mock.onGet("accounts/users/me/").reply(200, userData);
 mock.onPost("accounts/users/").reply(200, userData);
@@ -61,16 +63,27 @@ describe("AccountsService", () => {
     jest.clearAllMocks();
   });
 
-  it("gets a user", () => {
+  it("gets logged in user data", () => {
     // Create success and error spy functions
     const success = jest.fn(),
       error = jest.fn();
 
     // Get user
-    getUserProfile(success, error);
+    getUser(success, error);
 
     // Verify that getRequest was called correctly
     expect(getRequest).toHaveBeenCalledWith("accounts/users/me/", success, error);
+  });
+
+  it("gets a user", () => {
+    // Create success spy function
+    const success = jest.fn();
+
+    // Get user
+    getUserProfile(1, success);
+
+    // Verify that getRequest was called correctly
+    expect(getRequest).toHaveBeenCalledWith("accounts/profiles/1", success, console.error);
   });
 
   it("adds an account", () => {

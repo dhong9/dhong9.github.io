@@ -52,12 +52,21 @@ export const loginAccount = (user, success, error) => {
 };
 
 /**
+ * Gets logged in user data
+ * @param {Function} success success callback
+ * @param {Function} error error callback
+ */
+export const getUser = (success, error) => {
+  getRequest("accounts/users/me/", success, error);
+};
+
+/**
  * Gets user profile by ID
  * @param {number} id user ID
  * @param {Function} success success callback
  */
-export const getUserProfile = (success, error) => {
-  getRequest("accounts/users/me/", success, error);
+export const getUserProfile = (id, success) => {
+  getRequest("accounts/profiles/" + id, success, console.error);
 };
 
 /**
