@@ -71,6 +71,14 @@ export const AuthProvider = ({ children }) => {
     );
   };
 
+  /**
+   * Adds user to database
+   * @param {string} email email address
+   * @param {string} username username
+   * @param {string} password password
+   * @param {Function} success success callback
+   * @param {Function} error error callback
+   */
   const registerUser = (email, username, password, success, error) => {
     addAccount(
       {
@@ -79,6 +87,8 @@ export const AuthProvider = ({ children }) => {
         password,
       },
       () => {
+        // If the user successfully registered,
+        // take them so sign in page and display success message
         history("/pages/authentication/sign-in");
         success();
       },
