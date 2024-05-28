@@ -86,6 +86,8 @@ function SignInBasic({ onsuccess }) {
     // sign the user in
     if (!errors[0]) {
       loginUser(username, password, rememberMe, onsuccess, (error) => {
+        console.log("Error:");
+        console.error(error);
         setLoginSeverity("error");
 
         if (error.response?.data) {
