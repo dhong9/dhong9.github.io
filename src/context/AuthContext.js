@@ -46,14 +46,11 @@ export const AuthProvider = ({ children }) => {
         ? { email: username, password }
         : { username, password },
       (response) => {
-        // data has access and refresh tokens
-        const data = response.data;
-        setAuthTokens(data);
-        setUser(jwt_decode(data.access));
+        const { auth_token } = response.data;
         if (rememberMe) {
-          localStorage.setItem("authTokens", JSON.stringify(data));
+          localStorage.setItem("authTokens", auth_token);
         } else {
-          sessionStorage.setItem("authTokens", JSON.stringify(data));
+          sessionStorage.setItem("authTokens", auth_token);
         }
         history("/");
         success();
