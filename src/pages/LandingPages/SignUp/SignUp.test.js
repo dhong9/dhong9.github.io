@@ -67,6 +67,11 @@ describe("SignUp", () => {
 
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "signage",
+        email: "sign@me.net",
+        id: 83,
+      },
     };
     const { getByLabelText, getByText, queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
@@ -130,6 +135,11 @@ describe("SignUp", () => {
 
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "signup",
+        email: "signmeup@yahoo.com",
+        id: 2,
+      },
     };
     const { getByLabelText, getByText, queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
@@ -178,6 +188,10 @@ describe("SignUp", () => {
 
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "base",
+        email: "base@fish.com",
+      },
     };
     const { getByLabelText, getByText, queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>

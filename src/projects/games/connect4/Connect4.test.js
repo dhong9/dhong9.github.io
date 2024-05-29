@@ -111,6 +111,7 @@ describe("Connect4", () => {
       user: {
         username: "mathWizard",
         email: "bestWizard@mathematics.edu",
+        id: 1,
       },
     };
     const { container, getByRole } = render(

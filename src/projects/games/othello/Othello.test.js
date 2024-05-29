@@ -107,6 +107,7 @@ describe("Othello", () => {
       user: {
         username: "othello",
         email: "othelloPlayer@shakespeare.edu",
+        id: 1,
       },
     };
     const { container, getByRole } = render(

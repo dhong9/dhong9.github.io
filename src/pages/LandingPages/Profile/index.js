@@ -73,7 +73,7 @@ function Profile() {
   useEffect(() => {
     // If there is a user, then get their profile info
     if (user) {
-      getUserProfile(user.user_id, ({ data: { image } }) => {
+      getUserProfile(user.id, ({ data: { image } }) => {
         setProfileImage(image);
       });
     }

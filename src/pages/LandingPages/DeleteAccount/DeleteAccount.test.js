@@ -87,6 +87,7 @@ describe("DeleteAccount", () => {
       user: {
         username: "giri",
         email: "GMAnish@chess.com",
+        id: 0,
       },
     };
 

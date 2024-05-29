@@ -32,6 +32,11 @@ describe("SignOut", () => {
   it("renders", () => {
     const contextData = {
       logoutUser: jest.fn(),
+      user: {
+        username: "cali",
+        email: "cali@google.com",
+        id: 30,
+      },
     };
 
     const { queryByText } = render(

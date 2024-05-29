@@ -82,6 +82,7 @@ describe("Profile", () => {
       user: {
         username: "jane_doe",
         email: "doe_jane@aol.com",
+        id: 0,
       },
     };
     const { getByLabelText, getByText, queryByText } = render(

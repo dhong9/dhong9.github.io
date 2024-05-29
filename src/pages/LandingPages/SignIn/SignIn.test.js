@@ -62,6 +62,11 @@ describe("SignIn", () => {
   it("renders", () => {
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "legitUser",
+        email: "user@law.net",
+        id: 1,
+      },
     };
     const { getByLabelText, getByText, queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>

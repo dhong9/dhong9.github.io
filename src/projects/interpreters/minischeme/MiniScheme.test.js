@@ -101,6 +101,7 @@ describe("MiniScheme", () => {
       user: {
         username: "mini",
         email: "scheme@mini.com",
+        id: 8,
       },
     };
     const { container, getByText } = render(
@@ -125,6 +126,11 @@ describe("MiniScheme", () => {
   it("visualizes output", () => {
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "mini",
+        email: "scheme@mini.com",
+        id: 8,
+      },
     };
 
     const { container, getByRole, getByTestId, getByText } = render(

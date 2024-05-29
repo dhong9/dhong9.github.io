@@ -100,6 +100,7 @@ describe("BrainF", () => {
       user: {
         username: "einstein",
         email: "smartyPants@gmail.com",
+        id: 10,
       },
     };
     const { container, getByText } = render(
@@ -124,6 +125,11 @@ describe("BrainF", () => {
   it("visualizes output", () => {
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "einstein",
+        email: "smartyPants@gmail.com",
+        id: 10,
+      },
     };
 
     const { container, getByRole, getByTestId, getByText } = render(

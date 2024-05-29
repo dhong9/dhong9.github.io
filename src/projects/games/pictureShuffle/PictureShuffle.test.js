@@ -118,6 +118,7 @@ describe("PictureShuffle", () => {
       user: {
         username: "pictureMe",
         email: "pictureMe@yahoo.com",
+        id: 8,
       },
     };
     const { getByRole, queryAllByText } = render(
@@ -150,6 +151,11 @@ describe("PictureShuffle", () => {
   it("renders without user", () => {
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "pictureMe",
+        email: "pictureMe@yahoo.com",
+        id: 8,
+      },
     };
 
     const { queryAllByText } = render(

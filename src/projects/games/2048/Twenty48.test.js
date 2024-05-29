@@ -111,6 +111,7 @@ describe("2048", () => {
       user: {
         username: "proGamer",
         email: "urnotpro@chess.com",
+        id: 1,
       },
     };
     const { container, getByRole } = render(
@@ -143,6 +144,11 @@ describe("2048", () => {
   it("renders without user", () => {
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "proGamer",
+        email: "urnotpro@chess.com",
+        id: 1,
+      },
     };
 
     const { container } = render(

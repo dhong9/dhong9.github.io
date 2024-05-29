@@ -104,6 +104,11 @@ describe("Minesweeper", () => {
 
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "N737UA",
+        email: "united@united.com",
+        id: 29,
+      },
     };
     const { getByRole, queryAllByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
@@ -135,6 +140,11 @@ describe("Minesweeper", () => {
   it("renders without user", () => {
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "N737UA",
+        email: "united@united.com",
+        id: 29,
+      },
     };
 
     const { queryAllByText } = render(

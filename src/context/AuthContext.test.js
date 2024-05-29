@@ -71,6 +71,11 @@ describe("AuthContext", () => {
   it("renders", () => {
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "authUser",
+        email: "user@oath.com",
+        id: 19,
+      },
     };
 
     const { queryByText } = render(
@@ -94,6 +99,7 @@ describe("AuthContext", () => {
       user: {
         username: "hairyPotter",
         email: "harry@magic.edu",
+        id: 100,
       },
     };
 

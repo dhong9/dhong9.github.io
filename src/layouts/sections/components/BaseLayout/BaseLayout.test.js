@@ -75,6 +75,7 @@ describe("BaseLayout", () => {
       user: {
         username: "john_doe",
         email: "doe_a_dear@hotmail.com",
+        id: 9,
       },
     };
 
