@@ -34,7 +34,7 @@ function Othello() {
   const [comments, setComments] = useState([]);
   const [isPlainText, setIsPlainText] = useState(false);
 
-  const { profile } = useContext(AuthContext);
+  const { user, profile } = useContext(AuthContext);
 
   const handleChange = (event) => {
     const checked = event.target.checked;
