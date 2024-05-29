@@ -8,7 +8,6 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import jwtDecode from "jwt-decode";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
@@ -54,7 +53,6 @@ mock.onGet("/comments").reply(200, { data: { results: commentData } });
 mock.onPost("/comments").reply(201, commentData);
 
 // Define Mocks
-jest.mock("jwt-decode");
 jest.mock("react-p5", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -100,18 +98,9 @@ describe("Minesweeper", () => {
   });
 
   it("adds a comment", () => {
-    localStorage.setItem(
-      "authTokens",
-      JSON.stringify({ access: mockToken, refresh: refreshToken })
-    );
-
-    // Set a mock payload for the decoded token
-    const mockPayload = { user: "Kamala Harris", exp: 1893456000 };
-    jwtDecode.mockReturnValue(mockPayload);
-
     // Mock tokens
     const mockToken = "mocked_jwt_value";
-    const refreshToken = "mocked_refresh_value";
+    localStorage.setItem("authTokens", mockToken);
 
     const contextData = {
       loginUser: jest.fn(),

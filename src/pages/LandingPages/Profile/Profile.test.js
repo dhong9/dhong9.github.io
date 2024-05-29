@@ -9,7 +9,6 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import jwtDecode from "jwt-decode";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
@@ -35,7 +34,6 @@ mock.onGet("accounts/profiles/\\d+").reply(200, { data: { image: "myProfile.jpg"
 mock.onGet("accounts/users/me/").reply(200, {});
 
 // Define Mocks
-jest.mock("jwt-decode");
 jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -77,19 +75,14 @@ describe("Profile", () => {
   it("updates user profile", () => {
     // Mock tokens
     const mockToken = "mocked_jwt_value";
-    const refreshToken = "mocked_refresh_value";
-
-    localStorage.setItem(
-      "authTokens",
-      JSON.stringify({ access: mockToken, refresh: refreshToken })
-    );
-
-    // Set a mock payload for the decoded token
-    const mockPayload = { username: "John_Doe", user_id: 21, exp: 1893456000 };
-    jwtDecode.mockReturnValue(mockPayload);
+    localStorage.setItem("authTokens", mockToken);
 
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "jane_doe",
+        email: "doe_jane@aol.com",
+      },
     };
     const { getByLabelText, getByText, queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>

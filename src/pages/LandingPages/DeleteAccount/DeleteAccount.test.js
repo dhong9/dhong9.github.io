@@ -25,7 +25,6 @@ import DeleteAccount from "pages/LandingPages/DeleteAccount";
 
 // Authentication
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import jwtDecode from "jwt-decode";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
@@ -36,7 +35,6 @@ import MockAdapter from "axios-mock-adapter";
 const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Mocks
-jest.mock("jwt-decode");
 jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn,
 }));
@@ -82,23 +80,14 @@ describe("DeleteAccount", () => {
   it("deletes account", () => {
     // Mock tokens
     const mockToken = "mocked_jwt_value";
-    const refreshToken = "mocked_refresh_value";
-
-    localStorage.setItem(
-      "authTokens",
-      JSON.stringify({ access: mockToken, refresh: refreshToken })
-    );
-
-    // Set a mock payload for the decoded token
-    const mockPayload = {
-      username: "giri",
-      user_id: 100,
-      exp: 1893456000,
-    };
-    jwtDecode.mockReturnValue(mockPayload);
+    localStorage.setItem("authTokens", mockToken);
 
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "giri",
+        email: "GMAnish@chess.com",
+      },
     };
 
     const { getByText } = render(

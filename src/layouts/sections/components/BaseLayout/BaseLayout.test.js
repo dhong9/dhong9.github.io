@@ -10,7 +10,6 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import jwtDecode from "jwt-decode";
 import AuthContext, { AuthProvider } from "context/AuthContext";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -21,7 +20,6 @@ import BaseLayout from "layouts/sections/components/BaseLayout";
 const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Define Mocks
-jest.mock("jwt-decode");
 jest.mock("react-monaco-editor", () => {
   const { forwardRef } = jest.requireActual("react");
   return {
@@ -69,19 +67,15 @@ describe("BaseLayout", () => {
   it("renders", () => {
     // Mock tokens
     const mockToken = "mocked_jwt_value";
-    const refreshToken = "mocked_refresh_value";
+    localStorage.setItem("authTokens", mockToken);
 
-    localStorage.setItem(
-      "authTokens",
-      JSON.stringify({ access: mockToken, refresh: refreshToken })
-    );
-
-    // Set a mock payload for the decoded token
-    const mockPayload = { user: "John Doe", exp: 1893456000 };
-    jwtDecode.mockReturnValue(mockPayload);
-
+    // Dummy context data
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "john_doe",
+        email: "doe_a_dear@hotmail.com",
+      },
     };
 
     const { queryByText } = render(

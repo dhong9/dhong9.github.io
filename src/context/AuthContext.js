@@ -85,11 +85,7 @@ export const AuthProvider = ({ children }) => {
           //     email: ...,
           //     username: ...
           // }
-          if (rememberMe) {
-            localStorage.setItem("user", data);
-          } else {
-            sessionStorage.setItem("user", data);
-          }
+          setUser(data);
         }, console.error);
       },
       error

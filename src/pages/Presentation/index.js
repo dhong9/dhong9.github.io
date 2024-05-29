@@ -57,7 +57,8 @@ import { getProjects } from "services/projectsService";
 import { getUserProfile } from "services/accountsService";
 
 function Presentation() {
-  const { user, profile } = useContext(AuthContext);
+  const { profile } = useContext(AuthContext);
+  const user = sessionStorage.getItem("user") || localStorage.getItem("user") || null;
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [contactSeverity, setContactSeverity] = useState("info");

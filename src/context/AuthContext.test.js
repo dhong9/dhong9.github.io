@@ -19,7 +19,6 @@ import "@testing-library/jest-dom";
 // Authentication
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import jwtDecode from "jwt-decode";
 
 // Component to test
 import AuthContext, { AuthProvider } from "context/AuthContext";
@@ -41,8 +40,6 @@ jest.mock("services/baseService", () => ({
 jest.mock("services/googleService", () => ({
   getGoogleUser: jest.fn(),
 }));
-
-jest.mock("jwt-decode");
 
 const mock = new MockAdapter(axios);
 mock.onGet("accounts/users/me/").reply(200, {});
@@ -92,12 +89,12 @@ describe("AuthContext", () => {
       JSON.stringify({ access: mockToken, refresh: refreshToken })
     );
 
-    // Set a mock payload for the decoded token
-    const mockPayload = { user: "John Doe", exp: 1893456000 };
-    jwtDecode.mockReturnValue(mockPayload);
-
     const contextData = {
       loginUser: jest.fn(),
+      user: {
+        username: "hairyPotter",
+        email: "harry@magic.edu",
+      },
     };
 
     const { queryByText } = render(
