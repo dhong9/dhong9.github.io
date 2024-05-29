@@ -80,7 +80,17 @@ export const AuthProvider = ({ children }) => {
         success();
 
         // Get user data
-        getUser(console.log, console.error);
+        getUser(({ data }) => {
+          // data {
+          //     email: ...,
+          //     username: ...
+          // }
+          if (rememberMe) {
+            localStorage.setItem("user", data);
+          } else {
+            sessionStorage.setItem("user", data);
+          }
+        }, console.error);
       },
       error
     );
