@@ -24,6 +24,7 @@ jest.mock("services/baseService", () => ({
 
 // Setup axios mock
 const mock = new MockAdapter(axios);
+mock.onGet("accounts/users/me/").reply(200, {});
 mock.onPost("accounts/token/").reply(200, {
   status: 200,
   data: {

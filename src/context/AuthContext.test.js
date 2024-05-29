@@ -45,6 +45,7 @@ jest.mock("services/googleService", () => ({
 jest.mock("jwt-decode");
 
 const mock = new MockAdapter(axios);
+mock.onGet("accounts/users/me/").reply(200, {});
 mock.onPost("accounts/token/").reply(200, {
   data: {
     access: "abcdefghijklmnop",

@@ -44,6 +44,7 @@ jest.mock("services/googleService", () => ({
 }));
 
 const mock = new MockAdapter(axios);
+mock.onGet("accounts/users/me/").reply(200, {});
 mock.onPost("accounts/token/").reply(200, {
   data: {
     access: "abcdefghijklmnop",
