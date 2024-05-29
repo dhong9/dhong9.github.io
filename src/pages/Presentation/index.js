@@ -57,8 +57,7 @@ import { getProjects } from "services/projectsService";
 import { getUserProfile } from "services/accountsService";
 
 function Presentation() {
-  const { profile } = useContext(AuthContext);
-  const user = sessionStorage.getItem("user") || localStorage.getItem("user") || null;
+  const { user, profile } = useContext(AuthContext);
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [contactSeverity, setContactSeverity] = useState("info");
@@ -108,7 +107,7 @@ function Presentation() {
 
     // If there is a user, then get their profile info
     if (user) {
-      getUserProfile(user.user_id, ({ data: { image } }) => {
+      getUserProfile(user.id, ({ data: { image } }) => {
         setProfileImage(image);
       });
     }
