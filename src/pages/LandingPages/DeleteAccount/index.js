@@ -34,7 +34,7 @@ function DeleteAccount() {
     // Otherwise, the deleted user still maintains their session
     logoutUser();
 
-    deleteUser(user.user_id, console.log, console.error);
+    deleteUser(user.id, console.log, console.error);
   };
 
   return (

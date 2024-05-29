@@ -204,7 +204,7 @@ function Profile() {
       </Modal>
       <Modal open={editModalIsOpen} onClose={closeEditModal}>
         <MKBox sx={style}>
-          <UploadImage userId={user.user_id} />
+          <UploadImage userId={user.id} />
         </MKBox>
       </Modal>
       <MKBox
