@@ -119,7 +119,7 @@ function Profile() {
     // sign the user up
     if (!formErrors[0]) {
       updateUser(
-        user.user_id,
+        user.id,
         email,
         username,
         password,
