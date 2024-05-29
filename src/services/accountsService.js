@@ -56,8 +56,8 @@ export const loginAccount = (user, success, error) => {
  * @param {Function} success success callback
  * @param {Function} error error callback
  */
-export const getUser = (token, success, error) => {
-  getRequest("accounts/users/me/", success, error, { Authorization: `Token ${token}` });
+export const getUser = (success, error) => {
+  getRequest("accounts/users/me/", success, error);
 };
 
 /**

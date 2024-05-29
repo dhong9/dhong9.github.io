@@ -1,6 +1,21 @@
+/**
+=========================================================
+* Danyo-1.2
+=========================================================
+
+* Copyright 2024 Danyo (https://www.danyo.tech)
+
+Coded by www.danyo.tech
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
+
 import { createContext, useState, useEffect } from "react";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // Services
 import {
@@ -47,6 +62,7 @@ export const AuthProvider = ({ children }) => {
       (response) => {
         // Unpack token data
         const { auth_token } = response.data;
+        axios.defaults.headers.common["Authorization"] = "Token " + auth_token;
 
         // If user wants to be remembered,
         // save their token in a local cache
