@@ -27,10 +27,11 @@ export const createRequest = (endpoint, payload, success, error) =>
     .then(success)
     .catch(error);
 
-export const getRequest = (endpoint, success, error) =>
+export const getRequest = (endpoint, success, error, config = {}) =>
   axios
     .get(baseURL + endpoint, {
       maxRedirects: 0,
+      ...config,
     })
     .then(success)
     .catch(error);

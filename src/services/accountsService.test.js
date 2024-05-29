@@ -69,10 +69,13 @@ describe("AccountsService", () => {
       error = jest.fn();
 
     // Get user
-    getUser(success, error);
+    const token = "Branson";
+    getUser(token, success, error);
 
     // Verify that getRequest was called correctly
-    expect(getRequest).toHaveBeenCalledWith("accounts/users/me/", success, error);
+    expect(getRequest).toHaveBeenCalledWith("accounts/users/me/", success, error, {
+      Authorization: "Token Branson",
+    });
   });
 
   it("gets a user", () => {
