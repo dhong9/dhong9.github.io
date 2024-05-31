@@ -49,7 +49,7 @@ jest.mock("services/baseService", () => ({
 }));
 
 mock.onGet("/accounts/profiles/1").reply(200, userData);
-mock.onGet("accounts/auth/token/login/").reply(200, userData);
+mock.onGet("accounts/token/login/").reply(200, userData);
 mock.onGet("accounts/users/me/").reply(200, userData);
 mock.onPost("accounts/users/").reply(200, userData);
 mock.onPost("accounts/users/activation/").reply(200, userData);
