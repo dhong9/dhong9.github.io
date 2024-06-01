@@ -22,6 +22,7 @@ import {
   addAccount,
   getUser,
   loginAccount,
+  logoutAccount,
   updateAccount,
   deleteAccount,
 } from "services/accountsService";
@@ -135,16 +136,18 @@ export const AuthProvider = ({ children }) => {
     googleLogout();
 
     // Cleared saved data
-    localStorage.removeItem("authTokens");
-    sessionStorage.removeItem("authTokens");
-    localStorage.removeItem("user");
-    sessionStorage.removeItem("user");
-    setAuthTokens(null);
-    setUser(null);
-    setProfile(null);
+    logoutAccount(() => {
+      localStorage.removeItem("authTokens");
+      sessionStorage.removeItem("authTokens");
+      localStorage.removeItem("user");
+      sessionStorage.removeItem("user");
+      setAuthTokens(null);
+      setUser(null);
+      setProfile(null);
 
-    // Go back to home page
-    history("/");
+      // Go back to home page
+      history("/");
+    }, console.error);
   };
 
   const deleteUser = (id, success, error) => {
