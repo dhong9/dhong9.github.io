@@ -52,6 +52,7 @@ jest.mock("services/baseService", () => ({
 mock.onGet("/accounts/profiles/1").reply(200, userData);
 mock.onPost("accounts/token/login/").reply(200, userData);
 mock.onGet("accounts/users/me/").reply(200, userData);
+mock.onDelete("accounts/users/me/").reply(200, userData);
 mock.onPost("accounts/users/").reply(200, userData);
 mock.onPost("accounts/token/logout/").reply(200, userData);
 mock.onPost("accounts/users/activation/").reply(200, userData);
@@ -220,13 +221,18 @@ describe("AccountsService", () => {
       error = jest.fn();
 
     // Fake user
-    const id = 18;
+    const password = "fake_user";
 
     // Delete user
-    deleteAccount(id, success, error);
+    deleteAccount(password, success, error);
 
     // Verify that deleteRequest was called corectly
-    expect(deleteRequest).toHaveBeenCalledWith("accounts/delete/" + id + "/", success, error);
+    expect(deleteRequest).toHaveBeenCalledWith(
+      "accounts/users/me/",
+      { current_password: password },
+      success,
+      error
+    );
   });
 });
 

@@ -118,8 +118,8 @@ export const updateProfileImage = (id, image, success, error) => {
  * @param {Function} success success callback
  * @param {Function} error error callback
  */
-export const deleteAccount = (id, success, error) => {
-  deleteRequest("accounts/delete/" + id + "/", success, error);
+export const deleteAccount = (current_password, success, error) => {
+  deleteRequest("accounts/users/me/", { current_password }, success, error);
 };
 
 /**

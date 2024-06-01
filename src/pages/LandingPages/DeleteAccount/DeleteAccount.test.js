@@ -47,7 +47,7 @@ jest.mock("services/baseService", () => ({
 jest.mock("services/googleService", () => ({
   getGoogleUser: jest.fn(),
 }));
-jest.mock("services/accountsService", () => ({
+jest.mock("accounts/users/me/", () => ({
   deleteAccount: jest.fn(),
   refreshAccount: jest.fn(),
 }));
