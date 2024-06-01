@@ -23,6 +23,10 @@ import theme from "assets/theme";
 // Component to test
 import ResetPassword from "pages/LandingPages/ResetPassword";
 
+// Axios
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+
 // Mocks
 jest.mock("draft-convert", () => {
   return {
@@ -45,6 +49,10 @@ jest.mock("react-router-dom", () => ({
     token: "Unit_tests",
   }),
 }));
+
+// Setup axios mock
+const mock = new MockAdapter(axios);
+mock.onPost("password_reset/confirm/").reply(200, { response: { data: { detail: {} } } });
 
 describe("ResetPassword", () => {
   afterEach(() => {
