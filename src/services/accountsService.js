@@ -52,6 +52,15 @@ export const loginAccount = (user, success, error) => {
 };
 
 /**
+ * Logs out a user
+ * @param {Function} success success callback
+ * @param {Function} error error callback
+ */
+export const logoutAccount = (success, error) => {
+  postRequest("accounts/token/logout/", {}, success, error);
+};
+
+/**
  * Gets logged in user data
  * @param {Function} success success callback
  * @param {Function} error error callback

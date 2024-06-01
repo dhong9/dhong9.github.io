@@ -27,6 +27,7 @@ import {
   addAccount,
   activateAccount,
   loginAccount,
+  logoutAccount,
   updateAccount,
   updatePassword,
   updateProfileImage,
@@ -49,9 +50,10 @@ jest.mock("services/baseService", () => ({
 }));
 
 mock.onGet("/accounts/profiles/1").reply(200, userData);
-mock.onGet("accounts/token/login/").reply(200, userData);
+mock.onPost("accounts/token/login/").reply(200, userData);
 mock.onGet("accounts/users/me/").reply(200, userData);
 mock.onPost("accounts/users/").reply(200, userData);
+mock.onPost("accounts/token/logout/").reply(200, userData);
 mock.onPost("accounts/users/activation/").reply(200, userData);
 mock.onPost("password_reset/").reply(200, userData);
 mock.onPost("password_reset/confirm/").reply(200, userData);
@@ -141,7 +143,19 @@ describe("AccountsService", () => {
     loginAccount(user, success, error);
 
     // Verify that postRequest was called correctly
-    expect(postRequest).toHaveBeenCalledWith("accounts/auth/token/login/", user, success, error);
+    expect(postRequest).toHaveBeenCalledWith("accounts/token/login/", user, success, error);
+  });
+
+  it("logs out an account", () => {
+    // Create success and error spy functions
+    const success = jest.fn(),
+      error = jest.fn();
+
+    // Log out user
+    logoutAccount(success, error);
+
+    // Verify that postRequest was called correctly
+    expect(postRequest).toHaveBeenCalledWith("accounts/token/logout/", {}, success, error);
   });
 
   it("updates an account", () => {

@@ -85,7 +85,6 @@ export const AuthProvider = ({ children }) => {
           //     email: ...,
           //     username: ...
           // }
-          console.log(data);
           setUser(data);
         }, console.error);
       },
