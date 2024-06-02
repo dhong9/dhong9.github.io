@@ -151,9 +151,24 @@ export const AuthProvider = ({ children }) => {
     }, console.error);
   };
 
-  const deleteUser = (password, success, error) => {
+  const deleteUser = (password) => {
     axios.defaults.headers.common["Authorization"] = "Token " + authTokens;
-    deleteAccount(password, success, error);
+    deleteAccount(
+      password,
+      () => {
+        localStorage.removeItem("authTokens");
+        sessionStorage.removeItem("authTokens");
+        localStorage.removeItem("user");
+        sessionStorage.removeItem("user");
+        setAuthTokens(null);
+        setUser(null);
+        setProfile(null);
+
+        // Go back to home page
+        history("/");
+      },
+      console.error
+    );
   };
 
   // Google login functions
