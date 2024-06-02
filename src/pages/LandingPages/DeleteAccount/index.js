@@ -30,11 +30,7 @@ function DeleteAccount() {
   const handleDelete = (e) => {
     e.preventDefault();
 
-    // Sign out before deleting the user
-    // Otherwise, the deleted user still maintains their session
-    logoutUser();
-
-    deleteUser(password, console.log, console.error);
+    deleteUser(password, logoutUser, console.error);
   };
 
   return (
