@@ -123,13 +123,13 @@ describe("PictureShuffle", () => {
     };
     const { getByRole, queryAllByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
+        <AuthProvider>
+          <AuthContext.Provider value={contextData}>
             <ThemeProvider theme={theme}>
               <PictureShuffle />
             </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
+          </AuthContext.Provider>
+        </AuthProvider>
       </GoogleOAuthProvider>
     );
 
@@ -160,13 +160,13 @@ describe("PictureShuffle", () => {
 
     const { queryAllByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
+        <AuthProvider>
+          <AuthContext.Provider value={contextData}>
             <ThemeProvider theme={theme}>
               <PictureShuffle />
             </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
+          </AuthContext.Provider>
+        </AuthProvider>
       </GoogleOAuthProvider>
     );
     expect(queryAllByText("Picture Shuffle").length).toBe(2);
