@@ -64,6 +64,7 @@ export const AuthProvider = ({ children }) => {
         // Unpack token data
         const { auth_token } = response.data;
         axios.defaults.headers.common["Authorization"] = "Token " + auth_token;
+        setAuthTokens(auth_token);
 
         // If user wants to be remembered,
         // save their token in a local cache
@@ -151,6 +152,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const deleteUser = (password, success, error) => {
+    axios.defaults.headers.common["Authorization"] = "Token " + authTokens;
     deleteAccount(password, success, error);
   };
 
