@@ -23,9 +23,9 @@ import MKTypography from "components/MKTypography";
 import AuthContext from "context/AuthContext";
 
 function DeleteAccount() {
-  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  let { user, logoutUser, deleteUser } = useContext(AuthContext);
+  let { logoutUser, deleteUser } = useContext(AuthContext);
 
   const handleDelete = (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ function DeleteAccount() {
     // Otherwise, the deleted user still maintains their session
     logoutUser();
 
-    deleteUser(user.id, console.log, console.error);
+    deleteUser(password, console.log, console.error);
   };
 
   return (
@@ -43,20 +43,20 @@ function DeleteAccount() {
         Are You Sure?
       </MKTypography>
       <MKTypography variant="p" color="dark" mt={1}>
-        Type your username <strong>{user ? user.username : "Guest"}</strong> to confirm.
+        Type your password to confirm
       </MKTypography>
       <MKInput
-        type="text"
-        label="Username"
-        onChange={(e) => setUsername(e.target.value)}
-        value={username}
+        type="password"
+        label="Password"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
         fullWidth
       />
       <MKButton
         variant="gradient"
         color="error"
         onClick={handleDelete}
-        disabled={username !== (user ? user.username : "Guest")}
+        disabled={!!password}
         fullWidth
       >
         delete account

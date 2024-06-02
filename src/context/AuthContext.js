@@ -150,8 +150,8 @@ export const AuthProvider = ({ children }) => {
     }, console.error);
   };
 
-  const deleteUser = (id, success, error) => {
-    deleteAccount(id, success, error);
+  const deleteUser = (password, success, error) => {
+    deleteAccount(password, success, error);
   };
 
   // Google login functions

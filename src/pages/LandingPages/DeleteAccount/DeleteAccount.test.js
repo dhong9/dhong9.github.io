@@ -65,7 +65,7 @@ mock.onPost("accounts/token/refresh/").reply(200, {
     refresh: "rstuvwxyz",
   },
 });
-mock.onDelete("/delete\\/\\d+/").reply(200, {});
+mock.onDelete("accounts/users/me/").reply(200, {});
 
 describe("DeleteAccount", () => {
   beforeEach(() => {
