@@ -1,5 +1,6 @@
 // React testing libraries
 import { render, fireEvent } from "@testing-library/react";
+import React from "react";
 
 // Material Kit 2 React themes
 import { ThemeProvider } from "@mui/material/styles";
@@ -21,6 +22,7 @@ const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleuserc
 
 // Setup axios mock
 const mock = new MockAdapter(axios);
+const mockReact = React;
 
 const commentData = {
   comments: [
@@ -47,7 +49,9 @@ jest.mock("services/googleService", () => ({
 }));
 
 // Mock API data
-mock.onGet("accounts/users/me/").reply(200, {});
+mock
+  .onGet("accounts/users/me/")
+  .reply(200, { username: "johnAdams02", email: "johnAdams@usa.net", id: 0 });
 mock.onGet("/comments").reply(200, { data: { results: commentData } });
 mock.onPost("/comments").reply(201, commentData);
 
@@ -99,12 +103,8 @@ describe("Connect4", () => {
   it("adds a comment", () => {
     // Mock tokens
     const mockToken = "mocked_jwt_value";
-    const refreshToken = "mocked_refresh_value";
 
-    localStorage.setItem(
-      "authTokens",
-      JSON.stringify({ access: mockToken, refresh: refreshToken })
-    );
+    localStorage.setItem("authTokens", mockToken);
 
     const contextData = {
       loginUser: jest.fn(),
@@ -116,13 +116,13 @@ describe("Connect4", () => {
     };
     const { container, getByRole } = render(
       <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
+        <AuthProvider>
+          <AuthContext.Provider value={contextData}>
             <ThemeProvider theme={theme}>
               <Connect4 />
             </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
+          </AuthContext.Provider>
+        </AuthProvider>
       </GoogleOAuthProvider>
     );
 

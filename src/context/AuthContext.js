@@ -140,8 +140,6 @@ export const AuthProvider = ({ children }) => {
     logoutAccount(() => {
       localStorage.removeItem("authTokens");
       sessionStorage.removeItem("authTokens");
-      localStorage.removeItem("user");
-      sessionStorage.removeItem("user");
       setAuthTokens(null);
       setUser(null);
       setProfile(null);
@@ -158,8 +156,6 @@ export const AuthProvider = ({ children }) => {
       () => {
         localStorage.removeItem("authTokens");
         sessionStorage.removeItem("authTokens");
-        localStorage.removeItem("user");
-        sessionStorage.removeItem("user");
         setAuthTokens(null);
         setUser(null);
         setProfile(null);
