@@ -63,6 +63,7 @@ export const AuthProvider = ({ children }) => {
       (response) => {
         // Unpack token data
         const { auth_token } = response.data;
+        setAuthTokens(auth_token);
         axios.defaults.headers.common["Authorization"] = "Token " + auth_token;
 
         // If user wants to be remembered,
