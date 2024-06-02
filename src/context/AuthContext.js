@@ -152,7 +152,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const deleteUser = (password, success, error) => {
-    console.log("Token: ", authTokens);
     axios.defaults.headers.common["Authorization"] = "Token " + authTokens;
     deleteAccount(password, success, error);
   };
