@@ -112,13 +112,13 @@ describe("Minesweeper", () => {
     };
     const { getByRole, queryAllByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
+        <AuthProvider>
+          <AuthContext.Provider value={contextData}>
             <ThemeProvider theme={theme}>
               <Minesweeper />
             </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
+          </AuthContext.Provider>
+        </AuthProvider>
       </GoogleOAuthProvider>
     );
 
@@ -149,13 +149,13 @@ describe("Minesweeper", () => {
 
     const { queryAllByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
+        <AuthProvider>
+          <AuthContext.Provider value={contextData}>
             <ThemeProvider theme={theme}>
               <Minesweeper />
             </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
+          </AuthContext.Provider>
+        </AuthProvider>
       </GoogleOAuthProvider>
     );
     expect(queryAllByText("Minesweeper").length).toBe(2);
