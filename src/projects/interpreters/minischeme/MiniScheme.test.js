@@ -106,13 +106,13 @@ describe("MiniScheme", () => {
     };
     const { container, getByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
+        <AuthProvider>
+          <AuthContext.Provider value={contextData}>
             <ThemeProvider theme={theme}>
               <MiniScheme />
             </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
+          </AuthContext.Provider>
+        </AuthProvider>
       </GoogleOAuthProvider>
     );
 
