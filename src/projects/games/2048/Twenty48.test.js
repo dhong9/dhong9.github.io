@@ -99,12 +99,8 @@ describe("2048", () => {
   it("adds a comment", () => {
     // Mock tokens
     const mockToken = "mocked_jwt_value";
-    const refreshToken = "mocked_refresh_value";
 
-    localStorage.setItem(
-      "authTokens",
-      JSON.stringify({ access: mockToken, refresh: refreshToken })
-    );
+    localStorage.setItem("authTokens", mockToken);
 
     const contextData = {
       loginUser: jest.fn(),
@@ -116,13 +112,13 @@ describe("2048", () => {
     };
     const { container, getByRole } = render(
       <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
+        <AuthProvider>
+          <AuthContext.Provider value={contextData}>
             <ThemeProvider theme={theme}>
               <Twenty48 />
             </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
+          </AuthContext.Provider>
+        </AuthProvider>
       </GoogleOAuthProvider>
     );
 
