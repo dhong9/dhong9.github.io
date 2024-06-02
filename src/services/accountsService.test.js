@@ -227,9 +227,12 @@ describe("AccountsService", () => {
     deleteAccount(password, success, error);
 
     // Verify that deleteRequest was called corectly
-    expect(deleteRequest).toHaveBeenCalledWith("accounts/users/me/", success, error, {
-      current_password: password,
-    });
+    expect(deleteRequest).toHaveBeenCalledWith(
+      "accounts/users/me/",
+      { current_password: password },
+      success,
+      error
+    );
   });
 });
 
