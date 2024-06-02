@@ -56,7 +56,7 @@ function DeleteAccount() {
         variant="gradient"
         color="error"
         onClick={handleDelete}
-        disabled={!!password}
+        disabled={!password}
         fullWidth
       >
         delete account
