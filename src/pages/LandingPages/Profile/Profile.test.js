@@ -24,6 +24,7 @@ jest.mock("services/baseService", () => ({
   getRequest: jest.fn(),
   putRequest: jest.fn(),
   postRequest: jest.fn(),
+  patchRequest: jest.fn(),
 }));
 
 // Setup axios mock
@@ -32,6 +33,7 @@ const mock = new MockAdapter(axios);
 mock.onPost("accounts/update/").reply(200, { data: { image: "myProfile.jpg" } });
 mock.onGet("accounts/profiles/\\d+").reply(200, { data: { image: "myProfile.jpg" } });
 mock.onGet("accounts/users/me/").reply(200, {});
+mock.onPatch("accounts/users/me/").reply(200, {});
 
 // Define Mocks
 jest.mock("react-monaco-editor", () => {

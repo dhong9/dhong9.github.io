@@ -23,7 +23,6 @@ import {
   getUser,
   loginAccount,
   logoutAccount,
-  updateAccount,
   deleteAccount,
 } from "services/accountsService";
 import { getGoogleUser } from "services/googleService";
@@ -119,20 +118,6 @@ export const AuthProvider = ({ children }) => {
     );
   };
 
-  const updateUser = (id, email, username, password, password2, success, error) => {
-    updateAccount(
-      id,
-      {
-        email,
-        username,
-        password,
-        password2,
-      },
-      success,
-      error
-    );
-  };
-
   const logoutUser = () => {
     googleLogout();
 
@@ -189,7 +174,6 @@ export const AuthProvider = ({ children }) => {
     registerUser,
     loginUser,
     logoutUser,
-    updateUser,
     deleteUser,
     profile,
     googleLogin,

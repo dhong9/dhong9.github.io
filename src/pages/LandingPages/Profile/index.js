@@ -51,10 +51,10 @@ import bgImage from "assets/images/SF_Hologram.png";
 import defaultProfileImage from "assets/images/default_profile.jpg";
 
 // Services
-import { getUserProfile } from "services/accountsService";
+import { getUserProfile, updateAccount } from "services/accountsService";
 
 function Profile() {
-  const { user, profile, updateUser } = useContext(AuthContext);
+  const { user, profile } = useContext(AuthContext);
 
   const [username, setUsername] = useState(user?.username || profile?.name || "Guest");
   const [email, setEmail] = useState(user?.email || profile?.email || "");
@@ -121,12 +121,10 @@ function Profile() {
     // If form input requirements are met,
     // sign the user up
     if (!formErrors[0]) {
-      updateUser(
-        user.id,
+      updateAccount(
         email,
         username,
         password,
-        password2,
         () => {
           setProfileSeverity("success");
           setProfileMessage("Successfully updated profile!");
