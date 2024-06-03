@@ -113,6 +113,9 @@ function Profile() {
     if (!password2.trim()) {
       errors.push("Password confirmation is required.");
     }
+    if (password && password2 && password !== password2) {
+      errors.push("Passwords don't match.");
+    }
     setFormErrors(errors);
 
     // If form input requirements are met,

@@ -12,13 +12,7 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import {
-  getRequest,
-  postRequest,
-  putRequest,
-  patchRequest,
-  deleteRequest,
-} from "services/baseService";
+import { getRequest, postRequest, patchRequest, deleteRequest } from "services/baseService";
 
 /**
  * Registers a user
@@ -80,25 +74,12 @@ export const getUserProfile = (id, success) => {
 
 /**
  * Updates user account
- * @param {number} id user ID
  * @param {object} user user updated details
  * @param {Function} success success callback
  * @param {Function} error error callback
  */
-export const updateAccount = (id, user, success, error) => {
-  putRequest("accounts/update/" + id + "/", user, success, error);
-};
-
-/**
- * Updates user password
- * @param {number} id user ID
- * @param {string} password input password
- * @param {string} password2 confirm password
- * @param {Function} success success callback
- * @param {Function} error error callback
- */
-export const updatePassword = (id, password, password2, success, error) => {
-  patchRequest("accounts/update/" + id + "/", { password, password2 }, success, error);
+export const updateAccount = (user, success, error) => {
+  patchRequest("accounts/users/me/", user, success, error);
 };
 
 /**

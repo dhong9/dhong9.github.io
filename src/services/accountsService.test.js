@@ -14,13 +14,7 @@ Coded by www.danyo.tech
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import {
-  getRequest,
-  postRequest,
-  patchRequest,
-  putRequest,
-  deleteRequest,
-} from "services/baseService";
+import { getRequest, postRequest, patchRequest, deleteRequest } from "services/baseService";
 import {
   getUser,
   getUserProfile,
@@ -29,7 +23,6 @@ import {
   loginAccount,
   logoutAccount,
   updateAccount,
-  updatePassword,
   updateProfileImage,
   deleteAccount,
   refreshAccount,
@@ -52,13 +45,13 @@ jest.mock("services/baseService", () => ({
 mock.onGet("/accounts/profiles/1").reply(200, userData);
 mock.onPost("accounts/token/login/").reply(200, userData);
 mock.onGet("accounts/users/me/").reply(200, userData);
+mock.onPatch("accounts/users/me/").reply(200, userData);
 mock.onDelete("accounts/users/me/").reply(200, userData);
 mock.onPost("accounts/users/").reply(200, userData);
 mock.onPost("accounts/token/logout/").reply(200, userData);
 mock.onPost("accounts/users/activation/").reply(200, userData);
 mock.onPost("password_reset/").reply(200, userData);
 mock.onPost("password_reset/confirm/").reply(200, userData);
-mock.onPut("accounts/update/10/").reply(200, userData);
 mock.onPatch("accounts/update/20/").reply(200, userData);
 
 describe("AccountsService", () => {
@@ -171,32 +164,12 @@ describe("AccountsService", () => {
       password: "def",
       password2: "def",
     };
-    const id = 10;
 
     // Update user
-    updateAccount(id, user, success, error);
+    updateAccount(user, success, error);
 
     // Verify that putRequest was called correctly
-    expect(putRequest).toHaveBeenCalledWith("accounts/update/" + id + "/", user, success, error);
-  });
-
-  it("updates user password", () => {
-    // Create success and error spy functions
-    const success = jest.fn(),
-      error = jest.fn();
-
-    // Fake user
-    const id = 20;
-    const data = {
-      password: "!@qwiI",
-      password2: "!@qwiI",
-    };
-
-    // Update password
-    updatePassword(id, "!@qwiI", "!@qwiI", success, error);
-
-    // Verify that updatePassword was called correctly
-    expect(patchRequest).toHaveBeenCalledWith("accounts/update/20/", data, success, error);
+    expect(patchRequest).toHaveBeenCalledWith("accounts/users/me/", user, success, error);
   });
 
   it("updates user profile image", () => {

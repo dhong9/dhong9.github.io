@@ -87,13 +87,13 @@ describe("Profile", () => {
     };
     const { getByLabelText, getByText, queryByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
+        <AuthProvider>
+          <AuthContext.Provider value={contextData}>
             <ThemeProvider theme={theme}>
               <Profile />
             </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
+          </AuthContext.Provider>
+        </AuthProvider>
       </GoogleOAuthProvider>
     );
 
