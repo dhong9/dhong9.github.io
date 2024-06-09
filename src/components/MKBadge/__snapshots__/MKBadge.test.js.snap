@@ -3,7 +3,7 @@
 exports[`MKBadge renders large info badges 1`] = `
 <div>
   <span
-    class="MuiBadge-root css-1af6cc8-MuiBadge-root"
+    class="MuiBadge-root css-dpqpzw-MuiBadge-root"
   >
     <span
       class="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular css-14zn51v-MuiBadge-badge"
@@ -15,7 +15,7 @@ exports[`MKBadge renders large info badges 1`] = `
 exports[`MKBadge renders large info contained badges 1`] = `
 <div>
   <span
-    class="MuiBadge-root css-14yfsos-MuiBadge-root"
+    class="MuiBadge-root css-aon6b0-MuiBadge-root"
   >
     <span
       class="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular css-14zn51v-MuiBadge-badge"
@@ -27,7 +27,7 @@ exports[`MKBadge renders large info contained badges 1`] = `
 exports[`MKBadge renders medium white badges 1`] = `
 <div>
   <span
-    class="MuiBadge-root css-11o5x74-MuiBadge-root"
+    class="MuiBadge-root css-dpqpzw-MuiBadge-root"
   >
     <span
       class="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular css-14zn51v-MuiBadge-badge"
@@ -39,7 +39,7 @@ exports[`MKBadge renders medium white badges 1`] = `
 exports[`MKBadge renders medium white contained badges 1`] = `
 <div>
   <span
-    class="MuiBadge-root css-xccdpf-MuiBadge-root"
+    class="MuiBadge-root css-1e0cypa-MuiBadge-root"
   >
     <span
       class="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular css-14zn51v-MuiBadge-badge"

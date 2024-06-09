@@ -233,7 +233,7 @@ it("confirms password reset", () => {
 
   // Verify that confirm password reset was called correctly
   expect(postRequest).toHaveBeenCalledWith(
-    "password_reset/confirm/",
+    "users/reset_password_confirm/",
     { token, password },
     success,
     error

@@ -53,6 +53,7 @@ mock.onPost("accounts/token/refresh/").reply(200, {
     refresh: "rstuvwxyz",
   },
 });
+mock.onPost("accounts/users/activation/").reply(200, {});
 
 // Mock JWT components
 const mockToken = "mocked_jwt_value";

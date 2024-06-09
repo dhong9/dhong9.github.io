@@ -63,10 +63,10 @@ describe("MKAvatar", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("renders default success avatars", () => {
+  it("renders medium success avatars", () => {
     const { container } = render(
       <ThemeProvider theme={theme}>
-        <MKAvatar bgColor="success" size="ddh"></MKAvatar>
+        <MKAvatar bgColor="success" size="md"></MKAvatar>
       </ThemeProvider>
     );
 
