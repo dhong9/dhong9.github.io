@@ -69,11 +69,11 @@ function ForgotPassword() {
           setForgotMessage("Reset email sent!");
           setSnackbarOpen(true);
         },
-        ({ response }) => {
-          console.error(response);
+        ({ response: { data } }) => {
+          console.error(data);
           setForgotSeverity("error");
-          if (response.detail) {
-            setForgotMessage(response.detail);
+          if (data.detail) {
+            setForgotMessage(data.detail);
           } else {
             setForgotMessage("An unexpected error occurred.");
           }
