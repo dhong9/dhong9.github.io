@@ -86,8 +86,6 @@ function SignInBasic({ onsuccess }) {
     // sign the user in
     if (!errors[0]) {
       loginUser(username, password, rememberMe, onsuccess, (error) => {
-        console.log("Error:");
-        console.error(error);
         setLoginSeverity("error");
 
         if (error.response?.data) {
@@ -96,6 +94,8 @@ function SignInBasic({ onsuccess }) {
           }
         } else if (error.message) {
           setLoginMessage(error.message);
+        } else if (error.detail) {
+          setLoginMessage(error.detail);
         } else {
           setLoginMessage("An unexpected error has occurred.");
           console.error(error);
