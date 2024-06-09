@@ -51,10 +51,14 @@ jest.mock("react-router-dom", () => ({
 }));
 
 // Setup axios mock
+const userData = { response: { data: { detail: "Unable to reset password" } } };
 const mock = new MockAdapter(axios);
-mock.onPost("password_reset/confirm/").reply(200, { response: { data: { detail: {} } } });
 
 describe("ResetPassword", () => {
+  beforeEach(() => {
+    mock.onPost("users/reset_password/").reply(200, userData);
+    mock.onPost("users/reset_password_confirm/").reply(200, userData);
+  });
   afterEach(() => {
     jest.clearAllMocks();
   });

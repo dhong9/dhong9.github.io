@@ -95,14 +95,11 @@ function ResetPassword({ onsuccess }) {
           // Call parent's success callback
           onsuccess();
         },
-        ({
-          response: {
-            data: { detail },
-          },
-        }) => {
+        (err) => {
+          console.error(err);
           // Display error message on Snackbar
           setResetSeverity("error");
-          setResetMessage(detail);
+          setResetMessage("Unable to reset password");
           setSnackbarOpen(true);
         }
       );
