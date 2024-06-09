@@ -41,45 +41,11 @@ import { sendPasswordResetEmail } from "services/accountsService";
 import bgImage from "assets/images/dominos.png";
 
 function ForgotPassword() {
-  // We need ref in this, because we are dealing
-  // with JS setInterval to kep track of it and
-  // stop it when needed
-  const Ref = useRef(null);
-
   const [email, setEmail] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [forgotSeverity, setForgotSeverity] = useState("info");
   const [forgotMessage, setForgotMessage] = useState("");
   const [formError, setFormError] = useState("");
-  const [resetMessage, setResetMessage] = useState("reset password");
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [secondsRemaining, setSecondsRemaining] = useState(30);
-
-  const startTimer = () => {
-    // If you try to remove this line the
-    // updating of timer variable will be
-    // after 1000ms or 1sec
-    if (Ref.current) {
-      clearInterval(Ref.current);
-    }
-
-    if (secondsRemaining) {
-      const id = setInterval(() => {
-        setSecondsRemaining(secondsRemaining - 1);
-      }, 1000);
-      Ref.current = id;
-    } else {
-      setButtonDisabled(true);
-    }
-  };
-
-  useEffect(() => {
-    if (buttonDisabled) {
-      startTimer();
-    } else {
-      setSecondsRemaining(30);
-    }
-  }, [secondsRemaining]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -98,14 +64,6 @@ function ForgotPassword() {
       sendPasswordResetEmail(
         email,
         () => {
-          // Swap button message to resend
-          // It remains disabled for a period of time to allow user to receive email
-          setResetMessage("resend reset email");
-          setButtonDisabled(true);
-
-          // Start button disabled timer
-          startTimer();
-
           // Inform user of success
           setForgotSeverity("success");
           setForgotMessage("Reset email sent!");
@@ -193,24 +151,9 @@ function ForgotPassword() {
                       <span style={{ color: "red", fontSize: "10pt" }}>{formError}</span>
                     </MKBox>
                   )}
-                  {/* Inform user how long they have before they can request new reset token */}
-                  {buttonDisabled && (
-                    <MKBox display="flex" alignItems="center" ml={-1}>
-                      <span style={{ fontSize: "10pt" }}>
-                        Resend available in{" "}
-                        {secondsRemaining > 1 ? `${secondsRemaining} seconds` : "1 second"}
-                      </span>
-                    </MKBox>
-                  )}
                   <MKBox mt={4} mb={1}>
-                    <MKButton
-                      variant="gradient"
-                      color="info"
-                      onClick={handleSubmit}
-                      disabled={buttonDisabled}
-                      fullWidth
-                    >
-                      {resetMessage}
+                    <MKButton variant="gradient" color="info" onClick={handleSubmit} fullWidth>
+                      reset password
                     </MKButton>
                   </MKBox>
                 </MKBox>
