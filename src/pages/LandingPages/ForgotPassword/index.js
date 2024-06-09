@@ -70,6 +70,7 @@ function ForgotPassword() {
           setSnackbarOpen(true);
         },
         (error) => {
+          console.error(error);
           setForgotSeverity("error");
           if (error.detail) {
             setForgotMessage(error.detail);
