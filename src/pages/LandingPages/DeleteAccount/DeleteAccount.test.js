@@ -49,7 +49,6 @@ jest.mock("services/googleService", () => ({
 }));
 jest.mock("services/accountsService", () => ({
   deleteAccount: jest.fn(),
-  refreshAccount: jest.fn(),
 }));
 
 // Setup axios mock

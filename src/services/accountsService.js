@@ -104,22 +104,13 @@ export const deleteAccount = (current_password, success, error) => {
 };
 
 /**
- * Refreshes user account
- * @param {string} refresh refresh token
- * @param {Function} success success callback
- */
-export const refreshAccount = (refresh, success) => {
-  postRequest("accounts/token/refresh/", { refresh }, success, console.error);
-};
-
-/**
  * Sends password reset email
  * @param {string} email user email
  * @param {Function} success success callback
  * @param {Function} error error callback
  */
 export const sendPasswordResetEmail = (email, success, error) => {
-  postRequest("password_reset/", { email }, success, error);
+  postRequest("users/reset_password/", { email }, success, error);
 };
 
 /**
@@ -130,5 +121,5 @@ export const sendPasswordResetEmail = (email, success, error) => {
  * @param {Function} error error callback
  */
 export const confirmPasswordReset = (token, password, success, error) => {
-  postRequest("password_reset/confirm/", { token, password }, success, error);
+  postRequest("users/reset_password_confirm/", { token, password }, success, error);
 };

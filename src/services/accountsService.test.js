@@ -25,7 +25,6 @@ import {
   updateAccount,
   updateProfileImage,
   deleteAccount,
-  refreshAccount,
   sendPasswordResetEmail,
   confirmPasswordReset,
 } from "services/accountsService";
@@ -50,8 +49,8 @@ mock.onDelete("accounts/users/me/").reply(200, userData);
 mock.onPost("accounts/users/").reply(200, userData);
 mock.onPost("accounts/token/logout/").reply(200, userData);
 mock.onPost("accounts/users/activation/").reply(200, userData);
-mock.onPost("password_reset/").reply(200, userData);
-mock.onPost("password_reset/confirm/").reply(200, userData);
+mock.onPost("users/reset_password/").reply(200, userData);
+mock.onPost("users/reset_password_confirm/").reply(200, userData);
 mock.onPatch("accounts/update/20/").reply(200, userData);
 
 describe("AccountsService", () => {
@@ -206,24 +205,6 @@ describe("AccountsService", () => {
   });
 });
 
-it("refreshes an account", () => {
-  // Create success and error spy functions
-  const success = jest.fn();
-
-  // Fake user
-  const token = "MOCK_REFRESH";
-
-  // Refresh user
-  refreshAccount(token, success);
-
-  expect(postRequest).toHaveBeenCalledWith(
-    "accounts/token/refresh/",
-    { refresh: token },
-    success,
-    console.error
-  );
-});
-
 it("sends password reset email", () => {
   // Create success and error spy functions
   const success = jest.fn(),
@@ -236,7 +217,7 @@ it("sends password reset email", () => {
   sendPasswordResetEmail(email, success, error);
 
   // Verify that password reset was called correctly
-  expect(postRequest).toHaveBeenCalledWith("password_reset/", { email }, success, error);
+  expect(postRequest).toHaveBeenCalledWith("users/reset_password/", { email }, success, error);
 });
 
 it("confirms password reset", () => {
