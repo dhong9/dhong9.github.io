@@ -15,7 +15,7 @@ Coded by www.danyo.tech
 import axios from "axios";
 
 // API root
-const baseURL = "https://dhong9.pythonanywhere.com/";
+const baseURL = "https://dhong9.pythonanywhere.com/"; // dhong9
 
 // Generic HTTP requests
 export const createRequest = (endpoint, payload, success, error) =>
@@ -27,9 +27,9 @@ export const createRequest = (endpoint, payload, success, error) =>
     .then(success)
     .catch(error);
 
-export const getRequest = (endpoint, success, error) =>
+export const getRequest = (endpoint, success, error, base = baseURL) =>
   axios
-    .get(baseURL + endpoint, {
+    .get(base + endpoint, {
       maxRedirects: 0,
     })
     .then(success)
