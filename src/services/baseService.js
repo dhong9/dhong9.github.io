@@ -35,9 +35,9 @@ export const getRequest = (endpoint, success, error, base = baseURL) =>
     .then(success)
     .catch(error);
 
-export const postRequest = (endpoint, payload, success, error, config = {}) =>
+export const postRequest = (endpoint, payload, success, error, config = {}, base = baseURL) =>
   axios
-    .post(baseURL + endpoint, payload, { maxRedirects: 0, ...config })
+    .post(base + endpoint, payload, { maxRedirects: 0, ...config })
     .then(success)
     .catch(error);
 
