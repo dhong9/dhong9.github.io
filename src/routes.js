@@ -41,6 +41,7 @@ import Icon from "@mui/material/Icon";
 
 // @mui icons
 import DonutSmallIcon from "@mui/icons-material/DonutSmall";
+import GolfCourseIcon from "@mui/icons-material/GolfCourse";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 // Games
@@ -54,6 +55,7 @@ import Minesweeper from "projects/games/minesweeper";
 import BrainF from "projects/interpreters/brainF";
 import MiniScheme from "projects/interpreters/minischeme";
 import DoughnutRiderPage from "layouts/pages/doughnut-rider";
+import CodeInOnePage from "layouts/pages/code-in-one";
 
 const routes = [
   {
@@ -61,6 +63,12 @@ const routes = [
     route: "/doughnutRider",
     icon: <DonutSmallIcon />,
     component: <DoughnutRiderPage />,
+  },
+  {
+    name: "Code-In-One",
+    route: "/codeInOne",
+    icon: <GolfCourseIcon />,
+    component: <CodeInOnePage />,
   },
   {
     name: "Sections",
