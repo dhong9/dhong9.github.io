@@ -56,6 +56,18 @@ function VisualizeSubdivisions() {
   const draw = (p5) => {
     p5.background(200);
 
+    // Draw polygon
+    p5.strokeWeight(10);
+    p5.stroke(0, 255, 77);
+    for (let i = 0; i < coords.length - 1; i++) {
+      const [x1, y1] = coords[i];
+      const [x2, y2] = coords[i + 1];
+      p5.line(x1, y1, x2, y2);
+    }
+    const [x1, y1] = coords.at(-1);
+    const [x2, y2] = coords[0];
+    p5.line(x1, y1, x2, y2);
+
     // Draw points
     p5.strokeWeight(20);
     p5.stroke(255, 0, 98);
