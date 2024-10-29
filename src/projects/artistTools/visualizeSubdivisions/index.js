@@ -32,13 +32,15 @@ import Sketch from "react-p5";
 
 function VisualizeSubdivisions() {
   // Form elements
-  const [x1, setX1] = useState(0);
-  const [y1, setY1] = useState(0);
+  const [coords, setCoords] = useState([
+    [0, 0],
+    [0, 0],
+    [0, 0],
+  ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("x1:", x1);
-    console.log("y1:", y1);
+    console.log(coords);
   };
 
   const setup = (p5, canvasParentRef) => {
@@ -65,10 +67,30 @@ function VisualizeSubdivisions() {
     >
       {/* Input points */}
       <MKBox component="form" role="form">
-        <MKBox mb={2}>
-          <MKInput type="number" label="x1" onChange={(e) => setX1(e.target.value)} />
-          <MKInput type="number" label="y1" onChange={(e) => setY1(e.target.value)} />
-        </MKBox>
+        {[
+          coords.map((_, row) => (
+            <MKBox mb={2} key={row}>
+              <MKInput
+                type="number"
+                label={`x${-~row}`}
+                onChange={(e) => {
+                  const copy = [...coords];
+                  copy[row][0] = +e.target.value;
+                  setCoords(copy);
+                }}
+              />
+              <MKInput
+                type="number"
+                label={`y${-~row}`}
+                onChange={(e) => {
+                  const copy = [...coords];
+                  copy[row][1] = +e.target.value;
+                  setCoords(copy);
+                }}
+              />
+            </MKBox>
+          )),
+        ]}
         <MKBox mt={3} mb={1} textAlign="center">
           <MKButton variant="gradient" color="info" onClick={handleSubmit} component="h2" fullWidth>
             plot
