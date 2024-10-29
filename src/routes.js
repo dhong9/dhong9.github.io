@@ -132,7 +132,7 @@ const routes = [
         dropdown: true,
         collapse: [
           {
-            name: "artistTools",
+            name: "Visualize Subdivisions",
             route: "/sections/artistTools/visualizeSubdivisions",
             component: <VisualizeSubdivisions />,
           },
