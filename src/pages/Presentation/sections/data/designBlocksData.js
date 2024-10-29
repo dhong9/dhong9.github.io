@@ -71,4 +71,9 @@ export default [
       },
     ],
   },
+  {
+    title: "Artist Tools",
+    description: "Utilitities for digiital art",
+    items: [],
+  },
 ];
