@@ -57,6 +57,9 @@ import MiniScheme from "projects/interpreters/minischeme";
 import DoughnutRiderPage from "layouts/pages/doughnut-rider";
 import CodeInOnePage from "layouts/pages/code-in-one";
 
+// Artist tools
+import VisualizeSubdivisions from "projects/artistTools/visualizeSubdivisions";
+
 const routes = [
   {
     name: "Doughnut Rider",
@@ -120,6 +123,18 @@ const routes = [
             name: "minischeme",
             route: "/sections/interpreters/minischeme",
             component: <MiniScheme />,
+          },
+        ],
+      },
+      {
+        name: "Artist Tools",
+        description: "See all artist tools",
+        dropdown: true,
+        collapse: [
+          {
+            name: "artistTools",
+            route: "/sections/artistTools/visualizeSubdivisions",
+            component: <VisualizeSubdivisions />,
           },
         ],
       },
