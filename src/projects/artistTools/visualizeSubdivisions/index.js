@@ -33,9 +33,9 @@ import Sketch from "react-p5";
 function VisualizeSubdivisions() {
   // Form elements
   const [coords, setCoords] = useState([
-    [0, 0],
-    [0, 0],
-    [0, 0],
+    [20, 100],
+    [150, 350],
+    [250, 120],
   ]);
 
   const handleSubmit = (e) => {
@@ -55,6 +55,13 @@ function VisualizeSubdivisions() {
 
   const draw = (p5) => {
     p5.background(200);
+
+    // Draw points
+    p5.strokeWeight(20);
+    p5.stroke(255, 0, 98);
+    for (const [x, y] of coords) {
+      p5.point(x, y);
+    }
   };
 
   return (
