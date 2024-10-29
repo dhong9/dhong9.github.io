@@ -20,11 +20,10 @@ import BaseLayout from "layouts/sections/components/BaseLayout";
 import View from "layouts/sections/components/View";
 
 // Material Kit 2 React components
+import MKBox from "components/MKBox";
+import MKTypography from "components/MKTypography";
 import MKInput from "components/MKInput";
-
-// Form
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import MKButton from "components/MKButton";
 
 // Visualize subdivisions code
 import visualizeSubdivisionsCode from "projects/artistTools/visualizeSubdivisions/code";
@@ -35,6 +34,13 @@ import Sketch from "react-p5";
 function VisualizeSubdivisions() {
   // Form elements
   const [x1, setX1] = useState(0);
+  const [y1, setY1] = useState(0);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("x1:", x1);
+    console.log("y1:", y1);
+  };
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
@@ -59,20 +65,17 @@ function VisualizeSubdivisions() {
       ]}
     >
       {/* Input points */}
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <MKInput
-              type="number"
-              label="x"
-              onChange={(e) => setX1(e.target.value)}
-              value={x1}
-              fullWidth
-            />
-          }
-          label="x1"
-        />
-      </FormGroup>
+      <MKBox component="form" role="form">
+        <MKBox mb={2}>
+          <MKInput type="number" label="x1" onChange={(e) => setX1(e.target.value)} fullWidth />
+          <MKInput type="number" label="y1" onChange={(e) => setY1(e.target.value)} fullWidth />
+        </MKBox>
+        <MKBox mt={3} mb={1} textAlign="center">
+          <MKButton variant="gradient" color="info" onClick={handleSubmit} component="h2" fullWidth>
+            plot
+          </MKButton>
+        </MKBox>
+      </MKBox>
 
       <View title="Visualize Subdivisions" code={visualizeSubdivisionsCode} height="40rem">
         <Sketch setup={setup} draw={draw} />
