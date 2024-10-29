@@ -66,8 +66,8 @@ function VisualizeSubdivisions() {
       {/* Input points */}
       <MKBox component="form" role="form">
         <MKBox mb={2}>
-          <MKInput type="number" label="x1" onChange={(e) => setX1(e.target.value)} fullWidth />
-          <MKInput type="number" label="y1" onChange={(e) => setY1(e.target.value)} fullWidth />
+          <MKInput type="number" label="x1" onChange={(e) => setX1(e.target.value)} />
+          <MKInput type="number" label="y1" onChange={(e) => setY1(e.target.value)} />
         </MKBox>
         <MKBox mt={3} mb={1} textAlign="center">
           <MKButton variant="gradient" color="info" onClick={handleSubmit} component="h2" fullWidth>
