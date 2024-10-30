@@ -15,7 +15,7 @@ Coded by www.danyo.tech
 export const getPolyPoints = (points) => {
   const polyPoints = [];
 
-  for (let i = 0; i < points.length; i++) {
+  for (let i = 0; i < points.length - 1; i++) {
     const [x1, y1] = points[i];
     const [x2, y2] = points[i + 1];
     const midX = (x2 + x1) / 2,
