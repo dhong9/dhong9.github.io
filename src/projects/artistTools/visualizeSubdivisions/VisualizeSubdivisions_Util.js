@@ -24,6 +24,13 @@ export const getPolyPoints = (points) => {
     polyPoints.push([midX, midY]);
   }
 
+  const [x1, y1] = points.at(-1);
+  const [x2, y2] = points[0];
+  const midX = (x2 + x1) / 2,
+    midY = (y2 + y1) / 2;
+  polyPoints.push(points.at(-1));
+  polyPoints.push([midX, midY]);
+
   return polyPoints;
 };
 
