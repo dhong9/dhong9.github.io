@@ -25,6 +25,7 @@ import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 
 // Visualize subdivisions code
+import VisualizeSubdivisions_Util from "projects/artistTools/visualizeSubdivisions/VisualizeSubdivisions_Util";
 import visualizeSubdivisionsCode from "projects/artistTools/visualizeSubdivisions/code";
 
 // p5
@@ -37,6 +38,9 @@ function VisualizeSubdivisions() {
     [150, 350],
     [250, 120],
   ]);
+  const [subdivisions, setSubdivisions] = useState(2);
+
+  const visualizeSubdivisions_Util = new VisualizeSubdivisions_Util(coords, subdivisions);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,6 +71,16 @@ function VisualizeSubdivisions() {
     const [x1, y1] = coords.at(-1);
     const [x2, y2] = coords[0];
     p5.line(x1, y1, x2, y2);
+
+    // Show subdivision points
+    p5.strokeWeight(5);
+    p5.stroke(98, 0, 255);
+    const subdivPoints = visualizeSubdivisions_Util.getSubdivPoints();
+    for (const pointList of subdivPoints) {
+      for (const [x, y] of pointList) {
+        p5.point(x, y);
+      }
+    }
 
     // Draw points
     p5.strokeWeight(20);
@@ -110,6 +124,13 @@ function VisualizeSubdivisions() {
             </MKBox>
           )),
         ]}
+        <MKBox mb={2}>
+          <MKInput
+            type="number"
+            label="Subdivisions"
+            onChange={(e) => setSubdivisions(+e.target.value)}
+          />
+        </MKBox>
         <MKBox mt={3} mb={1} textAlign="center">
           <MKButton variant="gradient" color="info" onClick={handleSubmit} component="h2" fullWidth>
             plot
