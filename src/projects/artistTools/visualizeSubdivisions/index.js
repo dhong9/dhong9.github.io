@@ -91,7 +91,7 @@ function VisualizeSubdivisions() {
     p5.line(x1, y1, x2, y2);
     p5.line(x1, y1, x2, y2);
 
-    const subdivPoints = getSubdivPointsLine(polyPoints[i], polyPoints[i + 1]);
+    const subdivPoints = getSubdivPointsLine(polyPoints.at(-1), polyPoints[0]);
 
     // Show subdivision points
     p5.strokeWeight(5);
