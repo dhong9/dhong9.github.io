@@ -43,6 +43,7 @@ function VisualizeSubdivisions() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(coords);
+    console.log(subdivisions);
   };
 
   const setup = (p5, canvasParentRef) => {
