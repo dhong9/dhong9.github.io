@@ -26,3 +26,16 @@ export const getPolyPoints = (points) => {
 
   return polyPoints;
 };
+
+export const getSubdivPointsLine = ([x1, y1], [x2, y2], subdivisions) => {
+  const dx = (x2 - x1) / -~subdivisions,
+    dy = (y2 - y1) / -~subdivisions;
+
+  const subdivPoints = [];
+
+  for (let i = 0; i < subdivisions; i++) {
+    subdivPoints.push([x1 - ~i * dx, y1 - ~i * dy]);
+  }
+
+  return subdivPoints;
+};
