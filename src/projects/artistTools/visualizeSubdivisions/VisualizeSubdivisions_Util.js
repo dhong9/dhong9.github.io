@@ -35,10 +35,10 @@ class VisualizeSubdivisions_Util {
     // Last point and first point
     const [x1, y1] = this.points.at(-1);
     const [x2, y2] = this.points[0];
-    const dx = (x2 - x1) / this.subdivisions,
+    const dx = (x2 - x1) / -~this.subdivisions,
       dy = (y2 - y1) / this.subdivisions;
     const tempPoints = [];
-    for (let j = 0; j < this.subdivisions; j++) {
+    for (let j = 0; j < -~this.subdivisions; j++) {
       tempPoints.push([x1 - ~j * dx, y1 - ~j * dy]);
     }
     subdivPoints.push(tempPoints);
