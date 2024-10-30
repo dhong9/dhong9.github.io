@@ -25,7 +25,7 @@ import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 
 // Visualize subdivisions code
-import VisualizeSubdivisions_Util from "projects/artistTools/visualizeSubdivisions/VisualizeSubdivisions_Util";
+import { getPolyPoints } from "projects/artistTools/visualizeSubdivisions/VisualizeSubdivisions_Util";
 import visualizeSubdivisionsCode from "projects/artistTools/visualizeSubdivisions/code";
 
 // p5
@@ -39,8 +39,6 @@ function VisualizeSubdivisions() {
     [250, 120],
   ]);
   const [subdivisions, setSubdivisions] = useState(2);
-
-  const visualizeSubdivisions_Util = new VisualizeSubdivisions_Util(coords, subdivisions);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,32 +58,20 @@ function VisualizeSubdivisions() {
   const draw = (p5) => {
     p5.background(200);
 
+    const polyPoints = getPolyPoints(coords);
+
     // Draw polygon
     p5.strokeWeight(10);
     p5.stroke(0, 255, 77);
-    for (let i = 0; i < coords.length - 1; i++) {
-      const [x1, y1] = coords[i];
-      const [x2, y2] = coords[i + 1];
-      p5.line(x1, y1, x2, y2);
-    }
-    const [x1, y1] = coords.at(-1);
-    const [x2, y2] = coords[0];
-    p5.line(x1, y1, x2, y2);
 
     // Show subdivision points
     p5.strokeWeight(5);
     p5.stroke(98, 0, 255);
-    const subdivPoints = visualizeSubdivisions_Util.getSubdivPoints();
-    for (const pointList of subdivPoints) {
-      for (const [x, y] of pointList) {
-        p5.point(x, y);
-      }
-    }
 
     // Draw points
     p5.strokeWeight(20);
     p5.stroke(255, 0, 98);
-    for (const [x, y] of coords) {
+    for (const [x, y] of polyPoints) {
       p5.point(x, y);
     }
   };

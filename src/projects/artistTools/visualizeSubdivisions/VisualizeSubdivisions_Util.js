@@ -12,39 +12,22 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-class VisualizeSubdivisions_Util {
-  constructor(points, subdivisions) {
-    this.points = points;
-    this.subdivisions = subdivisions;
+export const getPolyPoints = (points) => {
+  const polyPoints = [];
+  for (let i = 0; i < points.length; i++) {
+    const [x1, y1] = points[i];
+    const [x2, y2] = this.points[i + 1];
+    const midX = (x2 + x1) / 2,
+      midY = (y2 + y1) / 2;
+    polyPoints.push([midX, midY]);
   }
 
-  getSubdivPoints() {
-    const subdivPoints = [];
-    for (let i = 0; i < this.points.length - 1; i++) {
-      const [x1, y1] = this.points[i];
-      const [x2, y2] = this.points[i + 1];
-      const dx = (x2 - x1) / -~this.subdivisions,
-        dy = (y2 - y1) / -~this.subdivisions;
-      const tempPoints = [];
-      for (let j = 0; j < this.subdivisions; j++) {
-        tempPoints.push([x1 - ~j * dx, y1 - ~j * dy]);
-      }
-      subdivPoints.push(tempPoints);
-    }
+  // Last point and first point
+  const [x1, y1] = this.points.at(-1);
+  const [x2, y2] = this.points[0];
+  const midX = (x2 + x1) / 2,
+    midY = (y2 + y1) / 2;
+  polyPoints.push([midX, midY]);
 
-    // Last point and first point
-    const [x1, y1] = this.points.at(-1);
-    const [x2, y2] = this.points[0];
-    const dx = (x2 - x1) / -~this.subdivisions,
-      dy = (y2 - y1) / this.subdivisions;
-    const tempPoints = [];
-    for (let j = 0; j < -~this.subdivisions; j++) {
-      tempPoints.push([x1 - ~j * dx, y1 - ~j * dy]);
-    }
-    subdivPoints.push(tempPoints);
-
-    return subdivPoints;
-  }
-}
-
-export default VisualizeSubdivisions_Util;
+  return polyPoints;
+};
