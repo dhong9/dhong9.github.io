@@ -63,6 +63,15 @@ function VisualizeSubdivisions() {
     // Draw polygon
     p5.strokeWeight(10);
     p5.stroke(0, 255, 77);
+    for (let i = 0; i < polyPoints.length; i++) {
+      const [x1, y1] = polyPoints[i];
+      const [x2, y2] = polyPoints[i + 1];
+      p5.line(x1, y1, x2, y2);
+    }
+    // Connect last point with first point
+    const [x1, y1] = polyPoints.at(-1);
+    const [x2, y2] = polyPoints[0];
+    p5.line(x1, y1, x2, y2);
 
     // Show subdivision points
     p5.strokeWeight(5);
