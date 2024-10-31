@@ -12,7 +12,7 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-export const getPolyPoints = (points) => {
+const getPolyPoints = (points) => {
   const polyPoints = [];
 
   for (let i = 0; i < points.length - 1; i++) {
@@ -34,7 +34,7 @@ export const getPolyPoints = (points) => {
   return polyPoints;
 };
 
-export const getSubdivPointsLine = ([x1, y1], [x2, y2], subdivisions) => {
+const getSubdivPointsLine = ([x1, y1], [x2, y2], subdivisions) => {
   const dx = (x2 - x1) / -~subdivisions,
     dy = (y2 - y1) / -~subdivisions;
 
@@ -45,4 +45,16 @@ export const getSubdivPointsLine = ([x1, y1], [x2, y2], subdivisions) => {
   }
 
   return subdivPoints;
+};
+
+export const buildStringArtObject = (points, subdivisions) => {
+  const polyPoints = getPolyPoints(points);
+
+  const subdivPointsLine = [];
+  for (let i = 0; i < points.length - 1; i++) {
+    subdivPointsLine.push(getSubdivPointsLine(points[i], points[i + 1], subdivisions));
+  }
+  subdivPointsLine.push(getSubdivPointsLine(points.at(-1), points[0], subdivisions));
+
+  return { polyPoints, subdivPointsLine };
 };
