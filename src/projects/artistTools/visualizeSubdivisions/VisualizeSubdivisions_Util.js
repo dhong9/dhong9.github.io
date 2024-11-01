@@ -51,10 +51,10 @@ export const buildStringArtObject = (points, subdivisions) => {
   const polyPoints = getPolyPoints(points);
 
   const subdivPointsLine = [];
-  for (let i = 0; i < points.length - 1; i++) {
-    subdivPointsLine.push(getSubdivPointsLine(points[i], points[i + 1], subdivisions));
+  for (let i = 0; i < polyPoints.length - 1; i++) {
+    subdivPointsLine.push(getSubdivPointsLine(polyPoints[i], polyPoints[i + 1], subdivisions));
   }
-  subdivPointsLine.push(getSubdivPointsLine(points.at(-1), points[0], subdivisions));
+  subdivPointsLine.push(getSubdivPointsLine(polyPoints.at(-1), polyPoints[0], subdivisions));
 
   return { polyPoints, subdivPointsLine };
 };
