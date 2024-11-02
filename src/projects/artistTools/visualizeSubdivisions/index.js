@@ -61,7 +61,7 @@ function VisualizeSubdivisions() {
   const draw = (p5) => {
     p5.background(200);
 
-    const { polyPoints, subdivPointsLine } = stringArtObject;
+    const { polyPoints, subdivPointsLine, netLines } = stringArtObject;
 
     p5.strokeWeight(10);
     p5.stroke(0, 255, 77);
@@ -75,6 +75,11 @@ function VisualizeSubdivisions() {
     p5.line(x1, y1, x2, y2);
 
     p5.strokeWeight(5);
+    p5.stroke(255, 187, 0);
+    for (const netLine of netLines) {
+      p5.line(...netLine);
+    }
+
     p5.stroke(98, 0, 255);
     for (const subdivPointsL of subdivPointsLine) {
       for (const [x, y] of subdivPointsL) {
