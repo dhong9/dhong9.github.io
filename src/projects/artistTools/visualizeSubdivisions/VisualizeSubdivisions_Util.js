@@ -65,6 +65,17 @@ export const buildStringArtObject = (points, subdivisions) => {
     subdivPointsLine.push(subdivPoints1, subdivPoints2);
 
     netLines.push([polyPoint1[0], polyPoint1[1], subdivPoints2[0][0], subdivPoints2[0][1]]);
+
+    // Weave intermediate lines
+    for (let j = 0; j < subdivisions; j++) {
+      netLines.push([
+        subdivPoints1[i][0],
+        subdivPoints1[i][1],
+        subdivPoints2[i][0],
+        subdivPoints2[i][1],
+      ]);
+    }
+
     netLines.push([polyPoint3[0], polyPoint3[1], subdivPoints1.at(-1)[0], subdivPoints1.at(-1)[1]]);
   }
 
