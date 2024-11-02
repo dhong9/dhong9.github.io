@@ -55,7 +55,7 @@ export const buildStringArtObject = (points, subdivisions) => {
 
   const subdivPointsLine = [];
   const netLines = [];
-  for (let i = 0; i < polyPoints.length - 2; i += 2) {
+  for (let i = 0; i < polyPoints.length - 3; i += 2) {
     const polyPoint1 = polyPoints[i],
       polyPoint2 = polyPoints[i + 1],
       polyPoint3 = polyPoints[i + 2];
