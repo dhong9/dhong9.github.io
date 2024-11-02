@@ -66,15 +66,6 @@ export const buildStringArtObject = (points, subdivisions) => {
 
     netLines.push([polyPoint1[0], polyPoint1[1], subdivPoints2[0][0], subdivPoints2[0][1]]);
   }
-  const polyPoint1 = polyPoints.at(-1),
-    polyPoint2 = polyPoints[0],
-    polyPoint3 = polyPoints[1];
-
-  const subdivPoints1 = getSubdivPointsLine(polyPoint1, polyPoint2, subdivisions),
-    subdivPoints2 = getSubdivPointsLine(polyPoint2, polyPoint3, subdivisions);
-  subdivPointsLine.push(subdivPoints1, subdivPoints2);
-
-  netLines.push([polyPoint2[0], polyPoint2[1], subdivPoints1[0][0], subdivPoints1[0][1]]);
 
   return { polyPoints, subdivPointsLine, netLines };
 };
