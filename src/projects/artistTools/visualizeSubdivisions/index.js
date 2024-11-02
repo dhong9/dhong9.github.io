@@ -75,7 +75,7 @@ function VisualizeSubdivisions() {
     p5.line(x1, y1, x2, y2);
 
     p5.strokeWeight(5);
-    p5.color(98, 0, 255);
+    p5.stroke(98, 0, 255);
     for (const subdivPointsL of subdivPointsLine) {
       for (const [x, y] of subdivPointsL) {
         p5.point(x, y);
