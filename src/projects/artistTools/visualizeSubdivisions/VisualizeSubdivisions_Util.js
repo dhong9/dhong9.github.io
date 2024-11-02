@@ -79,5 +79,13 @@ export const buildStringArtObject = (points, subdivisions) => {
     netLines.push([polyPoint3[0], polyPoint3[1], subdivPoints1.at(-1)[0], subdivPoints1.at(-1)[1]]);
   }
 
+  // Last 3 points
+  const polyPoint1 = polyPoints.at(-2),
+    polyPoint2 = polyPoints.at(-1),
+    polyPoint3 = polyPoints[0];
+  const subdivPoints1 = getSubdivPointsLine(polyPoint1, polyPoint2, subdivisions),
+    subdivPoints2 = getSubdivPointsLine(polyPoint2, polyPoint3, subdivisions);
+  subdivPointsLine.push(subdivPoints1, subdivPoints2);
+
   return { polyPoints, subdivPointsLine, netLines };
 };
