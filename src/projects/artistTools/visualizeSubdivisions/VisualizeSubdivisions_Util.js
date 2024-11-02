@@ -71,8 +71,8 @@ export const buildStringArtObject = (points, subdivisions) => {
       netLines.push([
         subdivPoints1[j][0],
         subdivPoints1[j][1],
-        subdivPoints2[-~j][0],
-        subdivPoints2[-~j][1],
+        subdivPoints2[j][0],
+        subdivPoints2[j][1],
       ]);
     }
 
