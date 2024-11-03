@@ -149,7 +149,7 @@ function VisualizeSubdivisions() {
         ]}
 
         {/* Buttons to add points */}
-        <MKBox mt={3} mb={1} textAlign="center">
+        <MKBox mt={3} mb={1}>
           <MKButton variant="gradient" color="info" onClick={addPoint} component="h2">
             add point
           </MKButton>
