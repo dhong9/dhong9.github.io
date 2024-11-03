@@ -146,5 +146,8 @@ export const buildStringArtObject = (points, subdivisions) => {
 
   netLines.push(...tempNetLines);
 
+  // Close the polygon
+  intersectionPoints.push(intersectionPoints[0]);
+
   return { polyPoints, subdivPointsLine, netLines, intersectionPoints };
 };
