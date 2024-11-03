@@ -73,5 +73,20 @@ describe("VisualizeSubdivisions_Util", () => {
         );
       }
     }
+
+    const expectedNetLines = [
+      [50, 25, 133 + 1 / 3, 43 + 1 / 3],
+      [66 + 2 / 3, 33 + 1 / 3, 166 + 2 / 3, 36 + 2 / 3],
+      [200, 30, 83 + 1 / 3, 41 + 2 / 3],
+      [200, 30, 250, 8 + 1 / 3],
+      [233 + 1 / 3, 23 + 1 / 3, 200, 6 + 2 / 3],
+      [150, 5, 266 + 2 / 3, 16 + 2 / 3],
+      [150, 5, 16 + 2 / 3, 8 + 1 / 3],
+      [100, 3 + 1 / 3, 33 + 1 / 3, 16 + 2 / 3],
+      [50, 25, 50, 1 + 2 / 3],
+    ];
+    for (const row in expectedNetLines) {
+      expect(netLines[row][0]).toBeCloseTo(expectedNetLines[row][0], 10);
+    }
   });
 });
