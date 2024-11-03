@@ -61,7 +61,7 @@ function VisualizeSubdivisions() {
   const draw = (p5) => {
     p5.background(200);
 
-    const { polyPoints, subdivPointsLine, netLines } = stringArtObject;
+    const { polyPoints, subdivPointsLine, netLines, intersectionPoints } = stringArtObject;
 
     p5.strokeWeight(10);
     p5.stroke(0, 255, 77);
@@ -91,6 +91,17 @@ function VisualizeSubdivisions() {
     p5.stroke(255, 0, 98);
     for (const [x, y] of polyPoints) {
       p5.point(x, y);
+    }
+
+    // Draw resulting polygon
+    p5.stroke(0, 179, 255);
+    for (let i = 0; i < intersectionPoints.length - 1; i++) {
+      p5.line(
+        intersectionPoints[i][0],
+        intersectionPoints[i][1],
+        intersectionPoints[i + 1][0],
+        intersectionPoints[i + 1][1]
+      );
     }
   };
 
