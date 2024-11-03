@@ -48,10 +48,27 @@ const getSubdivPointsLine = ([x1, y1], [x2, y2], subdivisions) => {
 };
 
 const findIntersection = ([x1, y1, x2, y2], [x3, y3, x4, y4]) => {
-  // General case:
-  // Both lines have defined slopes
   const m1 = (y2 - y1) / (x2 - x1),
     m2 = (y4 - y3) / (x4 - x3);
+
+  // If m1 is undefined, then m2 should be defined
+  if (x2 === x1) {
+    // y4 = m2*x4 + b
+    const b = y4 - m2 * x4;
+    const y = m2 * x2 + b;
+    return [x2, y];
+  }
+
+  // If m2 is undefined, then m1 should be defined
+  if (x3 === x4) {
+    // y2 = m1*x2 + b
+    const b = y2 - m1 * x2;
+    const y = m1 * x4 + b;
+    return [x4, y];
+  }
+
+  // General case:
+  // Both lines have defined slopes
   const b1 = y2 - m1 * x2,
     b2 = y4 - m2 * x4;
 

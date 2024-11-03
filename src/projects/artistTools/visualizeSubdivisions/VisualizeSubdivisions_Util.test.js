@@ -22,8 +22,11 @@ describe("VisualizeSubdivisions_Util", () => {
     [300, 10],
   ];
 
-  it("Find midpoints", () => {
-    const { polyPoints, subdivPointsLine, netLines } = buildStringArtObject(points1, 2);
+  it("Find subdivides a triangle", () => {
+    const { polyPoints, subdivPointsLine, netLines, intersectionPoints } = buildStringArtObject(
+      points1,
+      2
+    );
 
     const expectedPolyPoints = [
       [50, 25],
@@ -90,6 +93,23 @@ describe("VisualizeSubdivisions_Util", () => {
       expect(netLines[row][1]).toBeCloseTo(expectedNetLines[row][1], 10);
       expect(netLines[row][2]).toBeCloseTo(expectedNetLines[row][2], 10);
       expect(netLines[row][3]).toBeCloseTo(expectedNetLines[row][3], 10);
+    }
+
+    const expectedIntersectionPoints = [
+      [50, 25],
+      [91 + 2 / 3, 34 + 1 / 6],
+      [141 + 2 / 3, 35 + 5 / 6],
+      [200, 30],
+      [225, 19 + 1 / 6],
+      [208 + 1 / 3, 10 + 5 / 6],
+      [150, 5],
+      [83 + 1 / 3, 6 + 2 / 3],
+      [50, 13 + 1 / 3],
+      [50, 25],
+    ];
+    for (const p in expectedIntersectionPoints) {
+      expect(intersectionPoints[p][0]).toBeCloseTo(expectedIntersectionPoints[p][0], 10);
+      expect(intersectionPoints[p][1]).toBeCloseTo(expectedIntersectionPoints[p][1], 10);
     }
   });
 });
