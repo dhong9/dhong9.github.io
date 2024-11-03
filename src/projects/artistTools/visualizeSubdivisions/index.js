@@ -94,6 +94,7 @@ function VisualizeSubdivisions() {
     }
 
     // Draw resulting polygon
+    p5.strokeWeight(10);
     p5.stroke(0, 179, 255);
     for (let i = 0; i < intersectionPoints.length - 1; i++) {
       p5.line(
