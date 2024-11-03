@@ -47,6 +47,21 @@ const getSubdivPointsLine = ([x1, y1], [x2, y2], subdivisions) => {
   return subdivPoints;
 };
 
+const findIntersection = ([x1, y1, x2, y2], [x3, y3, x4, y4]) => {
+  // General case:
+  // Both lines have defined slopes
+  const m1 = (y2 - y1) / (x2 - x1),
+    m2 = (y4 - y3) / (x4 - x3);
+  const b1 = y2 - m1 * x2,
+    b2 = y4 - m2 * x4;
+
+  // m1*x + b1 = m2*x + b2
+  // (m1 - m2)*x = b2 - b1
+  const x = (b2 - b1) / (m1 - m2);
+  const y = m1 * x + b1;
+  return [x, y];
+};
+
 export const buildStringArtObject = (points, subdivisions) => {
   const polyPoints = getPolyPoints(points);
 
@@ -55,6 +70,7 @@ export const buildStringArtObject = (points, subdivisions) => {
 
   const subdivPointsLine = [];
   const netLines = [];
+  const intersectionPoints = [];
   for (let i = 0; i < polyPoints.length - 2; i += 2) {
     const polyPoint1 = polyPoints[i],
       polyPoint2 = polyPoints[i + 1],
@@ -64,11 +80,13 @@ export const buildStringArtObject = (points, subdivisions) => {
       subdivPoints2 = getSubdivPointsLine(polyPoint2, polyPoint3, subdivisions);
     subdivPointsLine.push(subdivPoints1, subdivPoints2);
 
-    netLines.push([polyPoint1[0], polyPoint1[1], subdivPoints2[0][0], subdivPoints2[0][1]]);
+    const tempNetLines = [];
+
+    tempNetLines.push([polyPoint1[0], polyPoint1[1], subdivPoints2[0][0], subdivPoints2[0][1]]);
 
     // Weave intermediate lines
     for (let j = 0; j < subdivisions - 1; j++) {
-      netLines.push([
+      tempNetLines.push([
         subdivPoints1[j][0],
         subdivPoints1[j][1],
         subdivPoints2[-~j][0],
@@ -76,7 +94,19 @@ export const buildStringArtObject = (points, subdivisions) => {
       ]);
     }
 
-    netLines.push([polyPoint3[0], polyPoint3[1], subdivPoints1.at(-1)[0], subdivPoints1.at(-1)[1]]);
+    tempNetLines.push([
+      polyPoint3[0],
+      polyPoint3[1],
+      subdivPoints1.at(-1)[0],
+      subdivPoints1.at(-1)[1],
+    ]);
+
+    // Find intersection of each pair of net lines
+    for (let j = 0; j < tempNetLines.length - 1; j++) {
+      intersectionPoints.push(findIntersection(tempNetLines[j], tempNetLines[j + 1]));
+    }
+
+    netLines.push(...tempNetLines);
   }
 
   // Last 3 points
@@ -101,5 +131,5 @@ export const buildStringArtObject = (points, subdivisions) => {
 
   netLines.push([polyPoint3[0], polyPoint3[1], subdivPoints1.at(-1)[0], subdivPoints1.at(-1)[1]]);
 
-  return { polyPoints, subdivPointsLine, netLines };
+  return { polyPoints, subdivPointsLine, netLines, intersectionPoints };
 };
