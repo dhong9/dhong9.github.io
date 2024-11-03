@@ -132,6 +132,7 @@ function VisualizeSubdivisions() {
                   copy[row][0] = +e.target.value;
                   setCoords(copy);
                 }}
+                value={row[0]}
               />
               <MKInput
                 type="number"
@@ -141,6 +142,7 @@ function VisualizeSubdivisions() {
                   copy[row][1] = +e.target.value;
                   setCoords(copy);
                 }}
+                value={row[1]}
               />
             </MKBox>
           )),
