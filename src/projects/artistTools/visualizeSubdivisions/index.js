@@ -48,6 +48,11 @@ function VisualizeSubdivisions() {
     console.log(subdivisions);
   };
 
+  const addPoint = (e) => {
+    e.preventDefault();
+    setCoords([...coords, [0, 0]]);
+  };
+
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
@@ -140,6 +145,14 @@ function VisualizeSubdivisions() {
             </MKBox>
           )),
         ]}
+
+        {/* Buttons to add points */}
+        <MKBox mt={3} mb={1} textAlign="center">
+          <MKButton variant="gradient" color="info" onClick={addPoint} component="h2">
+            add point
+          </MKButton>
+        </MKBox>
+
         <MKBox mb={2}>
           <MKInput
             type="number"
