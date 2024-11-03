@@ -34,5 +34,44 @@ describe("VisualizeSubdivisions_Util", () => {
       [0, 0],
     ];
     expect(polyPoints).toEqual(expectedPolyPoints);
+
+    const expectedSubdivPointsLine = [
+      [
+        [66 + 2 / 3, 33 + 1 / 3],
+        [83 + 1 / 3, 41 + 2 / 3],
+      ],
+      [
+        [133 + 1 / 3, 43 + 1 / 3],
+        [166 + 2 / 3, 36 + 2 / 3],
+      ],
+      [
+        [233 + 1 / 3, 23 + 1 / 3],
+        [266 + 2 / 3, 16 + 2 / 3],
+      ],
+      [
+        [250, 8 + 1 / 3],
+        [200, 6 + 2 / 3],
+      ],
+      [
+        [100, 3 + 1 / 3],
+        [50, 1 + 2 / 3],
+      ],
+      [
+        [16 + 2 / 3, 8 + 1 / 3],
+        [33 + 1 / 3, 16 + 2 / 3],
+      ],
+    ];
+    for (const row in expectedSubdivPointsLine) {
+      for (const col in expectedSubdivPointsLine[row]) {
+        expect(subdivPointsLine[row][col][0]).toBeCloseTo(
+          expectedSubdivPointsLine[row][col][0],
+          10
+        );
+        expect(subdivPointsLine[row][col][1]).toBeCloseTo(
+          expectedSubdivPointsLine[row][col][1],
+          10
+        );
+      }
+    }
   });
 });
