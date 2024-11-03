@@ -137,6 +137,11 @@ export const buildStringArtObject = (points, subdivisions) => {
     subdivPoints1.at(-1)[1],
   ]);
 
+  // Find intersection of each pair of net lines
+  for (let j = 0; j < tempNetLines.length - 1; j++) {
+    intersectionPoints.push(findIntersection(tempNetLines[j], tempNetLines[j + 1]));
+  }
+
   netLines.push(...tempNetLines);
 
   return { polyPoints, subdivPointsLine, netLines, intersectionPoints };
