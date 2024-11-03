@@ -87,6 +87,9 @@ describe("VisualizeSubdivisions_Util", () => {
     ];
     for (const row in expectedNetLines) {
       expect(netLines[row][0]).toBeCloseTo(expectedNetLines[row][0], 10);
+      expect(netLines[row][1]).toBeCloseTo(expectedNetLines[row][1], 10);
+      expect(netLines[row][2]).toBeCloseTo(expectedNetLines[row][2], 10);
+      expect(netLines[row][3]).toBeCloseTo(expectedNetLines[row][3], 10);
     }
   });
 });
