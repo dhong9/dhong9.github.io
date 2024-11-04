@@ -42,12 +42,6 @@ function VisualizeSubdivisions() {
 
   const stringArtObject = buildStringArtObject(coords, subdivisions);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(coords);
-    console.log(subdivisions);
-  };
-
   const addPoint = (e) => {
     e.preventDefault();
     setCoords([...coords, [0, 0]]);
@@ -161,11 +155,6 @@ function VisualizeSubdivisions() {
             label="Subdivisions"
             onChange={(e) => setSubdivisions(+e.target.value)}
           />
-        </MKBox>
-        <MKBox mt={3} mb={1} textAlign="center">
-          <MKButton variant="gradient" color="info" onClick={handleSubmit} component="h2" fullWidth>
-            plot
-          </MKButton>
         </MKBox>
       </MKBox>
 
