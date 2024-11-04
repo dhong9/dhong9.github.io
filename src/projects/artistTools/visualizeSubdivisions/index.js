@@ -154,6 +154,7 @@ function VisualizeSubdivisions() {
             type="number"
             label="Subdivisions"
             onChange={(e) => setSubdivisions(+e.target.value)}
+            value={subdivisions}
           />
         </MKBox>
       </MKBox>
