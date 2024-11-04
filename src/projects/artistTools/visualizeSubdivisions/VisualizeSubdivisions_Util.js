@@ -12,9 +12,16 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+/**
+ * Computes midpoints between each pair of adjacent vertices on
+ * a polygon
+ * @param {Array<Number>} points points on a polygon
+ * @returns vertices with midpoints computed
+ */
 const getPolyPoints = (points) => {
   const polyPoints = [];
 
+  // Compute midpoints of each pair of adjacent vertices
   for (let i = 0; i < points.length - 1; i++) {
     const [x1, y1] = points[i];
     const [x2, y2] = points[i + 1];
@@ -24,6 +31,7 @@ const getPolyPoints = (points) => {
     polyPoints.push([midX, midY]);
   }
 
+  // Compute midpoint between last vertex and first vertex
   const [x1, y1] = points.at(-1);
   const [x2, y2] = points[0];
   const midX = (x2 + x1) / 2,
@@ -34,6 +42,13 @@ const getPolyPoints = (points) => {
   return polyPoints;
 };
 
+/**
+ * Computes subdivisions points along a given line
+ * @param {Array<Number>} vertex0 one point on a line segment [x1, y1]
+ * @param {Array<Number>} vertex1 one point on a line segment [x2, y2]
+ * @param {Number} subdivisions Number of subdivisions
+ * @returns points from subdividing a line
+ */
 const getSubdivPointsLine = ([x1, y1], [x2, y2], subdivisions) => {
   const dx = (x2 - x1) / -~subdivisions,
     dy = (y2 - y1) / -~subdivisions;
@@ -47,6 +62,12 @@ const getSubdivPointsLine = ([x1, y1], [x2, y2], subdivisions) => {
   return subdivPoints;
 };
 
+/**
+ * Computes intersecting point between two lines
+ * @param {Array<Number>} line0 one line represented as [x1, y1, x2, y2]
+ * @param {Array<Number>} line1 one line represented as [x3, y3, x4, y4]
+ * @returns intersecting point [x, y]
+ */
 const findIntersection = ([x1, y1, x2, y2], [x3, y3, x4, y4]) => {
   const m1 = (y2 - y1) / (x2 - x1),
     m2 = (y4 - y3) / (x4 - x3);
@@ -79,6 +100,12 @@ const findIntersection = ([x1, y1, x2, y2], [x3, y3, x4, y4]) => {
   return [x, y];
 };
 
+/**
+ * Provides data needed to build string art for visualizing polygon subdivisions
+ * @param {Array<Number>} points polygon points
+ * @param {Number} subdivisions number of subdivisions
+ * @returns polygon points with midpoints, subdivision points, lines for weaving string art, resulting polygon points
+ */
 export const buildStringArtObject = (points, subdivisions) => {
   const polyPoints = getPolyPoints(points);
 
