@@ -122,7 +122,7 @@ function VisualizeSubdivisions() {
       {/* Input points */}
       <MKBox component="form" role="form">
         {[
-          coords.map((_, row) => (
+          coords.map((coord, row) => (
             <MKBox mb={2} key={row}>
               <MKInput
                 type="number"
@@ -132,7 +132,7 @@ function VisualizeSubdivisions() {
                   copy[row][0] = +e.target.value;
                   setCoords(copy);
                 }}
-                value={row[0]}
+                value={coord[0]}
               />
               <MKInput
                 type="number"
@@ -142,7 +142,7 @@ function VisualizeSubdivisions() {
                   copy[row][1] = +e.target.value;
                   setCoords(copy);
                 }}
-                value={row[1]}
+                value={coord[1]}
               />
             </MKBox>
           )),
