@@ -12,11 +12,20 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+// Sections components
+import BaseLayout from "layouts/sections/components/BaseLayout";
+
 function ColorCodeConverter() {
   return (
-    <div>
-      <h1>Color Code Converter</h1>
-    </div>
+    <BaseLayout
+      title="Artist Tools"
+      breadcrumb={[
+        { label: "Artist Tools", route: "/sections/artistTools/colorCodeConverter" },
+        { label: "Color Code Converter" },
+      ]}
+    >
+      {" "}
+    </BaseLayout>
   );
 }
 

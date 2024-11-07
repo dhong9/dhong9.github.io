@@ -59,6 +59,7 @@ import CodeInOnePage from "layouts/pages/code-in-one";
 
 // Artist tools
 import VisualizeSubdivisions from "projects/artistTools/visualizeSubdivisions";
+import ColorCodeConverter from "projects/artistTools/colorCodeConverter";
 
 const routes = [
   {
@@ -135,6 +136,11 @@ const routes = [
             name: "Visualize Subdivisions",
             route: "/sections/artistTools/visualizeSubdivisions",
             component: <VisualizeSubdivisions />,
+          },
+          {
+            name: "Color Code Converter",
+            route: "/sections/artistTools/colorCodeConverter",
+            component: <ColorCodeConverter />,
           },
         ],
       },
