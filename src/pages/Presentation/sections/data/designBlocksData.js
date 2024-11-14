@@ -74,6 +74,13 @@ export default [
   {
     title: "Artist Tools",
     description: "Utilitities for digiital art",
-    items: [],
+    items: [
+      {
+        image: `${gamesPrefix}/081/877/341/large/daniel-hong-rope-colored.jpg`,
+        name: "Visualize Subdivisions",
+        count: 2,
+        route: "/sections/artistTools/visualizeSubdivisions",
+      },
+    ],
   },
 ];
