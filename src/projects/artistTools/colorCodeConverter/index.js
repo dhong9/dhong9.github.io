@@ -92,6 +92,11 @@ function ColorCodeConverter() {
                     fullWidth
                   />
                 </MKBox>
+                <MKBox mb={2}>
+                  <MKInput type="text" label="r" fullWidth />
+                  <MKInput type="text" label="g" fullWidth />
+                  <MKInput type="text" label="b" fullWidth />
+                </MKBox>
               </MKBox>
             </Card>
           </Grid>
