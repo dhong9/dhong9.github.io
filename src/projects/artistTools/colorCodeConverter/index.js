@@ -87,7 +87,7 @@ function ColorCodeConverter() {
                   <MKInput
                     type="text"
                     label="Hex Value"
-                    onChange={(e) => hexColor(e.target.value)}
+                    onChange={(e) => setHexColor(e.target.value)}
                     value={hexColor}
                     fullWidth
                   />
