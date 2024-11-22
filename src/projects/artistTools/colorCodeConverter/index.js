@@ -20,6 +20,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKInput from "components/MKInput";
 import MKTypography from "components/MKTypography";
 
 // @mui material components
@@ -80,6 +81,17 @@ function ColorCodeConverter() {
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
                 <HexColorPicker color={hexColor} onChange={setHexColor} />
+              </MKBox>
+              <MKBox component="form" role="form">
+                <MKBox mb={2}>
+                  <MKInput
+                    type="text"
+                    label="Hex Value"
+                    onChange={(e) => hexColor(e.target.value)}
+                    value={hexColor}
+                    fullWidth
+                  />
+                </MKBox>
               </MKBox>
             </Card>
           </Grid>
