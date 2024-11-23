@@ -50,6 +50,8 @@ function ColorCodeConverter() {
     return [r, g, b];
   };
 
+  const rgbToHex = (r, g, b) => "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+
   const handleHexChange = (hex_color) => {
     setHexColor(hex_color);
     const revisedHex = hex_color.startsWith("#") ? hex_color.slice(1) : hex_color;
@@ -57,6 +59,12 @@ function ColorCodeConverter() {
     setRed(r);
     setGreen(g);
     setBlue(b);
+  };
+
+  const handleRedChange = (red_color) => {
+    setRed(red_color);
+    const hexValue = rgbToHex(red_color, green, blue);
+    setHexColor(hexValue);
   };
 
   return (
@@ -113,7 +121,12 @@ function ColorCodeConverter() {
                   />
                 </MKBox>
                 <MKBox mb={2}>
-                  <MKInput type="number" label="r" value={red} />
+                  <MKInput
+                    type="number"
+                    label="r"
+                    value={red}
+                    onChange={(e) => handleRedChange(e.target.value)}
+                  />
                   <MKInput type="number" label="g" value={green} />
                   <MKInput type="number" label="b" value={blue} />
                 </MKBox>
