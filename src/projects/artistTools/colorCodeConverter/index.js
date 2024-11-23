@@ -51,7 +51,7 @@ function ColorCodeConverter() {
   };
 
   const handleHexChange = (hex_color) => {
-    setHexColor(hexColor);
+    setHexColor(hex_color);
     const [r, g, b] = hexToRGB(hex_color);
     setRed(r);
     setGreen(g);
