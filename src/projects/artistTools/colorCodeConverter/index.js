@@ -42,6 +42,11 @@ function ColorCodeConverter() {
   const [green, setGreen] = useState(255);
   const [blue, setBlue] = useState(0);
 
+  /**
+   * Converts hex string to RGB
+   * @param {String} hex_value hex string in format RRGGBB
+   * @returns array representing red, green, and blue in range [0-255]
+   */
   const hexToRGB = (hex_value) => {
     const numericValue = parseInt(hex_value, 16);
     const r = (numericValue >> 16) & 0xff;
@@ -50,29 +55,56 @@ function ColorCodeConverter() {
     return [r, g, b];
   };
 
+  /**
+   * Converts RGB value to hex string
+   * @param {Number} r red value [0-255]
+   * @param {Number} g green value [0-255]
+   * @param {Number} b blue value [0-255]
+   * @returns hex string #RRGGBB
+   */
   const rgbToHex = (r, g, b) => "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 
+  /**
+   * Updates RGB values based on hex input
+   * @param {String} hex_color hex string (#?)RRGGBB
+   */
   const handleHexChange = (hex_color) => {
     setHexColor(hex_color);
+
+    // If the string starts with '#', then strip it off
     const revisedHex = hex_color.startsWith("#") ? hex_color.slice(1) : hex_color;
+
+    // Convert hex string to RGB and update input values based on them
     const [r, g, b] = hexToRGB(revisedHex);
     setRed(r);
     setGreen(g);
     setBlue(b);
   };
 
+  /**
+   * Updates red color field and hex string
+   * @param {Number} red_color red color
+   */
   const handleRedChange = (red_color) => {
     setRed(red_color);
     const hexValue = rgbToHex(red_color, green, blue);
     setHexColor(hexValue);
   };
 
+  /**
+   * Updates green color field and hex string
+   * @param {Number} green_color
+   */
   const handleGreenChange = (green_color) => {
     setGreen(green_color);
     const hexValue = rgbToHex(red, green_color, blue);
     setHexColor(hexValue);
   };
 
+  /**
+   * Updates blue color field and hex string
+   * @param {Number} blue_color
+   */
   const handleBlueChange = (blue_color) => {
     setBlue(blue_color);
     const hexValue = rgbToHex(red, green, blue_color);
