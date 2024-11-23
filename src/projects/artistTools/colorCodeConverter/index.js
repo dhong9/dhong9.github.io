@@ -93,9 +93,9 @@ function ColorCodeConverter() {
                   />
                 </MKBox>
                 <MKBox mb={2}>
-                  <MKInput type="text" label="r" fullWidth />
-                  <MKInput type="text" label="g" fullWidth />
-                  <MKInput type="text" label="b" fullWidth />
+                  <MKInput type="number" label="r" />
+                  <MKInput type="number" label="g" />
+                  <MKInput type="number" label="b" />
                 </MKBox>
               </MKBox>
             </Card>
