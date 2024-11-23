@@ -25,6 +25,7 @@ import MKTypography from "components/MKTypography";
 
 // @mui material components
 import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React page layout routes
@@ -41,6 +42,9 @@ function ColorCodeConverter() {
   const [red, setRed] = useState(0);
   const [green, setGreen] = useState(255);
   const [blue, setBlue] = useState(0);
+  const [redSmall, setRedSmall] = useState(0);
+  const [greenSmall, setGreenSmall] = useState(1);
+  const [blueSmall, setBlueSmall] = useState(0);
 
   /**
    * Converts hex string to RGB
@@ -79,6 +83,12 @@ function ColorCodeConverter() {
     setRed(r);
     setGreen(g);
     setBlue(b);
+
+    // Get 0-1 range equivalent of RGB
+    const digits = 2; // Digits after the decimal
+    setRedSmall((r / 255).toFixed(digits));
+    setGreenSmall((g / 255).toFixed(digits));
+    setBlueSmall((b / 255).toFixed(digits));
   };
 
   /**
@@ -183,6 +193,12 @@ function ColorCodeConverter() {
                     value={blue}
                     onChange={(e) => handleBlueChange(e.target.value)}
                   />
+                </MKBox>
+                <Divider variant="middle" />
+                <MKBox mb={2}>
+                  <MKInput type="number" label="red" value={redSmall} />
+                  <MKInput type="number" label="green" value={greenSmall} />
+                  <MKInput type="number" label="blue" value={blueSmall} />
                 </MKBox>
               </MKBox>
             </Card>
