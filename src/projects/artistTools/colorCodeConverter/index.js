@@ -52,7 +52,8 @@ function ColorCodeConverter() {
 
   const handleHexChange = (hex_color) => {
     setHexColor(hex_color);
-    const [r, g, b] = hexToRGB(hex_color);
+    const revisedHex = hex_color.startsWith("#") ? hex_color.slice(1) : hex_color;
+    const [r, g, b] = hexToRGB(revisedHex);
     setRed(r);
     setGreen(g);
     setBlue(b);
