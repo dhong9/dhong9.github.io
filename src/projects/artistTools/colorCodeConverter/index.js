@@ -38,6 +38,25 @@ import bgImage from "assets/images/balloons_sky.png";
 
 function ColorCodeConverter() {
   const [hexColor, setHexColor] = useState("#00ff00"); // Solid green
+  const [red, setRed] = useState(0);
+  const [green, setGreen] = useState(255);
+  const [blue, setBlue] = useState(0);
+
+  const hexToRGB = (hex_value) => {
+    const numericValue = parseInt(hex_value, 16);
+    const r = (numericValue >> 16) & 0xff;
+    const g = (numericValue >> 8) & 0xff;
+    const b = numericValue & 0xff;
+    return [r, g, b];
+  };
+
+  const handleHexChange = (hex_color) => {
+    setHexColor(hexColor);
+    const [r, g, b] = hexToRGB(hex_color);
+    setRed(r);
+    setGreen(g);
+    setBlue(b);
+  };
 
   return (
     <>
@@ -87,15 +106,15 @@ function ColorCodeConverter() {
                   <MKInput
                     type="text"
                     label="Hex Value"
-                    onChange={(e) => setHexColor(e.target.value)}
+                    onChange={(e) => handleHexChange(e.target.value)}
                     value={hexColor}
                     fullWidth
                   />
                 </MKBox>
                 <MKBox mb={2}>
-                  <MKInput type="number" label="r" />
-                  <MKInput type="number" label="g" />
-                  <MKInput type="number" label="b" />
+                  <MKInput type="number" label="r" value={red} />
+                  <MKInput type="number" label="g" value={green} />
+                  <MKInput type="number" label="b" value={blue} />
                 </MKBox>
               </MKBox>
             </Card>
