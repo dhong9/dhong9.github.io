@@ -167,19 +167,19 @@ function ColorCodeConverter() {
                 <MKBox mb={2}>
                   <MKInput
                     type="number"
-                    label="r"
+                    label="Red"
                     value={red}
                     onChange={(e) => handleRedChange(e.target.value)}
                   />
                   <MKInput
                     type="number"
-                    label="g"
+                    label="Green"
                     value={green}
                     onChange={(e) => handleGreenChange(e.target.value)}
                   />
                   <MKInput
                     type="number"
-                    label="b"
+                    label="Blue"
                     value={blue}
                     onChange={(e) => handleBlueChange(e.target.value)}
                   />
