@@ -66,7 +66,7 @@ function ColorCodeConverter() {
    * @param {Number} b blue value [0-255]
    * @returns hex string #RRGGBB
    */
-  const rgbToHex = (r, g, b) => "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  const rgbToHex = (r, g, b) => "#" + ((1 << 24) + (r << 16) + (g << 8) + +b).toString(16).slice(1);
 
   /**
    * Updates RGB values based on hex input
