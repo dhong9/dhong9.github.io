@@ -108,7 +108,9 @@ function ColorCodeConverter() {
    * @param {Number} green_color
    */
   const handleGreenChange = (green_color) => {
+    const digits = 3;
     setGreen(green_color);
+    setGreenSmall((green_color / 255).toFixed(digits));
     const hexValue = rgbToHex(red, green_color, blue);
     setHexColor(hexValue);
   };
@@ -118,7 +120,9 @@ function ColorCodeConverter() {
    * @param {Number} blue_color
    */
   const handleBlueChange = (blue_color) => {
+    const digits = 3;
     setBlue(blue_color);
+    setBlueSmall((blue_color / 255).toFixed(digits));
     const hexValue = rgbToHex(red, green, blue_color);
     setHexColor(hexValue);
   };
