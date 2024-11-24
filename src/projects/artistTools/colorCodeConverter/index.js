@@ -121,6 +121,13 @@ function ColorCodeConverter() {
     setHexColor(hexValue);
   };
 
+  const handleRedSmallChange = (red_color) => {
+    setRedSmall(red_color);
+    const red255 = (red_color * 255) | 0;
+    const hexValue = rgbToHex(red255, green, blue);
+    setHexColor(hexValue);
+  };
+
   return (
     <>
       <DefaultNavbar routes={routes} transparent light />
@@ -196,7 +203,12 @@ function ColorCodeConverter() {
                 </MKBox>
                 <Divider variant="middle" />
                 <MKBox mb={2}>
-                  <MKInput type="number" label="red" value={redSmall} />
+                  <MKInput
+                    type="number"
+                    label="red"
+                    value={redSmall}
+                    onChange={(e) => handleRedSmallChange(e.target.value)}
+                  />
                   <MKInput type="number" label="green" value={greenSmall} />
                   <MKInput type="number" label="blue" value={blueSmall} />
                 </MKBox>
