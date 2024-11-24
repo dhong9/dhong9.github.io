@@ -85,7 +85,7 @@ function ColorCodeConverter() {
     setBlue(b);
 
     // Get 0-1 range equivalent of RGB
-    const digits = 2; // Digits after the decimal
+    const digits = 3; // Digits after the decimal
     setRedSmall((r / 255).toFixed(digits));
     setGreenSmall((g / 255).toFixed(digits));
     setBlueSmall((b / 255).toFixed(digits));
@@ -96,7 +96,9 @@ function ColorCodeConverter() {
    * @param {Number} red_color red color
    */
   const handleRedChange = (red_color) => {
+    const digits = 3;
     setRed(red_color);
+    setRedSmall((red_color / 255).toFixed(digits));
     const hexValue = rgbToHex(red_color, green, blue);
     setHexColor(hexValue);
   };
@@ -124,6 +126,7 @@ function ColorCodeConverter() {
   const handleRedSmallChange = (red_color) => {
     setRedSmall(red_color);
     const red255 = (red_color * 255) | 0;
+    setRed(red255);
     const hexValue = rgbToHex(red255, green, blue);
     setHexColor(hexValue);
   };
