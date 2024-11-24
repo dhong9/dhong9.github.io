@@ -135,6 +135,22 @@ function ColorCodeConverter() {
     setHexColor(hexValue);
   };
 
+  const handleGreenSmallChange = (green_color) => {
+    setGreenSmall(green_color);
+    const green255 = (green_color * 255) | 0;
+    setGreen(green255);
+    const hexValue = rgbToHex(red, green255, blue);
+    setHexColor(hexValue);
+  };
+
+  const handleBlueSmallChange = (blue_color) => {
+    setBlueSmall(blue_color);
+    const blue255 = (blue_color * 255) | 0;
+    setBlue(blue255);
+    const hexValue = rgbToHex(red, green, blue255);
+    setHexColor(hexValue);
+  };
+
   return (
     <>
       <DefaultNavbar routes={routes} transparent light />
@@ -216,8 +232,18 @@ function ColorCodeConverter() {
                     value={redSmall}
                     onChange={(e) => handleRedSmallChange(e.target.value)}
                   />
-                  <MKInput type="number" label="green" value={greenSmall} />
-                  <MKInput type="number" label="blue" value={blueSmall} />
+                  <MKInput
+                    type="number"
+                    label="green"
+                    value={greenSmall}
+                    onChange={(e) => handleGreenSmallChange(e.target.value)}
+                  />
+                  <MKInput
+                    type="number"
+                    label="blue"
+                    value={blueSmall}
+                    onChange={(e) => handleBlueSmallChange(e.target.value)}
+                  />
                 </MKBox>
               </MKBox>
             </Card>
