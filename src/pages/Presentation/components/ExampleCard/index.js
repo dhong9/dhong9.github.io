@@ -109,7 +109,7 @@ function ExampleCard({ image, name, count, pro, ...rest }) {
 // Setting default props for the ExampleCard
 ExampleCard.defaultProps = {
   name: "",
-  count: 0,
+  description: "",
   pro: false,
 };
 
@@ -117,7 +117,7 @@ ExampleCard.defaultProps = {
 ExampleCard.propTypes = {
   image: PropTypes.string.isRequired,
   name: PropTypes.string,
-  count: PropTypes.number,
+  description: PropTypes.string,
   pro: PropTypes.bool,
 };
 
