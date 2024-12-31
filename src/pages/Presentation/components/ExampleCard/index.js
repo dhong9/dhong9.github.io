@@ -88,16 +88,18 @@ function ExampleCard({ image, name, description, pro, ...rest }) {
       ) : (
         imageTemplate
       )}
-      {name ? (
+      {name || description ? (
         <MKBox mt={1} ml={1} lineHeight={1}>
           {name && (
             <MKTypography variant="h6" fontWeight="bold">
               {name}
             </MKTypography>
           )}
-          <MKTypography variant="button" fontWeight="regular" color="secondary">
-            Demo
-          </MKTypography>
+          {description && (
+            <MKTypography variant="button" fontWeight="regular" color="secondary">
+              {description}
+            </MKTypography>
+          )}
         </MKBox>
       ) : null}
     </MKBox>
