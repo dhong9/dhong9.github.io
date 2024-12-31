@@ -56,8 +56,7 @@ const mock = new MockAdapter(axios);
 
 describe("ResetPassword", () => {
   beforeEach(() => {
-    mock.onPost("users/reset_password/").reply(200, userData);
-    mock.onPost("users/reset_password_confirm/").reply(200, userData);
+    mock.onPost().reply(200, userData);
   });
   afterEach(() => {
     jest.clearAllMocks();

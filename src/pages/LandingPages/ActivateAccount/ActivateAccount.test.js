@@ -24,7 +24,6 @@ import MockAdapter from "axios-mock-adapter";
 
 // Setup axios mock
 const mock = new MockAdapter(axios);
-mock.onPost("accounts/users/activation/").reply(200, {});
 
 describe("ActivateAccount", () => {
   afterEach(() => {
@@ -32,6 +31,7 @@ describe("ActivateAccount", () => {
   });
 
   it("renders correct text", () => {
+    mock.onPost().reply(200, {});
     const { queryByText } = render(<ActivateAccountBasic uid="R4x" token="bc312" />);
     expect(queryByText("Activating account...")).toBeInTheDocument;
   });
