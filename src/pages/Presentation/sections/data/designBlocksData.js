@@ -80,6 +80,12 @@ export default [
         route: "/sections/artistTools/visualizeSubdivisions",
         description: "String art to visualize subdividing polygons",
       },
+      {
+        image: `${gamesPrefix}/083/386/926/large/daniel-hong-colorwheel.jpg`,
+        name: "Color Code Converter",
+        route: "/sections/artistTools/colorCodeConverter",
+        description: "Convert between various color code formats",
+      },
     ],
   },
 ];
