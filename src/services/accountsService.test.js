@@ -46,11 +46,7 @@ mock.onPost("accounts/token/login/").reply(200, userData);
 mock.onGet("accounts/users/me/").reply(200, userData);
 mock.onPatch("accounts/users/me/").reply(200, userData);
 mock.onDelete("accounts/users/me/").reply(200, userData);
-mock.onPost("accounts/users/").reply(200, userData);
-mock.onPost("accounts/token/logout/").reply(200, userData);
-mock.onPost("accounts/users/activation/").reply(200, userData);
-mock.onPost("users/reset_password/").reply(200, userData);
-mock.onPost("users/reset_password_confirm/").reply(200, userData);
+mock.onPost().reply(200, userData);
 mock.onPatch("accounts/update/20/").reply(200, userData);
 
 describe("AccountsService", () => {
