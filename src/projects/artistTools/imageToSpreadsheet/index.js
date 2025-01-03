@@ -20,8 +20,12 @@ import routes from "routes";
 // Images
 import bgImage from "assets/images/spreadsheetCells.png";
 
+// Services
+import { imgToExcel } from "services/imageConverterService";
+
 function ImageToSpreadsheet() {
   const [selectedFile, setSelectedFile] = useState("");
+  const [selectedFileFull, setSelectedFileFull] = useState("");
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
@@ -32,8 +36,14 @@ function ImageToSpreadsheet() {
     reader.onloadend = (e) => {
       console.log("Event: ");
       console.log(e);
-      setSelectedFile(reader.result);
+      setSelectedFileFull(reader.result);
+      setSelectedFile(file);
     };
+  };
+
+  const handleImageSubmit = (e) => {
+    e.preventDefault();
+    imgToExcel(selectedFileFull, console.log, console.error);
   };
 
   return (
@@ -93,6 +103,11 @@ function ImageToSpreadsheet() {
                     <MKTypography variant="p" fontWeight="regular" color="black" mt={1}>
                       {selectedFile || "No file selected"}
                     </MKTypography>
+                  </MKBox>
+                  <MKBox mt={4} mb={1}>
+                    <MKButton variant="gradient" color="info" onClick={handleImageSubmit} fullWidth>
+                      Excel Yourself!
+                    </MKButton>
                   </MKBox>
                 </MKBox>
               </MKBox>
