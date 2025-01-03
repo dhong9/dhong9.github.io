@@ -16,10 +16,10 @@ import { postRequest } from "services/baseService";
 
 /**
  * Sends image to be converted to Excel spreadsheet
- * @param {string} image path to image
+ * @param {Object} image image upload data
  * @param {Function} success success callback
  * @param {Function} error error callback
  */
 export const imgToExcel = (image, success, error) => {
-  postRequest("imgconverter/img_to_excel", { image }, success, error);
+  postRequest("imgconverter/img_to_excel", image, success, error);
 };

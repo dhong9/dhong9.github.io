@@ -42,11 +42,6 @@ describe("Image Converter Service", () => {
 
     // Verify that postRequest was called correctly
     const image = "path/to/image.png";
-    expect(postRequest).toHaveBeenCalledWith(
-      "imgconverter/img_to_excel",
-      { image },
-      success,
-      error
-    );
+    expect(postRequest).toHaveBeenCalledWith("imgconverter/img_to_excel", image, success, error);
   });
 });
