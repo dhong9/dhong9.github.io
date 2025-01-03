@@ -21,5 +21,5 @@ import { postRequest } from "services/baseService";
  * @param {Function} error error callback
  */
 export const imgToExcel = (image, success, error) => {
-  postRequest("imgconverter/img_to_excel/", { image }, success, error);
+  postRequest("imgconverter/img_to_excel", { image }, success, error);
 };
