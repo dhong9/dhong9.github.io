@@ -86,6 +86,12 @@ export default [
         route: "/sections/artistTools/colorCodeConverter",
         description: "Convert between various color code formats",
       },
+      {
+        image: `${gamesPrefix}/083/414/321/large/daniel-hong-creeper.jpg`,
+        name: "Image to Spreadsheet",
+        route: "/sections/artistTools/imageToSpreadsheet",
+        description: "Convert images to spreadsheets",
+      },
     ],
   },
 ];

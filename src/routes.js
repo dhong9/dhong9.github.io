@@ -60,6 +60,7 @@ import CodeInOnePage from "layouts/pages/code-in-one";
 // Artist tools
 import VisualizeSubdivisions from "projects/artistTools/visualizeSubdivisions";
 import ColorCodeConverter from "projects/artistTools/colorCodeConverter";
+import ImageToSpreadsheet from "projects/artistTools/imageToSpreadsheet";
 
 const routes = [
   {
@@ -141,6 +142,11 @@ const routes = [
             name: "Color Code Converter",
             route: "/sections/artistTools/colorCodeConverter",
             component: <ColorCodeConverter />,
+          },
+          {
+            name: "Image to Spreadsheet",
+            route: "/sections/artistTools/imageToSpreadsheet",
+            component: <ImageToSpreadsheet />,
           },
         ],
       },
