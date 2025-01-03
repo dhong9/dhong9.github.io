@@ -37,7 +37,7 @@ function ImageToSpreadsheet() {
       console.log("Event: ");
       console.log(e);
       setSelectedFileFull(reader.result);
-      setSelectedFile(file);
+      setSelectedFile("File selected");
     };
   };
 
