@@ -34,7 +34,6 @@ function ImageToSpreadsheet() {
       console.log(e);
       setSelectedFile(reader.result);
     };
-    console.log(selectedFile);
   };
 
   return (
@@ -90,6 +89,11 @@ function ImageToSpreadsheet() {
                       hidden
                     />
                   </MKButton>
+                  <MKBox mb={2}>
+                    <MKTypography variant="p" fontWeight="regular" color="white" mt={1}>
+                      {selectedFile || "No file selected"}
+                    </MKTypography>
+                  </MKBox>
                 </MKBox>
               </MKBox>
             </Card>
