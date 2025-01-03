@@ -90,7 +90,7 @@ function ImageToSpreadsheet() {
                     />
                   </MKButton>
                   <MKBox mb={2}>
-                    <MKTypography variant="p" fontWeight="regular" color="white" mt={1}>
+                    <MKTypography variant="p" fontWeight="regular" color="black" mt={1}>
                       {selectedFile || "No file selected"}
                     </MKTypography>
                   </MKBox>
