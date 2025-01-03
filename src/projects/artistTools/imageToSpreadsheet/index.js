@@ -1,3 +1,6 @@
+// React
+import { useState } from "react";
+
 // @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
@@ -18,9 +21,20 @@ import routes from "routes";
 import bgImage from "assets/images/spreadsheetCells.png";
 
 function ImageToSpreadsheet() {
+  const [selectedFile, setSelectedFile] = useState("");
+
   const handleImageUpload = (e) => {
-    e.preventDefault();
-    console.log("Handle image upload");
+    const [file] = e.target.files;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = (e) => {
+      console.log("Event: ");
+      console.log(e);
+      setSelectedFile(reader.result);
+    };
+    console.log(selectedFile);
   };
 
   return (
