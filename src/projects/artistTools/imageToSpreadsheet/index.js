@@ -21,7 +21,7 @@ import routes from "routes";
 import bgImage from "assets/images/spreadsheetCells.png";
 
 // Services
-import { imgToExcel } from "services/imageConverterService";
+// import { imgToExcel } from "services/imageConverterService";
 
 function ImageToSpreadsheet() {
   const [selectedFile, setSelectedFile] = useState("");
@@ -43,7 +43,7 @@ function ImageToSpreadsheet() {
 
   const handleImageSubmit = (e) => {
     e.preventDefault();
-    imgToExcel(selectedFileFull, console.log, console.error);
+    console.log(selectedFileFull);
   };
 
   return (
