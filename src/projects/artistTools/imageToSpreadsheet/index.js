@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React example components
@@ -17,6 +18,11 @@ import routes from "routes";
 import bgImage from "assets/images/spreadsheetCells.png";
 
 function ImageToSpreadsheet() {
+  const handleImageUpload = (e) => {
+    e.preventDefault();
+    console.log("Handle image upload");
+  };
+
   return (
     <>
       <DefaultNavbar routes={routes} transparent light />
@@ -56,6 +62,21 @@ function ImageToSpreadsheet() {
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
                   Image to Spreadsheet
                 </MKTypography>
+              </MKBox>
+              <MKBox component="form" role="form">
+                <MKBox mb={2}>
+                  <MKButton variant="contained" component="label">
+                    Select Image
+                    <input
+                      id="contained-button-file"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      multiple
+                      hidden
+                    />
+                  </MKButton>
+                </MKBox>
               </MKBox>
             </Card>
           </Grid>
