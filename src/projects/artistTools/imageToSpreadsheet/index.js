@@ -25,25 +25,16 @@ import { imgToExcel } from "services/imageConverterService";
 
 function ImageToSpreadsheet() {
   const [selectedFile, setSelectedFile] = useState("");
-  const [selectedFileFull, setSelectedFileFull] = useState("");
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
-
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onloadend = (e) => {
-      console.log("Event: ");
-      console.log(e);
-      setSelectedFileFull(reader.result);
-      setSelectedFile("File selected");
-    };
+    console.log("File:", file);
+    setSelectedFile(file);
   };
 
   const handleImageSubmit = (e) => {
     e.preventDefault();
-    imgToExcel(selectedFileFull, console.log, console.error);
+    imgToExcel(selectedFile, console.log, console.error);
   };
 
   return (
