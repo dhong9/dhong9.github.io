@@ -14,6 +14,12 @@ Coded by www.danyo.tech
 
 import { postRequest } from "services/baseService";
 
-const imgToExcel = (image, success, error) => {
-  postRequest("imgconverter/img_to_excel/", image, success, error);
+/**
+ * Sends image to be converted to Excel spreadsheet
+ * @param {string} image path to image
+ * @param {Function} success success callback
+ * @param {Function} error error callback
+ */
+export const imgToExcel = (image, success, error) => {
+  postRequest("imgconverter/img_to_excel/", { image }, success, error);
 };

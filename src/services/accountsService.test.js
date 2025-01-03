@@ -42,7 +42,6 @@ jest.mock("services/baseService", () => ({
 }));
 
 mock.onGet("/accounts/profiles/1").reply(200, userData);
-mock.onPost("accounts/token/login/").reply(200, userData);
 mock.onGet("accounts/users/me/").reply(200, userData);
 mock.onPatch("accounts/users/me/").reply(200, userData);
 mock.onDelete("accounts/users/me/").reply(200, userData);
