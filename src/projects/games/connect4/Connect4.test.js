@@ -22,7 +22,6 @@ const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleuserc
 
 // Setup axios mock
 const mock = new MockAdapter(axios);
-const mockReact = React;
 
 const commentData = {
   comments: [
