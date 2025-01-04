@@ -34,6 +34,7 @@ function ImageToSpreadsheet() {
 
   const handleImageSubmit = (e) => {
     e.preventDefault();
+    console.log("Payload:", selectedFile);
     imgToExcel(selectedFile, console.log, console.error);
   };
 
