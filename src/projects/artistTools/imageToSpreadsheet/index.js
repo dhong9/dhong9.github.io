@@ -77,7 +77,18 @@ function ImageToSpreadsheet() {
   const downloadImage = (e) => {
     e.preventDefault();
 
-    downloadFile("rgb_colors.xlsx", console.log, console.error);
+    downloadFile(
+      "rgb_colors.xlsx",
+      () => {
+        // Configure snackbar
+        setImageUploadSeverity("success");
+        setImageUploadMessage("File successfully downloaded!");
+
+        // Show snackbar
+        setSnackbarOpen(true);
+      },
+      console.error
+    );
   };
 
   return (
