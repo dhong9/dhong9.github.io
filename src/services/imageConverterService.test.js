@@ -14,14 +14,15 @@ Coded by www.danyo.tech
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { postRequest } from "services/baseService";
-import { imgToExcel } from "services/imageConverterService";
+import { getRequest, postRequest } from "services/baseService";
+import { imgToExcel, downloadFile } from "services/imageConverterService";
 
 const mock = new MockAdapter(axios);
 
 const imageData = {};
 
 jest.mock("services/baseService", () => ({
+  getRequest: jest.fn(),
   postRequest: jest.fn(),
 }));
 
@@ -43,5 +44,18 @@ describe("Image Converter Service", () => {
     // Verify that postRequest was called correctly
     const image = "path/to/image.png";
     expect(postRequest).toHaveBeenCalledWith("imgconverter/img_to_excel", image, success, error);
+  });
+
+  it("gets files", () => {
+    // Create success and error spy functions
+    const success = jest.fn(),
+      error = jest.fn();
+
+    // Get image
+    const fileName = "sample.png";
+    downloadFile(fileName, success, error);
+
+    // Verify that getRequest was called correctly
+    expect(getRequest).toHaveBeenCalledWith("output/" + fileName, success, error);
   });
 });

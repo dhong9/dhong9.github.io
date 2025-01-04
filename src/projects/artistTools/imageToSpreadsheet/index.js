@@ -42,9 +42,15 @@ function ImageToSpreadsheet() {
   };
 
   const handleImageSubmit = (e) => {
+    // Clean up
     e.preventDefault();
+    setConvertedFile("");
+
+    // Build upload data
     const formData = new FormData();
     formData.append("image", selectedFile);
+
+    // Send image
     imgToExcel(
       formData,
       ({ data: { message, file_path } }) => {
