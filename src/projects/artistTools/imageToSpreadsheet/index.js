@@ -24,7 +24,7 @@ import routes from "routes";
 import bgImage from "assets/images/spreadsheetCells.png";
 
 // Services
-import { imgToExcel } from "services/imageConverterService";
+import { imgToExcel, downloadFile } from "services/imageConverterService";
 
 function ImageToSpreadsheet() {
   // File conversion
@@ -72,6 +72,12 @@ function ImageToSpreadsheet() {
     if (reason !== "clickaway") {
       setSnackbarOpen(false);
     }
+  };
+
+  const downloadImage = (e) => {
+    e.preventDefault();
+
+    downloadFile("rgb_colors.xlsx", console.log, console.error);
   };
 
   return (
@@ -153,6 +159,11 @@ function ImageToSpreadsheet() {
                 <MKTypography variant="p" fontWeight="regular" color="black" mt={1}>
                   {convertedFile}
                 </MKTypography>
+                {convertedFile && (
+                  <MKButton variant="gradient" color="info" onClick={downloadImage}>
+                    Download Spreadsheet
+                  </MKButton>
+                )}
               </MKBox>
             </Card>
           </Grid>
