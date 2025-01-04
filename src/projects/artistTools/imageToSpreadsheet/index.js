@@ -14,6 +14,9 @@ import MKTypography from "components/MKTypography";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
 
+// DH React components
+import DHSnackbar from "components/DHSnackbar";
+
 // Material Kit 2 React page layout routes
 import routes from "routes";
 
@@ -24,7 +27,13 @@ import bgImage from "assets/images/spreadsheetCells.png";
 import { imgToExcel } from "services/imageConverterService";
 
 function ImageToSpreadsheet() {
+  // File selection
   const [selectedFile, setSelectedFile] = useState(null);
+
+  // Snackbar
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [imageUploadSeverity, setImageUploadSeverity] = useState("info");
+  const [imageUploadMessage, setImageUploadMessage] = useState("");
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
@@ -35,12 +44,35 @@ function ImageToSpreadsheet() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", selectedFile);
-    imgToExcel(formData, console.log, console.error);
+    imgToExcel(
+      formData,
+      ({ data: { message, file_path } }) => {
+        // Configure snackbar
+        setImageUploadSeverity("success");
+        setImageUploadMessage(message);
+
+        // Show snackbar
+        setSnackbarOpen(true);
+      },
+      console.error
+    );
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
+    }
   };
 
   return (
     <>
       <DefaultNavbar routes={routes} transparent light />
+      <DHSnackbar
+        open={snackbarOpen}
+        onClose={handleSnackbarClose}
+        severity={imageUploadSeverity}
+        message={imageUploadMessage}
+      />
       <MKBox
         position="absolute"
         top={0}
