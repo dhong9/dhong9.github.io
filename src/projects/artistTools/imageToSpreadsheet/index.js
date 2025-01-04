@@ -27,8 +27,9 @@ import bgImage from "assets/images/spreadsheetCells.png";
 import { imgToExcel } from "services/imageConverterService";
 
 function ImageToSpreadsheet() {
-  // File selection
+  // File conversion
   const [selectedFile, setSelectedFile] = useState(null);
+  const [convertedFile, setConvertedFile] = useState("");
 
   // Snackbar
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -53,6 +54,9 @@ function ImageToSpreadsheet() {
 
         // Show snackbar
         setSnackbarOpen(true);
+
+        // Set output file path
+        setConvertedFile(file_path);
       },
       console.error
     );
@@ -110,6 +114,8 @@ function ImageToSpreadsheet() {
                   Image to Spreadsheet
                 </MKTypography>
               </MKBox>
+
+              {/* Image upload form */}
               <MKBox component="form" role="form">
                 <MKBox mb={2}>
                   <MKButton variant="contained" component="label">
@@ -134,6 +140,13 @@ function ImageToSpreadsheet() {
                     </MKButton>
                   </MKBox>
                 </MKBox>
+              </MKBox>
+
+              {/* Image conversion output */}
+              <MKBox mb={2}>
+                <MKTypography variant="p" fontWeight="regular" color="black" mt={1}>
+                  {convertedFile}
+                </MKTypography>
               </MKBox>
             </Card>
           </Grid>
