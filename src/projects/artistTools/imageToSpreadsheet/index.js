@@ -24,7 +24,7 @@ import bgImage from "assets/images/spreadsheetCells.png";
 import { imgToExcel } from "services/imageConverterService";
 
 function ImageToSpreadsheet() {
-  const [selectedFile, setSelectedFile] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
@@ -92,7 +92,7 @@ function ImageToSpreadsheet() {
                   </MKButton>
                   <MKBox mb={2}>
                     <MKTypography variant="p" fontWeight="regular" color="black" mt={1}>
-                      {selectedFile || "No file selected"}
+                      {selectedFile ? selectedFile.name : "No file selected"}
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
