@@ -28,14 +28,14 @@ function ImageToSpreadsheet() {
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
-    console.log("File:", file);
     setSelectedFile(file);
   };
 
   const handleImageSubmit = (e) => {
     e.preventDefault();
-    console.log("Payload:", selectedFile);
-    imgToExcel(selectedFile, console.log, console.error);
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+    imgToExcel(formData, console.log, console.error);
   };
 
   return (
