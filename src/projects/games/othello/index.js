@@ -13,7 +13,7 @@ import Checkbox from "@mui/material/Checkbox";
 
 // Othello code
 import othelloCode from "projects/games/othello/code";
-import Othello_Util from "projects/games/othello/Othello_Util";
+import Othello_Danyo from "othello-danyo";
 
 // p5
 import Sketch from "react-p5";
@@ -27,7 +27,7 @@ import { getComments, addComment, sortComments } from "services/commentsService"
 import AuthContext from "context/AuthContext";
 
 function Othello() {
-  const othello_util = new Othello_Util();
+  const othello_util = new Othello_Danyo();
   const editorRef = useRef();
   const id = 4;
 
@@ -76,7 +76,7 @@ function Othello() {
 
   // Initialize game board
   let board = othello_util.board;
-  let moves = othello_util.getMoveList(board, curPlayer);
+  let moves = othello_util.getValidMoves(board, curPlayer);
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
@@ -156,7 +156,7 @@ function Othello() {
         } else {
           curPlayer = 1;
         }
-        moves = othello_util.getMoveList(board, curPlayer);
+        moves = othello_util.getValidMoves(board, curPlayer);
       }
     }
   };
