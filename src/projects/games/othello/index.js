@@ -33,7 +33,10 @@ function Othello() {
 
   const [comments, setComments] = useState([]);
   const [isPlainText, setIsPlainText] = useState(false);
+
+  // Game properties
   const [moves, setMoves] = useState([]);
+  const [curPlayer, setCurPlayer] = useState(1);
 
   const { user, profile } = useContext(AuthContext);
 
@@ -67,9 +70,6 @@ function Othello() {
       setComments(results.filter(({ project }) => project === id));
     });
   }, []);
-
-  // Game variables
-  let curPlayer = 1;
 
   // Constants
   const N = 8;
@@ -145,14 +145,14 @@ function Othello() {
       if (othello_util.validMove(othello_util.board, r, c, curPlayer)) {
         othello_util.makeMove(othello_util.board, r, c, curPlayer);
         if (curPlayer === 1) {
-          curPlayer = 2;
+          setCurPlayer(2);
           const computerMove = othello_util.minimaxDecision(othello_util.board, curPlayer);
           if (computerMove[0] !== -1) {
             othello_util.makeMove(othello_util.board, computerMove[0], computerMove[1], curPlayer);
-            curPlayer = 1;
+            setCurPlayer(1);
           }
         } else {
-          curPlayer = 1;
+          setCurPlayer(1);
         }
         setMoves(othello_util.getValidMoves(othello_util.board, curPlayer));
       }
