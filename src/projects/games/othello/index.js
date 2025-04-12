@@ -33,6 +33,7 @@ function Othello() {
 
   const [comments, setComments] = useState([]);
   const [isPlainText, setIsPlainText] = useState(false);
+  const [moves, setMoves] = useState([]);
 
   const { user, profile } = useContext(AuthContext);
 
@@ -61,6 +62,7 @@ function Othello() {
   };
 
   useEffect(() => {
+    setMoves(othello_util.getValidMoves(othello_util.board, 1));
     getComments(({ data: { results } }) => {
       setComments(results.filter(({ project }) => project === id));
     });
@@ -73,10 +75,6 @@ function Othello() {
   const N = 8;
 
   // Functions to run game
-
-  // Initialize game board
-  let board = othello_util.board;
-  let moves = othello_util.getValidMoves(board, curPlayer);
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
@@ -104,7 +102,7 @@ function Othello() {
         p5.rect(c * w + xOffset, r * w + yOffset, w);
 
         // Draw player
-        const v = board[r][c];
+        const v = othello_util.board[r][c];
         if (v > 0) {
           // Player token exists
           p5.strokeWeight(1);
@@ -144,19 +142,19 @@ function Othello() {
 
       const c = Math.floor(((p5.mouseX - xOffset) / boardWidth) * N);
       const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
-      if (othello_util.validMove(board, r, c, curPlayer)) {
-        board = othello_util.makeMove(board, r, c, curPlayer);
+      if (othello_util.validMove(othello_util.board, r, c, curPlayer)) {
+        othello_util.makeMove(othello_util.board, r, c, curPlayer);
         if (curPlayer === 1) {
           curPlayer = 2;
-          const computerMove = othello_util.minimaxDecision(board, curPlayer);
+          const computerMove = othello_util.minimaxDecision(othello_util.board, curPlayer);
           if (computerMove[0] !== -1) {
-            board = othello_util.makeMove(board, computerMove[0], computerMove[1], curPlayer);
+            othello_util.makeMove(othello_util.board, computerMove[0], computerMove[1], curPlayer);
             curPlayer = 1;
           }
         } else {
           curPlayer = 1;
         }
-        moves = othello_util.getValidMoves(board, curPlayer);
+        setMoves(othello_util.getValidMoves(othello_util.board, curPlayer));
       }
     }
   };
