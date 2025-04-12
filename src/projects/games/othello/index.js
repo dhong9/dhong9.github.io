@@ -145,11 +145,13 @@ function Othello() {
       if (othello_util.validMove(othello_util.board, r, c, curPlayer)) {
         othello_util.makeMove(othello_util.board, r, c, curPlayer);
         if (curPlayer === 1) {
-          setCurPlayer(2);
-          const computerMove = othello_util.minimaxDecision(othello_util.board, curPlayer);
+          const oppPlayer = 2;
+          const computerMove = othello_util.minimaxDecision(othello_util.board, oppPlayer);
           if (computerMove[0] !== -1) {
-            othello_util.makeMove(othello_util.board, computerMove[0], computerMove[1], curPlayer);
+            othello_util.makeMove(othello_util.board, computerMove[0], computerMove[1], oppPlayer);
             setCurPlayer(1);
+          } else {
+            setCurPlayer(oppPlayer);
           }
         } else {
           setCurPlayer(1);
