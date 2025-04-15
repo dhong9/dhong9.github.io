@@ -146,12 +146,12 @@ function Othello() {
       const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
       if (othello_util.validMove(board, r, c, curPlayer)) {
         let newPlayer = curPlayer;
-        othello_util.makeMove(othello_util.board, r, c, curPlayer);
+        let newBoard = othello_util.makeMove(board, r, c, curPlayer);
         if (curPlayer === 1) {
           const oppPlayer = 2;
-          const computerMove = othello_util.minimaxDecision(othello_util.board, oppPlayer);
+          const computerMove = othello_util.minimaxDecision(newBoard, oppPlayer);
           if (computerMove[0] !== -1) {
-            othello_util.makeMove(othello_util.board, computerMove[0], computerMove[1], oppPlayer);
+            newBoard = othello_util.makeMove(newBoard, computerMove[0], computerMove[1], oppPlayer);
             newPlayer = 1;
           } else {
             newPlayer = oppPlayer;
@@ -159,9 +159,9 @@ function Othello() {
         } else {
           newPlayer = 1;
         }
-        setMoves(othello_util.getValidMoves(othello_util.board, newPlayer));
+        setMoves(othello_util.getValidMoves(newBoard, newPlayer));
         setCurPlayer(newPlayer);
-        setBoard(othello_util.board);
+        setBoard(newBoard);
       }
     }
   };
