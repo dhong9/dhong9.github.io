@@ -36,6 +36,7 @@ function Othello() {
 
   // Game properties
   const [moves, setMoves] = useState([]);
+  const [board, setBoard] = useState([]);
   const [curPlayer, setCurPlayer] = useState(1);
 
   const { user, profile } = useContext(AuthContext);
@@ -66,6 +67,7 @@ function Othello() {
 
   useEffect(() => {
     setMoves(othello_util.getValidMoves(othello_util.board, 1));
+    setBoard(othello_util.board);
     getComments(({ data: { results } }) => {
       setComments(results.filter(({ project }) => project === id));
     });
@@ -102,7 +104,7 @@ function Othello() {
         p5.rect(c * w + xOffset, r * w + yOffset, w);
 
         // Draw player
-        const v = othello_util.board[r][c];
+        const v = board[r][c];
         if (v > 0) {
           // Player token exists
           p5.strokeWeight(1);
@@ -142,7 +144,7 @@ function Othello() {
 
       const c = Math.floor(((p5.mouseX - xOffset) / boardWidth) * N);
       const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
-      if (othello_util.validMove(othello_util.board, r, c, curPlayer)) {
+      if (othello_util.validMove(board, r, c, curPlayer)) {
         let newPlayer = curPlayer;
         othello_util.makeMove(othello_util.board, r, c, curPlayer);
         if (curPlayer === 1) {
@@ -159,6 +161,7 @@ function Othello() {
         }
         setMoves(othello_util.getValidMoves(othello_util.board, newPlayer));
         setCurPlayer(newPlayer);
+        setBoard(othello_util.board);
       }
     }
   };
