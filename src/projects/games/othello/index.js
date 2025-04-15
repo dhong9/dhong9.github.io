@@ -146,12 +146,13 @@ function Othello() {
       const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
       if (othello_util.validMove(board, r, c, curPlayer)) {
         let newPlayer = curPlayer;
-        let newBoard = othello_util.makeMove(board, r, c, curPlayer);
+        const newBoard = board;
+        othello_util.makeMove(newBoard, r, c, curPlayer);
         if (curPlayer === 1) {
           const oppPlayer = 2;
           const computerMove = othello_util.minimaxDecision(newBoard, oppPlayer);
           if (computerMove[0] !== -1) {
-            newBoard = othello_util.makeMove(newBoard, computerMove[0], computerMove[1], oppPlayer);
+            othello_util.makeMove(newBoard, computerMove[0], computerMove[1], oppPlayer);
             newPlayer = 1;
           } else {
             newPlayer = oppPlayer;
