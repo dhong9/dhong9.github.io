@@ -43,8 +43,8 @@ function Othello() {
   const [moves, setMoves] = useState([]);
   const [board, setBoard] = useState([]);
   const [curPlayer, setCurPlayer] = useState(1);
-  const [blackScore, setBlackScore] = useState(0);
-  const [whiteScore, setWhiteScore] = useState(0);
+  const [blackScore, setBlackScore] = useState(2);
+  const [whiteScore, setWhiteScore] = useState(2);
 
   const { user, profile } = useContext(AuthContext);
 
@@ -81,8 +81,8 @@ function Othello() {
     setBoard(newBoard);
     setMoves(othello_util.getValidMoves(newBoard, 1));
     setCurPlayer(1);
-    setWhiteScore(0);
-    setBlackScore(0);
+    setWhiteScore(2);
+    setBlackScore(2);
   };
 
   useEffect(() => {
