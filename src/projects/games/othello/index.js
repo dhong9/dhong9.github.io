@@ -11,6 +11,11 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
+// Scoreboard
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+
 // Othello code
 import othelloCode from "projects/games/othello/code";
 import Othello_Danyo from "othello-danyo";
@@ -186,6 +191,18 @@ function Othello() {
       <View title="Othello" code={othelloCode} height="40rem">
         <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
       </View>
+
+      {/* Scoreboard */}
+      <Card sx={{ display: "flex" }}>
+        <CardContent sx={{ flex: 1 }}>
+          <Typography component="h2" variant="h5">
+            Black:
+          </Typography>
+          <Typography component="h2" variant="h5">
+            White:
+          </Typography>
+        </CardContent>
+      </Card>
 
       <FormGroup>
         <MKButton onClick={newGame} type="submit" variant="gradient" color="info">

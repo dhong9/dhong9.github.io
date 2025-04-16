@@ -12684,6 +12684,24 @@ exports[`Othello adds a comment 1`] = `
           </div>
         </div>
         <div
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1m5jx39-MuiPaper-root-MuiCard-root"
+        >
+          <div
+            class="MuiCardContent-root css-1p7cnz9-MuiCardContent-root"
+          >
+            <h2
+              class="MuiTypography-root MuiTypography-h5 css-ozcfne-MuiTypography-root"
+            >
+              Black:
+            </h2>
+            <h2
+              class="MuiTypography-root MuiTypography-h5 css-ozcfne-MuiTypography-root"
+            >
+              White:
+            </h2>
+          </div>
+        </div>
+        <div
           class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
         >
           <button
