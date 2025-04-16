@@ -67,7 +67,11 @@ function Othello() {
 
   const newGame = (event) => {
     event.preventDefault();
-    console.log("Start new Othello game");
+
+    // Reset game to use new board
+    const newBoard = othello_util.createBoard();
+    othello_util.board = newBoard;
+    setBoard(newBoard);
   };
 
   useEffect(() => {
