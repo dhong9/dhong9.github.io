@@ -59,6 +59,11 @@ function PictureShuffle() {
     editorRef.current.handleSetPlainText(checked);
   };
 
+  const newGame = (event) => {
+    event.preventDefault();
+    console.log("Start new Picture Shuffle game");
+  };
+
   const onAdd = () => {
     addComment(
       ({ status }) => {
@@ -139,6 +144,11 @@ function PictureShuffle() {
         ) : (
           <div></div>
         )}
+        <FormGroup>
+          <MKButton onClick={newGame} type="submit" variant="gradient" color="info">
+            New Game
+          </MKButton>
+        </FormGroup>
         <DHEditor ref={editorRef} />
         {user ? (
           <FormGroup>
