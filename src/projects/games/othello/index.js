@@ -81,6 +81,8 @@ function Othello() {
     setBoard(newBoard);
     setMoves(othello_util.getValidMoves(newBoard, 1));
     setCurPlayer(1);
+    setWhiteScore(0);
+    setBlackScore(0);
   };
 
   useEffect(() => {
@@ -164,7 +166,7 @@ function Othello() {
       const r = Math.floor(((p5.mouseY - yOffset) / boardWidth) * N);
       if (othello_util.validMove(board, r, c, curPlayer)) {
         let newPlayer = curPlayer;
-        const newBoard = board;
+        const newBoard = othello_util.copyBoard(board);
         othello_util.makeMove(newBoard, r, c, curPlayer);
         if (curPlayer === 1) {
           const oppPlayer = 2;
@@ -181,6 +183,8 @@ function Othello() {
         setMoves(othello_util.getValidMoves(newBoard, newPlayer));
         setCurPlayer(newPlayer);
         setBoard(newBoard);
+        setWhiteScore(othello_util.score(newBoard, 2));
+        setBlackScore(othello_util.score(newBoard, 1));
       }
     }
   };
