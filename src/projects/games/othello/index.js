@@ -72,6 +72,8 @@ function Othello() {
     const newBoard = othello_util.createBoard();
     othello_util.board = newBoard;
     setBoard(newBoard);
+    setMoves(othello_util.getValidMoves(newBoard, 1));
+    setCurPlayer(1);
   };
 
   useEffect(() => {
