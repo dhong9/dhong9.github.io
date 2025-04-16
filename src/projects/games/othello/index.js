@@ -196,11 +196,16 @@ function Othello() {
       <Card sx={{ display: "flex" }}>
         <CardContent sx={{ flex: 1 }}>
           <Typography component="h2" variant="h5">
+            Scoreboard
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary">
             Black:
           </Typography>
-          <Typography component="h2" variant="h5">
+          <Typography component="p">0</Typography>
+          <Typography variant="subtitle1" color="text.secondary">
             White:
           </Typography>
+          <Typography component="p">0</Typography>
         </CardContent>
       </Card>
 
