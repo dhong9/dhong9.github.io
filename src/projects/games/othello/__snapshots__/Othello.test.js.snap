@@ -12684,6 +12684,20 @@ exports[`Othello adds a comment 1`] = `
           </div>
         </div>
         <div
+          class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1jnei4i-MuiButtonBase-root-MuiButton-root"
+            tabindex="0"
+            type="submit"
+          >
+            New Game
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
           class="comments-container"
         >
           <div />

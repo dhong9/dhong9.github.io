@@ -110,7 +110,7 @@ describe("Othello", () => {
         id: 1,
       },
     };
-    const { container, getByRole } = render(
+    const { container, getByRole, getByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthProvider>
           <AuthContext.Provider value={contextData}>
@@ -131,7 +131,7 @@ describe("Othello", () => {
     fireEvent.change(commentBox, { target: { value: "Hello, world!" } });
 
     // Add the comment
-    const addButton = getByRole("button");
+    const addButton = getByText("Add");
     fireEvent.click(addButton);
 
     expect(container).toMatchSnapshot();
