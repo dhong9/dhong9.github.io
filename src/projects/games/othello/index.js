@@ -43,6 +43,8 @@ function Othello() {
   const [moves, setMoves] = useState([]);
   const [board, setBoard] = useState([]);
   const [curPlayer, setCurPlayer] = useState(1);
+  const [blackScore, setBlackScore] = useState(0);
+  const [whiteScore, setWhiteScore] = useState(0);
 
   const { user, profile } = useContext(AuthContext);
 
@@ -201,11 +203,11 @@ function Othello() {
           <Typography variant="subtitle1" color="text.secondary">
             Black:
           </Typography>
-          <Typography component="p">0</Typography>
+          <Typography component="p">{blackScore}</Typography>
           <Typography variant="subtitle1" color="text.secondary">
             White:
           </Typography>
-          <Typography component="p">0</Typography>
+          <Typography component="p">{whiteScore}</Typography>
         </CardContent>
       </Card>
 
