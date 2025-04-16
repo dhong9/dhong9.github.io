@@ -65,6 +65,11 @@ function Othello() {
     );
   };
 
+  const newGame = (event) => {
+    event.preventDefault();
+    console.log("Start new Othello game");
+  };
+
   useEffect(() => {
     setMoves(othello_util.getValidMoves(othello_util.board, 1));
     setBoard(othello_util.board);
@@ -175,6 +180,12 @@ function Othello() {
       <View title="Othello" code={othelloCode} height="40rem">
         <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
       </View>
+
+      <FormGroup>
+        <MKButton onClick={newGame} type="submit" variant="gradient" color="info">
+          New Game
+        </MKButton>
+      </FormGroup>
 
       <div className="comments-container">
         {comments.length ? (

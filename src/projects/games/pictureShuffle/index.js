@@ -133,6 +133,12 @@ function PictureShuffle() {
         <Sketch setup={setup} draw={draw} preload={preload} mouseClicked={mouseClicked} />
       </View>
 
+      <FormGroup>
+        <MKButton onClick={newGame} type="submit" variant="gradient" color="info">
+          New Game
+        </MKButton>
+      </FormGroup>
+
       <div className="comments-container">
         {comments.length ? (
           <DHComments
@@ -144,11 +150,6 @@ function PictureShuffle() {
         ) : (
           <div></div>
         )}
-        <FormGroup>
-          <MKButton onClick={newGame} type="submit" variant="gradient" color="info">
-            New Game
-          </MKButton>
-        </FormGroup>
         <DHEditor ref={editorRef} />
         {user ? (
           <FormGroup>
