@@ -45,6 +45,7 @@ function Othello() {
   const [curPlayer, setCurPlayer] = useState(1);
   const [blackScore, setBlackScore] = useState(2);
   const [whiteScore, setWhiteScore] = useState(2);
+  const [gameOver, setGameOver] = useState(false);
 
   const { user, profile } = useContext(AuthContext);
 
@@ -83,6 +84,7 @@ function Othello() {
     setCurPlayer(1);
     setWhiteScore(2);
     setBlackScore(2);
+    setGameOver(false);
   };
 
   useEffect(() => {
@@ -185,6 +187,7 @@ function Othello() {
         setBoard(newBoard);
         setWhiteScore(othello_util.score(newBoard, 2));
         setBlackScore(othello_util.score(newBoard, 1));
+        setGameOver(othello_util.gameOver(newBoard));
       }
     }
   };
@@ -204,6 +207,15 @@ function Othello() {
           <Typography component="h2" variant="h5">
             Scoreboard
           </Typography>
+          {gameOver && (
+            <Typography variant="subtitle1" color="text.secondary">
+              {whiteScore > blackScore
+                ? "White wins!"
+                : blackScore > whiteScore
+                ? "Black wins!"
+                : "Tie!"}
+            </Typography>
+          )}
           <Typography variant="subtitle1" color="text.secondary">
             Black:
           </Typography>
