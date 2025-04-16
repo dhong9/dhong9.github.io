@@ -121,7 +121,7 @@ describe("PictureShuffle", () => {
         id: 8,
       },
     };
-    const { getByRole, queryAllByText } = render(
+    const { getByRole, getByText, queryAllByText } = render(
       <GoogleOAuthProvider clientId={clientId}>
         <AuthProvider>
           <AuthContext.Provider value={contextData}>
@@ -142,7 +142,7 @@ describe("PictureShuffle", () => {
     fireEvent.change(commentBox, { target: { value: "Hello, world!" } });
 
     // Add the comment
-    const addButton = getByRole("button");
+    const addButton = getByText("Add");
     fireEvent.click(addButton);
 
     expect(queryAllByText("Picture Shuffle").length).toBe(2);
