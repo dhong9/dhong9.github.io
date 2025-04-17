@@ -20,6 +20,10 @@ import "@testing-library/jest-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "assets/theme";
 
+// Axios
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+
 // Component to test
 import ForgotPassword from "pages/LandingPages/ForgotPassword";
 
@@ -43,7 +47,14 @@ jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn,
 }));
 
+// Setup axios mock
+const mock = new MockAdapter(axios);
+
 describe("ForgotPasword", () => {
+  beforeEach(() => {
+    mock.onPost().reply(200, {});
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
   });
