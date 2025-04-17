@@ -41,14 +41,15 @@ jest.mock("services/baseService", () => ({
   deleteRequest: jest.fn(),
 }));
 
-mock.onGet("/accounts/profiles/1").reply(200, userData);
-mock.onGet("accounts/users/me/").reply(200, userData);
-mock.onPatch("accounts/users/me/").reply(200, userData);
-mock.onDelete("accounts/users/me/").reply(200, userData);
-mock.onPost().reply(200, userData);
-mock.onPatch("accounts/update/20/").reply(200, userData);
-
 describe("AccountsService", () => {
+  beforeEach(() => {
+    mock.onGet().reply(200, userData);
+    mock.onPatch().reply(200, userData);
+    mock.onDelete().reply(200, userData);
+    mock.onPost().reply(200, userData);
+    mock.onPatch().reply(200, userData);
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
   });
