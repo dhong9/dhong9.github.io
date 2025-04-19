@@ -100,4 +100,24 @@ describe("Twenty48_Util", () => {
     const isFull = game.hasEmptySquare(fullBoard);
     expect(isFull).toBeFalsy();
   });
+
+  it("checks for mergable tiles", () => {
+    const mergableBoard = [
+      [2, 2, 4, 8],
+      [0, 2, 4, 16],
+      [0, 2, 8, 4],
+      [4, 2, 4, 2],
+    ];
+    const isMergable = game.hasMergableTiles(mergableBoard);
+    expect(isMergable).toBeTruthy();
+
+    const notMergableBoard = [
+      [2, 4, 2, 8],
+      [4, 2, 4, 2],
+      [8, 4, 8, 4],
+      [2, 8, 4, 2],
+    ];
+    const notMergable = game.hasMergableTiles(notMergableBoard);
+    expect(notMergable).toBeFalsy();
+  });
 });

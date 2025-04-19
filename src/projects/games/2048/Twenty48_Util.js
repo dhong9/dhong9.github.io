@@ -112,7 +112,13 @@ class Twenty48_Util {
         dir.some(([dRow, dCol]) => {
           const nextRow = i + dRow,
             nextCol = j + dCol;
-          return i >= 0 && i < 4 && j >= 0 && j < 4 && board[nextRow][nextCol] === v;
+          return (
+            nextRow >= 0 &&
+            nextRow < 4 &&
+            nextCol >= 0 &&
+            nextCol < 4 &&
+            board[nextRow][nextCol] === v
+          );
         })
       )
     );
