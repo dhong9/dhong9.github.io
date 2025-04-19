@@ -80,4 +80,24 @@ describe("Twenty48_Util", () => {
 
     expect(updatedBoard).toEqual(correctBoard);
   });
+
+  it("checks for empty squares", () => {
+    const testBoard = [
+      [2, 0, 0, 0],
+      [2, 0, 0, 0],
+      [8, 4, 4, 0],
+      [0, 0, 0, 4],
+    ];
+    const hasEmptySquare = game.hasEmptySquare(testBoard);
+    expect(hasEmptySquare).toBeTruthy();
+
+    const fullBoard = [
+      [2, 4, 2, 4],
+      [4, 2, 4, 2],
+      [2, 4, 2, 4],
+      [8, 2, 4, 8],
+    ];
+    const isFull = game.hasEmptySquare(fullBoard);
+    expect(isFull).toBeFalsy();
+  });
 });

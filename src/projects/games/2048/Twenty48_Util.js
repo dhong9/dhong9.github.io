@@ -95,6 +95,28 @@ class Twenty48_Util {
 
     return updatedBoard;
   }
+
+  hasEmptySquare(board) {
+    return board.some((row) => row.some((e) => !e));
+  }
+
+  hasMergableTiles(board) {
+    const dir = [
+      [-1, 0],
+      [1, 0],
+      [0, -1],
+      [0, 1],
+    ];
+    return board.some((row, i) =>
+      row.some((v, j) =>
+        dir.some(([dRow, dCol]) => {
+          const nextRow = i + dRow,
+            nextCol = j + dCol;
+          return i >= 0 && i < 4 && j >= 0 && j < 4 && board[nextRow][nextCol] === v;
+        })
+      )
+    );
+  }
 }
 
 export default Twenty48_Util;
