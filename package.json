@@ -23,6 +23,7 @@
     "@react-oauth/google": "^0.12.1",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
+    "2048-danyo": "^1.0.1",
     "axios": "^1.4.0",
     "chroma-js": "2.4.2",
     "dayjs": "^1.11.7",
