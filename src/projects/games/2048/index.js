@@ -11,6 +11,11 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
+// Scoreboard
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+
 // 2048 code
 import twenty48Code from "projects/games/2048/code";
 import Twenty48_Danyo from "2048-danyo";
@@ -37,6 +42,8 @@ function Twenty48() {
 
   // Game properties
   const [board, setBoard] = useState(twenty48_util.board);
+  const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   const { user, profile } = useContext(AuthContext);
 
@@ -163,6 +170,7 @@ function Twenty48() {
     const tilesMoved = newBoard.some((a, i) => a.some((c, j) => c - prevBoard[i][j]));
     if (tilesMoved) {
       twenty48_util.spawnTile(newBoard, true);
+      setScore(twenty48_util.score);
     }
     setBoard(newBoard);
   };
@@ -175,6 +183,19 @@ function Twenty48() {
       <View title="2048" code={twenty48Code} height="40rem">
         <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />
       </View>
+
+      {/* Scoreboard */}
+      <Card sx={{ display: "flex" }}>
+        <CardContent sx={{ flex: 1 }}>
+          <Typography component="h2" variant="h5">
+            Scoreboard
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary">
+            Points
+          </Typography>
+          <Typography component="p">{score}</Typography>
+        </CardContent>
+      </Card>
 
       <div className="comments-container">
         {comments.length ? (

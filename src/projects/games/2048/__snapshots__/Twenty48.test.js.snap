@@ -6843,6 +6843,29 @@ exports[`2048 adds a comment 1`] = `
           </div>
         </div>
         <div
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1m5jx39-MuiPaper-root-MuiCard-root"
+        >
+          <div
+            class="MuiCardContent-root css-1p7cnz9-MuiCardContent-root"
+          >
+            <h2
+              class="MuiTypography-root MuiTypography-h5 css-ozcfne-MuiTypography-root"
+            >
+              Scoreboard
+            </h2>
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1 css-1c7g210-MuiTypography-root"
+            >
+              Points
+            </h6>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1dx2ob-MuiTypography-root"
+            >
+              0
+            </p>
+          </div>
+        </div>
+        <div
           class="comments-container"
         >
           <div />
@@ -13899,13 +13922,36 @@ exports[`2048 renders without user 1`] = `
           </div>
         </div>
         <div
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1m5jx39-MuiPaper-root-MuiCard-root"
+        >
+          <div
+            class="MuiCardContent-root css-1p7cnz9-MuiCardContent-root"
+          >
+            <h2
+              class="MuiTypography-root MuiTypography-h5 css-ozcfne-MuiTypography-root"
+            >
+              Scoreboard
+            </h2>
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1 css-1c7g210-MuiTypography-root"
+            >
+              Points
+            </h6>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1dx2ob-MuiTypography-root"
+            >
+              0
+            </p>
+          </div>
+        </div>
+        <div
           class="comments-container"
         >
           <div />
           <div
             aria-label="rdw-wrapper"
             class="wrapper-class rdw-editor-wrapper"
-            id="rdw-wrapper-5406"
+            id="rdw-wrapper-9023"
           >
             <div
               aria-hidden="false"
@@ -14291,15 +14337,15 @@ exports[`2048 renders without user 1`] = `
                       <div
                         class=""
                         data-block="true"
-                        data-editor="1q9do"
-                        data-offset-key="ehpup-0-0"
+                        data-editor="a1d2v"
+                        data-offset-key="fk2q4-0-0"
                       >
                         <div
                           class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                          data-offset-key="ehpup-0-0"
+                          data-offset-key="fk2q4-0-0"
                         >
                           <span
-                            data-offset-key="ehpup-0-0"
+                            data-offset-key="fk2q4-0-0"
                           >
                             <br
                               data-text="true"
