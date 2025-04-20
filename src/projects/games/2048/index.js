@@ -171,6 +171,7 @@ function Twenty48() {
     if (tilesMoved) {
       twenty48_util.spawnTile(newBoard, true);
       setScore(twenty48_util.score);
+      setGameOver(twenty48_util.gameOver(newBoard));
     }
     setBoard(newBoard);
   };
@@ -194,6 +195,7 @@ function Twenty48() {
             Points
           </Typography>
           <Typography component="p">{score}</Typography>
+          {gameOver && <Typography component="p">Game over!</Typography>}
         </CardContent>
       </Card>
 
