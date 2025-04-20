@@ -12,8 +12,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 // 2048 code
-import Twenty48_Util from "projects/games/2048/Twenty48_Util";
 import twenty48Code from "projects/games/2048/code";
+import Twenty48_Danyo from "2048-danyo";
 
 // p5
 import Sketch from "react-p5";
@@ -28,12 +28,15 @@ import { getComments, addComment, sortComments } from "services/commentsService"
 import AuthContext from "context/AuthContext";
 
 function Twenty48() {
-  const twenty48_util = new Twenty48_Util();
+  const twenty48_util = new Twenty48_Danyo();
   const editorRef = useRef();
   const id = 2;
 
   const [comments, setComments] = useState([]);
   const [isPlainText, setIsPlainText] = useState(false);
+
+  // Game properties
+  const [board, setBoard] = useState(twenty48_util.board);
 
   const { user, profile } = useContext(AuthContext);
 
@@ -66,9 +69,6 @@ function Twenty48() {
       setComments(results.filter(({ project }) => project === id));
     });
   }, []);
-
-  // Initialize game board
-  let board = twenty48_util.board;
 
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
@@ -156,14 +156,15 @@ function Twenty48() {
     } else if (arrow === "ArrowRight") {
       dir = "D";
     }
-    board = twenty48_util.makeMove(board, dir);
+    const newBoard = twenty48_util.makeMove(board, dir);
 
     // If tiles moved,
     // then spawn a new tile
-    const tilesMoved = board.some((a, i) => a.some((c, j) => c - prevBoard[i][j]));
+    const tilesMoved = newBoard.some((a, i) => a.some((c, j) => c - prevBoard[i][j]));
     if (tilesMoved) {
-      twenty48_util.spawnTile(board, true);
+      twenty48_util.spawnTile(newBoard, true);
     }
+    setBoard(newBoard);
   };
 
   return (
