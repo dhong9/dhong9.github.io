@@ -57,8 +57,6 @@
     - BackgroundBlogCard
     - CenteredBlogCard
     - TransparentBlogCard
-  - CounterCards
-    - DefaultCounterCard
   - InfoCards
     - DefaultInfoCard
     - FilledInfoCard

@@ -33,7 +33,6 @@ import CenteredFooter from "examples/Footers/CenteredFooter";
 import DHSnackbar from "components/DHSnackbar";
 
 // Presentation page sections
-import Counters from "pages/Presentation/sections/Counters";
 import DesignBlocks from "pages/Presentation/sections/DesignBlocks";
 import Pages from "pages/Presentation/sections/Pages";
 import ContactUs from "pages/LandingPages/ContactUs";
@@ -235,7 +234,6 @@ function Presentation() {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        <Counters />
         <DesignBlocks />
         <Pages />
       </Card>
