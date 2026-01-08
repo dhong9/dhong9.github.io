@@ -13,7 +13,6 @@ Coded by www.danyo.tech
 */
 
 import { createContext, useState, useEffect } from "react";
-import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -119,8 +118,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
-    googleLogout();
-
     // Cleared saved data
     logoutAccount(() => {
       localStorage.removeItem("authTokens");
@@ -152,20 +149,6 @@ export const AuthProvider = ({ children }) => {
     );
   };
 
-  // Google login functions
-  const googleLogin = useGoogleLogin({
-    onSuccess: (codeResponse) => {
-      // data has access and refresh tokens
-      setAuthTokens(codeResponse);
-      setUser(codeResponse);
-      sessionStorage.setItem("authTokens", JSON.stringify(codeResponse));
-      history("/");
-    },
-    onError: (error) => {
-      console.error(error);
-    },
-  });
-
   const contextData = {
     user,
     setUser,
@@ -176,7 +159,6 @@ export const AuthProvider = ({ children }) => {
     logoutUser,
     deleteUser,
     profile,
-    googleLogin,
   };
 
   useEffect(() => {
