@@ -19,13 +19,8 @@ import { Link } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
-import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import MuiLink from "@mui/material/Link";
-
-// @mui icons
-import GitHubIcon from "@mui/icons-material/GitHub";
-import GoogleIcon from "@mui/icons-material/Google";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -45,7 +40,6 @@ import routes from "routes";
 
 // Authentication
 import AuthContext from "context/AuthContext";
-import LoginGithub from "react-login-github";
 
 // Images
 import bgImage from "assets/images/neons_medium.png";

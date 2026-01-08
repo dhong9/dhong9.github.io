@@ -33,10 +33,6 @@ jest.mock("services/baseService", () => ({
   postRequest: jest.fn(),
 }));
 
-jest.mock("services/googleService", () => ({
-  getGoogleUser: jest.fn(),
-}));
-
 const mock = new MockAdapter(axios);
 mock.onGet("accounts/users/me/").reply(200, {});
 mock.onPost("accounts/token/").reply(200, {
