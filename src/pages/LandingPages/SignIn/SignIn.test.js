@@ -9,7 +9,6 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
@@ -31,9 +30,6 @@ mock.onPost("accounts/token/").reply(200, {
     access: "mock_access",
   },
 });
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Define Mocks
 jest.mock("react-monaco-editor", () => {
@@ -69,15 +65,13 @@ describe("SignIn", () => {
       },
     };
     const { getByLabelText, getByText, queryByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
-            <ThemeProvider theme={theme}>
-              <SignIn onsucess={jest.fn} />
-            </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
-      </GoogleOAuthProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <SignIn onsucess={jest.fn} />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
 
     // Get form elements

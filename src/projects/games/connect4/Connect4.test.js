@@ -9,16 +9,12 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
 
 // Component to test
 import Connect4 from "projects/games/connect4";
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Setup axios mock
 const mock = new MockAdapter(axios);
@@ -114,15 +110,13 @@ describe("Connect4", () => {
       },
     };
     const { container, getByRole } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthProvider>
-          <AuthContext.Provider value={contextData}>
-            <ThemeProvider theme={theme}>
-              <Connect4 />
-            </ThemeProvider>
-          </AuthContext.Provider>
-        </AuthProvider>
-      </GoogleOAuthProvider>
+      <AuthProvider>
+        <AuthContext.Provider value={contextData}>
+          <ThemeProvider theme={theme}>
+            <Connect4 />
+          </ThemeProvider>
+        </AuthContext.Provider>
+      </AuthProvider>
     );
 
     // Toggle plain text

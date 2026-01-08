@@ -22,10 +22,6 @@ import MockAdapter from "axios-mock-adapter";
 
 // Component to test
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Mocks
 jest.mock("react-router-dom", () => ({
@@ -80,11 +76,9 @@ describe("AuthContext", () => {
     };
 
     const { queryByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>Hello world!</AuthProvider>
-        </AuthContext.Provider>
-      </GoogleOAuthProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>Hello world!</AuthProvider>
+      </AuthContext.Provider>
     );
     expect(queryByText("Hello world!")).toBeInTheDocument();
   });
@@ -105,11 +99,9 @@ describe("AuthContext", () => {
     };
 
     const { queryByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>Hello world!</AuthProvider>
-        </AuthContext.Provider>
-      </GoogleOAuthProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>Hello world!</AuthProvider>
+      </AuthContext.Provider>
     );
 
     jest.useFakeTimers();

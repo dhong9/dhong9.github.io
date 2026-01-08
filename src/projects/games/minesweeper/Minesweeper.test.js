@@ -8,16 +8,12 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
 
 // Component to test
 import Minesweeper from "projects/games/minesweeper";
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Define Mocks
 // Setup axios mock
@@ -111,15 +107,13 @@ describe("Minesweeper", () => {
       },
     };
     const { getByRole, queryAllByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthProvider>
-          <AuthContext.Provider value={contextData}>
-            <ThemeProvider theme={theme}>
-              <Minesweeper />
-            </ThemeProvider>
-          </AuthContext.Provider>
-        </AuthProvider>
-      </GoogleOAuthProvider>
+      <AuthProvider>
+        <AuthContext.Provider value={contextData}>
+          <ThemeProvider theme={theme}>
+            <Minesweeper />
+          </ThemeProvider>
+        </AuthContext.Provider>
+      </AuthProvider>
     );
 
     // Toggle plain text
@@ -148,15 +142,13 @@ describe("Minesweeper", () => {
     };
 
     const { queryAllByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthProvider>
-          <AuthContext.Provider value={contextData}>
-            <ThemeProvider theme={theme}>
-              <Minesweeper />
-            </ThemeProvider>
-          </AuthContext.Provider>
-        </AuthProvider>
-      </GoogleOAuthProvider>
+      <AuthProvider>
+        <AuthContext.Provider value={contextData}>
+          <ThemeProvider theme={theme}>
+            <Minesweeper />
+          </ThemeProvider>
+        </AuthContext.Provider>
+      </AuthProvider>
     );
     expect(queryAllByText("Minesweeper").length).toBe(2);
   });

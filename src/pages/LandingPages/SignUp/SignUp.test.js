@@ -23,16 +23,12 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
 
 // Component to test
 import SignUp from "pages/LandingPages/SignUp";
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Setup axios mock
 const mock = new MockAdapter(axios);
@@ -74,15 +70,13 @@ describe("SignUp", () => {
       },
     };
     const { getByLabelText, getByText, queryByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
-            <ThemeProvider theme={theme}>
-              <SignUp />
-            </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
-      </GoogleOAuthProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <SignUp />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
 
     // Get form elements
@@ -142,15 +136,13 @@ describe("SignUp", () => {
       },
     };
     const { getByLabelText, getByText, queryByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
-            <ThemeProvider theme={theme}>
-              <SignUp />
-            </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
-      </GoogleOAuthProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <SignUp />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
 
     // Get form elements
@@ -194,15 +186,13 @@ describe("SignUp", () => {
       },
     };
     const { getByLabelText, getByText, queryByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
-            <ThemeProvider theme={theme}>
-              <SignUp />
-            </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
-      </GoogleOAuthProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <SignUp />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
 
     // Get form elements

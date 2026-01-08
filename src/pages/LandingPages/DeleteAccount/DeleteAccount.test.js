@@ -25,14 +25,10 @@ import DeleteAccount from "pages/LandingPages/DeleteAccount";
 
 // Authentication
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Mocks
 jest.mock("react-router-dom", () => ({
@@ -91,15 +87,13 @@ describe("DeleteAccount", () => {
     };
 
     const { getByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
-            <ThemeProvider theme={theme}>
-              <DeleteAccount />
-            </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
-      </GoogleOAuthProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <DeleteAccount />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
 
     // Delete button should be disabled

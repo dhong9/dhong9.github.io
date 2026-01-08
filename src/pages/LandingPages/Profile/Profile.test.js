@@ -9,16 +9,12 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
 
 // Component to test
 import Profile from "pages/LandingPages/Profile";
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 jest.mock("services/baseService", () => ({
   getRequest: jest.fn(),
@@ -88,15 +84,13 @@ describe("Profile", () => {
       },
     };
     const { getByLabelText, getByText, queryByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthProvider>
-          <AuthContext.Provider value={contextData}>
-            <ThemeProvider theme={theme}>
-              <Profile />
-            </ThemeProvider>
-          </AuthContext.Provider>
-        </AuthProvider>
-      </GoogleOAuthProvider>
+      <AuthProvider>
+        <AuthContext.Provider value={contextData}>
+          <ThemeProvider theme={theme}>
+            <Profile />
+          </ThemeProvider>
+        </AuthContext.Provider>
+      </AuthProvider>
     );
 
     // Get form elements

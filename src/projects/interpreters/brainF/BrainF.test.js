@@ -8,16 +8,12 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
 
 // Component to test
 import BrainF from "projects/interpreters/brainF";
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Define Mocks
 // Setup axios mock
@@ -104,15 +100,13 @@ describe("BrainF", () => {
       },
     };
     const { container, getByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthProvider>
-          <AuthContext.Provider value={contextData}>
-            <ThemeProvider theme={theme}>
-              <BrainF />
-            </ThemeProvider>
-          </AuthContext.Provider>
-        </AuthProvider>
-      </GoogleOAuthProvider>
+      <AuthProvider>
+        <AuthContext.Provider value={contextData}>
+          <ThemeProvider theme={theme}>
+            <BrainF />
+          </ThemeProvider>
+        </AuthContext.Provider>
+      </AuthProvider>
     );
 
     // Enable plain text
@@ -133,15 +127,13 @@ describe("BrainF", () => {
     };
 
     const { container, getByRole, getByTestId, getByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
-            <ThemeProvider theme={theme}>
-              <BrainF />
-            </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
-      </GoogleOAuthProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <BrainF />
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
 
     // Enable visualizing

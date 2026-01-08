@@ -8,7 +8,6 @@ import theme from "assets/theme";
 // Authentication
 import axios from "axios";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Axios
 import MockAdapter from "axios-mock-adapter";
@@ -16,9 +15,6 @@ import MockAdapter from "axios-mock-adapter";
 // Component to test
 import Tile from "projects/games/pictureShuffle/utils/Tile";
 import PictureShuffle from "projects/games/pictureShuffle";
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Define Mocks
 // Setup axios mock
@@ -122,15 +118,13 @@ describe("PictureShuffle", () => {
       },
     };
     const { getByRole, getByText, queryAllByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthProvider>
-          <AuthContext.Provider value={contextData}>
-            <ThemeProvider theme={theme}>
-              <PictureShuffle />
-            </ThemeProvider>
-          </AuthContext.Provider>
-        </AuthProvider>
-      </GoogleOAuthProvider>
+      <AuthProvider>
+        <AuthContext.Provider value={contextData}>
+          <ThemeProvider theme={theme}>
+            <PictureShuffle />
+          </ThemeProvider>
+        </AuthContext.Provider>
+      </AuthProvider>
     );
 
     // Toggle plain text
@@ -159,15 +153,13 @@ describe("PictureShuffle", () => {
     };
 
     const { queryAllByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthProvider>
-          <AuthContext.Provider value={contextData}>
-            <ThemeProvider theme={theme}>
-              <PictureShuffle />
-            </ThemeProvider>
-          </AuthContext.Provider>
-        </AuthProvider>
-      </GoogleOAuthProvider>
+      <AuthProvider>
+        <AuthContext.Provider value={contextData}>
+          <ThemeProvider theme={theme}>
+            <PictureShuffle />
+          </ThemeProvider>
+        </AuthContext.Provider>
+      </AuthProvider>
     );
     expect(queryAllByText("Picture Shuffle").length).toBe(2);
   });

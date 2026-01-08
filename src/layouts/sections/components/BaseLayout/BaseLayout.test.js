@@ -11,13 +11,9 @@ import theme from "assets/theme";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import AuthContext, { AuthProvider } from "context/AuthContext";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Component to test
 import BaseLayout from "layouts/sections/components/BaseLayout";
-
-// Google Client ID
-const clientId = "416010689831-4lgodfsd3n7h84buas2s2mivevp2kdln.apps.googleusercontent.com";
 
 // Define Mocks
 jest.mock("react-monaco-editor", () => {
@@ -80,17 +76,15 @@ describe("BaseLayout", () => {
     };
 
     const { queryByText } = render(
-      <GoogleOAuthProvider clientId={clientId}>
-        <AuthContext.Provider value={contextData}>
-          <AuthProvider>
-            <ThemeProvider theme={theme}>
-              <BaseLayout title="Test Layout" breadcrumb={[]}>
-                Dummy Layout
-              </BaseLayout>
-            </ThemeProvider>
-          </AuthProvider>
-        </AuthContext.Provider>
-      </GoogleOAuthProvider>
+      <AuthContext.Provider value={contextData}>
+        <AuthProvider>
+          <ThemeProvider theme={theme}>
+            <BaseLayout title="Test Layout" breadcrumb={[]}>
+              Dummy Layout
+            </BaseLayout>
+          </ThemeProvider>
+        </AuthProvider>
+      </AuthContext.Provider>
     );
     expect(queryByText("Test Layout")).toBeInTheDocument();
     expect(queryByText("Dummy Layout")).toBeInTheDocument();
