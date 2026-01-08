@@ -23,11 +23,6 @@ import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Switch from "@mui/material/Switch";
 import Grid from "@mui/material/Grid";
-import MuiLink from "@mui/material/Link";
-
-// @mui icons
-import GitHubIcon from "@mui/icons-material/GitHub";
-import GoogleIcon from "@mui/icons-material/Google";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -47,7 +42,6 @@ import routes from "routes";
 
 // Authentication
 import AuthContext from "context/AuthContext";
-import LoginGithub from "react-login-github";
 
 // Images
 import bgImage from "assets/images/neons_medium.png";
@@ -59,7 +53,7 @@ import PropTypes from "prop-types";
 import "./SignIn.css";
 
 function SignInBasic({ onsuccess }) {
-  const { loginUser, googleLogin } = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
   const [rememberMe, setRememberMe] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -158,29 +152,6 @@ function SignInBasic({ onsuccess }) {
                 </MKTypography>
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
-                <LoginGithub
-                  clientId="fad22315b080996a7aaa"
-                  onSuccess={console.log}
-                  onFailure={console.error}
-                  buttonText={
-                    <MKTypography component={MuiLink} href="#" variant="body1">
-                      <GitHubIcon color="inherit" />
-                      <span>Sign in with GitHub</span>
-                    </MKTypography>
-                  }
-                  className="socialAuthButton"
-                />
-                <MKButton className="socialAuthButton" onClick={googleLogin}>
-                  <MKTypography component={MuiLink} href="#" variant="body1">
-                    <GoogleIcon color="inherit" />
-                    <span>Sign in with Google</span>
-                  </MKTypography>
-                </MKButton>
-                <Divider variant="middle">
-                  <MKTypography variant="h6" fontWeight="medium">
-                    OR
-                  </MKTypography>
-                </Divider>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
                     <MKInput
