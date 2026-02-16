@@ -12,7 +12,7 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { Dropzone, FileItem, FullScreenPreview } from "@dropzone-ui/react";
+import { Dropzone, FileMosaic, FullScreenPreview } from "@dropzone-ui/react";
 import { useState } from "react";
 
 function DHDropzone() {
@@ -32,7 +32,7 @@ function DHDropzone() {
   return (
     <Dropzone onChange={updateFiles} value={files} maxFiles={10} maxFileSize={2998000}>
       {files.map((file, i) => (
-        <FileItem key={i} {...file} onDelete={onDelete} onSee={handleSee} preview info hd />
+        <FileMosaic key={i} {...file} onDelete={onDelete} onSee={handleSee} preview info hd />
       ))}
       <FullScreenPreview
         imgSource={imageSrc}
