@@ -12,7 +12,7 @@ Coded by www.danyo.tech
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { Dropzone, FileItem, FullScreenPreview } from "dropzone-ui";
+import { Dropzone, FileItem, FullScreenPreview } from "@dropzone-ui/react";
 import { useState } from "react";
 
 function DHDropzone() {
