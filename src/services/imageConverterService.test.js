@@ -14,8 +14,8 @@ Coded by www.danyo.tech
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { getRequest, postRequest } from "services/baseService";
-import { imgToExcel, downloadFile } from "services/imageConverterService";
+import { getRequest } from "services/baseService";
+import { getImages } from "services/imageConverterService";
 
 const mock = new MockAdapter(axios);
 
@@ -33,29 +33,15 @@ describe("Image Converter Service", () => {
     jest.clearAllMocks();
   });
 
-  it("sends image conversion request", () => {
+  it("gets images", () => {
     // Create success and error spy functions
     const success = jest.fn(),
       error = jest.fn();
 
-    // Send image
-    imgToExcel("path/to/image.png", success, error);
-
-    // Verify that postRequest was called correctly
-    const image = "path/to/image.png";
-    expect(postRequest).toHaveBeenCalledWith("imgconverter/img_to_excel", image, success, error);
-  });
-
-  it("gets files", () => {
-    // Create success and error spy functions
-    const success = jest.fn(),
-      error = jest.fn();
-
-    // Get image
-    const fileName = "sample.png";
-    downloadFile(fileName, success, error);
+    // Get files
+    getImages(success, error);
 
     // Verify that getRequest was called correctly
-    expect(getRequest).toHaveBeenCalledWith("output/" + fileName, success, error);
+    expect(getRequest).toHaveBeenCalledWith("imgconverter/", success, error);
   });
 });
