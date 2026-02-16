@@ -27,15 +27,15 @@ export const createRequest = (endpoint, payload, success, error) =>
     .then(success)
     .catch(error);
 
-export const getRequest = (endpoint, success, error, config = {}, base = baseURL) =>
+export const getRequest = (endpoint, success, error, config = {}) =>
   axios
-    .get(base + endpoint, { maxRedirects: 0, ...config })
+    .get(baseURL + endpoint, { maxRedirects: 0, ...config })
     .then(success)
     .catch(error);
 
-export const postRequest = (endpoint, payload, success, error, config = {}, base = baseURL) =>
+export const postRequest = (endpoint, payload, success, error, config = {}) =>
   axios
-    .post(base + endpoint, payload, { maxRedirects: 0, ...config })
+    .post(baseURL + endpoint, payload, { maxRedirects: 0, ...config })
     .then(success)
     .catch(error);
 

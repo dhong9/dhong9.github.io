@@ -54,7 +54,6 @@ import AuthContext from "context/AuthContext";
 // Services
 import { getProjects } from "services/projectsService";
 import { getUserProfile } from "services/accountsService";
-import { getFlights } from "services/aviationService";
 
 function Presentation() {
   const { user, profile } = useContext(AuthContext);
@@ -66,7 +65,6 @@ function Presentation() {
   const [profileImage, setProfileImage] = useState(defaultProfileImage);
 
   useEffect(() => {
-    getFlights();
     getProjects(({ data: { results } }) => {
       const projectMap = {};
 
