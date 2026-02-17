@@ -85,7 +85,6 @@ function DHDropzone() {
             key={file.id}
             onDelete={onDelete}
             onSee={handleSee}
-            onWatch={handleWatch}
             onAbort={handleAbort}
             onCancel={handleCancel}
             resultOnTooltip
